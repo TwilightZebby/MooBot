@@ -68,7 +68,7 @@ module.exports = {
 
         const option = {};
         option.name = "person";
-        option.description = "Either a name or a User @Mention";
+        option.description = "Either a name or an @mention";
         option.type = 3; // String
         option.required = true;
 
@@ -118,7 +118,7 @@ module.exports = {
 
         const option = {};
         option.name = "person";
-        option.description = "Either a name or a User @Mention";
+        option.description = "Either a name or an @mention";
         option.type = 3; // String
         option.required = true;
 
@@ -173,7 +173,7 @@ module.exports = {
 
         const option = {};
         option.name = "person";
-        option.description = "Either a name or a User @Mention";
+        option.description = "Either a name or an @mention";
         option.type = 3; // String
         option.required = true;
 
@@ -338,10 +338,11 @@ module.exports = {
      * @param {Number} type Response Type. 3 = w/ MSG Eat Input; 4 = w/ MSG show Input; 5 = w/out MSG show Input
      * @param {String} [message]
      * @param {Discord.MessageEmbed} [embed]
+     * @param {*} [allowedMentions]
      * 
      * @returns {Promise<Discord.Message>} wrapped Message
      */
-    async Callback(eventData, type, message, embed) {
+    async Callback(eventData, type, message, embed, allowedMentions) {
         /* 
         * RESPONSE TYPES
         * 1 = Pong                        = ACK a ping
@@ -369,7 +370,7 @@ module.exports = {
                     "tts": false,
                     "content": message,
                     "embeds": embed == undefined ? [] : [embed],
-                    "allowed_mentions": []
+                    "allowed_mentions": allowedMentions == undefined ? [] : allowedMentions
                 }
             };
 

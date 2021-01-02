@@ -4,6 +4,7 @@ const Discord = require("discord.js");
 
 // MODULE IMPORTS
 //const ErrorModule = require('../bot_modules/errorLogger.js');
+const UtilityModule = require('../bot_modules/utilityModule.js');
 const SlashCommands = require('../bot_modules/slashModule.js');
 
 // VARIABLE IMPORTS
@@ -11,11 +12,15 @@ const { client } = require('../constants.js');
 const { PREFIX } = require('../config.js');
 
 
+// JSON IMPORTS
+const ACTIONMESSAGES = require('../jsonFiles/actionMessages.json');
+
+
 
 // THIS COMMAND
 module.exports = {
     name: 'bonk',
-    description: 'Bonk someone',
+    description: 'BONK THOSE NAUGHTY PEEPS',
 
     // LIMITATIONS
     //     'twilightzebby' - Only TwilightZebby#1955 can use this command
@@ -35,26 +40,54 @@ module.exports = {
      */
     async execute(guild, data, commandData, member) {
 
+      // Check for edge case of no given arguments
+      if ( !commandData.options[0] ) {
+        return await SlashCommands.CallbackEphemeral(data, 3, `Strange, I couldn't see any arguments there.... Please try again`);
+      }
+
+
+
       // Check for sneaky role pings and @everyone pings
-      const roleRegex = new RegExp(/<@&(\d{17,19})>/g);
-      const everyoneRegex = new RegExp(/@(everyone|here)/g);
-      const channelRegex = new RegExp(/<#(\d{17,19})>/g);
+      const roleTest = await UtilityModule.TestForRoleMention(`${commandData.options[0].value}`);
+      const everyoneTest = await UtilityModule.TestForEveryoneMention(`${commandData.options[0].value}`);
+      const channelTest = await UtilityModule.TestForChannelMention(`${commandData.options[0].value}`);
 
-      if ( roleRegex.test(commandData.options[0].value) ) {
-        return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member.displayName} - I don't accept Role Pings!`);
-      }
-      
-      if ( everyoneRegex.test(commandData.options[0].value) ) {
-        return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member.displayName} - You can't ping [at]Everyone that easily!`);
-      }
 
-      if ( channelRegex.test(commandData.options[0].value) ) {
-        return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member.displayName} - I don't accept Channel Mentions!`);
+
+      // Channel Mentions
+      if ( channelTest ) {
+        return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member.displayName} - but I can't accept #channel mentions!`);
       }
 
 
-      // Send Message
-      return await SlashCommands.Callback(data, 3, `**${member.displayName}** bonked **${commandData.options[0].value}** \<a:bonkCat:794876670125408256\>`);
+
+      // Check arguments
+      if ( !commandData.options[1] || commandData.options[1].value === false ) {
+
+        // No GIFs
+        let randomMessage = ACTIONMESSAGES["bonk"][Math.floor( ( Math.random() * ACTIONMESSAGES["bonk"].length ) + 0 )];
+        randomMessage = randomMessage.replace(`{author}`, `${member.displayName}`);
+
+        let receiver;
+
+        // Everyone Test
+        if ( everyoneTest ) {
+          receiver = `everyone`;
+        }
+        else if ( roleTest ) {
+          receiver = `everyone with the ${commandData.options[0].value} Role`;
+        }
+        else {
+          receiver = `${commandData.options[0].value}`;
+        }
+
+
+        randomMessage = randomMessage.replace(`{receiver}`, `${receiver}`);
+        return await SlashCommands.Callback(data, 3, randomMessage, undefined, { parse: ['users'] });
+
+      }
+
+
 
       // END OF SLASH COMMAND
     }

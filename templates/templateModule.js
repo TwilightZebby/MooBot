@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 
 // MODULE IMPORTS
 //const ErrorModule = require('../bot_modules/errorLogger.js');
+//const UtilityModule = require('../bot_modules/utilityModule.js');
 
 // VARIABLE IMPORTS
 const { client } = require('../constants.js');
