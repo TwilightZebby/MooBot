@@ -53,6 +53,152 @@ module.exports = {
 
 
 
+    /**
+     * Registers the bonk Slash Command
+     * 
+     * @param {Discord.Guild} guild 
+     */
+    async RegisterBonk(guild) {
+
+        // Data
+        const data = {};
+        data.name = "bonk";
+        data.description = "Bonk somebody";
+        data.options = new Array();
+
+        const option = {};
+        option.name = "person";
+        option.description = "Either a name or a User @Mention";
+        option.type = 3; // String
+        option.required = true;
+
+        data.options.push(option);
+
+        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Registers the hug Slash Command
+     * 
+     * @param {Discord.Guild} guild 
+     */
+    async RegisterHug(guild) {
+
+        // Data
+        const data = {};
+        data.name = "hug";
+        data.description = "Give someone a cuddle";
+        data.options = new Array();
+
+        const option = {};
+        option.name = "person";
+        option.description = "Either a name or a User @Mention";
+        option.type = 3; // String
+        option.required = true;
+
+        data.options.push(option);
+
+        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Registers the poke Slash Command
+     * 
+     * @param {Discord.Guild} guild 
+     */
+    async RegisterHeadpat(guild) {
+
+        // Data
+        const data = {};
+        data.name = "headpat";
+        data.description = "Comfort someone with a headpat";
+        data.options = new Array();
+
+        const option = {};
+        option.name = "person";
+        option.description = "Either a name or a User @Mention";
+        option.type = 3; // String
+        option.required = true;
+
+        data.options.push(option);
+
+        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -92,6 +238,21 @@ module.exports = {
 
 
 
+                case "bonk":
+                    return await this.RegisterBonk(guild);
+
+
+
+                case "hug":
+                    return await this.RegisterHug(guild);
+
+
+
+                case "headpat":
+                    return await this.RegisterHeadpat(guild);
+
+
+
                 default:
                     break;
 
@@ -102,6 +263,9 @@ module.exports = {
 
             // Register all
             await this.RegisterPing(guild);
+            await this.RegisterBonk(guild);
+            await this.RegisterHug(guild);
+            await this.RegisterHeadpat(guild);
 
         }
 
