@@ -81,7 +81,7 @@ let Dr1fterXGuild;
 // DISCORD READY EVENT
 client.once('ready', async () => {
 
-    ErrorGuild = await client.guilds.fetch('681805468749922308');
+    ErrorGuild = await client.guilds.fetch('720258928470130760');
     ErrorChannel = ErrorGuild.channels.resolve('720578054480724050');
     Dr1fterXGuild = await client.guilds.fetch('284431454417584128');
 
@@ -394,10 +394,10 @@ const SlashModule = require('./bot_modules/slashModule.js');
 // Sneaky trick to use SLASH COMMANDS
 client.on('raw', async (evt) => {
 
+    if ( evt.t !== 'INTERACTION_CREATE' ) { return; }
+
     // Prevent Discord Outages breaking the bot
     if ( !Dr1fterXGuild.available ) { return; }
-
-    if ( evt.t !== 'INTERACTION_CREATE' ) { return; }
 
     const {d: data} = evt;
 

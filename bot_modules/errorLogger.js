@@ -17,7 +17,7 @@ module.exports = {
         console.error(error);
 
         // Log to Channel
-        let errorLogChannel = await client.guilds.fetch('681805468749922308');
+        let errorLogChannel = await client.guilds.fetch('720258928470130760');
         errorLogChannel = errorLogChannel.channels.resolve('720578054480724050');
         let messageArray = [
             `**Error**`,
@@ -45,7 +45,7 @@ module.exports = {
         console.error(`${eMessage}\n`, error);
 
         // Log to Channel
-        let errorLogChannel = await client.guilds.fetch('681805468749922308');
+        let errorLogChannel = await client.guilds.fetch('720258928470130760');
         errorLogChannel = errorLogChannel.channels.resolve('720578054480724050');
         let messageArray = [
             `**Error**`,
@@ -73,7 +73,7 @@ module.exports = {
         console.log(`${eMessage}`);
 
         // Log to Channel
-        let errorLogChannel = await client.guilds.fetch('681805468749922308');
+        let errorLogChannel = await client.guilds.fetch('720258928470130760');
         errorLogChannel = errorLogChannel.channels.resolve('720578054480724050');
 
         return await errorLogChannel.send(`${eMessage}`);
