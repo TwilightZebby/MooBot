@@ -11,6 +11,8 @@
 
     "bonk": [
         "**{author}** bonked **{receiver}** <a:bonkCat:794876670125408256>",
-        "**{receiver}** was bonked by **{author}** for being a naughty peep <a:bonkCat:794876670125408256>"
+        "**{author}** bonked **{receiver}** 🔨",
+        "**{receiver}** was bonked by **{author}** for being a naughty peep <a:bonkCat:794876670125408256>",
+        "**{receiver}** was bonked by **{author}** for being a bad peep 🔨"
     ]
 }
