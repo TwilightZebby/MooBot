@@ -12,10 +12,6 @@ const { client } = require('../constants.js');
 const { PREFIX } = require('../config.js');
 
 
-// JSON IMPORTS
-const ACTIONMESSAGES = require('../jsonFiles/actionMessages.json');
-
-
 
 // THIS COMMAND
 module.exports = {
@@ -39,6 +35,15 @@ module.exports = {
      * @param {Discord.GuildMember} member
      */
     async execute(guild, data, commandData, member) {
+
+      // JSON IMPORTS
+      const ACTIONMESSAGES = require('../jsonFiles/actionMessages.json');
+      const GIFLINKS = require('../jsonFiles/gifLinks.json');
+
+
+
+
+
 
       // Check for edge case of no given arguments
       if ( !commandData.options[0] || commandData.options[0].value === undefined || commandData.options[0].value === '' ) {
@@ -83,7 +88,42 @@ module.exports = {
 
 
         randomMessage = randomMessage.replace(`{receiver}`, `${receiver}`);
+        // add emoji
+        randomMessage += "  <:blobCuddle:794877196786991124>";
         return await SlashCommands.Callback(data, 3, randomMessage, undefined, { parse: ['users'] });
+
+      }
+      else {
+
+
+
+
+        // Yes GIFs
+        let randomMessage = ACTIONMESSAGES["hug"][Math.floor( ( Math.random() * ACTIONMESSAGES["hug"].length ) + 0 )];
+        randomMessage = randomMessage.replace(`{author}`, `${member.displayName}`);
+
+        let receiver;
+
+        // Everyone Test
+        if ( everyoneTest ) {
+          receiver = `everyone`;
+        }
+        else if ( roleTest ) {
+          receiver = `everyone with the ${commandData.options[0].value} Role`;
+        }
+        else {
+          receiver = `${commandData.options[0].value}`;
+        }
+
+        randomMessage = randomMessage.replace(`{receiver}`, `${receiver}`);
+
+        // Embed because of GIF
+        const embed = new Discord.MessageEmbed().setDescription(randomMessage)
+        .setImage(GIFLINKS["hug"][Math.floor( ( Math.random() * GIFLINKS["hug"].length ) + 0 )]);
+
+        await SlashCommands.Callback(data, 3, ``, embed, { parse: ['users'] });
+        delete embed; // free up cache
+        return;
 
       }
 

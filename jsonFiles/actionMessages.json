@@ -1,18 +1,16 @@
 {
     "headpat": [
-        "**{author}** gave **{receiver}** a headpat <a:headpatUwU:794877772349964298>",
-        "**{receiver}** was given a comforting headpat by **{author}** <a:headpatUwU:794877772349964298>"
+        "**{author}** gave **{receiver}** a headpat",
+        "**{receiver}** was given a comforting headpat by **{author}**"
     ],
 
     "hug": [
-        "**{author}** gave **{receiver}** a cuddle <:blobCuddle:794877196786991124>",
-        "**{author}** gave **{receiver}** a hug <:blobCuddle:794877196786991124>"
+        "**{author}** gave **{receiver}** a cuddle",
+        "**{author}** gave **{receiver}** a hug"
     ],
 
     "bonk": [
-        "**{author}** bonked **{receiver}** <a:bonkCat:794876670125408256>",
-        "**{author}** bonked **{receiver}** 🔨",
-        "**{receiver}** was bonked by **{author}** for being a naughty peep <a:bonkCat:794876670125408256>",
-        "**{receiver}** was bonked by **{author}** for being a bad peep 🔨"
+        "**{author}** bonked **{receiver}**",
+        "**{receiver}** was bonked by **{author}** for being a naughty peep"
     ]
 }

@@ -74,6 +74,15 @@ module.exports = {
 
         data.options.push(option);
 
+
+        const secondOption = {};
+        secondOption.name = "GIF";
+        secondOption.description = "True to use a GIF, otherwise leave blank";
+        secondOption.type = 5; // Boolean
+        secondOption.required = false;
+
+        data.options.push(secondOption);
+
         client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
 
     },
@@ -123,6 +132,15 @@ module.exports = {
         option.required = true;
 
         data.options.push(option);
+
+
+        const secondOption = {};
+        secondOption.name = "GIF";
+        secondOption.description = "True to use a GIF, otherwise leave blank";
+        secondOption.type = 5; // Boolean
+        secondOption.required = false;
+
+        data.options.push(secondOption);
 
         client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
 
@@ -178,6 +196,15 @@ module.exports = {
         option.required = true;
 
         data.options.push(option);
+
+
+        const secondOption = {};
+        secondOption.name = "GIF";
+        secondOption.description = "True to use a GIF, otherwise leave blank";
+        secondOption.type = 5; // Boolean
+        secondOption.required = false;
+
+        data.options.push(secondOption);
 
         client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
 
