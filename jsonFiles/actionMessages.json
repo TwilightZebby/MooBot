@@ -11,6 +11,7 @@
 
     "bonk": [
         "**{author}** bonked **{receiver}**",
-        "**{receiver}** was bonked by **{author}** for being a naughty peep"
+        "**{receiver}** was bonked by **{author}** for being a naughty peep",
+        "**{receiver}** was bonked by **{author}** for being a bad peep"
     ]
 }
