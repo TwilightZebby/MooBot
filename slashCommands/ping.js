@@ -35,7 +35,7 @@ module.exports = {
      */
     async execute(guild, data, commandData, member) {
 
-      return await SlashCommands.Callback(data, 4, `${member.displayName}, your ping is ${member.client.ws.ping.toFixed(2)}ms`);
+      return await SlashCommands.CallbackEphemeral(data, 3, `${member.displayName}, your ping is ${member.client.ws.ping.toFixed(2)}ms`);
 
       //END OF SLASH COMMAND
     }

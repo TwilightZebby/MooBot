@@ -73,17 +73,11 @@ let ErrorGuild;
  */
 let ErrorChannel;
 
-/**
- * @type {Discord.Guild}
- */
-let Dr1fterXGuild;
-
 // DISCORD READY EVENT
 client.once('ready', async () => {
 
     ErrorGuild = await client.guilds.fetch('720258928470130760');
     ErrorChannel = ErrorGuild.channels.resolve('720578054480724050');
-    Dr1fterXGuild = await client.guilds.fetch('284431454417584128');
 
     await client.user.setPresence(
         {
@@ -396,15 +390,20 @@ client.on('raw', async (evt) => {
 
     if ( evt.t !== 'INTERACTION_CREATE' ) { return; }
 
-    // Prevent Discord Outages breaking the bot
-    if ( !Dr1fterXGuild.available ) { return; }
 
     const {d: data} = evt;
 
     if ( data.type !== 2 ) { return; }
 
     const CommandData = data.data;
-    const GuildMember = await ErrorGuild.members.fetch(data.member.user.id);
+    const authorGuild = await client.guilds.fetch(data["guild_id"]);
+
+    // Check for Discord Outages to prevent the Bot crashing during them :)
+    if ( !authorGuild.available ) {
+        return;
+    }
+
+    const GuildMember = await authorGuild.members.fetch(data.member.user.id);
 
 
     const fetchedSlashCommand = client.slashCommands.get(CommandData.name);
@@ -476,7 +475,7 @@ client.on('raw', async (evt) => {
 
         // execute slash commmand
         try {
-            await fetchedSlashCommand.execute(ErrorGuild, data, CommandData, GuildMember);
+            await fetchedSlashCommand.execute(authorGuild, data, CommandData, GuildMember);
         } catch (err) {
             await ErrorModule.LogCustom(err, `(**INDEX.JS** - Execute __slash__ command fail)`);
             await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember.displayName} - there was an error trying to run that command...`);
