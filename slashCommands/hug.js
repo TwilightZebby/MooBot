@@ -41,7 +41,7 @@ module.exports = {
     async execute(guild, data, commandData, member) {
 
       // Check for edge case of no given arguments
-      if ( !commandData.options[0] ) {
+      if ( !commandData.options[0] || commandData.options[0].value === undefined || commandData.options[0].value === '' ) {
         return await SlashCommands.CallbackEphemeral(data, 3, `Strange, I couldn't see any arguments there.... Please try again`);
       }
 
