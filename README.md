@@ -1,5 +1,5 @@
 # Actions Bot
-A small Discord Bot made for Dr1fterX's Discord Server to add silly Slash Commands.
+A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf) to add silly Slash Commands.
 
 ---
 ## What kind of Slash Commands are there?
