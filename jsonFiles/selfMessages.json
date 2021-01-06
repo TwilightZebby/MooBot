@@ -1,0 +1,16 @@
+{
+    "headpat": [
+        "**{author}** gave themself a headpat",
+        "**{author}** was given a headpat by....themselves?"
+    ],
+
+    "hug": [
+        "**{author}** gave themself a cuddle",
+        "**{author}** gave themself a hug"
+    ],
+
+    "bonk": [
+        "**{author}** bonked themself",
+        "**{author}** was bonked by themself since they realised their own mistake"
+    ]
+}

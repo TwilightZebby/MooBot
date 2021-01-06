@@ -1,0 +1,17 @@
+{
+    "headpat": [
+        "**{author}** gave everyone with **{role}** a headpat",
+        "Everyone with **{role}** was given a comforting headpat by **{author}**"
+    ],
+
+    "hug": [
+        "**{author}** gave everyone with **{role}** a cuddle",
+        "**{author}** gave everyone with **{role}** a hug"
+    ],
+
+    "bonk": [
+        "**{author}** bonked everyone with **{role}**",
+        "Everyone with **{role}** was bonked by **{author}** for being naughty peeps",
+        "Everyone with **{role}** was bonked by **{author}** for being bad peeps"
+    ]
+}

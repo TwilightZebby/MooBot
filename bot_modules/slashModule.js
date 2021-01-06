@@ -449,7 +449,7 @@ module.exports = {
      * @param {Number} type Response Type. 3 = w/ MSG Eat Input; 4 = w/ MSG show Input; 5 = w/out MSG show Input
      * @param {String} message
      * 
-     * @returns {Promise<Discord.Message>} wrapped Message
+     * @returns {Promise<*>} 
      */
     async CallbackEphemeral(eventData, type, message) {
         /* 

@@ -260,6 +260,72 @@ module.exports = {
         }
 
         // END OF MODULE
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Check for if the given [at]User mention matches the Author's ID
+     * 
+     * @param {String} string 
+     * @param {Discord.GuildMember} member
+     * 
+     * @returns {Promise<Boolean>} 
+     */
+    async TestForSelfMention(string, member) {
+
+        let matchedString = string.replace('<@', '');
+        matchedString = matchedString.replace('!', '');
+        matchedString = matchedString.replace('>', '');
+
+        
+        if ( matchedString === member.user.id ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+
+        // END OF MODULE
     }
 
 };
