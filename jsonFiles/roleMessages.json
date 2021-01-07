@@ -13,5 +13,10 @@
         "**{author}** bonked everyone with **{role}**",
         "Everyone with **{role}** was bonked by **{author}** for being naughty peeps",
         "Everyone with **{role}** was bonked by **{author}** for being bad peeps"
+    ],
+
+    "sleep": [
+        "**{author}** wants everyone with **{role}** to go sleep!",
+        "**{author}** cares for everyone with **{role}** and wants them to go sleep!"
     ]
 }

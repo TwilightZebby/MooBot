@@ -13,5 +13,11 @@
         "**{author}** bonked **{receiver}**",
         "**{receiver}** was bonked by **{author}** for being a naughty peep",
         "**{receiver}** was bonked by **{author}** for being a bad peep"
+    ],
+
+    "sleep": [
+        "**{author}** wants **{receiver}** to go to sleep!",
+        "**{author}** cares for **{receiver}**'s health and wants them to sleep!",
+        "**{author}** is wondering why **{receiver}** is still awake... GO TO SLEEP **{receiver}**!!!!"
     ]
 }

@@ -66,32 +66,35 @@ module.exports = {
 
 
         // Check first argument to see what type of response we need
-        let randomMessage;
+        let randomMessage = "";
+        const authorRegEx = new RegExp(/{author}/g);
+        const roleRegEx = new RegExp(/{role}/g);
+        const receiverRegEx = new RegExp(/{receiver}/g);
 
         if ( roleTest ) {
 
             randomMessage = ROLEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * ROLEMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(`{author}`, `${member.displayName}`);
-            randomMessage = randomMessage.replace(`{role}`, `${commandData.options[0].value}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
+            randomMessage = randomMessage.replace(roleRegEx, `${commandData.options[0].value}`);
 
         }
         else if ( everyoneTest ) {
 
             randomMessage = EVERYONEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * EVERYONEMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(`{author}`, `${member.displayName}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
 
         }
         else if ( await UtilityModule.TestForSelfMention(`${commandData.options[0].value}`, member) ) {
 
             randomMessage = SELFMESSAGES[`${commandName}`][Math.floor( ( Math.random() * SELFMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(`{author}`, `${member.displayName}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
 
         }
         else {
 
             randomMessage = USERMESSAGES[`${commandName}`][Math.floor( ( Math.random() * USERMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(`{author}`, `${member.displayName}`);
-            randomMessage = randomMessage.replace(`{receiver}`, `${commandData.options[0].value}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
+            randomMessage = randomMessage.replace(receiverRegEx, `${commandData.options[0].value}`);
 
         }
 

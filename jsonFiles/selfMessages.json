@@ -12,5 +12,11 @@
     "bonk": [
         "**{author}** bonked themself",
         "**{author}** was bonked by themself since they realised their own mistake"
+    ],
+
+    "sleep": [
+        "**{author}** should really go to sleep...",
+        "**{author}** is thinking of their bed...",
+        "**{author}** needs sleep. GO TO SLEEP **{author}**!"
     ]
 }

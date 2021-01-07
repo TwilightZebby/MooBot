@@ -247,6 +247,81 @@ module.exports = {
 
 
 
+
+
+
+
+    /**
+     * Registers the sleep Slash Command
+     * 
+     * @param {Discord.Guild} guild 
+     */
+    async RegisterSleep(guild) {
+
+        // Data
+        const data = {};
+        data.name = "sleep";
+        data.description = "Tell someone to go sleep!";
+        data.options = new Array();
+
+        const option = {};
+        option.name = "person";
+        option.description = "Either a name or an @mention";
+        option.type = 3; // String
+        option.required = true;
+
+        data.options.push(option);
+
+
+        const secondOption = {};
+        secondOption.name = "GIF";
+        secondOption.description = "True to use a GIF, otherwise leave blank";
+        secondOption.type = 5; // Boolean
+        secondOption.required = false;
+
+        data.options.push(secondOption);
+
+        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Registers the Slash Commands within Discord's Slash Command API
      * 
@@ -264,20 +339,20 @@ module.exports = {
                     return await this.RegisterPing(guild);
 
 
-
                 case "bonk":
                     return await this.RegisterBonk(guild);
-
 
 
                 case "hug":
                     return await this.RegisterHug(guild);
 
 
-
                 case "headpat":
                     return await this.RegisterHeadpat(guild);
 
+
+                case "sleep":
+                    return await this.RegisterSleep(guild);
 
 
                 default:
@@ -293,6 +368,7 @@ module.exports = {
             await this.RegisterBonk(guild);
             await this.RegisterHug(guild);
             await this.RegisterHeadpat(guild);
+            await this.RegisterSleep(guild);
 
         }
 

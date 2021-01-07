@@ -6,6 +6,7 @@
         "https://media1.tenor.com/images/ff91dddf9a258a5fff1efdaf709257f9/tenor.gif",
         "https://media1.tenor.com/images/ae2074c558adc2d4726c6cafb0d9cb1c/tenor.gif"
     ],
+
     "headpat": [
         "https://media1.tenor.com/images/6602906e1f8ee177f478e7367dacffad/tenor.gif",
         "https://media1.tenor.com/images/16ec668d63ac6c1e8a1635b855cb1654/tenor.gif",
@@ -13,11 +14,18 @@
         "https://media1.tenor.com/images/219d67742b8ce28ea8fb2701c06d7949/tenor.gif",
         "https://media1.tenor.com/images/da8f0e8dd1a7f7db5298bda9cc648a9a/tenor.gif"
     ],
+
     "hug": [
         "https://media1.tenor.com/images/24ac13447f9409d41c1aecb923aedf81/tenor.gif",
         "https://media1.tenor.com/images/fd47e55dfb49ae1d39675d6eff34a729/tenor.gif",
         "https://media1.tenor.com/images/f20151a1f7e003426ca7f406b6f76c82/tenor.gif",
         "https://media1.tenor.com/images/3fee00811a33590e4ee490942f233c78/tenor.gif",
         "https://media1.tenor.com/images/f77657e4f9d454de399b7c8acb1b8735/tenor.gif"
+    ],
+
+    "sleep": [
+        "https://media1.tenor.com/images/df1aff8395678d11b99b575f0e3b19d5/tenor.gif",
+        "https://media1.tenor.com/images/241b24b543017e5262f7aabd48116f6f/tenor.gif",
+        "https://media1.tenor.com/images/902f3f6f0f58c236a0bf4ac2211ec926/tenor.gif"
     ]
 }

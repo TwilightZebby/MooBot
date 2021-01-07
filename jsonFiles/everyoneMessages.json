@@ -1,17 +1,22 @@
 {
     "headpat": [
-        "**{author}** gave **everyone** a headpat",
-        "**Everyone** was given a comforting headpat by **{author}**"
+        "**{author}** gave everyone a headpat",
+        "Everyone was given a comforting headpat by **{author}**"
     ],
 
     "hug": [
-        "**{author}** gave **everyone** a cuddle",
-        "**{author}** gave **everyone** a hug"
+        "**{author}** gave everyone a cuddle",
+        "**{author}** gave everyone a hug"
     ],
 
     "bonk": [
-        "**{author}** bonked **everyone**",
-        "**Everyone** was bonked by **{author}** for being naughty peeps",
-        "**Everyone** was bonked by **{author}** for being bad peeps"
+        "**{author}** bonked everyone",
+        "Everyone was bonked by **{author}** for being naughty peeps",
+        "Everyone was bonked by **{author}** for being bad peeps"
+    ],
+
+    "sleep": [
+        "**{author}** wants everyone to go to sleep!",
+        "**{author}** cares for everyone's health and wants y'all to go sleep!"
     ]
 }
