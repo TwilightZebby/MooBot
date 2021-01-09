@@ -22,7 +22,7 @@ module.exports = {
     //limitation: 'twilightzebby',
 
     // Command's cooldown, in seconds
-    cooldown: 10,
+    cooldown: 5,
 
     /**
      * Command's functionality

@@ -36,7 +36,7 @@ module.exports = {
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
-        const MESSAGEEMOJIS = require('../jsonFiles/emojis.json');
+        //const MESSAGEEMOJIS = require('../jsonFiles/emojis.json');
 
 
 
@@ -106,7 +106,7 @@ module.exports = {
         if ( !commandData.options[1] || commandData.options[1].value === false ) {
 
             // No GIFs
-            randomMessage += ` ${MESSAGEEMOJIS[`${commandName}`]}`;
+            //randomMessage += ` ${MESSAGEEMOJIS[`${commandName}`]}`;
 
             return await SlashCommands.Callback(data, 3, randomMessage, undefined, { parse: ['users'] });
 
