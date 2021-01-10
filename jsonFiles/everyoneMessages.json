@@ -18,5 +18,11 @@
     "sleep": [
         "**{author}** wants everyone to go to sleep!",
         "**{author}** cares for everyone's health and wants y'all to go sleep!"
+    ],
+
+    "boop": [
+        "**{author}** booped everyone",
+        "**{author}** booped everyone on the nose!",
+        "Watch out - **{author}** is on a booping spree!"
     ]
 }

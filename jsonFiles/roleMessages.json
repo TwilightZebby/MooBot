@@ -18,5 +18,10 @@
     "sleep": [
         "**{author}** wants everyone with **{role}** to go sleep!",
         "**{author}** cares for everyone with **{role}** and wants them to go sleep!"
+    ],
+
+    "boop": [
+        "**{author}** booped everyone with **{role}**",
+        "Everyone with **{role}** should watch out, **{author}** is coming to boop you!"
     ]
 }

@@ -323,6 +323,77 @@ module.exports = {
 
 
     /**
+     * Registers the boop Slash Command
+     * 
+     * @param {Discord.Guild} guild 
+     */
+    async RegisterBoop(guild) {
+
+        // Data
+        const data = {};
+        data.name = "boop";
+        data.description = "Boop someone!";
+        data.options = new Array();
+
+        const option = {};
+        option.name = "person";
+        option.description = "Either a name or an @mention";
+        option.type = 3; // String
+        option.required = true;
+
+        data.options.push(option);
+
+
+        const secondOption = {};
+        secondOption.name = "GIF";
+        secondOption.description = "True to use a GIF, otherwise leave blank";
+        secondOption.type = 5; // Boolean
+        secondOption.required = false;
+
+        data.options.push(secondOption);
+
+        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
      * Registers the Slash Commands within Discord's Slash Command API
      * 
      * @param {Discord.Guild} guild 
@@ -355,6 +426,10 @@ module.exports = {
                     return await this.RegisterSleep(guild);
 
 
+                case "boop":
+                    return await this.RegisterBoop(guild);
+
+
                 default:
                     break;
 
@@ -369,6 +444,7 @@ module.exports = {
             await this.RegisterHug(guild);
             await this.RegisterHeadpat(guild);
             await this.RegisterSleep(guild);
+            await this.RegisterBoop(guild);
 
         }
 
