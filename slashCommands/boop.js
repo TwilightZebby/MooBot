@@ -13,8 +13,8 @@ const { PREFIX } = require('../config.js');
 
 // THIS COMMAND
 module.exports = {
-    name: 'hug',
-    description: 'Give someone a comforting cuddle',
+    name: 'boop',
+    description: 'Boop someone!',
 
     // LIMITATIONS
     //     'twilightzebby' - Only TwilightZebby#1955 can use this command
