@@ -19,5 +19,10 @@
         "**{author}** wants **{receiver}** to go to sleep!",
         "**{author}** cares for **{receiver}**'s health and wants them to sleep!",
         "**{author}** is wondering why **{receiver}** is still awake... GO TO SLEEP **{receiver}**!!!!"
+    ],
+
+    "boop": [
+        "**{author}** booped **{receiver}**",
+        "**{receiver}**'s nose was booped by **{author}**"
     ]
 }

@@ -18,5 +18,10 @@
         "**{author}** should really go to sleep...",
         "**{author}** is thinking of their bed...",
         "**{author}** needs sleep. GO TO SLEEP **{author}**!"
+    ],
+
+    "boop": [
+        "**{author}** booped themself",
+        "**{author}** booped everyone in the room.....themselves. They booped themself."
     ]
 }
