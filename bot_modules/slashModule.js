@@ -390,6 +390,74 @@ module.exports = {
 
 
 
+    /**
+     * Registers the kiss Slash Command
+     * 
+     * @param {Discord.Guild} guild 
+     */
+    async RegisterKiss(guild) {
+
+        // Data
+        const data = {};
+        data.name = "kiss";
+        data.description = "Slap a kiss on someone *blushes*";
+        data.options = new Array();
+
+        const option = {};
+        option.name = "person";
+        option.description = "Either a name or an @mention";
+        option.type = 3; // String
+        option.required = true;
+
+        data.options.push(option);
+
+
+        const secondOption = {};
+        secondOption.name = "GIF";
+        secondOption.description = "True to use a GIF, otherwise leave blank";
+        secondOption.type = 5; // Boolean
+        secondOption.required = false;
+
+        data.options.push(secondOption);
+
+        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -430,6 +498,10 @@ module.exports = {
                     return await this.RegisterBoop(guild);
 
 
+                case "kiss":
+                    return await this.RegisterKiss(guild);
+
+
                 default:
                     break;
 
@@ -445,6 +517,7 @@ module.exports = {
             await this.RegisterHeadpat(guild);
             await this.RegisterSleep(guild);
             await this.RegisterBoop(guild);
+            await this.RegisterKiss(guild);
 
         }
 

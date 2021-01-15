@@ -23,5 +23,10 @@
     "boop": [
         "**{author}** booped everyone with **{role}**",
         "Everyone with **{role}** should watch out, **{author}** is coming to boop you!"
+    ],
+
+    "kiss": [
+        "**{author}** kissed everyone with **{role}**",
+        "**{author}** gave everyone with **{role}** a kiss"
     ]
 }

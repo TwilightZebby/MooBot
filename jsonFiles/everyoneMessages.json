@@ -24,5 +24,10 @@
         "**{author}** booped everyone",
         "**{author}** booped everyone on the nose!",
         "Watch out - **{author}** is on a booping spree!"
+    ],
+
+    "kiss": [
+        "**{author}** give everyone a kiss",
+        "**{author}** kissed everyone"
     ]
 }

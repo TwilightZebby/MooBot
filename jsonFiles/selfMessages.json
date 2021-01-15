@@ -27,6 +27,12 @@
 
     "boop": [
         "**{author}** booped themself",
-        "**{author}** booped everyone in the room.....themselves. They booped themself."
+        "**{author}** booped everyone in the room.....themselves. They booped themself.",
+        "**{author}** was booped by the ghosts that lurk..."
+    ],
+
+    "kiss": [
+        "**{author}** kissed their own reflection in the mirror",
+        "**{author}** attempted to kiss themselves"
     ]
 }
