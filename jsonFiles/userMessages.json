@@ -18,7 +18,7 @@
         "**{receiver}** was bonked by **{author}** for being a naughty peep",
         "**{receiver}** was bonked by **{author}** for being a bad peep",
         "**{receiver}** was bonked by **{author}**",
-        "BAD **{receiver}**! **{author}** has bonked you for you naughtyness!"
+        "BAD **{receiver}**! **{author}** has bonked you for you naughtiness!"
     ],
 
     "sleep": [
