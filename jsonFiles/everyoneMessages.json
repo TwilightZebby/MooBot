@@ -1,7 +1,8 @@
 {
     "headpat": [
         "**{author}** gave everyone a headpat",
-        "Everyone was given a comforting headpat by **{author}**"
+        "Everyone was given a comforting headpat by **{author}**",
+        "You get a headpat! You get a headpat! EVERYONE GETS A HEADPAT FROM **{author}**!!"
     ],
 
     "hug": [
