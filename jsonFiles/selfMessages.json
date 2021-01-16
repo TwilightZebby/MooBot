@@ -15,18 +15,32 @@
 
     "bonk": [
         "**{author}** bonked themself",
-        "**{author}** was bonked by themself since they realised their own mistake",
-        "Oh I get to bonk someone this time? HEY **{author}** - BOOOOONK!"
+        "**{author}** bonked themselves since they realised their own mistake",
+        "Oh I get to bonk someone this time? HEY **{author}** - BOOOOONK!",
+        "**{author}** wants a bonk!",
+        "*runs function bonk( **{author}** )*"
     ],
 
     "sleep": [
         "**{author}** should really go to sleep...",
         "**{author}** is thinking of their bed...",
-        "**{author}** needs sleep. GO TO SLEEP **{author}**!"
+        "**{author}** needs sleep. GO TO SLEEP **{author}**!",
+        "**{author}** says they want sleep, but we all know they'll be on their phone in bed ;P",
+        "**{author}** wants sleep? That's a little sus..."
     ],
 
     "boop": [
         "**{author}** booped themself",
-        "**{author}** booped everyone in the room.....themselves. They booped themself."
+        "**{author}** booped everyone in the room.....themselves. They booped themself.",
+        "**{author}** was booped by the ghosts that lurk...",
+        "Hey Google, boop **{author}**",
+        "Hey Alexa, boop **{author}**"
+    ],
+
+    "kiss": [
+        "**{author}** kissed their own reflection in the mirror",
+        "**{author}** attempted to kiss themselves",
+        "**{author}** yarns for a kiss",
+        "Seems like **{author}** wants a kiss. Unfortunately, we can't kiss you through a monitor."
     ]
 }

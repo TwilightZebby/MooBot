@@ -1,28 +1,40 @@
 {
     "headpat": [
         "**{author}** gave everyone a headpat",
-        "Everyone was given a comforting headpat by **{author}**"
+        "Everyone was given a comforting headpat by **{author}**",
+        "You get a headpat! You get a headpat! EVERYONE GETS A HEADPAT FROM **{author}**!!",
+        "**{author}** is paying their taxes by giving everyone a headpat!"
     ],
 
     "hug": [
         "**{author}** gave everyone a cuddle",
-        "**{author}** gave everyone a hug"
+        "**{author}** gave everyone a hug",
+        "Group cuddle time with **{author}**!",
+        "**{author}** is giving everyone *all the hugs!*"
     ],
 
     "bonk": [
         "**{author}** bonked everyone",
         "Everyone was bonked by **{author}** for being naughty peeps",
-        "Everyone was bonked by **{author}** for being bad peeps"
+        "Everyone was bonked by **{author}** for being bad peeps",
+        "**{author}** bonked the whole community!"
     ],
 
     "sleep": [
         "**{author}** wants everyone to go to sleep!",
-        "**{author}** cares for everyone's health and wants y'all to go sleep!"
+        "**{author}** cares for everyone's health and wants y'all to go sleep!",
+        "**{author}** wants everyone to know that sleep is important and wishes all of you a good night/day's sleep"
     ],
 
     "boop": [
         "**{author}** booped everyone",
         "**{author}** booped everyone on the nose!",
         "Watch out - **{author}** is on a booping spree!"
+    ],
+
+    "kiss": [
+        "**{author}** give everyone a kiss",
+        "**{author}** kissed everyone",
+        "**{author}** is overflowing with love and kisses everyone!"
     ]
 }

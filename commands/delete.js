@@ -35,11 +35,12 @@ module.exports = {
 
       if ( !args.length ) {
         await SlashModule.DeleteCommands(message.guild);
-        return await message.react('👍');
+        return await message.channel.send(`Successfully removed all my Slash Commands from this Server`);
       }
       else {
-        await SlashModule.DeleteCommands(message.guild, args.shift().toLowerCase());
-        return await message.react('👍');
+        let commandName = args.shift().toLowerCase();
+        await SlashModule.DeleteCommands(message.guild, commandName);
+        return await message.channel.send(`Successfully removed the ${commandName} Slash Command from the Server`);
       }
 
       // END OF COMMAND

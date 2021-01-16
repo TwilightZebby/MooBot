@@ -35,11 +35,12 @@ module.exports = {
 
       if ( !args.length ) {
         await SlashModule.RegisterCommands(message.guild);
-        return await message.react('👍');
+        return await message.channel.send(`Successfully added all my Slash Commands to the Server`);
       }
       else {
-        await SlashModule.RegisterCommands(message.guild, args.shift().toLowerCase());
-        return await message.react('👍');
+        let commandName = args.shift().toLowerCase();
+        await SlashModule.RegisterCommands(message.guild, commandName);
+        return await message.channel.send(`Successfully added the ${commandName} Slash Command to the Server`);
       }
 
       // END OF COMMAND
