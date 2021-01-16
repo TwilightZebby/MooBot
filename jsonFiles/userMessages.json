@@ -3,7 +3,9 @@
         "**{author}** gave **{receiver}** a headpat",
         "**{receiver}** was given a comforting headpat by **{author}**",
         "**{receiver}**, you got a pat from **{author}**",
-        "**{receiver}** received a headpat from **{author}**"
+        "**{receiver}** received a headpat from **{author}**",
+        "**{author}** rewards **{receiver}** with a headpat",
+        "**{receiver}** requires headpats. **{author}** will deliever headpats."
     ],
 
     "hug": [
