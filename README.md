@@ -7,6 +7,11 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 > Mainly ones like /hug, /bonk, /headpat, etc. You know, roleplay-style.
 
 
+## Why did you make this Bot?
+
+> Mixture of "felt like it" and "wanted to finally bring back some of the old functionality/commands from the long-dead Kawaii Bot"
+
+
 ## How many Slash Commands are there/will there be?
 
 > For now I am limiting myself to a maximum of 10, excluding /ping.
