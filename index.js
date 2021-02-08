@@ -396,20 +396,34 @@ client.on('raw', async (evt) => {
     if ( data.type !== 2 ) { return; }
 
     const CommandData = data.data;
-    const authorGuild = await client.guilds.fetch(data["guild_id"]);
+    const authorGuild = await client.guilds.fetch(data["guild_id"]) || null;
+    let GuildMember = null;
+    let DMUser = null;
 
-    // Check for Discord Outages to prevent the Bot crashing during them :)
-    if ( !authorGuild.available ) {
-        return;
+    // if in a Guild
+    if ( authorGuild !== null ) {
+
+        // Check for Discord Outages to prevent the Bot crashing during them :)
+        if ( !authorGuild.available ) {
+            return;
+        }
+
+        GuildMember = await authorGuild.members.fetch(data.member.user.id);
+
+    }
+    else {
+
+        DMUser = await client.users.fetch(data.user.id);
+
     }
 
-    const GuildMember = await authorGuild.members.fetch(data.member.user.id);
+
 
 
     const fetchedSlashCommand = client.slashCommands.get(CommandData.name);
 
     if ( !fetchedSlashCommand ) {
-        await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember.displayName} - something prevented me from executing the **${CommandData.name}** command...`);
+        await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - something prevented me from executing the **${CommandData.name}** command...`);
         return;
     }
     else {
@@ -436,9 +450,9 @@ client.on('raw', async (evt) => {
         const cooldownAmount = (fetchedSlashCommand.cooldown || 3) * 1000;
 
 
-        if ( timestamps.has(GuildMember.user.id) ) {
+        if ( timestamps.has(GuildMember !== null ? GuildMember.user.id : DMUser.id) ) {
 
-            const expirationTime = timestamps.get(GuildMember.user.id) + cooldownAmount;
+            const expirationTime = timestamps.get(GuildMember !== null ? GuildMember.user.id : DMUser.id) + cooldownAmount;
 
             if ( now < expirationTime ) {
 
@@ -447,24 +461,24 @@ client.on('raw', async (evt) => {
                 // Minutes
                 if ( timeLeft >= 60 && timeLeft < 3600 ) {
                     timeLeft /= 60;
-                    return await SlashModule.CallbackEphemeral(data, 3, `${GuildMember.displayName} - Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${fetchedSlashCommand.name}\` command`);
+                    return await SlashModule.CallbackEphemeral(data, 3, `${GuildMember !== null ? GuildMember.displayName : DMUser.username} - Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${fetchedSlashCommand.name}\` command`);
                 }
                 // Hours
                 else if ( timeLeft >= 3600 ) {
                     timeLeft /= 3600;
-                    return await SlashModule.CallbackEphemeral(data, 3, `${GuildMember.displayName} - Please wait ${timeLeft.toFixed(1)} more hours before using the \`${fetchedSlashCommand.name}\` command`);
+                    return await SlashModule.CallbackEphemeral(data, 3, `${GuildMember !== null ? GuildMember.displayName : DMUser.username} - Please wait ${timeLeft.toFixed(1)} more hours before using the \`${fetchedSlashCommand.name}\` command`);
                 }
                 // Seconds
                 else {
-                    return await SlashModule.CallbackEphemeral(data, 3, `${GuildMember.displayName} - Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${fetchedSlashCommand.name}\` command`);
+                    return await SlashModule.CallbackEphemeral(data, 3, `${GuildMember !== null ? GuildMember.displayName : DMUser.username} - Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${fetchedSlashCommand.name}\` command`);
                 }
 
             }
 
         }
         else {
-            timestamps.set(GuildMember.user.id, now);
-            setTimeout(() => timestamps.delete(GuildMember.user.id), cooldownAmount);
+            timestamps.set(GuildMember !== null ? GuildMember.user.id : DMUser.id, now);
+            setTimeout(() => timestamps.delete(GuildMember !== null ? GuildMember.user.id : DMUser.id), cooldownAmount);
         }
 
 
@@ -478,7 +492,7 @@ client.on('raw', async (evt) => {
             await fetchedSlashCommand.execute(authorGuild, data, CommandData, GuildMember);
         } catch (err) {
             await ErrorModule.LogCustom(err, `(**INDEX.JS** - Execute __slash__ command fail)`);
-            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember.displayName} - there was an error trying to run that command...`);
+            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`);
         }
 
 

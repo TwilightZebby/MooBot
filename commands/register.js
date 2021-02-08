@@ -34,13 +34,20 @@ module.exports = {
     async execute(message, args) {
 
       if ( !args.length ) {
-        await SlashModule.RegisterCommands(message.guild);
-        return await message.channel.send(`Successfully added all my Slash Commands to the Server`);
+        return await message.channel.send(`Sorry, but I couldn't see any arguments.\nCorrect Syntax: \`${PREFIX}register commandName|all global|guildID\``);
+      }
+      else if ( args.length < 2 ) {
+        return await message.channel.send(`Sorry, but I couldn't see enough arguments.\nCorrect Syntax: \`${PREFIX}register commandName|all global|guildID\``);
       }
       else {
-        let commandName = args.shift().toLowerCase();
-        await SlashModule.RegisterCommands(message.guild, commandName);
-        return await message.channel.send(`Successfully added the ${commandName} Slash Command to the Server`);
+
+        // Split args
+        const slashCommandName = args.shift().toLowerCase();
+        const slashCommandScope = args.shift().toLowerCase();
+
+        await SlashModule.RegisterCommands(slashCommandName, slashCommandScope);
+        return await message.channel.send(`Successfully added ${slashCommandName === "all" ? "all my slash commands" : `the ${slashCommandName} slash command`} ${slashCommandScope === "global" ? "globally" : `to the Server with ID ${slashCommandScope}`}`);
+
       }
 
       // END OF COMMAND
