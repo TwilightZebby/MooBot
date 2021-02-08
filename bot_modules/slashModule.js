@@ -24,16 +24,25 @@ module.exports = {
     /**
      * Registers the Ping Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterPing(guild) {
+    async RegisterPing(isGlobal, guildID) {
 
         // Data
         const data = {};
         data.name = "ping";
         data.description = "Test if the Bot responds";
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -56,9 +65,10 @@ module.exports = {
     /**
      * Registers the bonk Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterBonk(guild) {
+    async RegisterBonk(isGlobal, guildID) {
 
         // Data
         const data = {};
@@ -83,7 +93,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -115,9 +132,10 @@ module.exports = {
     /**
      * Registers the hug Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterHug(guild) {
+    async RegisterHug(isGlobal, guildID) {
 
         // Data
         const data = {};
@@ -142,7 +160,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -179,9 +204,10 @@ module.exports = {
     /**
      * Registers the poke Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterHeadpat(guild) {
+    async RegisterHeadpat(isGlobal, guildID) {
 
         // Data
         const data = {};
@@ -206,7 +232,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -254,9 +287,10 @@ module.exports = {
     /**
      * Registers the sleep Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterSleep(guild) {
+    async RegisterSleep(isGlobal, guildID) {
 
         // Data
         const data = {};
@@ -281,7 +315,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -325,9 +366,10 @@ module.exports = {
     /**
      * Registers the boop Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterBoop(guild) {
+    async RegisterBoop(isGlobal, guildID) {
 
         // Data
         const data = {};
@@ -352,7 +394,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -393,9 +442,10 @@ module.exports = {
     /**
      * Registers the kiss Slash Command
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
      */
-    async RegisterKiss(guild) {
+    async RegisterKiss(isGlobal, guildID) {
 
         // Data
         const data = {};
@@ -420,7 +470,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        client.api.applications(client.user.id).guilds(guild.id).commands().post({data});
+        if ( isGlobal ) {
+            client.api.applications(client.user.id).commands().post({data});
+        }
+        else {
+            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+        }
+
+        return;
 
     },
 
@@ -464,63 +521,109 @@ module.exports = {
     /**
      * Registers the Slash Commands within Discord's Slash Command API
      * 
-     * @param {Discord.Guild} guild 
-     * @param {String} [command]
+     * @param {String} command Either name of a Slash Command, or "all"
+     * @param {String} scope Either Guild ID, or "global"
      */
-    async RegisterCommands(guild, command) {
+    async RegisterCommands(command, scope) {
 
-        if ( command ) {
+        if ( scope === "global" ) {
+            // GLOBAL SLASH COMMAND(s)
 
-            // specific command was given, register just that one
-            switch (command) {
+            if ( command === "all" ) {
+                // ALL SLASH COMMANDS (global)
 
-                case "ping":
-                    return await this.RegisterPing(guild);
+                await this.RegisterPing(true);
+                await this.RegisterBonk(true);
+                await this.RegisterHug(true);
+                await this.RegisterHeadpat(true);
+                await this.RegisterSleep(true);
+                await this.RegisterBoop(true);
+                await this.RegisterKiss(true);
 
+            }
+            else {
+                // SPECIFIC SLASH COMMANDS (global)
 
-                case "bonk":
-                    return await this.RegisterBonk(guild);
+                switch (command) {
 
-
-                case "hug":
-                    return await this.RegisterHug(guild);
-
-
-                case "headpat":
-                    return await this.RegisterHeadpat(guild);
-
-
-                case "sleep":
-                    return await this.RegisterSleep(guild);
-
-
-                case "boop":
-                    return await this.RegisterBoop(guild);
-
-
-                case "kiss":
-                    return await this.RegisterKiss(guild);
-
-
-                default:
-                    break;
+                    case "ping":
+                        return await this.RegisterPing(true);
+    
+                    case "bonk":
+                        return await this.RegisterBonk(true);
+    
+                    case "hug":
+                        return await this.RegisterHug(true);
+    
+                    case "headpat":
+                        return await this.RegisterHeadpat(true);
+    
+                    case "sleep":
+                        return await this.RegisterSleep(true);
+    
+                    case "boop":
+                        return await this.RegisterBoop(true);
+    
+                    case "kiss":
+                        return await this.RegisterKiss(true);
+    
+                    default:
+                        break;
+    
+                }
 
             }
 
         }
         else {
+            // GUILD SLASH COMMANDS
 
-            // Register all
-            await this.RegisterPing(guild);
-            await this.RegisterBonk(guild);
-            await this.RegisterHug(guild);
-            await this.RegisterHeadpat(guild);
-            await this.RegisterSleep(guild);
-            await this.RegisterBoop(guild);
-            await this.RegisterKiss(guild);
+            if ( command === "all" ) {
+                // ALL SLASH COMMANDS (guild)
+
+                await this.RegisterPing(false, scope);
+                await this.RegisterBonk(false, scope);
+                await this.RegisterHug(false, scope);
+                await this.RegisterHeadpat(false, scope);
+                await this.RegisterSleep(false, scope);
+                await this.RegisterBoop(false, scope);
+                await this.RegisterKiss(false, scope);
+
+            }
+            else {
+                // SPECIFIC SLASH COMMANDS (guild)
+
+                switch (command) {
+
+                    case "ping":
+                        return await this.RegisterPing(false, scope);
+    
+                    case "bonk":
+                        return await this.RegisterBonk(false, scope);
+    
+                    case "hug":
+                        return await this.RegisterHug(false, scope);
+    
+                    case "headpat":
+                        return await this.RegisterHeadpat(false, scope);
+    
+                    case "sleep":
+                        return await this.RegisterSleep(false, scope);
+    
+                    case "boop":
+                        return await this.RegisterBoop(false, scope);
+    
+                    case "kiss":
+                        return await this.RegisterKiss(false, scope);
+    
+                    default:
+                        break;
+    
+                }
+
+            }
 
         }
-
 
         return;
 
@@ -537,28 +640,54 @@ module.exports = {
 
 
     /**
-     * Removes the Slash Commands from the Slash Command API when we don't need them in the Guild anymore
+     * Removes the Slash Commands from the Slash Command API
      * 
-     * @param {Discord.Guild} guild 
-     * @param {String} [command]
+     * @param {String} command Either name of a Slash Command, or "all"
+     * @param {String} scope Either Guild ID, or "global"
      */
-    async DeleteCommands(guild, command) {
+    async DeleteCommands(command, scope) {
+        
+        if ( scope === "global" ) {
+            // GLOBAL SLASH COMMAND(s)
 
-        let cachedCommands = await client.api.applications(client.user.id).guilds(guild.id).commands().get();
+            let cachedCommands = await client.api.applications(client.user.id).commands().get();
 
+            if ( command === "all" ) {
+                // ALL SLASH COMMANDS (global)
 
-        if ( command ) {
+                for (let i = 0; i < cachedCommands.length; i++) {
+                    client.api.applications(client.user.id).commands(cachedCommands[i].id).delete();
+                }
 
-            // Just a specific command
-            let temp = cachedCommands.find(element => element.name === command);
-            client.api.applications(client.user.id).guilds(guild.id).commands(temp.id).delete();
+            }
+            else {
+                // SPECIFIC SLASH COMMANDS (global)
+
+                let temp = cachedCommands.find(element => element.name === command);
+                client.api.applications(client.user.id).commands(temp.id).delete();
+
+            }
 
         }
         else {
+            // GUILD SLASH COMMANDS
 
-            // Go through and remove all the commands
-            for (let i = 0; i < cachedCommands.length; i++) {
-                client.api.applications(client.user.id).guilds(guild.id).commands(cachedCommands[i].id).delete();
+            let cachedCommands = await client.api.applications(client.user.id).guilds(scope).commands().get();
+
+            if ( command === "all" ) {
+                // ALL SLASH COMMANDS (guild)
+
+                for (let i = 0; i < cachedCommands.length; i++) {
+                    client.api.applications(client.user.id).guilds(scope).commands(cachedCommands[i].id).delete();
+                }
+
+            }
+            else {
+                // SPECIFIC SLASH COMMANDS (guild)
+
+                let temp = cachedCommands.find(element => element.name === command);
+                client.api.applications(client.user.id).guilds(scope).commands(temp.id).delete();
+
             }
 
         }

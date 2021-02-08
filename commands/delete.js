@@ -34,13 +34,20 @@ module.exports = {
     async execute(message, args) {
 
       if ( !args.length ) {
-        await SlashModule.DeleteCommands(message.guild);
-        return await message.channel.send(`Successfully removed all my Slash Commands from this Server`);
+        return await message.channel.send(`Sorry, but I couldn't see any arguments.\nCorrect Syntax: \`${PREFIX}delete commandName|all global|guildID\``);
+      }
+      else if ( args.length < 2 ) {
+        return await message.channel.send(`Sorry, but I couldn't see enough arguments.\nCorrect Syntax: \`${PREFIX}delete commandName|all global|guildID\``);
       }
       else {
-        let commandName = args.shift().toLowerCase();
-        await SlashModule.DeleteCommands(message.guild, commandName);
-        return await message.channel.send(`Successfully removed the ${commandName} Slash Command from the Server`);
+
+        // Split args
+        const slashCommandName = args.shift().toLowerCase();
+        const slashCommandScope = args.shift().toLowerCase();
+
+        await SlashModule.DeleteCommands(slashCommandName, slashCommandScope);
+        return await message.channel.send(`Successfully removed ${slashCommandName === "all" ? "all my slash commands" : `the ${slashCommandName} slash command`} ${slashCommandScope === "global" ? "globally" : `from the Server with ID ${slashCommandScope}`}`);
+
       }
 
       // END OF COMMAND
