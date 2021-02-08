@@ -20,10 +20,11 @@ module.exports = {
      * Return response depanding on the Slash Command used
      * 
      * @param {String} commandName
-     * @param {Discord.Guild} guild
+     * @param {Discord.Guild|null} guild
      * @param {*} data
      * @param {*} commandData
-     * @param {Discord.GuildMember} member
+     * @param {Discord.GuildMember|null} member
+     * @param {Discord.User|null} user
      * 
      * @returns {Promise<*>} 
      */
@@ -58,7 +59,14 @@ module.exports = {
 
         // Channel Mentions
         if ( channelTest ) {
-            return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member.displayName} - but I can't accept #channel mentions!`);
+            return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member !== null ? member.displayName : user.username} - but I can't accept #channel mentions!`);
+        }
+
+        
+
+        // Prevent Role and Everyone mention usage in DMs
+        if ( ( roleTest || everyoneTest ) && guild === null ) {
+            return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member !== null ? member.displayName : user.username} - I can't accept @role and @everyone mentions in DMs!`);
         }
 
 
@@ -74,26 +82,26 @@ module.exports = {
         if ( roleTest ) {
 
             randomMessage = ROLEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * ROLEMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member !== null ? member.displayName : user.username}`);
             randomMessage = randomMessage.replace(roleRegEx, `${commandData.options[0].value}`);
 
         }
         else if ( everyoneTest ) {
 
             randomMessage = EVERYONEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * EVERYONEMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member !== null ? member.displayName : user.username}`);
 
         }
         else if ( await UtilityModule.TestForSelfMention(`${commandData.options[0].value}`, member) ) {
 
             randomMessage = SELFMESSAGES[`${commandName}`][Math.floor( ( Math.random() * SELFMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member !== null ? member.displayName : user.username}`);
 
         }
         else {
 
             randomMessage = USERMESSAGES[`${commandName}`][Math.floor( ( Math.random() * USERMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member.displayName}`);
+            randomMessage = randomMessage.replace(authorRegEx, `${member !== null ? member.displayName : user.username}`);
             randomMessage = randomMessage.replace(receiverRegEx, `${commandData.options[0].value}`);
 
         }

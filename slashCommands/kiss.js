@@ -27,14 +27,15 @@ module.exports = {
     /**
      * Command's functionality
      * 
-     * @param {Discord.Guild} guild 
+     * @param {Discord.Guild|null} guild 
      * @param {*} data
      * @param {*} commandData
-     * @param {Discord.GuildMember} member
+     * @param {Discord.GuildMember|null} member
+     * @param {Discord.User|null} user
      */
-    async execute(guild, data, commandData, member) {
+    async execute(guild, data, commandData, member, user) {
 
-      return await ActionModule.Respond("kiss", guild, data, commandData, member);
+      return await ActionModule.Respond("kiss", guild, data, commandData, member, user);
 
       // END OF SLASH COMMAND
     }
