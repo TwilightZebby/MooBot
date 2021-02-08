@@ -22,47 +22,6 @@ const { PREFIX } = require('../config.js');
 module.exports = {
 
     /**
-     * Registers the Ping Slash Command
-     * 
-     * @param {Boolean} isGlobal True if Global, False if Guild
-     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
-     */
-    async RegisterPing(isGlobal, guildID) {
-
-        // Data
-        const data = {};
-        data.name = "ping";
-        data.description = "Test if the Bot responds";
-
-
-        if ( isGlobal ) {
-            client.api.applications(client.user.id).commands().post({data});
-        }
-        else {
-            client.api.applications(client.user.id).guilds(guildID).commands().post({data});
-        }
-
-        return;
-
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
      * Registers the bonk Slash Command
      * 
      * @param {Boolean} isGlobal True if Global, False if Guild
@@ -545,9 +504,6 @@ module.exports = {
                 // SPECIFIC SLASH COMMANDS (global)
 
                 switch (command) {
-
-                    case "ping":
-                        return await this.RegisterPing(true);
     
                     case "bonk":
                         return await this.RegisterBonk(true);
@@ -581,7 +537,6 @@ module.exports = {
             if ( command === "all" ) {
                 // ALL SLASH COMMANDS (guild)
 
-                await this.RegisterPing(false, scope);
                 await this.RegisterBonk(false, scope);
                 await this.RegisterHug(false, scope);
                 await this.RegisterHeadpat(false, scope);
@@ -594,9 +549,6 @@ module.exports = {
                 // SPECIFIC SLASH COMMANDS (guild)
 
                 switch (command) {
-
-                    case "ping":
-                        return await this.RegisterPing(false, scope);
     
                     case "bonk":
                         return await this.RegisterBonk(false, scope);
