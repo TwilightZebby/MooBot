@@ -396,7 +396,15 @@ client.on('raw', async (evt) => {
     if ( data.type !== 2 ) { return; }
 
     const CommandData = data.data;
-    const authorGuild = await client.guilds.fetch(data["guild_id"]) || null;
+    let authorGuild = null;
+
+    try {
+        authorGuild = await client.guilds.fetch(data["guild_id"]);
+    } catch (err) {
+        // Was used in DMs
+        authorGuild = null;
+    }
+
     let GuildMember = null;
     let DMUser = null;
 
@@ -436,6 +444,16 @@ client.on('raw', async (evt) => {
 
 
 
+
+
+
+        // CHECK IF USED IN DM WHEN COMMAND IS GUILD-ONLY
+        if ( fetchedSlashCommand.guildOnly && GuildMember === null ) {
+
+            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${DMUser.username} - that Global Slash Command cannot be used in DMs!`);
+            return;
+
+        }
 
 
 

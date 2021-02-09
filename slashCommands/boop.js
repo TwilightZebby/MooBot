@@ -21,6 +21,10 @@ module.exports = {
     //     If commented out, everyone can use this command
     //limitation: 'twilightzebby',
 
+    // If the Slash Command can only be used in Guilds
+    //     Comment out if this Slash Command can also be used in DMs
+    guildOnly: true,
+
     // Command's cooldown, in seconds
     cooldown: 5,
 
