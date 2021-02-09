@@ -439,6 +439,16 @@ client.on('raw', async (evt) => {
 
 
 
+        // CHECK IF USED IN DM WHEN COMMAND IS GUILD-ONLY
+        if ( fetchedSlashCommand.guildOnly && GuildMember === null ) {
+
+            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${DMUser.username} - that Global Slash Command cannot be used in DMs!`);
+            return;
+
+        }
+
+
+
         // COMMAND COOLDOWNS
         if ( !client.cooldowns.has(fetchedSlashCommand.name) ) {
             client.cooldowns.set(fetchedSlashCommand.name, new Discord.Collection());
