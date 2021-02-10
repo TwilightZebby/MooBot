@@ -2,6 +2,11 @@
 A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf) to add silly Slash Commands.
 
 ---
+## Who is Dr1fterX?
+
+> Dr1fterX is a small-ish Live Streamer on Twitch, and used to create content for the Black Plasma Gaming channel on YouTube before that YT Channel was archived in early 2020.
+> You can find his Twitch Channel over at [twitch.tv/Dr1fterX](https://twitch.tv/Dr1fterX)
+
 ## What kind of Slash Commands are there?
 
 > Mainly ones like /hug, /bonk, /headpat, etc. You know, roleplay-style.
