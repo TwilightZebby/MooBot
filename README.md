@@ -17,3 +17,28 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 
 > **No.**
 > This Bot is only made for use on Dr1fterX's Discord Server. Go search on [top.gg](https://top.gg) or ask on [r/discord_bots](https://www.reddit.com/r/Discord_Bots/) if you want your own Bot like this.
+
+---
+## Full command list
+
+### Slash Commands
+
+| Command | Description |
+|---------|-------------|
+| /bonk | Bonks someone |
+| /boop | Boops someone |
+| /headpat | Give someone a headpat |
+| /hug | Give someone a cuddle |
+| /kiss | Slap a kiss on someone |
+| /sleep | Tell someone to go to sleep |
+
+
+### Text Commands
+
+| Command | Description | Limitation |
+|---------|-------------|------------|
+| a!suggest | Send a suggestion for a new command, GIF or message to be added | None |
+| a!register | Adds a new Slash Command to the Bot | Developer\* |
+| a!delete | Removes an existing Slash Command from the Bot | Developer\* |
+
+\* Developer-limited Commands can only be used by TwilightZebby himself.
