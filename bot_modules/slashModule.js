@@ -500,7 +500,7 @@ module.exports = {
                     await this.RegisterSleep(true);
                     await this.RegisterBoop(true);
                     await this.RegisterKiss(true);
-                }, 21000);
+                }, 25000);
 
             }
             else {
@@ -549,7 +549,7 @@ module.exports = {
                     await this.RegisterSleep(false, scope);
                     await this.RegisterBoop(false, scope);
                     await this.RegisterKiss(false, scope);
-                }, 21000);
+                }, 25000);
 
             }
             else {
@@ -618,7 +618,7 @@ module.exports = {
                     // setTimeout to prevent hitting ratelimit
                     setTimeout(() => {
                         client.api.applications(client.user.id).commands(cachedCommands[i].id).delete();
-                    }, 5000);
+                    }, 20000);
                 }
 
             }
@@ -644,7 +644,7 @@ module.exports = {
                     // setTimeout to prevent hitting ratelimit
                     setTimeout(() => {
                         client.api.applications(client.user.id).guilds(scope).commands(cachedCommands[i].id).delete();
-                    }, 5000);
+                    }, 20000);
                 }
 
             }
