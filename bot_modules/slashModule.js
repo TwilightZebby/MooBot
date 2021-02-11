@@ -496,7 +496,7 @@ module.exports = {
                 await this.RegisterHeadpat(true);
 
                 // setTimeout's to prevent hitting Ratelimit
-                setTimeout(() => {
+                setTimeout(async () => {
                     await this.RegisterSleep(true);
                     await this.RegisterBoop(true);
                     await this.RegisterKiss(true);
@@ -545,7 +545,7 @@ module.exports = {
                 await this.RegisterHeadpat(false, scope);
                 
                 // setTimeout's to prevent hitting Ratelimit
-                setTimeout(() => {
+                setTimeout(async () => {
                     await this.RegisterSleep(false, scope);
                     await this.RegisterBoop(false, scope);
                     await this.RegisterKiss(false, scope);
