@@ -660,16 +660,16 @@ client.on('message', async (message) => {
                 // Minutes
                 if ( timeLeft >= 60 && timeLeft < 3600 ) {
                     timeLeft /= 60;
-                    return await client.throttleCheck(message.channel, `${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${command.name}\` command`, message.author.id);
+                    return await message.channel.send(`${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${command.name}\` command`);
                 }
                 // Hours
                 else if ( timeLeft >= 3600 ) {
                     timeLeft /= 3600;
-                    return await client.throttleCheck(message.channel, `${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more hours before using the \`${command.name}\` command`, message.author.id);
+                    return await message.channel.send(`${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more hours before using the \`${command.name}\` command`);
                 }
                 // Seconds
                 else {
-                    return await client.throttleCheck(message.channel, `${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${command.name}\` command`, message.author.id);
+                    return await message.channel.send(`${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${command.name}\` command`);
                 }
 
             }
