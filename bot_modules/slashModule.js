@@ -489,15 +489,18 @@ module.exports = {
             // GLOBAL SLASH COMMAND(s)
 
             if ( command === "all" ) {
-                // ALL SLASH COMMANDS (global)
+                // ALL SLASH COMMANDS (global)                
 
-                await this.RegisterPing(true);
                 await this.RegisterBonk(true);
                 await this.RegisterHug(true);
                 await this.RegisterHeadpat(true);
-                await this.RegisterSleep(true);
-                await this.RegisterBoop(true);
-                await this.RegisterKiss(true);
+
+                // setTimeout's to prevent hitting Ratelimit
+                setTimeout(async () => {
+                    await this.RegisterSleep(true);
+                    await this.RegisterBoop(true);
+                    await this.RegisterKiss(true);
+                }, 25000);
 
             }
             else {
@@ -540,9 +543,13 @@ module.exports = {
                 await this.RegisterBonk(false, scope);
                 await this.RegisterHug(false, scope);
                 await this.RegisterHeadpat(false, scope);
-                await this.RegisterSleep(false, scope);
-                await this.RegisterBoop(false, scope);
-                await this.RegisterKiss(false, scope);
+                
+                // setTimeout's to prevent hitting Ratelimit
+                setTimeout(async () => {
+                    await this.RegisterSleep(false, scope);
+                    await this.RegisterBoop(false, scope);
+                    await this.RegisterKiss(false, scope);
+                }, 25000);
 
             }
             else {
@@ -608,7 +615,10 @@ module.exports = {
                 // ALL SLASH COMMANDS (global)
 
                 for (let i = 0; i < cachedCommands.length; i++) {
-                    client.api.applications(client.user.id).commands(cachedCommands[i].id).delete();
+                    // setTimeout to prevent hitting ratelimit
+                    setTimeout(() => {
+                        client.api.applications(client.user.id).commands(cachedCommands[i].id).delete();
+                    }, 20000);
                 }
 
             }
@@ -617,6 +627,7 @@ module.exports = {
 
                 let temp = cachedCommands.find(element => element.name === command);
                 client.api.applications(client.user.id).commands(temp.id).delete();
+                
 
             }
 
@@ -630,7 +641,10 @@ module.exports = {
                 // ALL SLASH COMMANDS (guild)
 
                 for (let i = 0; i < cachedCommands.length; i++) {
-                    client.api.applications(client.user.id).guilds(scope).commands(cachedCommands[i].id).delete();
+                    // setTimeout to prevent hitting ratelimit
+                    setTimeout(() => {
+                        client.api.applications(client.user.id).guilds(scope).commands(cachedCommands[i].id).delete();
+                    }, 20000);
                 }
 
             }
