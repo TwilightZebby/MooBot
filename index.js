@@ -510,7 +510,9 @@ client.on('raw', async (evt) => {
             await fetchedSlashCommand.execute(authorGuild, data, CommandData, GuildMember);
         } catch (err) {
             await ErrorModule.LogCustom(err, `(**INDEX.JS** - Execute __slash__ command fail)`);
-            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`);
+            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`).catch(async (err) => {
+                await SlashModule.CallbackEphemeralFollowUp(data, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`);
+            });
         }
 
 
@@ -568,6 +570,10 @@ client.on('raw', async (evt) => {
 // - Commands (not Slash versions)
 client.on('message', async (message) => {
 
+    // Prevent other Bots/System stuff triggering us
+    if ( message.author.bot || message.author.flags.has('SYSTEM') || message.system ) { return; }
+
+
     // Prevent Discord Outages crashing the Bot
     if ( !message.guild.available ) { return; }
 
@@ -583,8 +589,6 @@ client.on('message', async (message) => {
 
 
 
-    // Prevent other Bots/System stuff triggering us
-    if ( message.author.bot || message.author.flags.has('SYSTEM') || message.system ) { return; }
 
 
 

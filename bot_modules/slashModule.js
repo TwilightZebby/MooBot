@@ -52,6 +52,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
+        const thirdOption = {};
+        thirdOption.name = "DM";
+        thirdOption.description = "True to send this to the target User's DMs instead";
+        thirdOption.type = 5; // Boolean
+        thirdOption.required = false;
+
+        data.options.push(thirdOption);
+
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
         }
@@ -118,6 +126,14 @@ module.exports = {
         secondOption.required = false;
 
         data.options.push(secondOption);
+
+        const thirdOption = {};
+        thirdOption.name = "DM";
+        thirdOption.description = "True to send this to the target User's DMs instead";
+        thirdOption.type = 5; // Boolean
+        thirdOption.required = false;
+
+        data.options.push(thirdOption);
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -190,6 +206,14 @@ module.exports = {
         secondOption.required = false;
 
         data.options.push(secondOption);
+
+        const thirdOption = {};
+        thirdOption.name = "DM";
+        thirdOption.description = "True to send this to the target User's DMs instead";
+        thirdOption.type = 5; // Boolean
+        thirdOption.required = false;
+
+        data.options.push(thirdOption);
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -274,6 +298,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
+        const thirdOption = {};
+        thirdOption.name = "DM";
+        thirdOption.description = "True to send this to the target User's DMs instead";
+        thirdOption.type = 5; // Boolean
+        thirdOption.required = false;
+
+        data.options.push(thirdOption);
+
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
         }
@@ -353,6 +385,14 @@ module.exports = {
 
         data.options.push(secondOption);
 
+        const thirdOption = {};
+        thirdOption.name = "DM";
+        thirdOption.description = "True to send this to the target User's DMs instead";
+        thirdOption.type = 5; // Boolean
+        thirdOption.required = false;
+
+        data.options.push(thirdOption);
+
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
         }
@@ -428,6 +468,14 @@ module.exports = {
         secondOption.required = false;
 
         data.options.push(secondOption);
+
+        const thirdOption = {};
+        thirdOption.name = "DM";
+        thirdOption.description = "True to send this to the target User's DMs instead";
+        thirdOption.type = 5; // Boolean
+        thirdOption.required = false;
+
+        data.options.push(thirdOption);
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -795,6 +843,126 @@ module.exports = {
 
 
         return client.api.interactions(eventData.id)[eventData.token].callback().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Responds to a Slash Command Interaction
+     * 
+     * @param {*} eventData
+     * @param {String} [message]
+     * @param {Discord.MessageEmbed} [embed]
+     * @param {*} [allowedMentions]
+     * 
+     * @returns {Promise<Discord.Message>} wrapped Message
+     */
+    async CallbackFollowUp(eventData, message, embed, allowedMentions) {
+
+        let data;
+
+        if ( message == undefined ) {
+
+            data = {};
+
+        }
+        else {
+
+            data = {
+                "tts": false,
+                "content": message,
+                "embeds": embed == undefined ? [] : [embed],
+                "allowed_mentions": allowedMentions == undefined ? [] : allowedMentions
+            };
+
+        }
+
+
+        return client.api.webhooks(client.user.id)[eventData.token].post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Responds to a Slash Command Interaction using Ephemeral Messages (only the User can see)
+     * 
+     * @param {*} eventData
+     * @param {String} message
+     * 
+     * @returns {Promise<*>} 
+     */
+    async CallbackEphemeralFollowUp(eventData, message) {
+       
+        let data = {
+            "tts": false,
+            "content": message,
+            "embeds": [],
+            "allowed_mentions": [],
+            "flags": 64
+        };
+
+        return client.api.webhooks(client.user.id)[eventData.token].post({data});
 
     }
 
