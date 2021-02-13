@@ -573,13 +573,11 @@ client.on('message', async (message) => {
     // Prevent other Bots/System stuff triggering us
     if ( message.author.bot || message.author.flags.has('SYSTEM') || message.system ) { return; }
 
+    // Ignore DM Messages
+    if ( message.channel instanceof Discord.DMChannel ) { return; }
 
     // Prevent Discord Outages crashing the Bot
     if ( !message.guild.available ) { return; }
-
-
-    // Ignore DM Messages
-    if ( message.channel instanceof Discord.DMChannel ) { return; }
 
 
 
