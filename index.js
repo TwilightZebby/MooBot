@@ -510,7 +510,9 @@ client.on('raw', async (evt) => {
             await fetchedSlashCommand.execute(authorGuild, data, CommandData, GuildMember);
         } catch (err) {
             await ErrorModule.LogCustom(err, `(**INDEX.JS** - Execute __slash__ command fail)`);
-            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`);
+            await SlashModule.CallbackEphemeral(data, 3, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`).catch(async (err) => {
+                await SlashModule.CallbackEphemeralFollowUp(data, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`);
+            });
         }
 
 
@@ -568,13 +570,14 @@ client.on('raw', async (evt) => {
 // - Commands (not Slash versions)
 client.on('message', async (message) => {
 
-    // Prevent Discord Outages crashing the Bot
-    if ( !message.guild.available ) { return; }
-
+    // Prevent other Bots/System stuff triggering us
+    if ( message.author.bot || message.author.flags.has('SYSTEM') || message.system ) { return; }
 
     // Ignore DM Messages
     if ( message.channel instanceof Discord.DMChannel ) { return; }
 
+    // Prevent Discord Outages crashing the Bot
+    if ( !message.guild.available ) { return; }
 
 
 
@@ -583,8 +586,7 @@ client.on('message', async (message) => {
 
 
 
-    // Prevent other Bots/System stuff triggering us
-    if ( message.author.bot || message.author.flags.has('SYSTEM') || message.system ) { return; }
+
 
 
 
@@ -660,16 +662,16 @@ client.on('message', async (message) => {
                 // Minutes
                 if ( timeLeft >= 60 && timeLeft < 3600 ) {
                     timeLeft /= 60;
-                    return await client.throttleCheck(message.channel, `${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${command.name}\` command`, message.author.id);
+                    return await message.channel.send(`${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${command.name}\` command`);
                 }
                 // Hours
                 else if ( timeLeft >= 3600 ) {
                     timeLeft /= 3600;
-                    return await client.throttleCheck(message.channel, `${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more hours before using the \`${command.name}\` command`, message.author.id);
+                    return await message.channel.send(`${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more hours before using the \`${command.name}\` command`);
                 }
                 // Seconds
                 else {
-                    return await client.throttleCheck(message.channel, `${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${command.name}\` command`, message.author.id);
+                    return await message.channel.send(`${message.member.displayName} Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${command.name}\` command`);
                 }
 
             }
