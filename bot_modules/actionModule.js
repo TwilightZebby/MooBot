@@ -324,7 +324,7 @@ module.exports = {
 
 
             let receiverDMs = await receiverUser.createDM();
-            let sentDM = await receiverDMs.send(embed, { allowedMentions: { parse: ['users'] } });
+            let sentDM = await receiverDMs.send(embed);
 
             if ( sentDM ) { await SlashCommands.CallbackEphemeralFollowUp(data, `Successfully sent your **${commandName}** to ${receiverUser.username}#${receiverUser.discriminator}`); }
             else { await SlashCommands.CallbackEphemeralFollowUp(data, `Sorry, but something went wrong while sending your **${commandName}** to ${receiverUser.username}#${receiverUser.discriminator}...\n(They may have their DMs turned off?)`); }
