@@ -305,7 +305,7 @@ module.exports = {
             //randomMessage += ` ${MESSAGEEMOJIS[`${commandName}`]}`;
 
             let receiverDMs = await receiverUser.createDM();
-            let sentDM = await receiverDMs.send(randomMessage, { allowedMentions: { parse: ['users'] } });
+            let sentDM = await receiverDMs.send(`${randomMessage}\n(Triggered within St1g Gaming, Dr1fterX's Discord Server)`, { allowedMentions: { parse: ['users'] } });
 
             if ( sentDM ) { await SlashCommands.CallbackEphemeralFollowUp(data, `Successfully sent your **${commandName}** to ${receiverUser.username}#${receiverUser.discriminator}`); }
             else { await SlashCommands.CallbackEphemeralFollowUp(data, `Sorry, but something went wrong while sending your **${commandName}** to ${receiverUser.username}#${receiverUser.discriminator}...\n(They may have their DMs turned off?)`); }
@@ -319,7 +319,7 @@ module.exports = {
 
 
             // Embed because of GIF
-            const embed = new Discord.MessageEmbed().setDescription(randomMessage)
+            const embed = new Discord.MessageEmbed().setDescription(`${randomMessage}\n(Triggered within St1g Gaming, Dr1fterX's Discord Server)`)
             .setImage(GIFLINKS[`${commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${commandName}`].length ) + 0 )]);
 
 
