@@ -52,13 +52,7 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        const thirdOption = {};
-        thirdOption.name = "DM";
-        thirdOption.description = "True to send this to the target User's DMs instead";
-        thirdOption.type = 5; // Boolean
-        thirdOption.required = false;
-
-        data.options.push(thirdOption);
+        
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -127,13 +121,7 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        const thirdOption = {};
-        thirdOption.name = "DM";
-        thirdOption.description = "True to send this to the target User's DMs instead";
-        thirdOption.type = 5; // Boolean
-        thirdOption.required = false;
-
-        data.options.push(thirdOption);
+        
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -207,13 +195,7 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        const thirdOption = {};
-        thirdOption.name = "DM";
-        thirdOption.description = "True to send this to the target User's DMs instead";
-        thirdOption.type = 5; // Boolean
-        thirdOption.required = false;
-
-        data.options.push(thirdOption);
+        
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -298,13 +280,7 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        const thirdOption = {};
-        thirdOption.name = "DM";
-        thirdOption.description = "True to send this to the target User's DMs instead";
-        thirdOption.type = 5; // Boolean
-        thirdOption.required = false;
-
-        data.options.push(thirdOption);
+        
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -385,13 +361,7 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        const thirdOption = {};
-        thirdOption.name = "DM";
-        thirdOption.description = "True to send this to the target User's DMs instead";
-        thirdOption.type = 5; // Boolean
-        thirdOption.required = false;
-
-        data.options.push(thirdOption);
+        
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
@@ -469,13 +439,7 @@ module.exports = {
 
         data.options.push(secondOption);
 
-        const thirdOption = {};
-        thirdOption.name = "DM";
-        thirdOption.description = "True to send this to the target User's DMs instead";
-        thirdOption.type = 5; // Boolean
-        thirdOption.required = false;
-
-        data.options.push(thirdOption);
+        
 
         if ( isGlobal ) {
             client.api.applications(client.user.id).commands().post({data});
