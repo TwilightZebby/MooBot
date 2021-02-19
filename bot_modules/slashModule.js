@@ -21,7 +21,7 @@ const { PREFIX } = require('../config.js');
 // THIS MODULE
 module.exports = {
     // String Array containing all the valid Slash Commands, used for register and delete commands
-    validCommands = [
+    validCommands: [
         "bonk", "boop", "headpat", "kiss", "hug", "sleep"
     ],
 
