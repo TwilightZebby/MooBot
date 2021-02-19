@@ -396,7 +396,6 @@ client.on('raw', async (evt) => {
     if ( data.type !== 2 ) { return; }
 
     const CommandData = data.data;
-    console.log(CommandData);
     let authorGuild = null;
 
     try {

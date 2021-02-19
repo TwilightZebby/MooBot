@@ -506,99 +506,59 @@ module.exports = {
     async RegisterCommands(command, scope) {
 
         if ( scope === "global" ) {
-            // GLOBAL SLASH COMMAND(s)
+            // SPECIFIC SLASH COMMANDS (global)
 
-            if ( command === "all" ) {
-                // ALL SLASH COMMANDS (global)                
+            switch (command) {
+    
+                case "bonk":
+                    return await this.RegisterBonk(true);
 
-                await this.RegisterBonk(true);
-                await this.RegisterHug(true);
-                await this.RegisterHeadpat(true);
+                case "hug":
+                    return await this.RegisterHug(true);
 
-                // setTimeout's to prevent hitting Ratelimit
-                setTimeout(async () => {
-                    await this.RegisterSleep(true);
-                    await this.RegisterBoop(true);
-                    await this.RegisterKiss(true);
-                }, 25000);
+                case "headpat":
+                    return await this.RegisterHeadpat(true);
 
-            }
-            else {
-                // SPECIFIC SLASH COMMANDS (global)
+                case "sleep":
+                    return await this.RegisterSleep(true);
 
-                switch (command) {
-    
-                    case "bonk":
-                        return await this.RegisterBonk(true);
-    
-                    case "hug":
-                        return await this.RegisterHug(true);
-    
-                    case "headpat":
-                        return await this.RegisterHeadpat(true);
-    
-                    case "sleep":
-                        return await this.RegisterSleep(true);
-    
-                    case "boop":
-                        return await this.RegisterBoop(true);
-    
-                    case "kiss":
-                        return await this.RegisterKiss(true);
-    
-                    default:
-                        break;
-    
-                }
+                case "boop":
+                    return await this.RegisterBoop(true);
+
+                case "kiss":
+                    return await this.RegisterKiss(true);
+
+                default:
+                    break;
 
             }
 
         }
         else {
-            // GUILD SLASH COMMANDS
+            // SPECIFIC SLASH COMMANDS (guild)
 
-            if ( command === "all" ) {
-                // ALL SLASH COMMANDS (guild)
+            switch (command) {
+    
+                case "bonk":
+                    return await this.RegisterBonk(false, scope);
 
-                await this.RegisterBonk(false, scope);
-                await this.RegisterHug(false, scope);
-                await this.RegisterHeadpat(false, scope);
-                
-                // setTimeout's to prevent hitting Ratelimit
-                setTimeout(async () => {
-                    await this.RegisterSleep(false, scope);
-                    await this.RegisterBoop(false, scope);
-                    await this.RegisterKiss(false, scope);
-                }, 25000);
+                case "hug":
+                    return await this.RegisterHug(false, scope);
 
-            }
-            else {
-                // SPECIFIC SLASH COMMANDS (guild)
+                case "headpat":
+                    return await this.RegisterHeadpat(false, scope);
 
-                switch (command) {
-    
-                    case "bonk":
-                        return await this.RegisterBonk(false, scope);
-    
-                    case "hug":
-                        return await this.RegisterHug(false, scope);
-    
-                    case "headpat":
-                        return await this.RegisterHeadpat(false, scope);
-    
-                    case "sleep":
-                        return await this.RegisterSleep(false, scope);
-    
-                    case "boop":
-                        return await this.RegisterBoop(false, scope);
-    
-                    case "kiss":
-                        return await this.RegisterKiss(false, scope);
-    
-                    default:
-                        break;
-    
-                }
+                case "sleep":
+                    return await this.RegisterSleep(false, scope);
+
+                case "boop":
+                    return await this.RegisterBoop(false, scope);
+
+                case "kiss":
+                    return await this.RegisterKiss(false, scope);
+
+                default:
+                    break;
 
             }
 
@@ -631,25 +591,10 @@ module.exports = {
 
             let cachedCommands = await client.api.applications(client.user.id).commands().get();
 
-            if ( command === "all" ) {
-                // ALL SLASH COMMANDS (global)
+            // SPECIFIC SLASH COMMANDS (global)
 
-                for (let i = 0; i < cachedCommands.length; i++) {
-                    // setTimeout to prevent hitting ratelimit
-                    setTimeout(() => {
-                        client.api.applications(client.user.id).commands(cachedCommands[i].id).delete();
-                    }, 20000);
-                }
-
-            }
-            else {
-                // SPECIFIC SLASH COMMANDS (global)
-
-                let temp = cachedCommands.find(element => element.name === command);
-                client.api.applications(client.user.id).commands(temp.id).delete();
-                
-
-            }
+            let temp = cachedCommands.find(element => element.name === command);
+            client.api.applications(client.user.id).commands(temp.id).delete();
 
         }
         else {
@@ -657,24 +602,10 @@ module.exports = {
 
             let cachedCommands = await client.api.applications(client.user.id).guilds(scope).commands().get();
 
-            if ( command === "all" ) {
-                // ALL SLASH COMMANDS (guild)
+            // SPECIFIC SLASH COMMANDS (guild)
 
-                for (let i = 0; i < cachedCommands.length; i++) {
-                    // setTimeout to prevent hitting ratelimit
-                    setTimeout(() => {
-                        client.api.applications(client.user.id).guilds(scope).commands(cachedCommands[i].id).delete();
-                    }, 20000);
-                }
-
-            }
-            else {
-                // SPECIFIC SLASH COMMANDS (guild)
-
-                let temp = cachedCommands.find(element => element.name === command);
-                client.api.applications(client.user.id).guilds(scope).commands(temp.id).delete();
-
-            }
+            let temp = cachedCommands.find(element => element.name === command);
+            client.api.applications(client.user.id).guilds(scope).commands(temp.id).delete();
 
         }
 
