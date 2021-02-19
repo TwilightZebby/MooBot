@@ -18,6 +18,16 @@ const { PREFIX } = require('../config.js');
  * 8 = Role
 */
 
+
+/* 
+* RESPONSE TYPES
+* 1 = Pong                                 = ACK a ping
+* 2 = ACK                                  = ACK a command without sending a message, eating the Input ***DEPRECATED***
+* 3 = ChannelMessage                       = ACK a command, respond with a message, eat Input ***DEPRECATED***
+* 4 = ChannelMessageWithSource             = ACK a command, responding with a message immediately
+* 5 = DeferredChannelMessageWithSource     = ACK a command to edit into a response later - shows "loading" state for User
+*/
+
 // THIS MODULE
 module.exports = {
     // String Array containing all the valid Slash Commands, used for register and delete commands
@@ -630,27 +640,17 @@ module.exports = {
 
 
     /**
-     * Responds to a Slash Command Interaction
+     * Responds immediately to a Slash Command Interaction
      * 
      * @param {*} eventData
-     * @param {Number} type Response Type. 3 = w/ MSG Eat Input; 4 = w/ MSG show Input; 5 = w/out MSG show Input
      * @param {String} [message]
      * @param {Discord.MessageEmbed} [embed]
      * @param {*} [allowedMentions]
      * 
      * @returns {Promise<Discord.Message>} wrapped Message
      */
-    async Callback(eventData, type, message, embed, allowedMentions) {
-        /* 
-        * RESPONSE TYPES
-        * 1 = Pong                        = ACK a ping
-        * 2 = ACK                         = ACK a command without sending a message, eating the Input
-        * 3 = ChannelMessage              = ACK a command, respond with a message, eat Input
-        * 4 = ChannelMessageWithSource    = ACK a command, respond with a message, show Input
-        * 5 = ACKWithSource               = ACK a command without sending message, show Input
-        */
-
-        
+    async Callback(eventData, message, embed, allowedMentions) {
+                
         let data;
 
         if ( message == undefined ) {
@@ -663,7 +663,7 @@ module.exports = {
         else {
 
             data = {
-                "type": `${type}`,
+                "type": `4`,
                 "data": {
                     "tts": false,
                     "content": message,
@@ -714,7 +714,7 @@ module.exports = {
 
 
     /**
-     * Responds to a Slash Command Interaction using Ephemeral Messages (only the User can see)
+     * Responds immediately to a Slash Command Interaction using Ephemeral Messages (only the User can see)
      * 
      * @param {*} eventData
      * @param {Number} type Response Type. 3 = w/ MSG Eat Input; 4 = w/ MSG show Input; 5 = w/out MSG show Input
@@ -723,18 +723,9 @@ module.exports = {
      * @returns {Promise<*>} 
      */
     async CallbackEphemeral(eventData, type, message) {
-        /* 
-        * RESPONSE TYPES
-        * 1 = Pong                        = ACK a ping
-        * 2 = ACK                         = ACK a command without sending a message, eating the Input
-        * 3 = ChannelMessage              = ACK a command, respond with a message, eat Input
-        * 4 = ChannelMessageWithSource    = ACK a command, respond with a message, show Input
-        * 5 = ACKWithSource               = ACK a command without sending message, show Input
-        */
-
-
+        
         let data = {
-            "type": `${type}`,
+            "type": `4`,
             "data": {
                 "tts": false,
                 "content": message,
@@ -775,13 +766,113 @@ module.exports = {
 
 
 
+    /**
+     * Delayed Response to a Slash Command Interaction
+     * 
+     * @param {*} eventData
+     * @param {String} message
+     * 
+     * @returns {Promise<*>} 
+     */
+    async CallbackDelayed(eventData) {
+        
+        let data = {
+            "type": `5`,
+            "data": {
+                "flags": 64
+            }
+        };
+
+
+        return client.api.interactions(eventData.id)[eventData.token].callback().post({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
     /**
-     * Responds to a Slash Command Interaction
+     * Edit the original response to a Slash Command
+     * 
+     * @param {*} eventData
+     * @param {String} [message]
+     * @param {Discord.MessageEmbed} [embed]
+     * @param {*} [allowedMentions]
+     * 
+     * @returns {Promise<Discord.Message>} wrapped Message
+     */
+    async CallbackEditOriginal(eventData, message, embed, allowedMentions) {
+
+        let data;
+
+        if ( message == undefined ) {
+
+            data = {};
+
+        }
+        else {
+
+            data = {
+                "content": message,
+                "embeds": embed == undefined ? [] : [embed],
+                "allowed_mentions": allowedMentions == undefined ? [] : allowedMentions
+            };
+
+        }
+
+
+        return client.api.webhooks(client.user.id)[eventData.token].messages("@original").patch({data});
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Sends a follow-up message to a Slash Command AFTER its initial response
      * 
      * @param {*} eventData
      * @param {String} [message]
@@ -848,7 +939,7 @@ module.exports = {
 
 
     /**
-     * Responds to a Slash Command Interaction using Ephemeral Messages (only the User can see)
+     * Sends an Ephemeral follow-up message to a Slash Command AFTER its initial response
      * 
      * @param {*} eventData
      * @param {String} message
