@@ -142,7 +142,7 @@ module.exports = {
 
 
             // Embed because of GIF
-            const embed = new Discord.MessageEmbed().setDescription(randomMessage)
+            const embed = new Discord.MessageEmbed().setColor('RANDOM').setDescription(randomMessage)
             .setImage(GIFLINKS[`${commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${commandName}`].length ) + 0 )]);
 
             await SlashCommands.Callback(data, 3, ``, embed, { parse: ['users'] });
