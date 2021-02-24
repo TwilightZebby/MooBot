@@ -717,12 +717,11 @@ module.exports = {
      * Responds immediately to a Slash Command Interaction using Ephemeral Messages (only the User can see)
      * 
      * @param {*} eventData
-     * @param {Number} type Response Type. 3 = w/ MSG Eat Input; 4 = w/ MSG show Input; 5 = w/out MSG show Input
      * @param {String} message
      * 
      * @returns {Promise<*>} 
      */
-    async CallbackEphemeral(eventData, type, message) {
+    async CallbackEphemeral(eventData, message) {
         
         let data = {
             "type": `4`,
@@ -894,7 +893,7 @@ module.exports = {
 
             data = {
                 "tts": false,
-                "content": message,
+                "content": message == undefined ? " " : message,
                 "embeds": embed == undefined ? [] : [embed],
                 "allowed_mentions": allowedMentions == undefined ? [] : allowedMentions
             };

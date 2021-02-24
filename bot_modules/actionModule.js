@@ -37,7 +37,6 @@ module.exports = {
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
-        //const MESSAGEEMOJIS = require('../jsonFiles/emojis.json');
 
 
 
@@ -45,7 +44,7 @@ module.exports = {
 
         // Check for edge case of no given arguments
         if ( !commandData.options[0] || commandData.options[0].value === undefined || commandData.options[0].value === '' ) {
-            return await SlashCommands.CallbackEphemeral(data, 3, `Strange, I couldn't see any arguments there.... Please try again`);
+            return await SlashCommands.CallbackEphemeral(data, `Strange, I couldn't see any arguments there.... Please try again`);
         }
 
 
@@ -77,14 +76,14 @@ module.exports = {
 
         // Channel Mentions
         if ( channelTest ) {
-            return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member !== null ? member.displayName : user.username} - but I can't accept #channel mentions!`);
+            return await SlashCommands.CallbackEphemeral(data, `Sorry ${member !== null ? member.displayName : user.username} - but I can't accept #channel mentions!`);
         }
 
         
 
         // Prevent Role and Everyone mention usage in DMs
         if ( ( roleTest || everyoneTest ) && guild === null ) {
-            return await SlashCommands.CallbackEphemeral(data, 3, `Sorry ${member !== null ? member.displayName : user.username} - I can't accept @role and @everyone mentions in DMs!`);
+            return await SlashCommands.CallbackEphemeral(data, `Sorry ${member !== null ? member.displayName : user.username} - I can't accept @role and @everyone mentions in DMs!`);
         }
 
 
@@ -132,9 +131,7 @@ module.exports = {
         if ( !gifOption || gifOption === false ) {
 
             // No GIFs
-            //randomMessage += ` ${MESSAGEEMOJIS[`${commandName}`]}`;
-
-            return await SlashCommands.Callback(data, 3, randomMessage, undefined, { parse: ['users'] });
+            return await SlashCommands.Callback(data, randomMessage, undefined, { parse: ['users'] });
 
         } else {
 
@@ -145,7 +142,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed().setColor('RANDOM').setDescription(randomMessage)
             .setImage(GIFLINKS[`${commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${commandName}`].length ) + 0 )]);
 
-            await SlashCommands.Callback(data, 3, ``, embed, { parse: ['users'] });
+            await SlashCommands.Callback(data, ``, embed, { parse: ['users'] });
             delete embed; // free up cache
             return;
 
