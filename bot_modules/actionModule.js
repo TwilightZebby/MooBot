@@ -90,7 +90,7 @@ module.exports = {
 
 
 
-        // Check first argument to see what type of response we need
+        // Check person argument to see what type of response we need
         let randomMessage = "";
         const authorRegEx = new RegExp(/{author}/g);
         const roleRegEx = new RegExp(/{role}/g);
