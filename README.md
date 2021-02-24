@@ -43,18 +43,20 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 ### Slash Command Options/Arguments
 *What parameters can be passed to the Slash Commands for extra functionality*
 
-| Option | Requirement | Input Type                                 | Description                                   |
-|--------|-------------|--------------------------------------------|-----------------------------------------------|
-| person | required    | A String, or a User/Role/Everyone @mention | Used as the receiver of the Command           |
-| gif    | optional    | True/False                                 | Should a GIF be included in the sent message? |
+| Option | Requirement | Input Type                                   | Description                                   |
+|--------|-------------|----------------------------------------------|-----------------------------------------------|
+| person | required    | A String, or a User/Role/Everyone @mention\* | Used as the receiver of the Command           |
+| gif    | optional    | True/False                                   | Should a GIF be included in the sent message? |
+
+\* *In the sent message, only @user mentions are pinged. @role mentions are suppressed to remove the ping. @everyone/@here mentions are replaced with plain-text "everyone"*
 
 
 ## Text Commands
 
-| Command    | Description                                                     | Limitation  |
-|------------|-----------------------------------------------------------------|-------------|
-| a!suggest  | Send a suggestion for a new command, GIF or message to be added | None        |
-| a!register | Adds a new Slash Command to the Bot                             | Developer\* |
-| a!delete   | Removes an existing Slash Command from the Bot                  | Developer\* |
+| Command    | Description                                                     | Limitation    |
+|------------|-----------------------------------------------------------------|---------------|
+| a!suggest  | Send a suggestion for a new command, GIF or message to be added | None          |
+| a!register | Adds a new Slash Command to the Bot                             | Developer\*\* |
+| a!delete   | Removes an existing Slash Command from the Bot                  | Developer\*\* |
 
-\* *Developer-limited Commands can only be used by TwilightZebby himself.*
+\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*
