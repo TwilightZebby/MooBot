@@ -2,6 +2,8 @@
 A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf) to add silly Slash Commands.
 
 ---
+# Questions
+
 ## Who is Dr1fterX?
 
 > Dr1fterX is a small-ish Live Streamer on Twitch, and used to create content for the Black Plasma Gaming channel on YouTube before that YT Channel was archived in early 2020.
@@ -15,7 +17,7 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 ## How many Slash Commands are there/will there be?
 
 > For now I am limiting myself to a maximum of 10.
-> Even though Discord's API supports up to 50 Guild Slash Commands per Bot, I am using this lower limit to prevent flooding the Slash Command Interface/GUI :)
+> Even though Discord's API supports up to 50 Guild Slash Commands per Bot per Guild, and another 50 Global Slash Commands per Bot; I am using this lower limit to prevent flooding the Slash Command Interface/GUI :)
 
 
 ## Can I add this Bot to my own Server?
@@ -25,9 +27,9 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 > This Bot is only made for use on Dr1fterX's Discord Server. Go search on [top.gg](https://top.gg) or ask on [r/discord_bots](https://www.reddit.com/r/Discord_Bots/) if you want your own Bot like this.
 
 ---
-## Full command list
+# Full command list
 
-### Slash Commands
+## Slash Commands
 
 | Command  | Description                 |
 |----------|-----------------------------|
@@ -38,8 +40,16 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 | /kiss    | Slap a kiss on someone      |
 | /sleep   | Tell someone to go to sleep |
 
+### Slash Command Options/Arguments
+*What parameters can be passed to the Slash Commands for extra functionality*
 
-### Text Commands
+| Option | Requirement | Input Type                                 | Description                                   |
+|--------|-------------|--------------------------------------------|-----------------------------------------------|
+| person | required    | A String, or a User/Role/Everyone @mention | Used as the receiver of the Command           |
+| gif    | optional    | True/False                                 | Should a GIF be included in the sent message? |
+
+
+## Text Commands
 
 | Command    | Description                                                     | Limitation  |
 |------------|-----------------------------------------------------------------|-------------|
