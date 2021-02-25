@@ -320,6 +320,10 @@ module.exports = {
         if ( matchedString === member.user.id ) {
             return true;
         }
+        else if ( matchedString === member.user["id"] ) {
+            // For Slash Commands
+            return true;
+        }
         else {
             return false;
         }

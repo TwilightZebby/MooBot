@@ -396,42 +396,32 @@ client.on('raw', async (evt) => {
     if ( data.type !== 2 ) { return; }
 
     const CommandData = data.data;
-    let authorGuild = null;
+    let authorMember = null;
+    let authorUser = null;
 
-    try {
-        authorGuild = await client.guilds.fetch(data["guild_id"]);
-    } catch (err) {
-        // Was used in DMs
-        authorGuild = null;
-    }
+    // Check if used in DMs or Guild
+    if ( data["guild_id"] !== undefined ) {
 
-    let GuildMember = null;
-    let DMUser = null;
-
-    // if in a Guild
-    if ( authorGuild !== null ) {
-
-        // Check for Discord Outages to prevent the Bot crashing during them :)
-        if ( !authorGuild.available ) {
-            return;
-        }
-
-        GuildMember = await authorGuild.members.fetch(data.member.user.id);
+        // Used in Guild
+        authorMember = data.member;
 
     }
     else {
 
-        DMUser = await client.users.fetch(data.user.id);
+        // Used in DMs
+        authorUser = data.user;
 
     }
 
 
 
 
+    // Fetch Slash Command
     const fetchedSlashCommand = client.slashCommands.get(CommandData.name);
 
     if ( !fetchedSlashCommand ) {
-        await SlashModule.CallbackEphemeral(data, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - something prevented me from executing the **${CommandData.name}** command...`);
+        // Slash Command not found for some reason...
+        await SlashModule.CallbackEphemeral(data, `Sorry ${authorMember !== null ? authorMember.user["username"] : authorUser["username"]} - something prevented me from executing the **${CommandData.name}** Slash Command...`);
         return;
     }
     else {
@@ -448,9 +438,9 @@ client.on('raw', async (evt) => {
 
 
         // CHECK IF USED IN DM WHEN COMMAND IS GUILD-ONLY
-        if ( fetchedSlashCommand.guildOnly && GuildMember === null ) {
+        if ( fetchedSlashCommand.guildOnly && authorMember === null ) {
 
-            await SlashModule.CallbackEphemeral(data, `Sorry ${DMUser.username} - that Global Slash Command cannot be used in DMs!`);
+            await SlashModule.CallbackEphemeral(data, `Sorry ${authorUser["username"]} - that Global Slash Command cannot be used in DMs!`);
             return;
 
         }
@@ -468,9 +458,9 @@ client.on('raw', async (evt) => {
         const cooldownAmount = (fetchedSlashCommand.cooldown || 3) * 1000;
 
 
-        if ( timestamps.has(GuildMember !== null ? GuildMember.user.id : DMUser.id) ) {
+        if ( timestamps.has(authorMember !== null ? authorMember.user["id"] : authorUser["id"]) ) {
 
-            const expirationTime = timestamps.get(GuildMember !== null ? GuildMember.user.id : DMUser.id) + cooldownAmount;
+            const expirationTime = timestamps.get(authorMember !== null ? authorMember.user["id"] : authorUser["id"]) + cooldownAmount;
 
             if ( now < expirationTime ) {
 
@@ -479,24 +469,24 @@ client.on('raw', async (evt) => {
                 // Minutes
                 if ( timeLeft >= 60 && timeLeft < 3600 ) {
                     timeLeft /= 60;
-                    return await SlashModule.CallbackEphemeral(data, `${GuildMember !== null ? GuildMember.displayName : DMUser.username} - Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${fetchedSlashCommand.name}\` command`);
+                    return await SlashModule.CallbackEphemeral(data, `${authorMember !== null ? authorMember.user["username"] : authorUser["username"]} - Please wait ${timeLeft.toFixed(1)} more minutes before using the \`${fetchedSlashCommand.name}\` command`);
                 }
                 // Hours
                 else if ( timeLeft >= 3600 ) {
                     timeLeft /= 3600;
-                    return await SlashModule.CallbackEphemeral(data, `${GuildMember !== null ? GuildMember.displayName : DMUser.username} - Please wait ${timeLeft.toFixed(1)} more hours before using the \`${fetchedSlashCommand.name}\` command`);
+                    return await SlashModule.CallbackEphemeral(data, `${authorMember !== null ? authorMember.user["username"] : authorUser["username"]} - Please wait ${timeLeft.toFixed(1)} more hours before using the \`${fetchedSlashCommand.name}\` command`);
                 }
                 // Seconds
                 else {
-                    return await SlashModule.CallbackEphemeral(data, `${GuildMember !== null ? GuildMember.displayName : DMUser.username} - Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${fetchedSlashCommand.name}\` command`);
+                    return await SlashModule.CallbackEphemeral(data, `${authorMember !== null ? authorMember.user["username"] : authorUser["username"]} - Please wait ${timeLeft.toFixed(1)} more seconds before using the \`${fetchedSlashCommand.name}\` command`);
                 }
 
             }
 
         }
         else {
-            timestamps.set(GuildMember !== null ? GuildMember.user.id : DMUser.id, now);
-            setTimeout(() => timestamps.delete(GuildMember !== null ? GuildMember.user.id : DMUser.id), cooldownAmount);
+            timestamps.set(authorMember !== null ? authorMember.user["id"] : authorUser["id"], now);
+            setTimeout(() => timestamps.delete(authorMember !== null ? authorMember.user["id"] : authorUser["id"]), cooldownAmount);
         }
 
 
@@ -507,11 +497,11 @@ client.on('raw', async (evt) => {
 
         // execute slash commmand
         try {
-            await fetchedSlashCommand.execute(authorGuild, data, CommandData, GuildMember);
+            await fetchedSlashCommand.execute(data["guild_id"], data, CommandData, authorMember, authorUser);
         } catch (err) {
             await ErrorModule.LogCustom(err, `(**INDEX.JS** - Execute __slash__ command fail)`);
-            await SlashModule.CallbackEphemeral(data, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`).catch(async (err) => {
-                await SlashModule.CallbackEphemeralFollowUp(data, `Sorry ${GuildMember !== null ? GuildMember.displayName : DMUser.username} - there was an error trying to run that Slash Command...`);
+            await SlashModule.CallbackEphemeral(data, `Sorry ${authorMember !== null ? authorMember.user["username"] : authorUser["username"]} - there was an error trying to run that Slash Command...`).catch(async (err) => {
+                await SlashModule.CallbackEphemeralFollowUp(data, `Sorry ${authorMember !== null ? authorMember.user["username"] : authorUser["username"]} - there was an error trying to run that Slash Command...`);
             });
         }
 
