@@ -23,7 +23,7 @@ module.exports = {
     limitation: 'twilightzebby',
 
     // Command's cooldown, in seconds
-    cooldown: 20,
+    cooldown: 25,
 
     /**
      * Command's functionality
@@ -45,12 +45,8 @@ module.exports = {
         const slashCommandName = args.shift().toLowerCase();
         const slashCommandScope = args.shift().toLowerCase();
 
-        if ( !SlashModule.validCommands.includes(slashCommandName) ) {
-          return await message.channel.send(`Sorry ${message.member.displayName} - that isn't a valid Slash Command I have`);
-        }
-
-        await SlashModule.RegisterCommands(slashCommandName, slashCommandScope);
-        return await message.channel.send(`Successfully added the ${slashCommandName} slash command ${slashCommandScope === "global" ? "globally" : `to the Server with ID ${slashCommandScope}`}`);
+        await SlashModule.RegisterCommands(slashCommandName, slashCommandScope, message);
+        return;
 
       }
 

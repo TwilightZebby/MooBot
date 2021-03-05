@@ -50,7 +50,7 @@ module.exports = {
         }
 
         await SlashModule.DeleteCommands(slashCommandName, slashCommandScope);
-        return await message.channel.send(`Successfully removed the ${slashCommandName} slash command ${slashCommandScope === "global" ? "globally" : `from the Server with ID ${slashCommandScope}`}`);
+        return await message.channel.send(`Successfully removed the **${slashCommandName}** slash command ${slashCommandScope === "global" ? "globally" : `from the Server with ID ${slashCommandScope}`}`);
 
       }
 
