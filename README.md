@@ -11,13 +11,13 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 
 ## What kind of Slash Commands are there?
 
-> Mainly ones like /hug, /bonk, /headpat, etc. You know, roleplay-style.
+> Mainly ones like /hug, /bonk, /headpat, etc. You know, roleplay-style. (Think similar to the now shutdown Kawaii Bot)
 
 
 ## How many Slash Commands are there/will there be?
 
 > For now I am limiting myself to a maximum of 10.
-> Even though Discord's API supports up to 50 Guild Slash Commands per Bot per Guild, and another 50 Global Slash Commands per Bot; I am using this lower limit to prevent flooding the Slash Command Interface/GUI :)
+> Even though Discord's API supports up to 100 Guild Slash Commands per Bot per Guild, and another 100 Global Slash Commands per Bot; I am using this lower limit to prevent flooding the Slash Command Interface/GUI :)
 
 
 ## Can I add this Bot to my own Server?
@@ -55,7 +55,6 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 
 | Command    | Description                                                     | Limitation    |
 |------------|-----------------------------------------------------------------|---------------|
-| a!suggest  | Send a suggestion for a new command, GIF or message to be added | None          |
 | a!register | Adds a new Slash Command to the Bot                             | Developer\*\* |
 | a!delete   | Removes an existing Slash Command from the Bot                  | Developer\*\* |
 
