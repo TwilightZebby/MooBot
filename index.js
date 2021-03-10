@@ -392,6 +392,7 @@ client.on('raw', async (evt) => {
 
 
     const {d: data} = evt;
+    //console.log(data);
 
     if ( data.type !== 2 ) { return; }
 

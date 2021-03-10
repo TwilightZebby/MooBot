@@ -12,7 +12,8 @@
         "**{author}** gave **{receiver}** a cuddle",
         "**{author}** gave **{receiver}** a hug",
         "**{receiver}** received a hug from **{author}**",
-        "**{receiver}** was hugged by **{author}**"
+        "**{receiver}** was hugged by **{author}**",
+        "Cuddle time! (Featuring **{author}** and **{receiver}** )"
     ],
 
     "bonk": [
@@ -35,13 +36,16 @@
         "**{author}** booped **{receiver}**",
         "**{receiver}**'s nose was booped by **{author}**",
         "**{receiver}**, here comes the airplane! (booped by **{author}**)",
-        "Hey **{receiver}**, guess what? ||You've been booped by **{author}**!||"
+        "Hey **{receiver}**, guess what? ||You've been booped by **{author}**!||",
+        "**{receiver}**\nYou\nHave\nBeen\nBOOPED (by **{author}**)",
+        "Swiggity swooty, **{author}** is booping **{receiver}**!"
     ],
 
     "kiss": [
         "**{author}** kissed **{receiver}**",
         "**{author}** gave **{receiver}** a cheeky kiss ;)",
         "**{author}** pecked **{receiver}**'s cheek",
-        "**{author}** kissed **{receiver}** - On behalf of the single pringles, I would ask for your PDA to be taken elsewhere :)"
+        "**{author}** kissed **{receiver}** - On behalf of the single pringles, I would ask for your PDA to be taken elsewhere :)",
+        "**{author}** used [Sweet Kiss](https://bulbapedia.bulbagarden.net/wiki/Sweet_Kiss_(move)) on **{receiver}**!"
     ]
 }
