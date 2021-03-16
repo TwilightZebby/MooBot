@@ -94,5 +94,5 @@ module.exports = {
 
       return;
 
-  }
+    }
 };

@@ -42,5 +42,63 @@ module.exports = {
       //.
 
       // END OF SLASH COMMAND
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Registers the Slash Command
+     * 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
+     */
+     async register(isGlobal, guildID) {
+
+      // Data
+      const data = {};
+      data.name = "sleep";
+      data.description = "Tell someone to go sleep!";
+      data.options = new Array();
+
+      const option = {};
+      option.name = "person";
+      option.description = "Either a name or an @mention";
+      option.type = 3; // String
+      option.required = true;
+
+      data.options.push(option);
+
+
+      const secondOption = {};
+      secondOption.name = "GIF";
+      secondOption.description = "True to use a GIF, otherwise leave blank";
+      secondOption.type = 5; // Boolean
+      secondOption.required = false;
+
+      data.options.push(secondOption);
+
+      
+
+      if ( isGlobal ) {
+          client.api.applications(client.user.id).commands().post({data});
+      }
+      else {
+          client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+      }
+
+      return;
+
     }
 };

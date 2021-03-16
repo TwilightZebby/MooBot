@@ -22,8 +22,6 @@ const { PREFIX } = require('../config.js');
 /* 
 * RESPONSE TYPES
 * 1 = Pong                                 = ACK a ping
-* 2 = ACK                                  = ACK a command without sending a message, eating the Input ***DEPRECATED***
-* 3 = ChannelMessage                       = ACK a command, respond with a message, eat Input ***DEPRECATED***
 * 4 = ChannelMessageWithSource             = ACK a command, responding with a message immediately
 * 5 = DeferredChannelMessageWithSource     = ACK a command to edit into a response later - shows "loading" state for User
 */
