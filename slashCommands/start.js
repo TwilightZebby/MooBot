@@ -1,6 +1,11 @@
 // LIBRARY IMPORTS
 const fs = require('fs');
 const Discord = require("discord.js");
+const fetch = require('node-fetch');
+
+if (!globalThis.fetch) {
+	globalThis.fetch = fetch;
+}
 
 // MODULE IMPORTS
 //const ErrorModule = require('../bot_modules/errorLogger.js');
