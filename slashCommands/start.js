@@ -32,7 +32,7 @@ module.exports = {
     guildOnly: true,
 
     // Command's cooldown, in seconds
-    cooldown: 60,
+    cooldown: 10,
 
     /**
      * Command's functionality
@@ -183,7 +183,7 @@ module.exports = {
       secondOption.required = true;
       secondOption.choices = [
         {
-          "name": "Poker Night",
+          "name": "Poker Night (doesn't work currently)",
           "value": "poker"
         },
         {
