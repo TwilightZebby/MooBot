@@ -129,7 +129,7 @@ module.exports = {
 
       let newInvite = await newInviteRaw.json();
 
-      await SlashCommands.CallbackEphemeral(data, `[Click here to start the **${argActivity}** Activity inside the **${targetVoiceChannel.name}** Voice Channel](<https://discord.gg/${newInvite.code}>)\nNotes:\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 30 minutes`);
+      await SlashCommands.CallbackEphemeral(data, `[Click here to start the **${argActivity}** Activity inside the **${targetVoiceChannel.name}** Voice Channel](<https://discord.gg/${newInvite.code}>)\nNotes:\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 30 minutes\n- Currently this only works Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`);
 
       delete targetGuild;
       delete targetVoiceChannel;
