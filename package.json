@@ -1,6 +1,6 @@
 {
   "name": "actionsbot",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A small Discord Bot made for Dr1fterX's Discord to add silly Slash Commands",
   "main": "index.js",
   "dependencies": {
@@ -8,10 +8,10 @@
     "discord.js": "^12.5.1",
     "erlpack": "github:discord/erlpack",
     "libsodium-wrappers": "^0.7.8",
+    "node-fetch": "^2.6.1",
     "utf-8-validate": "^5.0.3",
     "zlib-sync": "^0.1.7"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

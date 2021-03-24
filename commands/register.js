@@ -23,7 +23,7 @@ module.exports = {
     limitation: 'twilightzebby',
 
     // Command's cooldown, in seconds
-    cooldown: 10,
+    cooldown: 25,
 
     /**
      * Command's functionality
@@ -34,10 +34,10 @@ module.exports = {
     async execute(message, args) {
 
       if ( !args.length ) {
-        return await message.channel.send(`Sorry, but I couldn't see any arguments.\nCorrect Syntax: \`${PREFIX}register commandName|all global|guildID\``);
+        return await message.channel.send(`Sorry, but I couldn't see any arguments.\nCorrect Syntax: \`${PREFIX}register commandName global|guildID\``);
       }
       else if ( args.length < 2 ) {
-        return await message.channel.send(`Sorry, but I couldn't see enough arguments.\nCorrect Syntax: \`${PREFIX}register commandName|all global|guildID\``);
+        return await message.channel.send(`Sorry, but I couldn't see enough arguments.\nCorrect Syntax: \`${PREFIX}register commandName global|guildID\``);
       }
       else {
 
@@ -45,8 +45,8 @@ module.exports = {
         const slashCommandName = args.shift().toLowerCase();
         const slashCommandScope = args.shift().toLowerCase();
 
-        await SlashModule.RegisterCommands(slashCommandName, slashCommandScope);
-        return await message.channel.send(`Successfully added ${slashCommandName === "all" ? "all my slash commands" : `the ${slashCommandName} slash command`} ${slashCommandScope === "global" ? "globally" : `to the Server with ID ${slashCommandScope}`}`);
+        await SlashModule.RegisterCommands(slashCommandName, slashCommandScope, message);
+        return;
 
       }
 

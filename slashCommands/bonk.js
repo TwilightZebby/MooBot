@@ -31,16 +31,68 @@ module.exports = {
     /**
      * Command's functionality
      * 
-     * @param {Discord.Guild|null} guild 
+     * @param {String|null} guildID Null if used in DMs
      * @param {*} data
      * @param {*} commandData
-     * @param {Discord.GuildMember|null} member
-     * @param {Discord.User|null} user
+     * @param {*|null} member Null if used in DMs
+     * @param {*|null} user Null if used in Guilds
      */
-    async execute(guild, data, commandData, member, user) {
+    async execute(guildID, data, commandData, member, user) {
 
-      return await ActionModule.Respond("bonk", guild, data, commandData, member, user);
+      return await ActionModule.Respond("bonk", guildID, data, commandData, member);
 
       // END OF SLASH COMMAND
-    }
+    },
+
+
+
+
+
+
+
+
+
+    /**
+     * Registers the bonk Slash Command
+     * 
+     * @param {Boolean} isGlobal True if Global, False if Guild
+     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
+     */
+    async register(isGlobal, guildID) {
+
+      // Data
+      const data = {};
+      data.name = "bonk";
+      data.description = "Bonk somebody";
+      data.options = new Array();
+
+      const option = {};
+      option.name = "person";
+      option.description = "Either a name or an @mention";
+      option.type = 3; // String
+      option.required = true;
+
+      data.options.push(option);
+
+
+      const secondOption = {};
+      secondOption.name = "GIF";
+      secondOption.description = "True to use a GIF, otherwise leave blank";
+      secondOption.type = 5; // Boolean
+      secondOption.required = false;
+
+      data.options.push(secondOption);
+
+      
+
+      if ( isGlobal ) {
+          client.api.applications(client.user.id).commands().post({data});
+      }
+      else {
+          client.api.applications(client.user.id).guilds(guildID).commands().post({data});
+      }
+
+      return;
+
+  }
 };

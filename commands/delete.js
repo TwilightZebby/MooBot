@@ -23,7 +23,7 @@ module.exports = {
     limitation: 'twilightzebby',
 
     // Command's cooldown, in seconds
-    cooldown: 10,
+    cooldown: 20,
 
     /**
      * Command's functionality
@@ -34,10 +34,10 @@ module.exports = {
     async execute(message, args) {
 
       if ( !args.length ) {
-        return await message.channel.send(`Sorry, but I couldn't see any arguments.\nCorrect Syntax: \`${PREFIX}delete commandName|all global|guildID\``);
+        return await message.channel.send(`Sorry, but I couldn't see any arguments.\nCorrect Syntax: \`${PREFIX}delete commandName global|guildID\``);
       }
       else if ( args.length < 2 ) {
-        return await message.channel.send(`Sorry, but I couldn't see enough arguments.\nCorrect Syntax: \`${PREFIX}delete commandName|all global|guildID\``);
+        return await message.channel.send(`Sorry, but I couldn't see enough arguments.\nCorrect Syntax: \`${PREFIX}delete commandName global|guildID\``);
       }
       else {
 
@@ -45,8 +45,12 @@ module.exports = {
         const slashCommandName = args.shift().toLowerCase();
         const slashCommandScope = args.shift().toLowerCase();
 
+        if ( !SlashModule.validCommands.includes(slashCommandName) ) {
+          return await message.channel.send(`Sorry ${message.member.displayName} - that isn't a valid Slash Command I have`);
+        }
+
         await SlashModule.DeleteCommands(slashCommandName, slashCommandScope);
-        return await message.channel.send(`Successfully removed ${slashCommandName === "all" ? "all my slash commands" : `the ${slashCommandName} slash command`} ${slashCommandScope === "global" ? "globally" : `from the Server with ID ${slashCommandScope}`}`);
+        return await message.channel.send(`Successfully removed the **${slashCommandName}** slash command ${slashCommandScope === "global" ? "globally" : `from the Server with ID ${slashCommandScope}`}`);
 
       }
 
