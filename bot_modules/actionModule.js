@@ -123,7 +123,7 @@ module.exports = {
         if ( !gifOption || gifOption === false ) {
 
             // No GIFs
-            return await SlashCommands.Callback(data, randomMessage, undefined, { parse: ['users'] });
+            return await SlashCommands.Callback(data, randomMessage, undefined, { parse: [] });
 
         } else {
 
@@ -134,7 +134,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed().setColor('RANDOM').setDescription(randomMessage)
             .setImage(GIFLINKS[`${commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${commandName}`].length ) + 0 )]);
 
-            await SlashCommands.Callback(data, ``, embed, { parse: ['users'] });
+            await SlashCommands.Callback(data, ``, embed, { parse: [] });
             delete embed; // free up cache
             return;
 
