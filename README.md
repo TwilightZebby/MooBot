@@ -53,7 +53,7 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 | person | required    | A String, or a User/Role/Everyone @mention\* | Used as the receiver of the Command           |
 | gif    | optional    | True/False                                   | Should a GIF be included in the sent message? |
 
-\* *In the sent message, only @user mentions are pinged. @role mentions are suppressed to remove the ping. @everyone/@here mentions are replaced with plain-text "everyone"*
+\* *In the sent message, @user and @role mentions are suppressed so they don't send a ping/notification. @everyone/@here mentions are replaced with plain-text "everyone"*
 
 
 ## Text Commands
