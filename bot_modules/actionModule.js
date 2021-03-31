@@ -30,12 +30,12 @@ module.exports = {
     async Respond(commandName, guildID, data, commandData, member) {
 
         // JSON IMPORTS
-        const USERMESSAGES = require('../jsonFiles/userMessages.json');
-        const ROLEMESSAGES = require('../jsonFiles/roleMessages.json');
-        const EVERYONEMESSAGES = require('../jsonFiles/everyoneMessages.json');
-        const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
+        const USERMESSAGES = require('../jsonFiles-AprilFools/userMessages.json');
+        const ROLEMESSAGES = require('../jsonFiles-AprilFools/roleMessages.json');
+        const EVERYONEMESSAGES = require('../jsonFiles-AprilFools/everyoneMessages.json');
+        const SELFMESSAGES = require('../jsonFiles-AprilFools/selfMessages.json');
 
-        const GIFLINKS = require('../jsonFiles/gifLinks.json');
+        const GIFLINKS = require('../jsonFiles-AprilFools/gifLinks.json');
 
 
 
@@ -123,7 +123,22 @@ module.exports = {
         if ( !gifOption || gifOption === false ) {
 
             // No GIFs
-            return await SlashCommands.Callback(data, randomMessage, undefined, { parse: [] });
+
+            // Use Embed if Role Mention, just in case "allowed_mentions" flag breaks again on Discord's API
+            if ( roleTest )
+            {
+                let fetchRole = await (await client.guilds.fetch(guildID)).roles.fetch((await UtilityModule.TestForRoleMention(personOption, true)));
+                const embed = new Discord.MessageEmbed().setColor(`${fetchRole.hexColor}`).setDescription(randomMessage);
+
+                await SlashCommands.Callback(data, ``, embed, { parse: [] });
+                delete embed; // free up cache
+            }
+            else 
+            {
+                await SlashCommands.Callback(data, randomMessage, undefined, { parse: [] });
+            }
+            
+            return;
 
         } else {
 
