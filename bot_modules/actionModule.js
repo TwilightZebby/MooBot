@@ -30,12 +30,12 @@ module.exports = {
     async Respond(commandName, guildID, data, commandData, member) {
 
         // JSON IMPORTS
-        const USERMESSAGES = require('../jsonFiles-AprilFools/userMessages.json');
-        const ROLEMESSAGES = require('../jsonFiles-AprilFools/roleMessages.json');
-        const EVERYONEMESSAGES = require('../jsonFiles-AprilFools/everyoneMessages.json');
-        const SELFMESSAGES = require('../jsonFiles-AprilFools/selfMessages.json');
+        const USERMESSAGES = require('../jsonFiles/userMessages.json');
+        const ROLEMESSAGES = require('../jsonFiles/roleMessages.json');
+        const EVERYONEMESSAGES = require('../jsonFiles/everyoneMessages.json');
+        const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
 
-        const GIFLINKS = require('../jsonFiles-AprilFools/gifLinks.json');
+        const GIFLINKS = require('../jsonFiles/gifLinks.json');
 
 
 
