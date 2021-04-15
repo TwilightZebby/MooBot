@@ -146,8 +146,27 @@ module.exports = {
 
 
             // Embed because of GIF
-            const embed = new Discord.MessageEmbed().setColor('RANDOM').setDescription(randomMessage)
+            const embed = new Discord.MessageEmbed().setDescription(randomMessage)
             .setImage(GIFLINKS[`${commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${commandName}`].length ) + 0 )]);
+
+
+            // Role Colour
+            if ( roleTest )
+            {
+                let fetchRole = await (await client.guilds.fetch(guildID)).roles.fetch((await UtilityModule.TestForRoleMention(personOption, true)));
+                embed.setColor(`${fetchRole.hexColor}`);
+            }
+            // @mentioned User
+            else if ( await UtilityModule.TestForUserMention(personOption) )
+            {
+                let fetchMember = await (await client.guilds.fetch(guildID)).members.fetch((await UtilityModule.TestForUserMention(personOption, true)));
+                embed.setColor(`${fetchMember.displayHexColor}`);
+            }
+            // plain-text and @everyone mentions
+            else
+            {
+                embed.setColor('RANDOM');
+            }
 
             await SlashCommands.Callback(data, ``, embed, { parse: [] });
             delete embed; // free up cache
