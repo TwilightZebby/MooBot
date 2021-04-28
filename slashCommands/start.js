@@ -187,7 +187,7 @@ module.exports = {
       secondOption.required = true;
       secondOption.choices = [
         {
-          "name": "Poker Night (doesn't work currently)",
+          "name": "Poker Night",
           "value": "poker"
         },
         {
