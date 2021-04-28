@@ -45,7 +45,9 @@ module.exports = {
         const slashCommandName = args.shift().toLowerCase();
         const slashCommandScope = args.shift().toLowerCase();
 
-        if ( !SlashModule.validCommands.includes(slashCommandName) ) {
+        let commandCheck = client.slashCommands.get(slashCommandName);
+
+        if ( !commandCheck ) {
           return await message.channel.send(`Sorry ${message.member.displayName} - that isn't a valid Slash Command I have`);
         }
 

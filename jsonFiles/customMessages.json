@@ -1,0 +1,13 @@
+{
+    "headpat": "**{author}** gave **{receiver}** a headpat",
+
+    "hug": "**{author}** gave **{receiver}** a hug",
+
+    "bonk": "**{author}** bonked **{receiver}**",
+
+    "sleep": "**{author}** wants **{receiver}** to go to sleep!",
+
+    "boop": "**{author}** booped **{receiver}**",
+
+    "kiss": "**{author}** kissed **{receiver}**"
+}
