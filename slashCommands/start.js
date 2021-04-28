@@ -123,7 +123,11 @@ module.exports = {
         body: JSON.stringify({
           max_age: 1800,
           target_type: 2,
-          target_application_id: argActivity == "poker" ? "755827207812677713" : argActivity == "betrayal" ? "773336526917861400" : argActivity == "youtube" ? "755600276941176913" : "814288819477020702"
+          target_application_id: argActivity == "poker" ? "755827207812677713" : 
+            argActivity == "betrayal" ? "773336526917861400" : 
+              argActivity == "youtube" ? "755600276941176913" : 
+                argActivity == "fishington" ? "814288819477020702" : 
+                  "438122941302046720"
         })
       });
 
@@ -183,7 +187,7 @@ module.exports = {
       secondOption.required = true;
       secondOption.choices = [
         {
-          "name": "Poker Night (doesn't work currently)",
+          "name": "Poker Night",
           "value": "poker"
         },
         {
@@ -198,6 +202,10 @@ module.exports = {
           "name": "Fishington.io",
           "value": "fishington"
         }
+        /*{
+          "name": "Test",
+          "value": "test"
+        }*/
       ];
 
       data.options.push(secondOption);

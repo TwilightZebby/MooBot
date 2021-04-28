@@ -34,6 +34,7 @@ module.exports = {
         const ROLEMESSAGES = require('../jsonFiles/roleMessages.json');
         const EVERYONEMESSAGES = require('../jsonFiles/everyoneMessages.json');
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
+        const CUSTOMMESSAGES = require('../jsonFiles/customMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
 
@@ -53,6 +54,7 @@ module.exports = {
         // Split up the given arguments
         let personOption;
         let gifOption;
+        let reasonOption;
 
         for ( const option of commandData.options ) {
             if ( option.name === "person" ) {
@@ -60,6 +62,9 @@ module.exports = {
             }
             else if ( option.name === "gif" ) {
                 gifOption = option.value;
+            }
+            else if ( option.name === "reason" ) {
+                reasonOption = option.value;
             }
         }
         
@@ -80,40 +85,62 @@ module.exports = {
 
 
 
-
-
-        // Check person argument to see what type of response we need
-        let randomMessage = "";
+        let displayMessage = "";
         const authorRegEx = new RegExp(/{author}/g);
         const roleRegEx = new RegExp(/{role}/g);
         const receiverRegEx = new RegExp(/{receiver}/g);
 
-        if ( roleTest ) {
+        // IF USING BUILT-IN MESSAGES RATHER THAN CUSTOM
+        if ( !reasonOption )
+        {
+            // Check person argument to see what type of response we need
+            if ( roleTest ) {
 
-            randomMessage = ROLEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * ROLEMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
-            randomMessage = randomMessage.replace(roleRegEx, `${personOption}`);
+                displayMessage = ROLEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * ROLEMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
+                displayMessage = displayMessage.replace(roleRegEx, `${personOption}`);
 
+            }
+            else if ( everyoneTest ) {
+
+                displayMessage = EVERYONEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * EVERYONEMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
+
+            }
+            else if ( await UtilityModule.TestForSelfMention(`${commandData.options[0].value}`, member) ) {
+
+                displayMessage = SELFMESSAGES[`${commandName}`][Math.floor( ( Math.random() * SELFMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
+
+            }
+            else {
+
+                displayMessage = USERMESSAGES[`${commandName}`][Math.floor( ( Math.random() * USERMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
+                displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
+
+            }
         }
-        else if ( everyoneTest ) {
+        else
+        {
+            // CUSTOM MESSAGE
+            displayMessage = CUSTOMMESSAGES[`${commandName}`];
+            displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
 
-            randomMessage = EVERYONEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * EVERYONEMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
+            // Check for @everyone/@here pings
+            if ( everyoneTest )
+            {
+                displayMessage = displayMessage.replace(receiverRegEx, `everyone`);
+            }
+            else
+            {
+                displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
+            }
 
+            // Add on custom message
+            displayMessage += ` ${reasonOption}`;
         }
-        else if ( await UtilityModule.TestForSelfMention(`${commandData.options[0].value}`, member) ) {
-
-            randomMessage = SELFMESSAGES[`${commandName}`][Math.floor( ( Math.random() * SELFMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
-
-        }
-        else {
-
-            randomMessage = USERMESSAGES[`${commandName}`][Math.floor( ( Math.random() * USERMESSAGES[`${commandName}`].length ) + 0 )];
-            randomMessage = randomMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
-            randomMessage = randomMessage.replace(receiverRegEx, `${personOption}`);
-
-        }
+        
 
 
 
@@ -128,14 +155,14 @@ module.exports = {
             if ( roleTest )
             {
                 let fetchRole = await (await client.guilds.fetch(guildID)).roles.fetch((await UtilityModule.TestForRoleMention(personOption, true)));
-                const embed = new Discord.MessageEmbed().setColor(`${fetchRole.hexColor}`).setDescription(randomMessage);
+                const embed = new Discord.MessageEmbed().setColor(`${fetchRole.hexColor}`).setDescription(displayMessage);
 
                 await SlashCommands.Callback(data, ``, embed, { parse: [] });
                 delete embed; // free up cache
             }
             else 
             {
-                await SlashCommands.Callback(data, randomMessage, undefined, { parse: [] });
+                await SlashCommands.Callback(data, displayMessage, undefined, { parse: [] });
             }
             
             return;
@@ -146,7 +173,7 @@ module.exports = {
 
 
             // Embed because of GIF
-            const embed = new Discord.MessageEmbed().setDescription(randomMessage)
+            const embed = new Discord.MessageEmbed().setDescription(displayMessage)
             .setImage(GIFLINKS[`${commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${commandName}`].length ) + 0 )]);
 
 

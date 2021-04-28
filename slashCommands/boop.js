@@ -82,6 +82,15 @@ module.exports = {
 
       data.options.push(secondOption);
 
+
+      const thirdOption = {};
+      thirdOption.name = "reason";
+      thirdOption.description = "A custom message to be used instead of the built in ones";
+      thirdOption.type = 3; // String
+      thirdOption.required = false;
+
+      data.options.push(thirdOption);
+
       
 
       if ( isGlobal ) {
