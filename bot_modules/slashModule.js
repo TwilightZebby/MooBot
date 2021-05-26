@@ -16,6 +16,7 @@ const { PREFIX } = require('../config.js');
  * 6 = User
  * 7 = Channel
  * 8 = Role
+ * 9 = Mentionable (User)
 */
 
 

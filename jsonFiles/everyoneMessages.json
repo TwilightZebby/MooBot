@@ -36,5 +36,9 @@
         "**{author}** gave everyone a kiss",
         "**{author}** kissed everyone",
         "**{author}** is overflowing with love and kisses everyone!"
+    ],
+
+    "slap": [
+        "**{author}** slapped everyone!"
     ]
 }

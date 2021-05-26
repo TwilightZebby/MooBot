@@ -9,5 +9,7 @@
 
     "boop": "**{author}** booped **{receiver}**",
 
-    "kiss": "**{author}** kissed **{receiver}**"
+    "kiss": "**{author}** kissed **{receiver}**",
+
+    "slap": "**{author}** slapped **{receiver}**"
 }

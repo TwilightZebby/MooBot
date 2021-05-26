@@ -36,5 +36,10 @@
     "kiss": [
         "**{author}** kissed everyone with **{role}**",
         "**{author}** gave everyone with **{role}** a kiss"
+    ],
+
+    "slap": [
+        "**{author}** slapped **{role}**",
+        "**{role}** received a royal slapping from **{author}**"
     ]
 }
