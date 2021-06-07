@@ -115,7 +115,6 @@ module.exports = {
 
 
 
-
       // CREATE LINK
       let newInviteRaw = await fetch(`https://discord.com/api/v8/channels/${targetVoiceChannel.id}/invites`, {
         method: 'POST',

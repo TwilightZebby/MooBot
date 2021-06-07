@@ -47,5 +47,10 @@
         "**{author}** pecked **{receiver}**'s cheek",
         "**{author}** kissed **{receiver}** - On behalf of the single pringles, I would ask for your PDA to be taken elsewhere :)",
         "**{author}** used [Sweet Kiss](https://bulbapedia.bulbagarden.net/wiki/Sweet_Kiss_(move)) on **{receiver}**!"
+    ],
+
+    "slap": [
+        "**{author}** slapped **{receiver}**",
+        "**{author}** gave **{receiver}** a royal slapping!"
     ]
 }

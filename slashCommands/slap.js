@@ -13,8 +13,8 @@ const { PREFIX } = require('../config.js');
 
 // THIS COMMAND
 module.exports = {
-    name: 'bonk',
-    description: 'BONK THOSE NAUGHTY PEEPS',
+    name: 'slap',
+    description: 'I slap you',
 
     // LIMITATIONS
     //     'twilightzebby' - Only TwilightZebby#1955 can use this command
@@ -39,7 +39,7 @@ module.exports = {
      */
     async execute(guildID, data, commandData, member, user) {
 
-      return await ActionModule.Respond("bonk", guildID, data, commandData, member);
+      return await ActionModule.Respond("slap", guildID, data, commandData, member);
 
       // END OF SLASH COMMAND
     },
@@ -51,9 +51,8 @@ module.exports = {
 
 
 
-
     /**
-     * Registers the bonk Slash Command
+     * Registers the boop Slash Command
      * 
      * @param {Boolean} isGlobal True if Global, False if Guild
      * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
@@ -62,8 +61,8 @@ module.exports = {
 
       // Data
       const data = {};
-      data.name = "bonk";
-      data.description = "Bonk somebody";
+      data.name = "slap";
+      data.description = "Slap a naughty peep";
       data.options = new Array();
 
       const option = {};
@@ -82,7 +81,7 @@ module.exports = {
       secondOption.required = false;
 
       data.options.push(secondOption);
-      
+
 
       const thirdOption = {};
       thirdOption.name = "reason";

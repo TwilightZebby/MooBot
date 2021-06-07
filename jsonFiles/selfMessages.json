@@ -43,5 +43,9 @@
         "**{author}** attempted to kiss themselves",
         "**{author}** yarns for a kiss",
         "Seems like **{author}** wants a kiss. Unfortunately, we can't kiss you through a monitor."
+    ],
+
+    "slap": [
+        "**{author}** slapped themselves"
     ]
 }

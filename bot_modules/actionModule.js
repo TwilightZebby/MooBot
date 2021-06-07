@@ -13,6 +13,13 @@ const { client } = require('../constants.js');
 const { PREFIX } = require('../config.js');
 
 
+// REGEXS
+const authorRegEx = new RegExp(/{author}/g);
+const roleMentionRegEx = new RegExp(/<@&(\d{17,19})>/g);
+const roleRegEx = new RegExp(/{role}/g);
+const receiverRegEx = new RegExp(/{receiver}/g);
+
+
 
 // THIS MODULE
 module.exports = {
@@ -86,9 +93,6 @@ module.exports = {
 
 
         let displayMessage = "";
-        const authorRegEx = new RegExp(/{author}/g);
-        const roleRegEx = new RegExp(/{role}/g);
-        const receiverRegEx = new RegExp(/{receiver}/g);
 
         // IF USING BUILT-IN MESSAGES RATHER THAN CUSTOM
         if ( !reasonOption )
@@ -127,6 +131,9 @@ module.exports = {
             displayMessage = CUSTOMMESSAGES[`${commandName}`];
             displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
 
+            // Add on custom message
+            displayMessage += ` ${reasonOption}`;
+
             // Check for @everyone/@here pings
             if ( everyoneTest )
             {
@@ -137,8 +144,11 @@ module.exports = {
                 displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
             }
 
-            // Add on custom message
-            displayMessage += ` ${reasonOption}`;
+            // Check for @role pings
+            if ( roleTest )
+            {
+                return await SlashCommands.CallbackEphemeral(data, `Sorry, but currently @role mentions aren't allowed in custom reasons/messages.`);
+            }
         }
         
 
