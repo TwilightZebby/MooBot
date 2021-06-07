@@ -82,7 +82,7 @@ module.exports = {
 
 
       const secondOption = {};
-      secondOption.name = "GIF";
+      secondOption.name = "gif";
       secondOption.description = "True to use a GIF, otherwise leave blank";
       secondOption.type = 5; // Boolean
       secondOption.required = false;
