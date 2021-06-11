@@ -15,7 +15,7 @@ const { PREFIX } = require('../config.js');
 
 // REGEXS
 const authorRegEx = new RegExp(/{author}/g);
-const roleMentionRegEx = new RegExp(/<@&(\d{17,19})>/g);
+const everyoneMentionRegex = new RegExp(/@(everyone|here)/g);
 const roleRegEx = new RegExp(/{role}/g);
 const receiverRegEx = new RegExp(/{receiver}/g);
 
@@ -145,9 +145,15 @@ module.exports = {
             }
 
             // Check for @role pings
-            if ( roleTest )
+            if ( await UtilityModule.TestForRoleMention(reasonOption) )
             {
                 return await SlashCommands.CallbackEphemeral(data, `Sorry, but currently @role mentions aren't allowed in custom reasons/messages.`);
+            }
+
+            // Remove @everyone and @here mentions from custom reasons
+            if ( await UtilityModule.TestForEveryoneMention(reasonOption) )
+            {
+                displayMessage = displayMessage.replace(everyoneMentionRegex, `everyone`);
             }
         }
         
