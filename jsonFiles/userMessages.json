@@ -51,6 +51,10 @@
 
     "slap": [
         "**{author}** slapped **{receiver}**",
-        "**{author}** gave **{receiver}** a royal slapping!"
+        "**{author}** gave **{receiver}** a royal slapping!",
+        "**{author}** gave **{receiver}** a back-handed slap!",
+        "**{author}** slapped **{receiver}** with a frying pan!",
+        "**{author}** slapped **{receiver}** with a spade!",
+        "**{author}** slapped **{receiver}** with a chair!"
     ]
 }
