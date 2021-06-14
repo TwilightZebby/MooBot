@@ -1,6 +1,6 @@
 {
   "name": "actionsbot",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "A small Discord Bot made for Dr1fterX's Discord to add silly Slash Commands",
   "main": "index.js",
   "dependencies": {
