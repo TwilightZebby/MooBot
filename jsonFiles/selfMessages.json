@@ -1,48 +1,26 @@
 {
     "headpat": [
-        "**{author}** gave themself a headpat",
-        "**{author}** was given a headpat by....themselves?",
-        "**{author}** was given a headpat by....wait, I thought you were alone 👀",
-        "With no one else around, **{author}** gave themself a headpat ;-;"
+        "**{author}** gave themself a headpat"
     ],
 
     "hug": [
-        "**{author}** gave themself a cuddle",
-        "**{author}** gave themself a hug",
-        "**{author}** was hugged by the spirits that roam 👻",
-        "Since no one is around, **{author}** ended up hugging themself"
+        "**{author}** gave themself a cuddle"
     ],
 
     "bonk": [
-        "**{author}** bonked themself",
-        "**{author}** bonked themselves since they realised their own mistake",
-        "Oh I get to bonk someone this time? HEY **{author}** - BOOOOONK!",
-        "**{author}** wants a bonk!",
-        "*runs function bonk( **{author}** )*"
+        "**{author}** bonked themself"
     ],
 
     "sleep": [
-        "**{author}** should really go to sleep...",
-        "**{author}** is thinking of their bed...",
-        "**{author}** needs sleep. GO TO SLEEP **{author}**!",
-        "**{author}** says they want sleep, but we all know they'll be on their phone in bed ;P",
-        "**{author}** says they want sleep, but we all know they'll stay up watching anime ;P",
-        "**{author}** wants sleep? That's a little sus..."
+        "**{author}** is thinking of their bed..."
     ],
 
     "boop": [
-        "**{author}** booped themself",
-        "**{author}** booped everyone in the room.....themselves. They booped themself.",
-        "**{author}** was booped by the ghosts that lurk...",
-        "Hey Google, boop **{author}**",
-        "Hey Alexa, boop **{author}**"
+        "**{author}** booped themself"
     ],
 
     "kiss": [
-        "**{author}** kissed their own reflection in the mirror",
-        "**{author}** attempted to kiss themselves",
-        "**{author}** yarns for a kiss",
-        "Seems like **{author}** wants a kiss. Unfortunately, we can't kiss you through a monitor."
+        "**{author}** attempted to kiss themselves"
     ],
 
     "slap": [

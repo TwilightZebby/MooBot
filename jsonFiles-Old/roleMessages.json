@@ -1,0 +1,46 @@
+{
+    "headpat": [
+        "**{author}** gave everyone with **{role}** a headpat",
+        "Everyone with **{role}** was given a comforting headpat by **{author}**",
+        "**{author}** is here with the headpat **{role}** ordered online",
+        "It's time for **{role}** to get their headpats from **{author}**!"
+    ],
+
+    "hug": [
+        "**{author}** gave everyone with **{role}** a cuddle",
+        "**{author}** gave everyone with **{role}** a hug",
+        "**{role}** group cuddle time with **{author}**!",
+        "**{author}** ordered one extra large hug for **{role}**"
+    ],
+
+    "bonk": [
+        "**{author}** bonked everyone with **{role}**",
+        "Everyone with **{role}** was bonked by **{author}** for being naughty peeps",
+        "Everyone with **{role}** was bonked by **{author}** for being bad peeps",
+        "How could so many **{role}** be so bad to earn a huge bonk from **{author}**???"
+    ],
+
+    "sleep": [
+        "**{author}** wants everyone with **{role}** to go sleep!",
+        "**{author}** cares for everyone with **{role}** and wants them to go sleep!",
+        "Hey **{role}**, **{author}** would like you all to go sleep! Apparently its good for your health!",
+        "Screw timezone differences, **{author}** wants all the **{role}** to go to sleep!"
+    ],
+
+    "boop": [
+        "**{author}** booped everyone with **{role}**",
+        "Everyone with **{role}** should watch out, **{author}** is coming to boop you!",
+        "***{author}** boops **{role}** and runs*"
+    ],
+
+    "kiss": [
+        "**{author}** kissed everyone with **{role}**",
+        "**{author}** gave everyone with **{role}** a kiss"
+    ],
+
+    "slap": [
+        "**{author}** slapped **{role}**",
+        "**{role}** received a royal slapping from **{author}**",
+        "**{role}** received a drive-by slapping from **{author}**"
+    ]
+}
