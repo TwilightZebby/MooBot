@@ -1,29 +1,15 @@
 {
-    "headpat": [
-        "**{author}** gave **{receiver}** a headpat"
-    ],
+    "headpat": "**{author}** gave **{receiver}** a headpat",
 
-    "hug": [
-        "**{author}** gave **{receiver}** a cuddle"
-    ],
+    "hug": "**{author}** gave **{receiver}** a cuddle",
 
-    "bonk": [
-        "**{author}** bonked **{receiver}**"
-    ],
+    "bonk": "**{author}** bonked **{receiver}**",
 
-    "sleep": [
-        "**{author}** wants **{receiver}** to go to sleep!"
-    ],
+    "sleep": "**{author}** wants **{receiver}** to go to sleep!",
 
-    "boop": [
-        "**{author}** booped **{receiver}**"
-    ],
+    "boop": "**{author}** booped **{receiver}**",
 
-    "kiss": [
-        "**{author}** kissed **{receiver}**"
-    ],
+    "kiss": "**{author}** kissed **{receiver}**",
 
-    "slap": [
-        "**{author}** slapped **{receiver}**"
-    ]
+    "slap": "**{author}** slapped **{receiver}**"
 }
