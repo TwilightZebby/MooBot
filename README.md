@@ -14,6 +14,11 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 > Mainly ones like /hug, /bonk, /headpat, etc. You know, roleplay-style. (Think similar to the now shutdown Kawaii Bot)
 
 
+## Why did you make this Bot?
+
+> Mixture of "felt like it" and "wanted to finally bring back some of the old functionality/commands from the long-dead Kawaii Bot"
+
+
 ## How many Slash Commands are there/will there be?
 
 > For now I am limiting myself to a maximum of 10.
@@ -50,7 +55,8 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 | gif    | optional    | True/False                                   | Should a GIF be included in the sent message?       |
 | reason | optional    | A String                                     | A custom message to attach after the action message |
 
-\* *In the sent message, @user mentions are suppressed. @role mentions are suppressed and are sent in an embed. @everyone/@here mentions are replaced with plain-text "everyone"*
+
+\* *In the sent message, @user and @role mentions are suppressed so they don't send a ping/notification. @everyone/@here mentions are replaced with plain-text "everyone"*
 
 
 ## Other Slash Commands
@@ -60,6 +66,7 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 | /start\*\*  | Used to trigger one of Discord's built-in Voice Activities |
 
 \*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc)*
+
 
 
 ## Text Commands
