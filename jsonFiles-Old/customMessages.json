@@ -1,7 +1,7 @@
 {
     "headpat": "**{author}** gave **{receiver}** a headpat",
 
-    "hug": "**{author}** gave **{receiver}** a cuddle",
+    "hug": "**{author}** gave **{receiver}** a hug",
 
     "bonk": "**{author}** bonked **{receiver}**",
 

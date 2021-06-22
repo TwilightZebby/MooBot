@@ -34,7 +34,7 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 ---
 # Full command list
 
-## Slash Commands
+## Action Slash Commands
 
 | Command  | Description                 |
 |----------|-----------------------------|
@@ -44,23 +44,36 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 | /hug     | Give someone a cuddle       |
 | /kiss    | Slap a kiss on someone      |
 | /sleep   | Tell someone to go to sleep |
+| /slap    | Slap someone                |
 
-### Slash Command Options/Arguments
-*What parameters can be passed to the Slash Commands for extra functionality*
+### Action Slash Command Options/Arguments
+*What parameters can be passed to the Action Slash Commands for extra functionality*
 
-| Option | Requirement | Input Type                                   | Description                                   |
-|--------|-------------|----------------------------------------------|-----------------------------------------------|
-| person | required    | A String, or a User/Role/Everyone @mention\* | Used as the receiver of the Command           |
-| gif    | optional    | True/False                                   | Should a GIF be included in the sent message? |
+| Option | Requirement | Input Type                                   | Description                                         |
+|--------|-------------|----------------------------------------------|-----------------------------------------------------|
+| person | required    | A String, or a User/Role/Everyone @mention\* | Used as the receiver of the Command                 |
+| gif    | optional    | True/False                                   | Should a GIF be included in the sent message?       |
+| reason | optional    | A String                                     | A custom message to attach after the action message |
+
 
 \* *In the sent message, @user and @role mentions are suppressed so they don't send a ping/notification. @everyone/@here mentions are replaced with plain-text "everyone"*
 
 
+## Other Slash Commands
+
+| Command     | Description                                                |
+|-------------|------------------------------------------------------------|
+| /start\*\*  | Used to trigger one of Discord's built-in Voice Activities |
+
+\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc)*
+
+
+
 ## Text Commands
 
-| Command    | Description                                                     | Limitation    |
-|------------|-----------------------------------------------------------------|---------------|
-| a!register | Adds a new Slash Command to the Bot                             | Developer\*\* |
-| a!delete   | Removes an existing Slash Command from the Bot                  | Developer\*\* |
+| Command    | Description                                                     | Limitation      |
+|------------|-----------------------------------------------------------------|-----------------|
+| a!register | Adds a new Slash Command to the Bot                             | Developer\*\*\* |
+| a!delete   | Removes an existing Slash Command from the Bot                  | Developer\*\*\* |
 
-\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*
+\*\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*

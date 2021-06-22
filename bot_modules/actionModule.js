@@ -100,26 +100,26 @@ module.exports = {
             // Check person argument to see what type of response we need
             if ( roleTest ) {
 
-                displayMessage = ROLEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * ROLEMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = ROLEMESSAGES[`${commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
                 displayMessage = displayMessage.replace(roleRegEx, `${personOption}`);
 
             }
             else if ( everyoneTest ) {
 
-                displayMessage = EVERYONEMESSAGES[`${commandName}`][Math.floor( ( Math.random() * EVERYONEMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = EVERYONEMESSAGES[`${commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
 
             }
             else if ( await UtilityModule.TestForSelfMention(`${commandData.options[0].value}`, member) ) {
 
-                displayMessage = SELFMESSAGES[`${commandName}`][Math.floor( ( Math.random() * SELFMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = SELFMESSAGES[`${commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
 
             }
             else {
 
-                displayMessage = USERMESSAGES[`${commandName}`][Math.floor( ( Math.random() * USERMESSAGES[`${commandName}`].length ) + 0 )];
+                displayMessage = USERMESSAGES[`${commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
 

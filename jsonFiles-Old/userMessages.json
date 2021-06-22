@@ -1,0 +1,60 @@
+{
+    "headpat": [
+        "**{author}** gave **{receiver}** a headpat",
+        "**{receiver}** was given a comforting headpat by **{author}**",
+        "**{receiver}**, you got a pat from **{author}**",
+        "**{receiver}** received a headpat from **{author}**",
+        "**{author}** rewards **{receiver}** with a headpat",
+        "**{receiver}** requires headpats. **{author}** will deliver headpats."
+    ],
+
+    "hug": [
+        "**{author}** gave **{receiver}** a cuddle",
+        "**{author}** gave **{receiver}** a hug",
+        "**{receiver}** received a hug from **{author}**",
+        "**{receiver}** was hugged by **{author}**",
+        "Cuddle time! (Featuring **{author}** and **{receiver}** )"
+    ],
+
+    "bonk": [
+        "**{author}** bonked **{receiver}**",
+        "**{receiver}** was bonked by **{author}** for being a naughty peep",
+        "**{receiver}** was bonked by **{author}** for being a bad peep",
+        "**{receiver}** was bonked by **{author}**",
+        "BAD **{receiver}**! **{author}** has bonked you for your naughtiness!"
+    ],
+
+    "sleep": [
+        "**{author}** wants **{receiver}** to go to sleep!",
+        "**{author}** cares for **{receiver}**'s health and wants them to sleep!",
+        "**{author}** is wondering why **{receiver}** is still awake... GO TO SLEEP **{receiver}**!!!!",
+        "**{receiver}** has been ordered by **{author}** to go to sleep!",
+        "Does anyone else know why **{receiver}** is still awake? Because **{author}** surely doesn't..."
+    ],
+
+    "boop": [
+        "**{author}** booped **{receiver}**",
+        "**{receiver}**'s nose was booped by **{author}**",
+        "**{receiver}**, here comes the airplane! (booped by **{author}**)",
+        "Hey **{receiver}**, guess what? ||You've been booped by **{author}**!||",
+        "**{receiver}**\nYou\nHave\nBeen\nBOOPED (by **{author}**)",
+        "Swiggity swooty, **{author}** is booping **{receiver}**!"
+    ],
+
+    "kiss": [
+        "**{author}** kissed **{receiver}**",
+        "**{author}** gave **{receiver}** a cheeky kiss ;)",
+        "**{author}** pecked **{receiver}**'s cheek",
+        "**{author}** kissed **{receiver}** - On behalf of the single pringles, I would ask for your PDA to be taken elsewhere :)",
+        "**{author}** used [Sweet Kiss](https://bulbapedia.bulbagarden.net/wiki/Sweet_Kiss_(move)) on **{receiver}**!"
+    ],
+
+    "slap": [
+        "**{author}** slapped **{receiver}**",
+        "**{author}** gave **{receiver}** a royal slapping!",
+        "**{author}** gave **{receiver}** a back-handed slap!",
+        "**{author}** slapped **{receiver}** with a frying pan!",
+        "**{author}** slapped **{receiver}** with a spade!",
+        "**{author}** slapped **{receiver}** with a chair!"
+    ]
+}
