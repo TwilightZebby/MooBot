@@ -11,6 +11,7 @@ const SlashCommands = require('../bot_modules/slashModule.js');
 // VARIABLE IMPORTS
 const { client } = require('../constants.js');
 const { PREFIX } = require('../config.js');
+const utilityModule = require('../bot_modules/utilityModule.js');
 
 
 // REGEXS
@@ -18,6 +19,27 @@ const authorRegEx = new RegExp(/{author}/g);
 const everyoneMentionRegex = new RegExp(/@(everyone|here)/g);
 const roleRegEx = new RegExp(/{role}/g);
 const receiverRegEx = new RegExp(/{receiver}/g);
+
+
+/**
+ * Check to see if we need to use Member's Display Name for Mobile Users
+ * 
+ * @param {String} mentionArgument 
+ * @param {Discord.Guild} guildOBJ 
+ * @returns {String}
+ */
+async function CheckForMention(mentionArgument, guildOBJ)
+{
+    if ( await UtilityModule.TestForUserMention(mentionArgument) )
+    {
+        let mentionMember = await guildOBJ.members.fetch(await utilityModule.TestForUserMention(mentionArgument, true));
+        return mentionMember.displayName;
+        
+    } else
+    {
+        return mentionArgument;
+    }
+}
 
 
 
@@ -53,6 +75,13 @@ module.exports = {
         if ( !commandData.options[0] || commandData.options[0].value === undefined || commandData.options[0].value === '' ) {
             return await SlashCommands.CallbackEphemeral(data, `Strange, I couldn't see any arguments there.... Please try again`);
         }
+
+
+
+
+
+        // Fetch Guild, just in case
+        let authorGuild = await client.guilds.fetch(guildID);
 
 
 
@@ -119,6 +148,7 @@ module.exports = {
             }
             else {
 
+                personOption = await CheckForMention(personOption, authorGuild); // For mobile users
                 displayMessage = USERMESSAGES[`${commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${member["nick"] !== null ? member["nick"] : member.user["username"]}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
@@ -141,6 +171,7 @@ module.exports = {
             }
             else
             {
+                personOption = await CheckForMention(personOption, authorGuild); // For mobile users
                 displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
             }
 
