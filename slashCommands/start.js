@@ -200,8 +200,8 @@ module.exports = {
         {
           "name": "Fishington.io",
           "value": "fishington"
-        }
-        /*{
+        }/*,
+        {
           "name": "Test",
           "value": "test"
         }*/

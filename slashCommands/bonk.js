@@ -68,7 +68,7 @@ module.exports = {
 
       const option = {};
       option.name = "person";
-      option.description = "Either a name or an @mention";
+      option.description = "Either a name or an @mention (or multiple)";
       option.type = 3; // String
       option.required = true;
 
