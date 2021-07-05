@@ -65,7 +65,7 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 |-------------|------------------------------------------------------------|
 | /start\*\*  | Used to trigger one of Discord's built-in Voice Activities |
 
-\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc)*
+\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc). As an additional note, if you want to help Discord test their Poker Night feature, you can join their official server at [discord.gg/pokernight](https://discord.gg/pokernight)*
 
 
 
