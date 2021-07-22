@@ -120,19 +120,20 @@ module.exports = {
         method: 'POST',
         headers: { authorization: `Bot ${TOKEN}`, 'content-type': 'application/json' },
         body: JSON.stringify({
-          max_age: 1800,
+          max_age: 900,
           target_type: 2,
           target_application_id: argActivity == "poker" ? "755827207812677713" : 
             argActivity == "betrayal" ? "773336526917861400" : 
               argActivity == "youtube" ? "755600276941176913" : 
                 argActivity == "fishington" ? "814288819477020702" : 
-                  "438122941302046720"
+                  argActivity == "chess" ? "832012774040141894" :
+                    "438122941302046720"
         })
       });
 
       let newInvite = await newInviteRaw.json();
 
-      await SlashCommands.CallbackEphemeral(data, `[Click here to start the **${argActivity}** Activity inside the **${targetVoiceChannel.name}** Voice Channel](<https://discord.gg/${newInvite.code}>)\nNotes:\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 30 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`);
+      await SlashCommands.CallbackEphemeral(data, `[Click here to start the **${argActivity}** Activity inside the **${targetVoiceChannel.name}** Voice Channel](<https://discord.gg/${newInvite.code}>)\nNotes:\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 15 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`);
 
       delete targetGuild;
       delete targetVoiceChannel;
@@ -200,6 +201,10 @@ module.exports = {
         {
           "name": "Fishington.io",
           "value": "fishington"
+        },
+        {
+          "name": "Chess in the Park",
+          "value": "chess"
         }/*,
         {
           "name": "Test",

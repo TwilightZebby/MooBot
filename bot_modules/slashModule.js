@@ -16,7 +16,8 @@ const { PREFIX } = require('../config.js');
  * 6 = User
  * 7 = Channel
  * 8 = Role
- * 9 = Mentionable (User)
+ * 9 = Mentionable (User, Roles and Everyone/Here)
+ * 10 = Number (Integer and Float, unlike type 4 which doesn't accept Floats)
 */
 
 
@@ -25,6 +26,8 @@ const { PREFIX } = require('../config.js');
 * 1 = Pong                                 = ACK a ping
 * 4 = ChannelMessageWithSource             = ACK a command, responding with a message immediately
 * 5 = DeferredChannelMessageWithSource     = ACK a command to edit into a response later - shows "loading" state for User
+* 6 = DeferredUpdateMessage                = ACK a component to edit original message later - doesn't show "loading" state for User
+* 7 = UpdateMessage                        = ACK a component, while editing the original message the component is attached to
 */
 
 // THIS MODULE
