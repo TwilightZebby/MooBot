@@ -1,104 +1,48 @@
-// LIBRARY IMPORTS
-const fs = require('fs');
-const Discord = require("discord.js");
-
-// MODULE IMPORTS
-//const ErrorModule = require('../bot_modules/errorLogger.js');
-const SlashCommands = require('../bot_modules/slashModule.js');
-
-// VARIABLE IMPORTS
+const Discord = require('discord.js');
 const { client } = require('../constants.js');
-const { PREFIX } = require('../config.js');
 
 
-
-// THIS COMMAND
 module.exports = {
-    name: '',
-    description: '',
-
-    // LIMITATIONS
-    //     'twilightzebby' - Only TwilightZebby#1955 can use this command
-    //     If commented out, everyone can use this command
-    //limitation: 'twilightzebby',
-
-    // If the Slash Command can only be used in Guilds
-    //     Comment out if this Slash Command can also be used in DMs
-    //guildOnly: true,
-
-    // Command's cooldown, in seconds
+    name: 'commandName',
+    description: `A Description of the command`,
+    
+    // Cooldown is in seconds
     cooldown: 3,
 
+    // Uncomment for making the command only usable in DMs with the Bot
+    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
+    //dmOnly: true,
+
+    // Uncomment for making the command only usable in Servers
+    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
+    //guildOnly: true,
+
+
     /**
-     * Command's functionality
+     * Returns data to be used for registering the Slash Command
      * 
-     * @param {Discord.Guild} guild 
-     * @param {*} data
-     * @param {*} commandData
-     * @param {Discord.GuildMember} member
+     * @returns {Discord.ApplicationCommandData} 
      */
-    async execute(guild, data, commandData, member) {
+    async registerData() {
 
-      //.
+        const data = {};
+        data.name = this.name;
+        data.description = this.description;
+        data.type = "CHAT_INPUT"; // Slash Command
 
-      // END OF SLASH COMMAND
+        return data;
+
     },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
-     * Registers the Slash Command
+     * Entry point that runs the slash command
      * 
-     * @param {Boolean} isGlobal True if Global, False if Guild
-     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
+     * @param {Discord.CommandInteraction} slashInteraction Slash Command Interaction
      */
-     async register(isGlobal, guildID) {
+    async execute(slashInteraction) {
 
-      // Data
-      const data = {};
-      data.name = "sleep";
-      data.description = "Tell someone to go sleep!";
-      data.options = new Array();
-
-      const option = {};
-      option.name = "person";
-      option.description = "Either a name or an @mention";
-      option.type = 3; // String
-      option.required = true;
-
-      data.options.push(option);
-
-
-      const secondOption = {};
-      secondOption.name = "gif";
-      secondOption.description = "True to use a GIF, otherwise leave blank";
-      secondOption.type = 5; // Boolean
-      secondOption.required = false;
-
-      data.options.push(secondOption);
-
-      
-
-      if ( isGlobal ) {
-          client.api.applications(client.user.id).commands().post({data});
-      }
-      else {
-          client.api.applications(client.user.id).guilds(guildID).commands().post({data});
-      }
-
-      return;
+        //.
 
     }
-};
+}

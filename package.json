@@ -1,17 +1,8 @@
 {
   "name": "actionsbot",
-  "version": "3.5.3",
-  "description": "A small Discord Bot made for Dr1fterX's Discord to add silly Slash Commands",
+  "version": "4.0.0",
+  "description": "A small bot made by TwilightZebby for Dr1fterX's Discord Server to add Kawaii-Bot style Commands",
   "main": "index.js",
-  "dependencies": {
-    "bufferutil": "^4.0.2",
-    "discord.js": "^12.5.2",
-    "erlpack": "github:discord/erlpack",
-    "libsodium-wrappers": "^0.7.8",
-    "node-fetch": "^2.6.1",
-    "utf-8-validate": "^5.0.3",
-    "zlib-sync": "^0.1.7"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,14 +12,22 @@
   },
   "keywords": [
     "discord",
+    "discord-bot",
     "discordjs",
-    "nodejs",
-    "discord-bot"
+    "nodejs"
   ],
   "author": "TwilightZebby",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TwilightZebby/ActionsBot/issues"
   },
-  "homepage": "https://github.com/TwilightZebby/ActionsBot#readme"
+  "homepage": "https://github.com/TwilightZebby/ActionsBot#readme",
+  "dependencies": {
+    "bufferutil": "^4.0.3",
+    "discord.js": "^13.1.0",
+    "erlpack": "github:discord/erlpack",
+    "node-fetch": "^2.6.1",
+    "utf-8-validate": "^5.0.5",
+    "zlib-sync": "^0.1.7"
+  }
 }

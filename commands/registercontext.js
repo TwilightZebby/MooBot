@@ -3,8 +3,8 @@ const { client } = require('../constants.js');
 
 
 module.exports = {
-    name: 'register',
-    description: `Used for registering Slash Commands into the Bot`,
+    name: 'registercontext',
+    description: `Used for registering Context Commands into the Bot`,
     
     // Cooldown is in seconds
     cooldown: 10,
@@ -42,21 +42,21 @@ module.exports = {
      */
     async execute(message, args) {
 
-        // Check that given Slash Command name is valid
-        let slashCommand = client.slashCommands.get(args[0]);
+        // Check that given Context Command name is valid
+        let contextCommand = client.contextCommands.get(args[0]);
 
-        if ( !slashCommand )
+        if ( !contextCommand )
         {
-            return await message.reply({ content: `**${message.author.username}** sorry, but I don't recognise **${args[0]}** as a valid Slash Command that I have.`, allowedMentions: { parse: [], repliedUser: false } });
+            return await message.reply({ content: `**${message.author.username}** sorry, but I don't recognise **${args[0]}** as a valid Context Command that I have.`, allowedMentions: { parse: [], repliedUser: false } });
         }
 
 
         // No guild ID was given, register command globally
         if ( args.length === 1 )
         {
-            await client.application.commands.create(await slashCommand.registerData())
-            .then(async () => { return await message.reply({ content: `Successfully registered that Slash Command!`, allowedMentions: { parse: [], repliedUser: false } }) })
-            .catch(async (err) => { return await message.reply({ content: `Sorry, but there was an error while attempting to register that Slash Command.`, allowedMentions: { parse: [], repliedUser: false } }); })
+            await client.application.commands.create(await contextCommand.registerData())
+            .then(async () => { return await message.reply({ content: `Successfully registered that Context Command!`, allowedMentions: { parse: [], repliedUser: false } }) })
+            .catch(async (err) => { return await message.reply({ content: `Sorry, but there was an error while attempting to register that Context Command.`, allowedMentions: { parse: [], repliedUser: false } }); })
         }
         else
         {
@@ -65,8 +65,8 @@ module.exports = {
             let testGuild = await client.guilds.fetch(guildID)
             .catch(async (err) => { return await message.reply({ content: `Sorry, but that wasn't a valid Server ID...`, allowedMentions: { parse: [], repliedUser: false } }) });
 
-            await client.application.commands.create(await slashCommand.registerData(), guildID)
-            .then(async () => { return await message.reply({ content: `Successfully registered that Slash Command to the **${testGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } }) });
+            await client.application.commands.create(await contextCommand.registerData(), guildID)
+            .then(async () => { return await message.reply({ content: `Successfully registered that Context Command to the **${testGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } }) });
         }
 
         return;
