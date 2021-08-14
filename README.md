@@ -69,15 +69,17 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 |---------------|------------------------------------------------------------|
 | /start\*\*\*  | Used to trigger one of Discord's built-in Voice Activities |
 
-\*\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc). As an additional note, if you want to help Discord test their Poker Night feature, you can join their official server at [discord.gg/pokernight](https://discord.gg/pokernight)*
+\*\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc). As an additional note, if you want to help Discord test their Poker Night and/or Chess feature, you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 
 
 
 ## Text Commands
 
-| Command    | Description                                                     | Limitation        |
-|------------|-----------------------------------------------------------------|-------------------|
-| a!register | Adds a new Slash Command to the Bot                             | Developer\*\*\*\* |
-| a!delete   | Removes an existing Slash Command from the Bot                  | Developer\*\*\*\* |
+| Command           | Description                                                       | Limitation        |
+|-------------------|-------------------------------------------------------------------|-------------------|
+| a!register        | Adds a new Slash Command to the Bot                               | Developer\*\*\*\* |
+| a!registercontext | Adds a new Context Command to the Bot                             | Developer\*\*\*\* |
+| a!delete          | Removes an existing Slash Command from the Bot                    | Developer\*\*\*\* |
+| a!deletecontext   | Removes an existing Context Command from the Bot                  | Developer\*\*\*\* |
 
 \*\*\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*
