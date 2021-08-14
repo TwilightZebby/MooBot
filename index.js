@@ -62,11 +62,11 @@ client.once('ready', () => {
     });
 
     // Refreshes the status
-    setInterval(() => {
+    /* setInterval(() => {
         client.user.setPresence({
             status: 'online'
         });
-    }, 1.08e+7);
+    }, 1.08e+7); */
 
     console.log("I am ready!");
 
