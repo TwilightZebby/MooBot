@@ -222,6 +222,7 @@ module.exports = {
         // JSON IMPORTS
         const USERMESSAGES = require('../jsonFiles/userMessages.json');
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
+        const BOTMESSAGES = require('../jsonFiles/botMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
 
@@ -236,6 +237,13 @@ module.exports = {
         {
             displayMessage = SELFMESSAGES[`${contextCommand.commandName}`];
             displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
+        }
+        // Used on a Bot User
+        else if ( contextTarget.user.bot )
+        {
+            displayMessage = BOTMESSAGES[`${contextCommand.commandName}`];
+            displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
+            displayMessage = displayMessage.replace(receiverRegEx, `${contextTarget.displayName}`);
         }
         // Used on another member
         else
