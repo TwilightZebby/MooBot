@@ -201,5 +201,52 @@ module.exports = {
             delete embed;
             return;
         }
+    },
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Main handler for Action Context Commands
+     * 
+     * @param {Discord.ContextMenuInteraction} contextCommand
+     */
+    async contextRespond(contextCommand)
+    {
+        // JSON IMPORTS
+        const USERMESSAGES = require('../jsonFiles/userMessages.json');
+        const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
+
+        const GIFLINKS = require('../jsonFiles/gifLinks.json');
+
+        let contextTarget = contextCommand.options.resolved.members.first();
+
+
+        let displayMessage = "";
+
+        // DISPLAY MESSAGE
+        // If used on self
+        if ( contextTarget.user.id === contextCommand.user.id )
+        {
+            displayMessage = SELFMESSAGES[`${contextCommand.commandName}`];
+            displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
+        }
+        // Used on another member
+        else
+        {
+            displayMessage = USERMESSAGES[`${contextCommand.commandName}`];
+            displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
+            displayMessage = displayMessage.replace(receiverRegEx, `${contextTarget.displayName}`);
+        }
+
+
+
+        return await contextCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } });
     }
 }

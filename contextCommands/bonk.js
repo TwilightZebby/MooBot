@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const { client } = require('../constants.js');
+const ActionModule = require('../modules/actionModule.js');
 
 
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
      */
     async execute(contextInteraction) {
 
-        //.
+        return await ActionModule.contextRespond(contextInteraction);
 
     }
 }
