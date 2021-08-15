@@ -57,7 +57,7 @@ module.exports = {
         {
             // Check that the given Context Command does exist globally
             let fetchedAllContextCommands = await client.application.commands.fetch();
-            let foundContextCommand = fetchedAllContextCommands.find(appCommand => appCommand.name === args[0]);
+            let foundContextCommand = fetchedAllContextCommands.find(appCommand => appCommand.name === args[0] && appCommand.type !== "CHAT_INPUT");
 
             // Context Command not found, assume not registered
             if ( !foundContextCommand )
@@ -83,7 +83,7 @@ module.exports = {
 
             // Check that Context Command does exist within that Server
             let fetchedGuildContextCommands = await client.application.commands.fetch({ guildId: guildID });
-            let foundGuildContextCommand = fetchedGuildContextCommands.find(appCommand => appCommand.name === args[0]);
+            let foundGuildContextCommand = fetchedGuildContextCommands.find(appCommand => appCommand.name === args[0] && appCommand.type !== "CHAT_INPUT");
 
             // Context Command not found, assume not registered in that Server
             if ( !foundGuildContextCommand )

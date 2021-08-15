@@ -57,7 +57,7 @@ module.exports = {
         {
             // Check that the given Slash Command does exist globally
             let fetchedAllSlashCommands = await client.application.commands.fetch();
-            let foundSlashCommand = fetchedAllSlashCommands.find(appCommand => appCommand.name === args[0]);
+            let foundSlashCommand = fetchedAllSlashCommands.find(appCommand => appCommand.name === args[0] && appCommand.type === "CHAT_INPUT");
 
             // Slash Command not found, assume not registered
             if ( !foundSlashCommand )
@@ -83,7 +83,7 @@ module.exports = {
 
             // Check that Slash Command does exist within that Server
             let fetchedGuildSlashCommands = await client.application.commands.fetch({ guildId: guildID });
-            let foundGuildSlashCommand = fetchedGuildSlashCommands.find(appCommand => appCommand.name === args[0]);
+            let foundGuildSlashCommand = fetchedGuildSlashCommands.find(appCommand => appCommand.name === args[0] && appCommand.type === "CHAT_INPUT");
 
             // Slash Command not found, assume not registered in that Server
             if ( !foundGuildSlashCommand )
