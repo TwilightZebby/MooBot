@@ -1,107 +1,69 @@
-// LIBRARY IMPORTS
-const fs = require('fs');
-const Discord = require("discord.js");
-
-// MODULE IMPORTS
-const ActionModule = require('../bot_modules/actionModule.js');
-
-// VARIABLE IMPORTS
+const Discord = require('discord.js');
 const { client } = require('../constants.js');
-const { PREFIX } = require('../config.js');
+const ActionModule = require('../modules/actionModule.js');
 
 
-
-// THIS COMMAND
 module.exports = {
     name: 'headpat',
-    description: 'Comfort someone with a headpat',
-
-    // LIMITATIONS
-    //     'twilightzebby' - Only TwilightZebby#1955 can use this command
-    //     If commented out, everyone can use this command
-    //limitation: 'twilightzebby',
-
-    // If the Slash Command can only be used in Guilds
-    //     Comment out if this Slash Command can also be used in DMs
-    guildOnly: true,
-
-    // Command's cooldown, in seconds
+    description: `Comfort someone with a headpat`,
+    
+    // Cooldown is in seconds
     cooldown: 5,
 
-    /**
-     * Command's functionality
-     * 
-     * @param {String|null} guildID Null if used in DMs
-     * @param {*} data
-     * @param {*} commandData
-     * @param {*|null} member Null if used in DMs
-     * @param {*|null} user Null if used in Guilds
-     */
-    async execute(guildID, data, commandData, member, user) {
+    // Uncomment for making the command only usable in DMs with the Bot
+    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
+    //dmOnly: true,
 
-      return await ActionModule.Respond("headpat", guildID, data, commandData, member);
-      
-      // END OF SLASH COMMAND
+    // Uncomment for making the command only usable in Servers
+    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
+    guildOnly: true,
+
+
+    /**
+     * Returns data to be used for registering the Slash Command
+     * 
+     * @returns {Discord.ApplicationCommandData} 
+     */
+    async registerData() {
+
+        const data = {};
+        data.name = this.name;
+        data.description = this.description;
+        data.type = "CHAT_INPUT"; // Slash Command
+        data.options = [
+            {
+                type: "STRING",
+                name: "person",
+                description: "Either a name or @mention",
+                required: true
+            },
+            {
+                type: "BOOLEAN",
+                name: "gif",
+                description: "True to display a GIF, otherwise leave blank or use False",
+                required: false
+            },
+            {
+                type: "STRING",
+                name: "reason",
+                description: "A custom message to add onto the end of the built-in messages",
+                required: false
+            }
+        ];
+
+        return data;
+
     },
 
 
-
-
-
-
-
-
-
     /**
-     * Registers the poke Slash Command
+     * Entry point that runs the slash command
      * 
-     * @param {Boolean} isGlobal True if Global, False if Guild
-     * @param {String} [guildID] Provide Guild ID if Guild Command, otherwise ignore
+     * @param {Discord.CommandInteraction} slashInteraction Slash Command Interaction
      */
-    async register(isGlobal, guildID) {
+    async execute(slashInteraction) {
 
-      // Data
-      const data = {};
-      data.name = "headpat";
-      data.description = "Comfort someone with a headpat";
-      data.options = new Array();
+        return await ActionModule.slashRespond(slashInteraction);
 
-      const option = {};
-      option.name = "person";
-      option.description = "Either a name or an @mention (or multiple)";
-      option.type = 3; // String
-      option.required = true;
-
-      data.options.push(option);
-
-
-      const secondOption = {};
-      secondOption.name = "gif";
-      secondOption.description = "True to use a GIF, otherwise leave blank";
-      secondOption.type = 5; // Boolean
-      secondOption.required = false;
-
-      data.options.push(secondOption);
-      
-
-      const thirdOption = {};
-      thirdOption.name = "reason";
-      thirdOption.description = "A custom reason to use";
-      thirdOption.type = 3; // String
-      thirdOption.required = false;
-
-      data.options.push(thirdOption);
-
-      
-
-      if ( isGlobal ) {
-          client.api.applications(client.user.id).commands().post({data});
-      }
-      else {
-          client.api.applications(client.user.id).guilds(guildID).commands().post({data});
-      }
-
-      return;
-
-  }
-};
+    }
+}

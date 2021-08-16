@@ -1,14 +1,9 @@
 // LIBRARY IMPORTS
 const Discord = require('discord.js');
 
-// MODULE IMPORTS
-//const ErrorModule = require('../bot_modules/errorLogger.js');
-
 // VARIABLE IMPORTS
 const { client } = require('../constants.js');
 const { PREFIX } = require('../config.js');
-
-
 
 // THIS MODULE
 module.exports = {
@@ -306,22 +301,18 @@ module.exports = {
      * Check for if the given [at]User mention matches the Author's ID
      * 
      * @param {String} string 
-     * @param {Discord.GuildMember} member
+     * @param {Discord.User} user
      * 
      * @returns {Promise<Boolean>} 
      */
-    async TestForSelfMention(string, member) {
+    async TestForSelfMention(string, user) {
 
         let matchedString = string.replace('<@', '');
         matchedString = matchedString.replace('!', '');
         matchedString = matchedString.replace('>', '');
 
         
-        if ( matchedString === member.user.id ) {
-            return true;
-        }
-        else if ( matchedString === member.user["id"] ) {
-            // For Slash Commands
+        if ( matchedString === user.id ) {
             return true;
         }
         else {
@@ -331,5 +322,4 @@ module.exports = {
 
         // END OF MODULE
     }
-
-};
+}
