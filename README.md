@@ -53,11 +53,11 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 ### Action Slash Command Options/Arguments
 *What parameters can be passed to the Action Slash Commands for extra functionality*
 
-| Option | Requirement | Input Type                                     | Description                                         |
-|--------|-------------|------------------------------------------------|-----------------------------------------------------|
-| person | required    | A String, or a User/Role/Everyone @mention\*\* | Used as the receiver of the Command                 |
-| gif    | optional    | True/False                                     | Should a GIF be included in the sent message?       |
-| reason | optional    | A String                                       | A custom message to attach after the action message |
+| Option | Requirement | Input Type                   | Description                                         |
+|--------|-------------|------------------------------|-----------------------------------------------------|
+| person | required    | Any User or Role Mention\*\* | Used as the receiver of the Command                 |
+| gif    | optional    | True/False                   | Should a GIF be included in the sent message?       |
+| reason | optional    | A String                     | A custom message to attach after the action message |
 
 
 \*\* *In the sent message, @user and @role mentions are suppressed so they don't send a ping/notification. @everyone/@here mentions are replaced with plain-text "everyone"*
