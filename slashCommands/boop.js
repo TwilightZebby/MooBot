@@ -32,9 +32,9 @@ module.exports = {
         data.type = "CHAT_INPUT"; // Slash Command
         data.options = [
             {
-                type: "STRING",
+                type: "MENTIONABLE",
                 name: "person",
-                description: "Either a name or @mention",
+                description: "The person you want to boop",
                 required: true
             },
             {
