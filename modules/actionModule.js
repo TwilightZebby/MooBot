@@ -58,7 +58,7 @@ module.exports = {
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
 
 
-        // Check for edge case of no given arguments
+        /* // Check for edge case of no given arguments
         if ( !slashCommand.options.get("person") )
         {
             return await slashCommand.reply({ content: `Strange, I can't seem to see any arguments there... Please try again!`, ephemeral: true });
@@ -200,7 +200,7 @@ module.exports = {
             await slashCommand.reply({ embeds: [embed], allowedMentions: { parse: [] } });
             delete embed;
             return;
-        }
+        } */
     },
 
 
