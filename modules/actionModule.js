@@ -53,115 +53,117 @@ module.exports = {
         const ROLEMESSAGES = require('../jsonFiles/roleMessages.json');
         const EVERYONEMESSAGES = require('../jsonFiles/everyoneMessages.json');
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
+        const BOTMESSAGES = require('../jsonFiles/botMessages.json');
         const CUSTOMMESSAGES = require('../jsonFiles/customMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
 
 
-        /* // Check for edge case of no given arguments
-        if ( !slashCommand.options.get("person") )
-        {
-            return await slashCommand.reply({ content: `Strange, I can't seem to see any arguments there... Please try again!`, ephemeral: true });
-        }
-
-
         // Grab given arguments
-        let personOption = slashCommand.options.get("person", true).value;
-
+        let personArgument = slashCommand.options.getMentionable("person", true);
         let gifArgument = slashCommand.options.get("gif");
         let gifOption = gifArgument == null ? undefined : gifArgument.value;
-
         let reasonArgument = slashCommand.options.get("reason");
         let reasonOption = reasonArgument == null ? undefined : reasonArgument.value;
 
 
-        // Check for sneaky role and [at]everyone pings, as well as channel mentions
-        const roleTest = await UtilityModule.TestForRoleMention(`${personOption}`);
-        const everyoneTest = await UtilityModule.TestForEveryoneMention(`${personOption}`);
-        const channelTest = await UtilityModule.TestForChannelMention(`${personOption}`);
-
-
-        // Channel Mentions are not supported, for clear and obvious reasons
-        if ( channelTest )
-        {
-            return await slashCommand.reply({ content: `Sorry, but I cannot accept #channel mentions!`, ephemeral: true });
-        }
-
-
         let displayMessage = "";
 
-        // BUILT-IN MESSAGES, NOT CUSTOM
+        // No custom message given
         if ( !reasonOption )
         {
-            // Check person argument
-            if ( roleTest )
+            // Check person argument so we know what type of mention was given ([at]user, [at]role, or [at]everyone/here)
+            if ( (personArgument instanceof Discord.Role) && (personArgument.id === personArgument.guild.id) )
             {
-                displayMessage = ROLEMESSAGES[`${slashCommand.commandName}`];
-                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
-                displayMessage = displayMessage.replace(roleRegEx, `${personOption}`);
-            }
-            else if ( everyoneTest )
-            {
+                // EVERYONE & HERE MENTIONS
                 displayMessage = EVERYONEMESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
             }
-            else if ( await UtilityModule.TestForSelfMention(`${personOption}`, slashCommand.user) )
+            else if ( (personArgument instanceof Discord.Role) && (personArgument.id !== personArgument.guild.id) )
             {
+                // ROLES THERE ARE NOT EVERYONE AND HERE MENTIONS
+                displayMessage = ROLEMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+                displayMessage = displayMessage.replace(roleRegEx, `<@&${personArgument.id}>`);
+            }
+            else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === slashCommand.user.id) )
+            {
+                // USER MENTION - used on self
                 displayMessage = SELFMESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
             }
+            else if ( (personArgument instanceof Discord.GuildMember) && personArgument.user.bot )
+            {
+                // USER MENTION - used on a bot user
+                displayMessage = BOTMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+                displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.user.username}`);
+            }
             else
             {
-                personOption = await CheckForMention(personOption, slashCommand.guild); // For mobile users :)
+                // USER MENTION - used on someone else
                 displayMessage = USERMESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
-                displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
+                displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
             }
         }
-        // CUSTOM MESSAGES
+        // Custom message given
         else
         {
             displayMessage = CUSTOMMESSAGES[`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
-
-            // Add on custom message
             displayMessage += ` ${reasonOption}`;
 
-            // Check for [at]Everyone/Here pings
-            if ( everyoneTest )
+
+            // Check for mentions
+            if ( (personArgument instanceof Discord.Role) && (personArgument.id === personArgument.guild.id) )
             {
+                // EVERYONE & HERE MENTIONS
                 displayMessage = displayMessage.replace(receiverRegEx, `everyone`);
             }
-            else
+            
+            if ( (personArgument instanceof Discord.Role) && (personArgument.id !== personArgument.guild.id) )
             {
-                personOption = await CheckForMention(personOption, slashCommand.guild); // For mobile users :)
-                displayMessage = displayMessage.replace(receiverRegEx, `${personOption}`);
+                // ROLES THERE ARE NOT EVERYONE AND HERE MENTIONS
+                displayMessage = displayMessage.replace(receiverRegEx, `<@&${personArgument.id}>`);
+            }
+            
+            if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === slashCommand.user.id) )
+            {
+                // USER MENTION - used on self
+                displayMessage = SELFMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+                displayMessage += ` ${reasonOption}`;
             }
 
-            // Check for [at]Role pings
-            if ( await UtilityModule.TestForRoleMention(reasonOption) )
+            if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id !== slashCommand.user.id) )
             {
-                return await slashCommand.reply({ content: `Sorry, but @role mentions aren't allowed in custom messages!`, ephemeral: true });
+                // USER MENTION - used on literally anyone else
+                displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
             }
 
-            // Remove [at]Everyone/Here pings
+
+            // Check reason argument for sneaky mentions
             if ( await UtilityModule.TestForEveryoneMention(reasonOption) )
             {
                 displayMessage = displayMessage.replace(everyoneMentionRegex, `everyone`);
+            }
+
+            if ( await UtilityModule.TestForRoleMention(reasonOption) )
+            {
+                return await slashCommand.reply({ content: `Sorry, but @role mentions aren't allowed in custom reasons/messages!`, ephemeral: true });
             }
         }
 
 
 
-        // Check for GIF argument
+        // Check GIF argument
         if ( !gifOption || gifOption === false )
         {
-            // Use an Embed for Role Mentions, just in case that "allowed_mentions" API flag breaks again
-            if ( roleTest )
+            // No GIF, but use an embed if role mention was included
+            if ( personArgument instanceof Discord.Role )
             {
-                let fetchRole = await slashCommand.guild.roles.fetch((await UtilityModule.TestForRoleMention(personOption, true)));
-                const embed = new Discord.MessageEmbed().setColor(`${fetchRole.hexColor}`).setDescription(displayMessage);
-
+                const embed = new Discord.MessageEmbed().setColor(personArgument.hexColor).setDescription(displayMessage);
                 await slashCommand.reply({ embeds: [embed], allowedMentions: { parse: [] } });
                 delete embed;
             }
@@ -174,33 +176,15 @@ module.exports = {
         }
         else
         {
-            // Use an embed due to GIF
+            // Yes GIF option
             const embed = new Discord.MessageEmbed().setDescription(displayMessage)
-            .setImage(GIFLINKS[`${slashCommand.commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${slashCommand.commandName}`].length ) + 0 )]);
-
-
-            // Role Colour
-            if ( roleTest )
-            {
-                let fetchRole = await slashCommand.guild.roles.fetch(( await UtilityModule.TestForRoleMention(personOption, true) ));
-                embed.setColor(`${fetchRole.hexColor}`);
-            }
-            // [at]Mentioned User
-            else if ( await UtilityModule.TestForUserMention(personOption) )
-            {
-                let fetchMember = await slashCommand.guild.members.fetch(( await UtilityModule.TestForUserMention(personOption, true) ));
-                embed.setColor(`${fetchMember.displayHexColor}`);
-            }
-            // plain-text and [at]Everyone/Here mentions
-            else
-            {
-                embed.setColor('RANDOM');
-            }
+            .setImage(GIFLINKS[`${slashCommand.commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${slashCommand.commandName}`].length ) + 0 )])
+            .setColor(personArgument instanceof Discord.Role ? personArgument.hexColor : personArgument instanceof Discord.GuildMember ? personArgument.displayHexColor : 'RANDOM');
 
             await slashCommand.reply({ embeds: [embed], allowedMentions: { parse: [] } });
             delete embed;
             return;
-        } */
+        }
     },
 
 
