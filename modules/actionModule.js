@@ -54,6 +54,7 @@ module.exports = {
         const EVERYONEMESSAGES = require('../jsonFiles/everyoneMessages.json');
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
         const BOTMESSAGES = require('../jsonFiles/botMessages.json');
+        const AUTHORMESSAGES = require('../jsonFiles/authorSpecificMessages.json');
         const CUSTOMMESSAGES = require('../jsonFiles/customMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
@@ -101,8 +102,16 @@ module.exports = {
             }
             else
             {
+                // USER MENTION - used *by* a specific User who has a custom set of stored messages
+                if ( AUTHORMESSAGES[`${slashCommand.user.id}`] )
+                {
+                    displayMessage = AUTHORMESSAGES[`${slashCommand.user.id}`][`${slashCommand.commandName}`];
+                }
                 // USER MENTION - used on someone else
-                displayMessage = USERMESSAGES[`${slashCommand.commandName}`];
+                else
+                {
+                    displayMessage = USERMESSAGES[`${slashCommand.commandName}`];
+                }
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
             }
