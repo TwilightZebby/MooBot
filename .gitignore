@@ -1,7 +1,12 @@
 /node_modules
 config.js
 /.vscode
+
 /commands/test.js
+
 /contextCommands/test.js
+
 /slashCommands/test.js
+
 /jsonFiles-AprilFools
+/jsonFiles/authorSpecificMessages.json
