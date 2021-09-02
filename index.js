@@ -15,6 +15,7 @@ client.contextCommands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.slashCooldowns = new Discord.Collection();
 client.contextCooldowns = new Discord.Collection();
+client.hotPotato = new Discord.Collection();
 
 
 // BRING IN TEXT COMMANDS
