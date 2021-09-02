@@ -81,5 +81,8 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 | a!registercontext | Adds a new Context Command to the Bot                             | Developer\*\*\*\* |
 | a!delete          | Removes an existing Slash Command from the Bot                    | Developer\*\*\*\* |
 | a!deletecontext   | Removes an existing Context Command from the Bot                  | Developer\*\*\*\* |
+| a!setmsg          | Adds a custom pre-set Action Message for a User                   | Developer\*\*\*\* |
+| a!clearmsgs       | Removes all custom pre-set Action Messages for a User             | Developer\*\*\*\* |
+| a!addgif          | Adds a new GIF link to an Action Slash Command                    | Developer\*\*\*\* |
 
 \*\*\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*
