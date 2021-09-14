@@ -3,6 +3,7 @@ config.js
 /.vscode
 
 /commands/test.js
+/commands/shutdown.js
 
 /contextCommands/test.js
 
