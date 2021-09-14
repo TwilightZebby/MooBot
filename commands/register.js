@@ -70,15 +70,23 @@ module.exports = {
                 await message.reply({ content: `Successfully registered that Slash Command to the **${testGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } });
 
                 // Purely for the "notathing" slash command at the moment
-                if ( slashCommand.slashPermissions )
+                if ( slashCommand.slashPermissions && ["838517664661110795", "284431454417584128"].includes(guildID) )
                 {
-                    // Fetch my testing, and Dr1fterX's, Guilds
-                    let testingGuild = await client.guilds.fetch("838517664661110795");
-                    //let dr1fterxGuild = await client.guilds.fetch("284431454417584128");
+                    switch(guildID)
+                    {
+                        case "838517664661110795":
+                            let testingGuild = await client.guilds.fetch("838517664661110795");
+                            await testingGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
+                            break;
 
-                    // Add the Slash Command's permissions to the Guilds
-                    await testingGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
-                    //await dr1fterxGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
+                        case "284431454417584128":
+                            let dr1fterxGuild = await client.guilds.fetch("284431454417584128");
+                            await dr1fterxGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
 
                 return;
