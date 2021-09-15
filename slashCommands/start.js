@@ -34,7 +34,8 @@ module.exports = {
                 type: "CHANNEL",
                 name: "channel",
                 description: "Voice Channel to start the Activity in",
-                required: true
+                required: true,
+                channelTypes: [ 2 ]
             },
             {
                 type: "STRING",

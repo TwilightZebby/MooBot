@@ -66,7 +66,31 @@ module.exports = {
             .catch(async (err) => { return await message.reply({ content: `Sorry, but that wasn't a valid Server ID...`, allowedMentions: { parse: [], repliedUser: false } }) });
 
             await client.application.commands.create(await slashCommand.registerData(), guildID)
-            .then(async () => { return await message.reply({ content: `Successfully registered that Slash Command to the **${testGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } }) });
+            .then(async (appCmd) => { 
+                await message.reply({ content: `Successfully registered that Slash Command to the **${testGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } });
+
+                // Purely for the "notathing" slash command at the moment
+                if ( slashCommand.slashPermissions && ["838517664661110795", "284431454417584128"].includes(guildID) )
+                {
+                    switch(guildID)
+                    {
+                        case "838517664661110795":
+                            let testingGuild = await client.guilds.fetch("838517664661110795");
+                            await testingGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
+                            break;
+
+                        case "284431454417584128":
+                            let dr1fterxGuild = await client.guilds.fetch("284431454417584128");
+                            await dr1fterxGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                return;
+            });
         }
 
         return;
