@@ -3,7 +3,7 @@ const { client } = require('../constants.js');
 const { PREFIX, TwilightZebbyID } = require('../config.js');
 
 const ErrorModule = require('./errorLog.js');
-const NotAModule = require('../slashCommands/notathing.js');
+const PotatoModule = require('../slashCommands/potato.js');
 
 module.exports = {
     /**
@@ -19,9 +19,9 @@ module.exports = {
         // since Buttons are far to customisable lol
 
         // Not a thing
-        if ( buttonInteraction.customId.includes("nat") )
+        if ( buttonInteraction.customId.includes("potato") )
         {
-            return await NotAModule.HandleButton(buttonInteraction);
+            return await PotatoModule.HandleButton(buttonInteraction);
         }
         return;
     }
