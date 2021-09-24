@@ -55,7 +55,7 @@ module.exports = {
             {
                 type: "USER",
                 name: "person",
-                description: "The person you want to nibble",
+                description: "The person you want to give nightmares",
                 required: true
             },
             {
