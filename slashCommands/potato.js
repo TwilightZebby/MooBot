@@ -18,16 +18,6 @@ module.exports = {
     guildOnly: true,
 
 
-    // Slash Command Permission object
-    slashPermissions: [
-        {
-            id: "156482326887530498",
-            type: 2,
-            permission: true
-        }
-    ],
-
-
     /**
      * Returns data to be used for registering the Slash Command
      * 
