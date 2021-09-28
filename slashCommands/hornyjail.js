@@ -17,6 +17,20 @@ module.exports = {
     //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
     guildOnly: true,
 
+    // Slash Command Permission object
+    slashPermissions: [
+        {
+            id: "136391162876395520",
+            type: 2,
+            permission: true
+        },
+        {
+            id: "156482326887530498",
+            type: 2,
+            permission: true
+        }
+    ],
+
 
     /**
      * Returns data to be used for registering the Slash Command
@@ -29,6 +43,7 @@ module.exports = {
         data.name = this.name;
         data.description = this.description;
         data.type = "CHAT_INPUT"; // Slash Command
+        data.defaultPermission = false;
         data.options = [
             {
                 type: "USER",
@@ -179,5 +194,106 @@ module.exports = {
             }
         }, 300000);
 
+    },
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Handles the Voting buttons
+     * 
+     * @param {Discord.ButtonInteraction} buttonInteraction
+     */
+    async HandleVotingButtons(buttonInteraction)
+    {
+        // Grab Button's Custom ID & data we need
+        let receivedCustomId = buttonInteraction.customId.slice(5);
+        let receivedCustomData = receivedCustomId.split("_");
+        let receivedVote = receivedCustomData.shift();
+        let receivedSuspect = await buttonInteraction.guild.members.fetch(receivedCustomData.shift());
+
+        // Grab from Collection
+        let fetchedCollection = client.suspect.get(receivedSuspect.id);
+
+        /* let suspectConstruct = {
+            suspectID: suspectMember.id,
+            accuserID: slashInteraction.user.id,
+            votesYes: [],
+            votesNo: [],
+            suspectPleads: null,
+        }; */
+
+
+        // Initial check that they haven't already voted
+        if ( fetchedCollection.votesNo.includes(buttonInteraction.user.id) || fetchedCollection.votesYes.includes(buttonInteraction.user.id) )
+        {
+            return await buttonInteraction.reply({ content: `You have already cast your vote!`, ephemeral: true });
+        }
+
+
+        // Suspect is voting for themselves, take vote as what they pleed
+        if ( receivedSuspect.id === buttonInteraction.user.id )
+        {
+            if ( fetchedCollection.suspectPleads === null )
+            {
+                // Edit Collection
+                let plead = receivedVote === "yes" ? "Guilty" : "Innocent";
+                fetchedCollection.suspectPleads = plead;
+                client.suspect.set(receivedSuspect.id, fetchedCollection);
+
+                // Add to existing embed
+                let messageEmbed = buttonInteraction.message.embeds.shift();
+                messageEmbed.addFields({ name: `Suspect Pleaded`, value: `${plead}` });
+
+                // Edit into message
+                return await buttonInteraction.update({ embeds: [messageEmbed] });
+            }
+            else
+            {
+                // Suspect has already declared their plea!
+                return await buttonInteraction.reply({ content: `Sorry, but you've already declared your plea!`, ephemeral: true });
+            }
+
+        }
+        // Accuser is voting, deny vote
+        else if ( fetchedCollection.accuserID === buttonInteraction.user.id )
+        {
+            return await buttonInteraction.reply({ content: `You can't place a vote when you're the Accuser!`, ephemeral: true });
+        }
+        // Vote Yes (Guilty)
+        else if ( receivedVote === "yes" )
+        {
+            // Add to collection
+            fetchedCollection.votesYes.push(buttonInteraction.user.id);
+            client.suspect.set(receivedSuspect.id, fetchedCollection);
+
+            // Update Embed
+            let messageEmbed = buttonInteraction.message.embeds.shift();
+            messageEmbed.fields[1].value = fetchedCollection.votesYes.size;
+
+            // Update message
+            return await buttonInteraction.update({ embeds: [messageEmbed] });
+        }
+        // Vote No (Innocent)
+        else if ( receivedVote === "no" )
+        {
+            // Add to collection
+            fetchedCollection.votesNo.push(buttonInteraction.user.id);
+            client.suspect.set(receivedSuspect.id, fetchedCollection);
+
+            // Update Embed
+            let messageEmbed = buttonInteraction.message.embeds.shift();
+            messageEmbed.fields[0].value = fetchedCollection.votesNo.size;
+
+            // Update message
+            return await buttonInteraction.update({ embeds: [messageEmbed] });
+        }
     }
 }
