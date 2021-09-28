@@ -18,6 +18,17 @@ module.exports = {
     guildOnly: true,
 
 
+    // Slash Command Permission object
+    slashPermissions: [
+        { id: "598145033069264907", type: 1, permission: false },
+        { id: "432235256960253952", type: 1, permission: false },
+        { id: "555496450667315210", type: 1, permission: false },
+        { id: "555496495013691395", type: 1, permission: false },
+        { id: "653291305056731152", type: 1, permission: false },
+        { id: "578217284586176532", type: 1, permission: false }
+    ],
+
+
     /**
      * Returns data to be used for registering the Slash Command
      * 
