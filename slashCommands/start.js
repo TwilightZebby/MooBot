@@ -46,8 +46,9 @@ module.exports = {
                     { name: "Poker Night", value: "poker" },
                     { name: "Chess in the Park", value: "chess" },
                     { name: "YouTube Together", value: "youtube" },
-                    { name: "Betrayal.io", value: "betrayal" },
-                    { name: "Fishington.io", value: "fishington" }
+                    { name: "Doodle", value: "doodle" },
+                    { name: "Letter Tile", value: "letter" },
+                    { name: "Word Snacks", value: "snacks" }
                 ]
             }
         ];
@@ -89,9 +90,10 @@ module.exports = {
 
         let activitySnowflake = argActivity === "poker" ? "755827207812677713" :
             argActivity === "chess" ? "832012774040141894" :
-                argActivity === "youtube" ? "755600276941176913" :
-                    argActivity === "betrayal" ? "773336526917861400" :
-                        "814288819477020702"; // Last one is Fishington.io
+                argActivity === "youtube" ? "880218394199220334" :
+                    argActivity === "doodle" ? "878067389634314250" :
+                        argActivity === "letter" ? "879863686565621790" :
+                            "879863976006127627"; // Last one is Word Snacks
 
 
         // Create Link
