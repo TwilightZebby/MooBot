@@ -78,6 +78,12 @@ module.exports = {
             return await slashInteraction.reply({ content: `<@${suspectMember.id}> (**${suspectMember.displayName}**) already has an ongoing trial against them!`, ephemeral: true });
         }
 
+        // Prevent being used on Bots
+        if ( suspectMember.user.bot )
+        {
+            return await slashInteraction.reply({ content: `Sorry, but you cannot accuse Bots of being horny!`, ephemeral: true });
+        }
+
         // Make Buttons
 
         let suspectPollRows = [
@@ -250,7 +256,7 @@ module.exports = {
 
                 // Add to existing embed
                 let messageEmbed = buttonInteraction.message.embeds.shift();
-                messageEmbed.addFields({ name: `Suspect Pleaded`, value: `${plead}` });
+                messageEmbed.addFields({ name: `Suspect has pleaded`, value: `${plead}` });
 
                 // Edit into message
                 return await buttonInteraction.update({ embeds: [messageEmbed] });
