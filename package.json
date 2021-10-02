@@ -1,6 +1,6 @@
 {
   "name": "actionsbot",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "description": "A small bot made by TwilightZebby for Dr1fterX's Discord Server to add Kawaii-Bot style Commands",
   "main": "index.js",
   "scripts": {

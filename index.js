@@ -15,7 +15,9 @@ client.contextCommands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 client.slashCooldowns = new Discord.Collection();
 client.contextCooldowns = new Discord.Collection();
-client.notAThing = new Discord.Collection();
+client.potato = new Discord.Collection();
+client.jail = new Discord.Collection();
+client.suspect = new Discord.Collection();
 
 
 // BRING IN TEXT COMMANDS

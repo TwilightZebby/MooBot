@@ -8,7 +8,6 @@ config.js
 /contextCommands/test.js
 
 /slashCommands/test.js
-/slashCommands/notathing.js
 
 /jsonFiles-AprilFools
 /jsonFiles/authorSpecificMessages.json

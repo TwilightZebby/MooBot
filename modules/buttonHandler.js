@@ -3,7 +3,8 @@ const { client } = require('../constants.js');
 const { PREFIX, TwilightZebbyID } = require('../config.js');
 
 const ErrorModule = require('./errorLog.js');
-const NotAModule = require('../slashCommands/notathing.js');
+const PotatoModule = require('../slashCommands/potato.js');
+const JailModule = require('../slashCommands/hornyjail.js');
 
 module.exports = {
     /**
@@ -18,10 +19,15 @@ module.exports = {
         // Left blank for custom implentation depending on use-case,
         // since Buttons are far to customisable lol
 
-        // Not a thing
-        if ( buttonInteraction.customId.includes("nat") )
+        // Potato
+        if ( buttonInteraction.customId.startsWith("potato") )
         {
-            return await NotAModule.HandleButton(buttonInteraction);
+            return await PotatoModule.HandleButton(buttonInteraction);
+        }
+        // Jail
+        else if ( buttonInteraction.customId.startsWith("jail") )
+        {
+            return await JailModule.HandleVotingButtons(buttonInteraction);
         }
         return;
     }
