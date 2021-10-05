@@ -65,9 +65,11 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 
 ## Other Slash Commands
 
-| Command       | Description                                                |
-|---------------|------------------------------------------------------------|
-| /start\*\*\*  | Used to trigger one of Discord's built-in Voice Activities |
+| Command       | Description                                                | Note                                     |
+|---------------|------------------------------------------------------------|                                          |
+| /start\*\*\*  | Used to trigger one of Discord's built-in Voice Activities |                                          |
+| /potato       | Starts a Hot Potato game for the current Channel           |                                          |
+| /hornyjail    | Accuse another User of being horny and send them to Jail!  | Will be useable in November 2021 only ;P |
 
 \*\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc). As an additional note, if you want to help Discord test their Voice Game/Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 
