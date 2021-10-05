@@ -66,7 +66,7 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 ## Other Slash Commands
 
 | Command       | Description                                                | Note                                     |
-|---------------|------------------------------------------------------------|                                          |
+|---------------|------------------------------------------------------------|------------------------------------------|
 | /start\*\*\*  | Used to trigger one of Discord's built-in Voice Activities |                                          |
 | /potato       | Starts a Hot Potato game for the current Channel           |                                          |
 | /hornyjail    | Accuse another User of being horny and send them to Jail!  | Will be useable in November 2021 only ;P |
