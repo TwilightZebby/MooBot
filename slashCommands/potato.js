@@ -1,6 +1,11 @@
 const Discord = require('discord.js');
 const { client } = require('../constants.js');
 
+// Thy Button (but disabled!)
+const messageActionRowDisabled = new Discord.MessageActionRow().addComponents(
+    new Discord.MessageButton().setCustomId(`potatodisabled`).setLabel(`Pass Potato!`).setStyle('PRIMARY').setEmoji('🥔').setDisabled(false)
+);
+
 
 module.exports = {
     name: 'potato',
@@ -145,8 +150,11 @@ module.exports = {
                 // refetch to make sure we have latest current user
                 let refetchedPotato = client.potato.get(slashInteraction.channelId);
 
-                // Update message
-                slashInteraction.editReply({ content: `Times up! The Hot Potato has exploded, taking <@${refetchedPotato.currentUserID}> ( **${refetchedPotato.currentUserName}** ) with it!`, components: [], allowedMentions: { parse: [] } });
+                // Update message to remove buttons
+                slashInteraction.editReply({ components: [messageActionRowDisabled], allowedMentions: { parse: [] } });
+                
+                // Send new follow-up type message in order to respect Message Edit Ratelimits a little lol
+                slashInteraction.followUp({ content: `Times up! The Hot Potato has exploded, taking <@${refetchedPotato.currentUserID}> ( **${refetchedPotato.currentUserName}** ) with it!`, allowedMentions: { parse: [] } });
 
                 // Delete object, ready for new game
                 client.potato.delete(slashInteraction.channelId);
