@@ -3,7 +3,7 @@ const { client } = require('../constants.js');
 
 // Thy Button (but disabled!)
 const messageActionRowDisabled = new Discord.MessageActionRow().addComponents(
-    new Discord.MessageButton().setCustomId(`potatodisabled`).setLabel(`Pass Potato!`).setStyle('PRIMARY').setEmoji('🥔').setDisabled(false)
+    new Discord.MessageButton().setCustomId(`potatodisabled`).setLabel(`Pass Potato!`).setStyle('PRIMARY').setEmoji('🥔').setDisabled(true)
 );
 
 
