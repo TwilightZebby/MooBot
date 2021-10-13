@@ -91,15 +91,35 @@ module.exports = {
         let reasonArgument = slashInteraction.options.get("reason");
         let reasonOption = reasonArgument == null ? undefined : reasonArgument.value;
 
+        // Test for self-mentions
+        if ( personArgument.id === slashInteraction.user.id )
+        {
+            return await slashInteraction.reply({ content: `Sorry, you can't use this command on yourself!`, ephemeral: true });
+        }
+
         // Find out if User is a Vampire or ZombieZ
         if ( personArgument.roles.cache.has('496038245629427752') )
         {
             // VAMPIRE
+
+            // Test for mentions of someone in the same Spooky House
+            if ( personArgument.roles.cache.has('496038245629427752') )
+            {
+                return await slashInteraction.reply({ content: `Sorry, but you can't use this command on your own Halloween House Members!`, ephemeral: true });
+            }
+
             displayMessage = SPOOKYMESSAGES[`vampire`];
         }
         else if ( personArgument.roles.cache.has('496038998184165377') )
         {
             // ZOMBIEZ
+
+            // Test for mentions of someone in the same Spooky House
+            if ( personArgument.roles.cache.has('496038998184165377') )
+            {
+                return await slashInteraction.reply({ content: `Sorry, but you can't use this command on your own Halloween House Members!`, ephemeral: true });
+            }
+
             displayMessage = SPOOKYMESSAGES[`zombiez`];
         }
 

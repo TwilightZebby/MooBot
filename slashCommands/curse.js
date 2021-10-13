@@ -86,6 +86,20 @@ module.exports = {
         let reasonArgument = slashInteraction.options.get("reason");
         let reasonOption = reasonArgument == null ? undefined : reasonArgument.value;
 
+
+        // Test for self-mentions
+        if ( personArgument.id === slashInteraction.user.id )
+        {
+            return await slashInteraction.reply({ content: `Sorry, you can't use this command on yourself!`, ephemeral: true });
+        }
+
+        // Test for mentions of someone in the same Spooky House
+        if ( personArgument.roles.cache.has('496038912402128918') )
+        {
+            return await slashInteraction.reply({ content: `Sorry, but you can't use this command on your own Halloween House Members!`, ephemeral: true });
+        }
+
+
         displayMessage = SPOOKYMESSAGES[`witchesWizards`];
 
 
