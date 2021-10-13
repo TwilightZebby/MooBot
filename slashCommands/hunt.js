@@ -51,6 +51,7 @@ module.exports = {
         data.name = this.name;
         data.description = this.description;
         data.type = "CHAT_INPUT"; // Slash Command
+        data.defaultPermission = false;
         data.options = [
             {
                 type: "USER",
