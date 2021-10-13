@@ -107,12 +107,12 @@ module.exports = {
         // Construct Message
         if ( !reasonOption )
         {
-            displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+            displayMessage = displayMessage.replace(authorRegEx, `${slashInteraction.member.displayName}`);
             displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
         }
         else
         {
-            displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+            displayMessage = displayMessage.replace(authorRegEx, `${slashInteraction.member.displayName}`);
             displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
             displayMessage += ` ${reasonOption}`;
 
