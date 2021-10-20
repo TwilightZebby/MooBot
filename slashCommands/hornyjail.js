@@ -26,7 +26,7 @@ module.exports = {
     guildOnly: true,
 
     // Slash Command Permission object
-    slashPermissions: [
+    /* slashPermissions: [
         {
             id: "136391162876395520",
             type: 2,
@@ -37,7 +37,7 @@ module.exports = {
             type: 2,
             permission: true
         }
-    ],
+    ], */
 
 
     /**
@@ -51,7 +51,7 @@ module.exports = {
         data.name = this.name;
         data.description = this.description;
         data.type = "CHAT_INPUT"; // Slash Command
-        data.defaultPermission = false;
+        //data.defaultPermission = false;
         data.options = [
             {
                 type: "USER",
