@@ -5,7 +5,7 @@ const tempRegex = new RegExp(/(?<amount>-?\d+(?:\.\d*)?)[^\S\n]*(?<degrees>°|de
 
 
 module.exports = {
-    name: 'convertTemperature',
+    name: 'Convert Temperature',
     description: `Convert temperatures from Messages`,
     
     // Cooldown is in seconds
