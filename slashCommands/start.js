@@ -48,7 +48,8 @@ module.exports = {
                     { name: "YouTube Together", value: "youtube" },
                     { name: "Doodle", value: "doodle" },
                     { name: "Letter Tile", value: "letter" },
-                    { name: "Word Snacks", value: "snacks" }
+                    { name: "Word Snacks", value: "snacks" },
+                    { name: "SpellCast", value: "spell" }
                 ]
             }
         ];
@@ -93,7 +94,8 @@ module.exports = {
                 argActivity === "youtube" ? "880218394199220334" :
                     argActivity === "doodle" ? "878067389634314250" :
                         argActivity === "letter" ? "879863686565621790" :
-                            "879863976006127627"; // Last one is Word Snacks
+                            argActivity === "snacks" ? "879863976006127627" :
+                                "852509694341283871"; // Last one is SpellCast
 
 
         // Create Link
