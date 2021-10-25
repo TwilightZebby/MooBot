@@ -9,6 +9,8 @@ config.js
 
 /slashCommands/test.js
 
+/slashCommandsArchived
+
 /jsonFiles-AprilFools
 /jsonFiles/authorSpecificMessages.json
 /jsonFiles/gifLinks.json
