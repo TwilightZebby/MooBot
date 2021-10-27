@@ -45,6 +45,22 @@ module.exports = {
             return await contextInteraction.reply({ content: `Sorry, but that message doesn't have any content for me to check!`, ephemeral: true });
         }
 
+        // No Bot Messages!
+        if ( contextMessage.author.bot )
+        {
+            return await contextInteraction.reply({ content: `Sorry, but that was a Bot's Message, I don't check those!`, ephemeral: true });
+        }
+
+        // No System Messages!
+        if ( contextMessage.system )
+        {
+            return await contextMessage.reply({ content: `...Why did you try using me on a Discord System Message? :c`, ephemeral: true });
+        }
+
+
+
+        
+
         // Check MSG content actually has temps in it for us to convert
         let tempSearch = contextMessage.content.match(tempRegex);
 
