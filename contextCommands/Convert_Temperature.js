@@ -8,7 +8,7 @@ const kelvinRegex = new RegExp(/(?<amount>-?\d+(?:\.\d*)?)[^\S\n]*(?<degrees>°|
 
 
 module.exports = {
-    name: 'convertTemperature',
+    name: 'Convert_Temperature',
     description: `Convert temperatures from Messages`,
     
     // Cooldown is in seconds
@@ -22,7 +22,7 @@ module.exports = {
     async registerData() {
 
         const data = {};
-        data.name = this.name;
+        data.name = this.name.split('_').join(' ');
         data.description = "";
         data.type = "MESSAGE"; // Either "USER" or "MESSAGE"
 
