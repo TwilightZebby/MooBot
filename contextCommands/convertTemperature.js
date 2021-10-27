@@ -38,12 +38,7 @@ module.exports = {
      */
     async execute(contextInteraction) {
 
-        // First, ensure message actually has content to prevent being broken by BOT EMBEDS
         let contextMessage = contextInteraction.options.getMessage('message');
-        if ( !contextMessage.content || contextMessage.content === '' )
-        {
-            return await contextInteraction.reply({ content: `Sorry, but that message doesn't have any content for me to check!`, ephemeral: true });
-        }
 
         // No Bot Messages!
         if ( contextMessage.author.bot )
@@ -54,12 +49,18 @@ module.exports = {
         // No System Messages!
         if ( contextMessage.system )
         {
-            return await contextMessage.reply({ content: `...Why did you try using me on a Discord System Message? :c`, ephemeral: true });
+            return; // Because we cannot reply based off a System Message
+        }
+
+        // Ensure message actually has content to prevent being broken
+        if ( !contextMessage.content || contextMessage.content === '' )
+        {
+            return await contextInteraction.reply({ content: `Sorry, but that message doesn't have any content for me to check!`, ephemeral: true });
         }
 
 
 
-        
+
 
         // Check MSG content actually has temps in it for us to convert
         let tempSearch = contextMessage.content.match(tempRegex);
