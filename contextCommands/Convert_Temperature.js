@@ -74,12 +74,36 @@ module.exports = {
         {
             // Convert temp
             let convertedTemp = this.convert(tempSearch.shift());
-            return await contextInteraction.reply({ content: `Here is your converted temperatures!\n\n• ${convertedTemp}` });
+            await contextInteraction.reply({ content: `Here is your converted temperatures!\n\n• ${convertedTemp}` });
+            delete convertedTemp;
+            delete tempSearch;
+            return;
         }
         // 10 or less results
         else if ( tempSearch.length > 1 && tempSearch.length <= 10 )
         {
-            //.
+            // Defer just in case
+            await contextInteraction.deferReply();
+
+            // Loop through, converting all the temperatures
+            let convertedTemps = [];
+
+            tempSearch.forEach((item) => {
+                let tempConversion = this.convert(item);
+
+                // To catch WHATEVER THE FUCK IS CAUSING THIS BECAUSE FUCK IF I KNOW
+                while ( !tempConversion || tempConversion === undefined || tempConversion === null )
+                {
+                    tempConversion = this.convert(item);
+                }
+
+                convertedTemps.push(`• ${tempConversion}`);
+            });
+
+            await contextInteraction.editReply({ content: `Here is your converted temperatures!\n\n${convertedTemps.join(`\n`)}` });
+            delete convertedTemps;
+            delete tempSearch;
+            return;
         }
         // More than 10 results, reject to not cause spam
         else
