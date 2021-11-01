@@ -14,6 +14,13 @@ module.exports = {
      */
     async Main(contextInteraction)
     {
+        // To catch for Context CMDs that have spaces in their UI name
+        if ( contextInteraction.commandName.includes(" ") )
+        {
+            contextInteraction.commandName = contextInteraction.commandName.split(" ").join("_");
+        }
+
+        // Find Command
         const contextCommand = client.contextCommands.get(contextInteraction.commandName);
 
         if ( !contextCommand )
