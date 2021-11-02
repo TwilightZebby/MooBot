@@ -74,7 +74,7 @@ module.exports = {
         {
             // Convert temp
             let convertedTemp = this.convert(tempSearch.shift());
-            await contextInteraction.reply({ content: `Here is your converted temperatures!\n\n• ${convertedTemp}` });
+            await contextInteraction.reply({ content: `[Jump to Source Message](<${contextMessage.url}>)\nHere is your converted temperatures!\n\n• ${convertedTemp}` });
             delete convertedTemp;
             delete tempSearch;
             return;
@@ -100,7 +100,7 @@ module.exports = {
                 convertedTemps.push(`• ${tempConversion}`);
             });
 
-            await contextInteraction.editReply({ content: `Here is your converted temperatures!\n\n${convertedTemps.join(`\n`)}` });
+            await contextInteraction.editReply({ content: `[Jump to Source Message](<${contextMessage.url}>)\nHere is your converted temperatures!\n\n${convertedTemps.join(`\n`)}` });
             delete convertedTemps;
             delete tempSearch;
             return;
