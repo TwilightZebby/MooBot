@@ -2,12 +2,10 @@ const Discord = require('discord.js');
 const { client } = require('../constants.js');
 
 // Disabled Buttons
-const suspectPollRowsDisabled = [
-    new Discord.MessageActionRow().addComponents([
+const suspectPollRowsDisabled = new Discord.MessageActionRow().addComponents([
         new Discord.MessageButton().setCustomId(`jailyesdisabled`).setLabel("Guilty").setStyle('DANGER').setDisabled(true),
         new Discord.MessageButton().setCustomId(`jailnodisabled`).setLabel("Innocent").setStyle('SUCCESS').setDisabled(true)
-    ])
-];
+    ]);
 
 
 module.exports = {
@@ -92,6 +90,12 @@ module.exports = {
             return await slashInteraction.reply({ content: `Sorry, but you cannot accuse Bots of being horny!`, ephemeral: true });
         }
 
+        // Prevent being used on self
+        if ( slashInteraction.user.id === suspectMember.id )
+        {
+            return await slashInteraction.reply({ content: `Sorry, but you cannot use this command on yourself!`, ephemeral: true });
+        }
+
         // Make Buttons
 
         let suspectPollRows = [
@@ -127,7 +131,8 @@ module.exports = {
 
 
         // After 5 minutes, count votes
-        setTimeout(async () => {
+        setTimeout(() => {
+
             let finalSuspect = client.suspect.get(suspectMember.id);
 
             // Error checking
@@ -136,13 +141,12 @@ module.exports = {
                 client.suspect.delete(suspectMember.id);
                 let failEmbed = new Discord.MessageEmbed().setDescription(`Whoops, something went wrong while attempting to determine <@${suspectMember.id}>'s (**${suspectMember.displayName}**'s) guiltiness... Guess they are going free, *for now*`)
                 .setColor('BLURPLE');
-                await slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
-                return await slashInteraction.followUp({ embeds: [failEmbed] });
+                slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
+                return slashInteraction.followUp({ embeds: [failEmbed] });
             }
 
-
             // Count votes
-            if ( finalSuspect.votesYes === finalSuspect.votesNo )
+            if ( finalSuspect.votesYes.length === finalSuspect.votesNo.length )
             {
                 // Jury is tied/undecided
                 if ( finalSuspect.suspectPleads === "guilty" )
@@ -160,13 +164,14 @@ module.exports = {
                     let jailEmbed = new Discord.MessageEmbed().setDescription(`The Jury was undecided, however, since <@${suspectMember.id}>'s (**${suspectMember.displayName}**'s) pleeded guilty, they shall go to Horny Jail anyways!`)
                     .setColor('RED');
 
-                    await slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
-                    await slashInteraction.followUp({ embeds: [jailEmbed] });
+                    slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
+                    slashInteraction.followUp({ embeds: [jailEmbed] });
 
                     // Set 1 hour timer for Horny Jail
                     setTimeout(() => {
                         client.jail.delete(suspectMember.id);
                     }, 3.6e+6);
+                    return;
                 }
 
                 // Let suspect go free
@@ -174,20 +179,20 @@ module.exports = {
                 let freeEmbed = new Discord.MessageEmbed().setDescription(`The Jury was undecided and couldn't agree on a verdict. Thus, <@${suspectMember.id}> (**${suspectMember.displayName}**) is allowed to go free *for the time being*`)
                 .setColor('GREEN');
 
-                await slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
-                return await slashInteraction.followUp({ embeds: [freeEmbed] });
+                slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
+                return slashInteraction.followUp({ embeds: [freeEmbed] });
             }
-            else if ( finalSuspect.votesYes < finalSuspect.votesNo )
+            else if ( finalSuspect.votesYes.length < finalSuspect.votesNo.length )
             {
                 // More of the Jury voted Innocent over Guilty
                 client.suspect.delete(suspectMember.id);
                 let freeEmbed = new Discord.MessageEmbed().setDescription(`The Jury has decided their verdict. <@${suspectMember.id}> (**${suspectMember.displayName}**) was found innocent can is set free!`)
                 .setColor('GREEN');
 
-                await slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
-                return await slashInteraction.followUp({ embeds: [freeEmbed] });
+                slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
+                return slashInteraction.followUp({ embeds: [freeEmbed] });
             }
-            else if ( finalSuspect.votesYes > finalSuspect.votesNo )
+            else if ( finalSuspect.votesYes.length > finalSuspect.votesNo.length )
             {
                 // More of the Jury voted Guilty over Innocent
                 // Send to Horny Jail
@@ -203,13 +208,14 @@ module.exports = {
                 let jailEmbed = new Discord.MessageEmbed().setDescription(`The Jury has decided their verdict. <@${suspectMember.id}>'s (**${suspectMember.displayName}**'s) was found guilty and shall be sent to Horny Jail!`)
                 .setColor('RED');
 
-                await slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
-                await slashInteraction.followUp({ embeds: [jailEmbed] });
+                slashInteraction.editReply({ components: [suspectPollRowsDisabled] });
+                slashInteraction.followUp({ embeds: [jailEmbed] });
 
                 // Set 1 hour timer for Horny Jail
                 setTimeout(() => {
                     client.jail.delete(suspectMember.id);
                 }, 3.6e+6);
+                return;
             }
         }, 300000);
 
@@ -295,7 +301,7 @@ module.exports = {
 
             // Update Embed
             let messageEmbed = buttonInteraction.message.embeds.shift();
-            messageEmbed.fields[1].value = fetchedCollection.votesYes.size;
+            messageEmbed.fields[1].value = `${fetchedCollection.votesYes.length}`;
 
             // Update message
             return await buttonInteraction.update({ embeds: [messageEmbed] });
@@ -309,7 +315,7 @@ module.exports = {
 
             // Update Embed
             let messageEmbed = buttonInteraction.message.embeds.shift();
-            messageEmbed.fields[0].value = fetchedCollection.votesNo.size;
+            messageEmbed.fields[0].value = `${fetchedCollection.votesNo.length}`;
 
             // Update message
             return await buttonInteraction.update({ embeds: [messageEmbed] });
