@@ -11,6 +11,7 @@ const suspectPollRowsDisabled = new Discord.MessageActionRow().addComponents([
 module.exports = {
     name: 'hornyjail',
     description: `Found a peep being naughty? Send them straight to Horny Jail!`,
+    category: 'seasonal',
     
     // Cooldown is in seconds
     cooldown: 60,

@@ -6,6 +6,7 @@ const ActionModule = require('../modules/actionModule.js');
 module.exports = {
     name: 'kiss',
     description: `Slap a kiss on someone *blushes*`,
+    category: 'action',
     
     // Cooldown is in seconds
     cooldown: 5,

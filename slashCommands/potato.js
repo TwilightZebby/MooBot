@@ -10,6 +10,7 @@ const messageActionRowDisabled = new Discord.MessageActionRow().addComponents(
 module.exports = {
     name: 'potato',
     description: `Starts a Hot Potato game!`,
+    category: 'misc',
     
     // Cooldown is in seconds
     cooldown: 60,

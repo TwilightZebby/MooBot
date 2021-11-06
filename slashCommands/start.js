@@ -5,6 +5,7 @@ const { client } = require('../constants.js');
 module.exports = {
     name: 'start',
     description: `Start a Discord Voice Activity or Game in a Voice Channel`,
+    category: 'misc',
     
     // Cooldown is in seconds
     cooldown: 120,
