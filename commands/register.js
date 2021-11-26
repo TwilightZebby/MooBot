@@ -75,6 +75,8 @@ module.exports = {
                     switch(guildID)
                     {
                         case "838517664661110795":
+                            // Catch for seasonal commands so I can test freely
+                            if ( slashCommand.category === "seasonal" ) { break; }
                             let testingGuild = await client.guilds.fetch("838517664661110795");
                             await testingGuild.commands.permissions.add({ command: appCmd.id, permissions: slashCommand.slashPermissions });
                             break;
