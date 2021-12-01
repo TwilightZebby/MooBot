@@ -4,7 +4,6 @@ const { PREFIX, TwilightZebbyID } = require('../config.js');
 
 const ErrorModule = require('./errorLog.js');
 const PotatoModule = require('../slashCommands/potato.js');
-const JailModule = require('../slashCommands/hornyjail.js');
 
 module.exports = {
     /**
@@ -23,11 +22,6 @@ module.exports = {
         if ( buttonInteraction.customId.startsWith("potato") )
         {
             return await PotatoModule.HandleButton(buttonInteraction);
-        }
-        // Jail
-        else if ( buttonInteraction.customId.startsWith("jail") )
-        {
-            return await JailModule.HandleVotingButtons(buttonInteraction);
         }
         return;
     }
