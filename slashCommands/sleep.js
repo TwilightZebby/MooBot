@@ -6,6 +6,7 @@ const ActionModule = require('../modules/actionModule.js');
 module.exports = {
     name: 'sleep',
     description: `Tell someone to go to sleep!`,
+    category: 'action',
     
     // Cooldown is in seconds
     cooldown: 5,

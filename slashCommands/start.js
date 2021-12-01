@@ -5,6 +5,7 @@ const { client } = require('../constants.js');
 module.exports = {
     name: 'start',
     description: `Start a Discord Voice Activity or Game in a Voice Channel`,
+    category: 'misc',
     
     // Cooldown is in seconds
     cooldown: 120,
@@ -49,7 +50,8 @@ module.exports = {
                     { name: "Doodle", value: "doodle" },
                     { name: "Letter Tile", value: "letter" },
                     { name: "Word Snacks", value: "snacks" },
-                    { name: "SpellCast", value: "spell" }
+                    { name: "SpellCast", value: "spell" },
+                    { name: "Checkers in the Park", value: "checkers" }
                 ]
             }
         ];
@@ -95,7 +97,8 @@ module.exports = {
                     argActivity === "doodle" ? "878067389634314250" :
                         argActivity === "letter" ? "879863686565621790" :
                             argActivity === "snacks" ? "879863976006127627" :
-                                "852509694341283871"; // Last one is SpellCast
+                                argActivity === "spell" ? "852509694341283871" :
+                                    "832013003968348200"; // Last one is Checkers in the Park
 
 
         // Create Link

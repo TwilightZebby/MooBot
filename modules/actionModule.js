@@ -55,6 +55,7 @@ module.exports = {
         const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
         const BOTMESSAGES = require('../jsonFiles/botMessages.json');
         const AUTHORMESSAGES = require('../jsonFiles/authorSpecificMessages.json');
+        const ACTIONBOTMESSAGES = require('../jsonFiles/actionsBotMessages.json');
         const CUSTOMMESSAGES = require('../jsonFiles/customMessages.json');
 
         const GIFLINKS = require('../jsonFiles/gifLinks.json');
@@ -92,6 +93,13 @@ module.exports = {
                 // USER MENTION - used on self
                 displayMessage = SELFMESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+            }
+            else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === client.user.id) )
+            {
+                // USER MENTION - used on the Actions Bot itself
+                displayMessage = ACTIONBOTMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+                displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.user.username}`);
             }
             else if ( (personArgument instanceof Discord.GuildMember) && personArgument.user.bot )
             {

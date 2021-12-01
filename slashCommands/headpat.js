@@ -6,6 +6,7 @@ const ActionModule = require('../modules/actionModule.js');
 module.exports = {
     name: 'headpat',
     description: `Comfort someone with a headpat`,
+    category: 'action',
     
     // Cooldown is in seconds
     cooldown: 5,

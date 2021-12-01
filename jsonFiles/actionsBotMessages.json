@@ -1,0 +1,15 @@
+{
+    "headpat": "**{author}** gave **{receiver}** a headpat",
+
+    "hug": "**{author}** gave **{receiver}** a cuddle",
+
+    "bonk": "I bonked **{author}** in retaliation - nobody attempts to bonk me!",
+
+    "sleep": "Sorry **{author}**, but you don't have power over me! *I will never go to sleep!!*",
+
+    "boop": "**{author}** booped **{receiver}**",
+
+    "kiss": "**{author}** kissed **{receiver}** - wait, me? *Oh my...* 😳",
+
+    "slap": "**{author}** slapped **{receiver}** - *rude...* :c"
+}
