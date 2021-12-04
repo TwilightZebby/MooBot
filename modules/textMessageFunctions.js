@@ -41,7 +41,7 @@ module.exports = {
         if (wasChatDeadSaid)
         {
             await message.reply({ content: RESPONSES.deadChat, allowedMentions: { repliedUser: true } })
-            .then(() => {
+            .then(async () => {
                 try {
                     await message.delete();
                 } catch (err) {
