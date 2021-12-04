@@ -42,10 +42,11 @@ module.exports = {
         {
             await message.reply({ content: RESPONSES.deadChat, allowedMentions: { repliedUser: true } })
             .then(async () => {
-                try {
+                // permission check
+                let botMember = await message.guild.members.fetch(client.user.id);
+                if ( botMember.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES, true) )
+                {
                     await message.delete();
-                } catch (err) {
-                    console.error(err);
                 }
             });
             return;
