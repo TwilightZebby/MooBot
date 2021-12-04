@@ -181,6 +181,7 @@ client.on('rateLimit', async (rateLimitInfo) => {
 // MESSAGE CREATE EVENT (when a new message is sent)
 
 const TextCommandHandler = require('./modules/textCommandHandler.js');
+const TextMessageFunctions = require('./modules/textMessageFunctions.js');
 
 client.on('messageCreate', async (message) => {
     
@@ -208,6 +209,7 @@ client.on('messageCreate', async (message) => {
     if ( textCommandSuccess === false )
     {
         // No command prefix detected, so not a command
+        await TextMessageFunctions.NoDeadChat(message);
         return;
     }
     else if ( textCommandSuccess !== false && textCommandSuccess !== true )
