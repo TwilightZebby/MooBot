@@ -118,7 +118,17 @@ module.exports = {
                 // USER MENTION - used on someone else
                 else
                 {
-                    displayMessage = USERMESSAGES[`${slashCommand.commandName}`];
+                    if ( USERMESSAGES[`${slashCommand.commandName}`] instanceof Array )
+                    {
+                        // RANDOMISE TIME!
+                        // Just for seasonal messages hehe
+                        displayMessage = USERMESSAGES[`${slashCommand.commandName}`][Math.floor((Math.random() * USERMESSAGES[`${slashCommand.commandName}`].length) + 0)];
+                    }
+                    else
+                    {
+                        // No multiple messages, just a single one so no randomiser
+                        displayMessage = USERMESSAGES[`${slashCommand.commandName}`];
+                    }
                 }
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);

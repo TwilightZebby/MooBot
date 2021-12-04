@@ -3,7 +3,20 @@
 
     "hug": "**{author}** gave **{receiver}** a cuddle",
 
-    "bonk": "**{author}** bonked **{receiver}** with a candy cane",
+    "bonk": [
+        "**{author}** bonked **{receiver}**",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a candy cane",
+        "**{author}** bonked **{receiver}** with a Christmas tree 🎄"
+    ],
 
     "sleep": "**{author}** wants **{receiver}** to go to sleep!",
 
