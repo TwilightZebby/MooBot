@@ -65,10 +65,11 @@ A small Discord Bot made for Dr1fterX's [Discord Server](https://discord.gg/URH5
 
 ## Other Slash Commands
 
-| Command       | Description                                                | Note                                                                       |
-|---------------|------------------------------------------------------------|----------------------------------------------------------------------------|
-| /start\*\*\*  | Used to trigger one of Discord's built-in Voice Activities | Will be removed when Discord fully releases their Voice Activities feature |
-| /potato       | Starts a Hot Potato game for the current Channel           |                                                                            |
+| Command       | Description                                                         | Note                                                                       |
+|---------------|---------------------------------------------------------------------|----------------------------------------------------------------------------|
+| /start\*\*\*  | Used to trigger one of Discord's built-in Voice Activities          | Will be removed when Discord fully releases their Voice Activities feature |
+| /potato       | Starts a Hot Potato game for the current Channel                    |                                                                            |
+| /birthday     | Used to either set or remove one's Birthday (for the Birthday Role) |                                                                            |
 
 \*\*\* *This Slash Command will be removed from the Actions Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as YouTube Together, Poker Night, etc). As an additional note, if you want to help Discord test their Voice Game/Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 

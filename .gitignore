@@ -14,3 +14,4 @@ config.js
 /jsonFiles-AprilFools
 /jsonFiles/authorSpecificMessages.json
 /jsonFiles/gifLinks.json
+/hiddenJsonFiles
