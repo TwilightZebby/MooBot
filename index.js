@@ -187,8 +187,24 @@ client.on('messageCreate', async (message) => {
     // Prevent other Bots and System stuff from triggering this Bot
     if ( message.author.bot || message.system || message.author.system ) { return; }
 
-    // Ignore DM Messages
-    if ( message.channel instanceof Discord.DMChannel ) { return; }
+    // JUST FOR TRIVIA EVENT
+    // Repost Messages DM'ed to this Bot to a private Text Channel
+    if ( message.channel instanceof Discord.DMChannel )
+    { 
+        /**
+         * @type Discord.TextChannel
+         */
+        let repostChannel = await (await client.guilds.fetch(ErrorLogGuildID)).channels.fetch('918509383296630855');
+
+        if (message.partial)
+        {
+            await message.fetch();
+        }
+
+        repostMessage = `DM from **${message.author.username}#${message.author.discriminator}** :\n${message.content}`;
+
+        return repostChannel.send({ content: repostMessage, allowedMentions: { parse: [] } });
+    }
 
     // Prevent Discord Outages from crashing or breaking the Bot
     if ( !message.guild.available ) { return; }
