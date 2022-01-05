@@ -1,48 +1,64 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
-
+const CONSTANTS = require('../constants.js');
 
 module.exports = {
+    // Command Name
     name: 'commandName',
-    description: `A Description of the command`,
-    
-    // Cooldown is in seconds
+    // Description of command
+    description: `Description`,
+    // Category of Command, used for Help Command
+    category: 'general',
+
+    // Alias(es) of command, if any
+    // Uncomment if there will be some
+    //alias: [],
+
+    // Command Cooldown, in seconds
+    // If not provided or is commented out, will default to 3 seconds
     cooldown: 3,
 
-    // Limitation
-    //    - "dev" for TwilightZebby only
-    //    - "owner" for Server Owners and TwilightZebby
-    //    - Comment out for everyone
-    //limitation: "everyone",
-
-    // Uncomment for making the command only usable in DMs with the Bot
-    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
+    // Is command intended for DM usage with the Bot only?
+    // DO NOT HAVE THIS AND "guildOnly" UNCOMMENTED - ONLY ONE OR THE OTHER OR NEITHER
     //dmOnly: true,
 
-    // Uncomment for making the command only usable in Servers
-    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
+    // Is command intended for Guild usage only?
+    // DO NOT HAVE THIS AND "dmOnly" UNCOMMENTED - ONLY ONE OR THE OTHER OR NEITHER
     //guildOnly: true,
 
-    // Required Arguments?
-    //   - Does the command require arguments? (at least one) Comment out if works without arguments
-    //requiresArgs: true,
-    
-    // Argument Checks
-    //   - Minimum required arguments, only use if "requiresArgs" is uncommented
-    //minimumArgs: 2,
-    //   - Maximum required arguments, can be used regardless of if "requiresArgs" is commented out or not
-    //maximumArgs: 5,
+    // Is at least one argument required?
+    //requiresArguments: true,
+
+    // What is the minimum required arguments?
+    // THIS REQUIRES "requiresArguments" TO BE UNCOMMENTED
+    //minimumArguments: 2,
+
+    // What is the maximum required arguments?
+    // Is usable/settable no matter if "requiresArguments" is un/commented
+    //maximumArguments: 5,
+
+    // Command Limitation - limits who can use this Command
+    //    - "developer" for TwilightZebby only
+    //    - "owner" for Guild Owners & TwilightZebby
+    //    - "admin" for those with the ADMIN Guild Permission, Guild Owners, & TwilightZebby
+    //    - "moderator" for those with Moderator-level Guild Permissions, Admins, Guild Owners, & TwilightZebby
+    //    - "everyone" (or commented out) for everyone to use this command
+    limitation: "everyone",
+
 
 
     /**
-     * Entry point that runs the command
+     * Main function that runs the command
      * 
-     * @param {Discord.Message} message Origin message that triggered this command
-     * @param {Array<String>} args The given arguments of the command. Be sure to check for no arguments!
+     * @param {Discord.Message} message Origin Message that triggered this command
+     * @param {Array<String>} arguments The given arguments of the command. Can be empty if no arguments were passed!
      */
-    async execute(message, args) {
+    async execute(message, arguments)
+    {
 
-        //.
+        // .
 
     }
-}
+};

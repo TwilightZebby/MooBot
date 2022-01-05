@@ -1,64 +1,35 @@
-// LIBRARY IMPORTS
+// Imports
 const Discord = require('discord.js');
-
-// MODULE IMPORTS
-const ErrorModule = require('./errorLog.js');
-const UtilityModule = require('./utilityModule.js');
-
-// VARIABLE IMPORTS
+//const fs = require('fs');
 const { client } = require('../constants.js');
-const { PREFIX } = require('../config.js');
+const CONSTANTS = require('../constants.js');
+const { PREFIX, TwilightZebbyID } = require('../config.js');
+const Utility = require('./utilityModule.js');
 
 // REGEXS
 const authorRegEx = new RegExp(/{author}/g);
-const everyoneMentionRegex = new RegExp(/@(everyone|here)/g);
 const roleRegEx = new RegExp(/{role}/g);
 const receiverRegEx = new RegExp(/{receiver}/g);
 
 
-/**
- * Check to see if we need to use Member's Display Name, to be kind to Mobile Users haha
- * 
- * @param {String} userArgument
- * @param {Discord.Guild} guildOBJ
- * 
- * @returns {Promise<String>}
- */
-async function CheckForMention(userArgument, guildOBJ)
-{
-    if ( await UtilityModule.TestForUserMention(userArgument) )
-    {
-        let mentionMember = await guildOBJ.members.fetch(await UtilityModule.TestForUserMention(userArgument, true));
-        return mentionMember.displayName;
-    }
-    else
-    {
-        return userArgument;
-    }
-}
-
-
-
-// THIS MODULE
 module.exports = {
     /**
-     * Main handler for Action Slash Commands
+     * Main Handler for Action Slash Commands
      * 
      * @param {Discord.CommandInteraction} slashCommand
      */
     async slashRespond(slashCommand)
     {
-        // JSON IMPORTS
-        const USERMESSAGES = require('../jsonFiles/userMessages.json');
-        const ROLEMESSAGES = require('../jsonFiles/roleMessages.json');
-        const EVERYONEMESSAGES = require('../jsonFiles/everyoneMessages.json');
-        const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
-        const BOTMESSAGES = require('../jsonFiles/botMessages.json');
-        const AUTHORMESSAGES = require('../jsonFiles/authorSpecificMessages.json');
-        const ACTIONBOTMESSAGES = require('../jsonFiles/actionsBotMessages.json');
-        const CUSTOMMESSAGES = require('../jsonFiles/customMessages.json');
+        // IMPORT JSONS
+        const USER_MESSAGES = require('../jsonFiles/userMessages.json');
+        const ROLE_MESSAGES = require('../jsonFiles/roleMessages.json');
+        const EVERYONE_MESSAGES = require('../jsonFiles/everyoneMessages.json');
+        const SELF_MESSAGES = require('../jsonFiles/selfMessages.json');
+        const BOT_MESSAGES = require('../jsonFiles/botMessages.json');
+        const TWILIGHT_BOT_MESSAGES = require('../jsonFiles/twilightBotMessages.json');
+        const CUSTOM_MESSAGES = require('../jsonFiles/customMessages.json');
 
-        const GIFLINKS = require('../jsonFiles/gifLinks.json');
+        const GIF_LINKS = require('../jsonFiles/gifLinks.json');
 
 
         // Grab given arguments
@@ -78,48 +49,40 @@ module.exports = {
             if ( (personArgument instanceof Discord.Role) && (personArgument.id === personArgument.guild.id) )
             {
                 // EVERYONE & HERE MENTIONS
-                displayMessage = EVERYONEMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = EVERYONE_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
             }
             else if ( (personArgument instanceof Discord.Role) && (personArgument.id !== personArgument.guild.id) )
             {
                 // ROLES THERE ARE NOT EVERYONE AND HERE MENTIONS
-                displayMessage = ROLEMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = ROLE_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(roleRegEx, `<@&${personArgument.id}>`);
             }
             else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === slashCommand.user.id) )
             {
                 // USER MENTION - used on self
-                displayMessage = SELFMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = SELF_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
             }
             else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === client.user.id) )
             {
-                // USER MENTION - used on the Actions Bot itself
-                displayMessage = ACTIONBOTMESSAGES[`${slashCommand.commandName}`];
+                // USER MENTION - used on the Bot itself
+                displayMessage = TWILIGHT_BOT_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.user.username}`);
             }
             else if ( (personArgument instanceof Discord.GuildMember) && personArgument.user.bot )
             {
                 // USER MENTION - used on a bot user
-                displayMessage = BOTMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = BOT_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.user.username}`);
             }
             else
             {
-                // USER MENTION - used *by* a specific User who has a custom set of stored messages
-                if ( AUTHORMESSAGES[`${slashCommand.user.id}`] )
-                {
-                    displayMessage = AUTHORMESSAGES[`${slashCommand.user.id}`][`${slashCommand.commandName}`];
-                }
                 // USER MENTION - used on someone else
-                else
-                {
-                    displayMessage = USERMESSAGES[`${slashCommand.commandName}`];
-                }
+                displayMessage = USER_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
             }
@@ -127,7 +90,7 @@ module.exports = {
         // Custom message given
         else
         {
-            displayMessage = CUSTOMMESSAGES[`${slashCommand.commandName}`];
+            displayMessage = CUSTOM_MESSAGES[`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
             displayMessage += ` ${reasonOption}`;
 
@@ -148,7 +111,7 @@ module.exports = {
             if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === slashCommand.user.id) )
             {
                 // USER MENTION - used on self
-                displayMessage = SELFMESSAGES[`${slashCommand.commandName}`];
+                displayMessage = SELF_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage += ` ${reasonOption}`;
             }
@@ -161,12 +124,12 @@ module.exports = {
 
 
             // Check reason argument for sneaky mentions
-            if ( await UtilityModule.TestForEveryoneMention(reasonOption) )
+            if ( Utility.TestForEveryoneMention(reasonOption) )
             {
-                displayMessage = displayMessage.replace(everyoneMentionRegex, `everyone`);
+                displayMessage = displayMessage.replace(Utility.everyoneRegex, `everyone`);
             }
 
-            if ( await UtilityModule.TestForRoleMention(reasonOption) )
+            if ( Utility.TestForRoleMention(reasonOption) )
             {
                 return await slashCommand.reply({ content: `Sorry, but @role mentions aren't allowed in custom reasons/messages!`, ephemeral: true });
             }
@@ -177,10 +140,11 @@ module.exports = {
         // Check GIF argument
         if ( !gifOption || gifOption === false )
         {
-            // No GIF, but use an embed if role mention was included
+            // No GIF, use Embed if Role Mention was included
             if ( personArgument instanceof Discord.Role )
             {
-                const embed = new Discord.MessageEmbed().setColor(personArgument.hexColor).setDescription(displayMessage);
+                const embed = new Discord.MessageEmbed().setColor(personArgument.hexColor)
+                .setDescription(displayMessage);
                 await slashCommand.reply({ embeds: [embed], allowedMentions: { parse: [] } });
                 delete embed;
             }
@@ -193,69 +157,14 @@ module.exports = {
         }
         else
         {
-            // Yes GIF option
+            // GIF was requested
             const embed = new Discord.MessageEmbed().setDescription(displayMessage)
-            .setImage(GIFLINKS[`${slashCommand.commandName}`][Math.floor( ( Math.random() * GIFLINKS[`${slashCommand.commandName}`].length ) + 0 )])
+            .setImage(GIF_LINKS[`${slashCommand.commandName}`][Math.floor(( Math.random() * GIF_LINKS[`${commandName}`].length ) + 0)])
             .setColor(personArgument instanceof Discord.Role ? personArgument.hexColor : personArgument instanceof Discord.GuildMember ? personArgument.displayHexColor : 'RANDOM');
 
             await slashCommand.reply({ embeds: [embed], allowedMentions: { parse: [] } });
             delete embed;
             return;
         }
-    },
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Main handler for Action Context Commands
-     * 
-     * @param {Discord.ContextMenuInteraction} contextCommand
-     */
-    async contextRespond(contextCommand)
-    {
-        // JSON IMPORTS
-        const USERMESSAGES = require('../jsonFiles/userMessages.json');
-        const SELFMESSAGES = require('../jsonFiles/selfMessages.json');
-        const BOTMESSAGES = require('../jsonFiles/botMessages.json');
-
-        const GIFLINKS = require('../jsonFiles/gifLinks.json');
-
-        let contextTarget = contextCommand.options.resolved.members.first();
-
-
-        let displayMessage = "";
-
-        // DISPLAY MESSAGE
-        // If used on self
-        if ( contextTarget.user.id === contextCommand.user.id )
-        {
-            displayMessage = SELFMESSAGES[`${contextCommand.commandName}`];
-            displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
-        }
-        // Used on a Bot User
-        else if ( contextTarget.user.bot )
-        {
-            displayMessage = BOTMESSAGES[`${contextCommand.commandName}`];
-            displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
-            displayMessage = displayMessage.replace(receiverRegEx, `${contextTarget.displayName}`);
-        }
-        // Used on another member
-        else
-        {
-            displayMessage = USERMESSAGES[`${contextCommand.commandName}`];
-            displayMessage = displayMessage.replace(authorRegEx, `${contextCommand.member.displayName}`);
-            displayMessage = displayMessage.replace(receiverRegEx, `${contextTarget.displayName}`);
-        }
-
-
-
-        return await contextCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } });
     }
 }

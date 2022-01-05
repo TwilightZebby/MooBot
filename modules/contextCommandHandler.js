@@ -1,36 +1,39 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
+const CONSTANTS = require('../constants.js');
 const { PREFIX, TwilightZebbyID } = require('../config.js');
-
-const ErrorModule = require('./errorLog.js');
 
 module.exports = {
     /**
-     * Main function for the Context Command Handler
+     * Main function for Context Command Handler
      * 
      * @param {Discord.ContextMenuInteraction} contextInteraction
      * 
-     * @returns {Promise<*>} 
+     * @returns {Promise<*>}
      */
     async Main(contextInteraction)
     {
-        // To catch for Context CMDs that have spaces in their UI name
+        // Catch for spaces in Context Command Names
         if ( contextInteraction.commandName.includes(" ") )
         {
             contextInteraction.commandName = contextInteraction.commandName.split(" ").join("_");
         }
 
-        // Find Command
+        // Find context command
         const contextCommand = client.contextCommands.get(contextInteraction.commandName);
 
         if ( !contextCommand )
         {
-            // Couldn't find file for Context Command's behaviour
-            return await contextInteraction.reply({ content: `Sorry, but something went wrong while trying to execute this Context Command.`, ephemeral: true });
+            // Couldn't find Context Command, this error shouldn't ever appear tho
+            return await contextInteraction.reply({ content: CONSTANTS.errorMessages.CONTEXT_COMMAND_GENERIC_FAILED_RARE, ephemeral: true });
         }
 
 
-        // Cooldowns
+
+
+        // Command Cooldowns
         if ( !client.contextCooldowns.has(contextCommand.name) )
         {
             // No cooldown found, make it
@@ -57,30 +60,35 @@ module.exports = {
                 if ( timeLeft >= 60 && timeLeft < 3600 )
                 {
                     timeLeft /= 60;
-                    return await contextInteraction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more minutes before using this Context Command again.`, ephemeral: true });
+                    let cooldownMessage = CONSTANTS.errorMessages.CONTEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more minutes`).replace("{{commandName}}", `**${slashInteraction.commandName}**`);
+                    return await contextInteraction.reply({ content: cooldownMessage, ephemeral: true });
                 }
                 // Hours
                 else if ( timeLeft >= 3600 && timeLeft < 86400 )
                 {
                     timeLeft /= 3600;
-                    return await contextInteraction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more hours before using this Context Command again.`, ephemeral: true });
+                    let cooldownMessage = CONSTANTS.errorMessages.CONTEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more hours`).replace("{{commandName}}", `**${slashInteraction.commandName}**`);
+                    return await contextInteraction.reply({ content: cooldownMessage, ephemeral: true });
                 }
                 // Days
                 else if ( timeLeft >= 86400 && timeLeft < 2.628e+6 )
                 {
                     timeLeft /= 86400;
-                    return await contextInteraction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more days before using this Context Command again.`, ephemeral: true });
+                    let cooldownMessage = CONSTANTS.errorMessages.CONTEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more days`).replace("{{commandName}}", `**${slashInteraction.commandName}**`);
+                    return await contextInteraction.reply({ content: cooldownMessage, ephemeral: true });
                 }
                 // Months
                 else if ( timeLeft >= 2.628e+6 )
                 {
                     timeLeft /= 2.628e+6;
-                    return await contextInteraction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more months before using this Context Command again.`, ephemeral: true });
+                    let cooldownMessage = CONSTANTS.errorMessages.CONTEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more months`).replace("{{commandName}}", `**${slashInteraction.commandName}**`);
+                    return await contextInteraction.reply({ content: cooldownMessage, ephemeral: true });
                 }
                 // Seconds
                 else
                 {
-                    return await contextInteraction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more seconds before using this Context Command again.`, ephemeral: true });
+                    let cooldownMessage = CONSTANTS.errorMessages.CONTEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more seconds`).replace("{{commandName}}", `**${slashInteraction.commandName}**`);
+                    return await contextInteraction.reply({ content: cooldownMessage, ephemeral: true });
                 }
             }
         }
@@ -92,26 +100,23 @@ module.exports = {
 
 
 
-
-
-
-        // Attempt to run context command
+        // Attempt to run the Context Command
         try
         {
             await contextCommand.execute(contextInteraction);
         }
         catch (err)
         {
-            await ErrorModule.LogCustom(err, `Execute Context Command Failed: `);
-            
-            // Just in case
+            console.error(err);
+
+            // Just in case it was deferred
             if ( contextInteraction.deferred )
             {
-                await contextInteraction.editReply({ content: `Sorry, but something went wrong while trying to run that Context Command.`, ephemeral: true });
+                await contextInteraction.editReply({ content: CONSTANTS.errorMessages.CONTEXT_COMMAND_GENERIC_FAILED });
             }
             else
             {
-                await contextInteraction.reply({ content: `Sorry, but something went wrong while trying to run that Context Command.`, ephemeral: true });
+                await contextInteraction.reply({ content: CONSTANTS.errorMessages.CONTEXT_COMMAND_GENERIC_FAILED, ephemeral: true });
             }
         }
 

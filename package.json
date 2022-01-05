@@ -1,7 +1,14 @@
 {
+  "dependencies": {
+    "bufferutil": "^4.0.6",
+    "discord.js": "^13.5.0",
+    "erlpack": "github:discord/erlpack",
+    "utf-8-validate": "^5.0.8",
+    "zlib-sync": "^0.1.7"
+  },
   "name": "actionsbot",
-  "version": "4.6.0",
-  "description": "A small bot made by TwilightZebby for Dr1fterX's Discord Server to add Kawaii-Bot style Commands",
+  "description": "A small bot made by TwilightZebby for Dr1fterX's Discord Server",
+  "version": "5.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,16 +24,5 @@
     "nodejs"
   ],
   "author": "TwilightZebby",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TwilightZebby/ActionsBot/issues"
-  },
-  "homepage": "https://github.com/TwilightZebby/ActionsBot#readme",
-  "dependencies": {
-    "bufferutil": "^4.0.3",
-    "discord.js": "^13.3.1",
-    "erlpack": "github:discord/erlpack",
-    "utf-8-validate": "^5.0.5",
-    "zlib-sync": "^0.1.7"
-  }
+  "license": "MIT"
 }
