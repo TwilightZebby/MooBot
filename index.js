@@ -7,6 +7,7 @@ const Discord = require('discord.js');
 const CONSTANTS = require('./constants.js'); // Mostly for the strings
 const { client } = require('./constants.js'); // Makes things easier
 const CONFIG = require('./config.js');
+const UTILITY = require('./modules/utilityModule.js');
 
 
 // MAPS AND COLLECTIONS
@@ -108,10 +109,10 @@ process.on('warning', (warning) => { return console.warn("***WARNING: ", warning
 client.on('warn', (warning) => { return console.warn("***DISCORD WARNING: ", warning) });
 
 // Unhandled Promise Rejections
-process.on('unhandledRejection', (err) => { return console.error("******UNHANDLED PROMISE REJECTION: ", error) });
+process.on('unhandledRejection', (err) => { return console.error("******UNHANDLED PROMISE REJECTION: ", err) });
 
 // Discord Errors
-client.on('error', (err) => { return console.error("******DISCORD ERROR: ", error) });
+client.on('error', (err) => { return console.error("******DISCORD ERROR: ", err) });
 
 // Discord Rate Limit
 // Uncomment only for debugging purposes
@@ -138,6 +139,8 @@ client.on('error', (err) => { return console.error("******DISCORD ERROR: ", erro
 /******************************************************************************* */
 // DISCORD - MESSAGE CREATE EVENT
 const TextCommandHandler = require('./modules/textCommandHandler.js');
+const AutoQuote = require('./modules/autoQuoteModule.js');
+
 client.on('messageCreate', async (message) => {
     // Prevent other Bots and Discord's System stuff from triggering this Bot
     if ( message.author.bot || message.system || message.author.system ) { return; }
@@ -154,7 +157,8 @@ client.on('messageCreate', async (message) => {
     let textCommandSuccess = await TextCommandHandler.Main(message);
     if ( textCommandSuccess === false )
     {
-        // No command prefix detected, ignore
+        // No command prefix detected
+        if ( UTILITY.messageLinkRegex.test(message.content) ) { await AutoQuote.main(message); } // Auto Quote Module
         return;
     }
     else if ( textCommandSuccess !== false && textCommandSuccess !== true )
