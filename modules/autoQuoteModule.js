@@ -48,8 +48,8 @@ module.exports = {
                 // NodeJS stop being stupid please (the finale)
                 if ( sourceMessage instanceof Discord.Message )
                 {
-                    // Ensure no System Messages
-                    if ( sourceMessage.system ) { return; }
+                    // Ensure no System Messages, nor messages from Bots
+                    if ( sourceMessage.system || sourceMessage.author.bot ) { return; }
 
                     // Assemble Embed for quoting
                     let quoteEmbed = new Discord.MessageEmbed().setAuthor({ name: `${!sourceMessage.member?.displayName ? sourceMessage.author.username : sourceMessage.member.displayName} (${sourceMessage.author.username}#${sourceMessage.author.discriminator})`, iconURL: !sourceMessage.member ? sourceMessage.author.displayAvatarURL({ dynamic: true, format: 'png' }) : sourceMessage.member.displayAvatarURL({ dynamic: true, format: 'png' }) })
