@@ -20,7 +20,7 @@ module.exports = {
         if ( !slashCommand )
         {
             // Couldn't find Slash Command, this error shouldn't ever appear tho
-            return await slashInteraction.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED_RARE, ephemeral: true });
+            return await slashInteraction.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED_RARE.replace("{{commandName}}", slashInteraction.commandName), ephemeral: true });
         }
 
 
@@ -118,11 +118,11 @@ module.exports = {
             // Just in case it was deferred
             if ( slashInteraction.deferred )
             {
-                await slashInteraction.editReply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED });
+                await slashInteraction.editReply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED.replace("{{commandName}}", slashInteraction.commandName) });
             }
             else
             {
-                await slashInteraction.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED, ephemeral: true });
+                await slashInteraction.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED.replace("{{commandName}}", slashInteraction.commandName), ephemeral: true });
             }
         }
 

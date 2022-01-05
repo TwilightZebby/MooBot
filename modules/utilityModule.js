@@ -71,7 +71,7 @@ module.exports = {
      * 
      * @returns {Boolean|String} 
      */
-     async TestForRoleMention(string, slice)
+     TestForRoleMention(string, slice)
      {  
         if ( !slice )
         {
@@ -142,7 +142,7 @@ module.exports = {
      * 
      * @returns {Boolean|String} 
      */
-    async TestForChannelMention(string, slice)
+    TestForChannelMention(string, slice)
     {
         if ( !slice )
         {
@@ -216,7 +216,7 @@ module.exports = {
      * 
      * @returns {Boolean|String} 
      */
-    async TestForUserMention(string, slice)
+    TestForUserMention(string, slice)
     {
         if ( !slice )
         {
@@ -288,7 +288,7 @@ module.exports = {
      * 
      * @returns {Boolean} 
      */
-    async TestForSelfMention(string, user)
+    TestForSelfMention(string, user)
     {
         let matchedString = string.replace('<@', '');
         matchedString = matchedString.replace('!', '');

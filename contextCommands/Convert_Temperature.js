@@ -13,7 +13,7 @@ const kelvinRegex = new RegExp(/(?<amount>-?\d+(?:\.\d*)?)[^\S\n]*(?<degrees>°|
 module.exports = {
     // Context Command's Name, can be mixed case and allows for spaces
     // If the command name has a space, use an underscore (_) for the file name
-    name: 'Convert_Temperature',
+    name: 'Convert Temperature',
     // Context Command's description, used for Help (text) Command
     description: `Convert temperatures from Messages`,
     // Category of Context Command, used for Help (text) Command

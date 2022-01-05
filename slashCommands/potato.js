@@ -6,7 +6,7 @@ const CONSTANTS = require('../constants.js');
 
 // The Button (but disabled!)
 const messageActionRowDisabled = new Discord.MessageActionRow().addComponents(
-    new Discord.MessageButton().setCustomId(`disabled_potato`).setLabel(`Potato Exploded!`).setStyle('PRIMARY').setEmoji('🥔').setDisabled(true)
+    new Discord.MessageButton().setCustomId(`disabled_potato`).setLabel(`Potato Exploded!`).setStyle('DANGER').setEmoji('🥔').setDisabled(true)
 );
 
 

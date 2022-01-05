@@ -159,7 +159,7 @@ module.exports = {
         {
             // GIF was requested
             const embed = new Discord.MessageEmbed().setDescription(displayMessage)
-            .setImage(GIF_LINKS[`${slashCommand.commandName}`][Math.floor(( Math.random() * GIF_LINKS[`${commandName}`].length ) + 0)])
+            .setImage(GIF_LINKS[`${slashCommand.commandName}`][Math.floor(( Math.random() * GIF_LINKS[`${slashCommand.commandName}`].length ) + 0)])
             .setColor(personArgument instanceof Discord.Role ? personArgument.hexColor : personArgument instanceof Discord.GuildMember ? personArgument.displayHexColor : 'RANDOM');
 
             await slashCommand.reply({ embeds: [embed], allowedMentions: { parse: [] } });

@@ -29,7 +29,7 @@ module.exports = {
             // Slice off Prefix and assemble command
             const [, matchedPrefix] = message.content.match(prefixRegex);
             const arguments = message.content.slice(matchedPrefix.length).trim().split(/ +/);
-            const commandName = args.shift().toLowerCase();
+            const commandName = arguments.shift().toLowerCase();
             const command = client.textCommands.get(commandName);
 
             if ( !command )
@@ -200,7 +200,7 @@ module.exports = {
             catch (err)
             {
                 console.error(err);
-                await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_GENERIC_FAILED, allowedMentions: { parse: [], repliedUser: false } });
+                await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_GENERIC_FAILED.replace("{{commandName}}", `**${command.name}**`), allowedMentions: { parse: [], repliedUser: false } });
             }
 
             return;

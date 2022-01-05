@@ -1,15 +1,15 @@
 {
     "headpat": "**{author}** gave **{receiver}** a headpat",
 
-    "hug": "**{author}** gave **{receiver}** a cuddle",
+    "hug": "**{author}** cuddled **{receiver}**",
 
-    "bonk": "**{author}** bonked **{receiver}** with a candy cane",
+    "bonk": "**{author}** bonked **{receiver}**",
 
     "sleep": "**{author}** wants **{receiver}** to go to sleep!",
 
     "boop": "**{author}** booped **{receiver}**",
 
-    "kiss": "**{author}** kissed **{receiver}** under the mistletoe",
+    "kiss": "**{author}** kissed **{receiver}**",
 
     "slap": "**{author}** slapped **{receiver}**"
 }

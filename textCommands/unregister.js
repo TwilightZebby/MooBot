@@ -82,7 +82,7 @@ module.exports = {
         else if ( argumentCommandType === "message" || argumentCommandType === "user" )
         {
             // CONTEXT COMMAND
-            applicationCommand = client.contextCommands.get(argumentCommandName.split(" ").join("_"));
+            applicationCommand = client.contextCommands.get(argumentCommandName.split("_").join(" "));
 
             if ( !applicationCommand )
             {
@@ -100,19 +100,19 @@ module.exports = {
         {
             // Ensure Command was actually previously registered
             let fetchedRegisteredCommands = await client.application.commands.fetch();
-            let checkCommand = fetchedRegisteredCommands.find(appCommand => appCommand.name === argumentCommandName && appCommand.type === apiCommandType);
+            let checkCommand = fetchedRegisteredCommands.find(appCommand => appCommand.name === argumentCommandName.split("_").join(" ") && appCommand.type === apiCommandType);
 
             // Registered Command not found
             if ( !checkCommand )
             {
-                return await message.reply({ content: `I was unable to unregister the **${argumentCommandName}** ${argumentCommandType} command since it wasn't already registered globally!`, allowedMentions: { parse: [], repliedUser: false } });
+                return await message.reply({ content: `I was unable to unregister the **${argumentCommandName.split("_").join(" ")}** ${argumentCommandType} command since it wasn't already registered globally!`, allowedMentions: { parse: [], repliedUser: false } });
             }
             // Registered Command found
             else
             {
                 // Unregister command
                 await client.application.commands.delete(checkCommand.id)
-                .then(async () => { return await message.reply({ content: `Successfully globally unregistered the **${argumentCommandName}** ${argumentCommandType} command`, allowedMentions: { parse: [], repliedUser: false } }) })
+                .then(async () => { return await message.reply({ content: `Successfully globally unregistered the **${argumentCommandName.split("_").join(" ")}** ${argumentCommandType} command`, allowedMentions: { parse: [], repliedUser: false } }) })
                 .catch(async (err) => { return await message.reply({ content: CONSTANTS.errorMessages.GENERIC, allowedMentions: { parse: [], repliedUser: false } }) });
             }
         }
@@ -125,18 +125,18 @@ module.exports = {
 
             // Ensure Command was registered to Discord's API before on that Server
             let fetchedRegisteredGuildCommands = await client.application.commands.fetch({ guildId: argumentCommandScope });
-            let checkGuildCommand = fetchedRegisteredGuildCommands.find(guildCommand => guildCommand.name === argumentCommandName && guildCommand.type === apiCommandType);
+            let checkGuildCommand = fetchedRegisteredGuildCommands.find(guildCommand => guildCommand.name === argumentCommandName.split("_").join(" ") && guildCommand.type === apiCommandType);
 
             // Registered Guild Command not found
             if ( !checkGuildCommand )
             {
-                return await message.reply({ content: `I was unable to unregister the **${argumentCommandName}** ${argumentCommandType} command since it wasn't already registered to the **${checkGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } });
+                return await message.reply({ content: `I was unable to unregister the **${argumentCommandName.split("_").join(" ")}** ${argumentCommandType} command since it wasn't already registered to the **${checkGuild.name}** Server!`, allowedMentions: { parse: [], repliedUser: false } });
             }
             // Registered Guild Command found
             else
             {
                 await client.application.commands.delete(checkGuildCommand.id, argumentCommandScope)
-                .then(async () => { return await message.reply({ content: `Successfully unregistered the **${argumentCommandName}** ${argumentCommandType} command from the **${checkGuild.name}** Server`, allowedMentions: { parse: [], repliedUser: false } }) })
+                .then(async () => { return await message.reply({ content: `Successfully unregistered the **${argumentCommandName.split("_").join(" ")}** ${argumentCommandType} command from the **${checkGuild.name}** Server`, allowedMentions: { parse: [], repliedUser: false } }) })
                 .catch(async (err) => { return await message.reply({ content: CONSTANTS.errorMessages.GENERIC, allowedMentions: { parse: [], repliedUser: false } }) });
             }
         }
