@@ -32,28 +32,44 @@ module.exports = {
 
         // Ensure Linked Message is from a Server the Bot is in
         let sourceGuild = await client.guilds.fetch(linkGuildID).catch((err) => { return; });
-        // Ensure Bot has access to source Channel
-        let sourceChannel = await sourceGuild.channels.fetch(linkChannelID).catch((err) => { return; });
-        // Attempt to fetch source Message
-        let sourceMessage = await sourceChannel.messages.fetch(linkMessageID).catch((err) => { return; });
 
-        // Ensure no System Messages
-        if ( sourceMessage.system ) { return; }
-
-        // Assemble Embed for quoting
-        let quoteEmbed = new Discord.MessageEmbed().setAuthor({ name: `${!sourceMessage.member?.displayName ? sourceMessage.author.username : sourceMessage.member.displayName} (${sourceMessage.author.username}#${sourceMessage.author.discriminator})`, iconURL: !sourceMessage.member ? sourceMessage.author.displayAvatarURL({ dynamic: true, format: 'png' }) : sourceMessage.member.displayAvatarURL({ dynamic: true, format: 'png' }) })
-        .setColor(!sourceMessage.member?.displayHexColor ? 'RANDOM' : sourceMessage.member.displayHexColor)
-        .setDescription(!sourceMessage.content ? ' ' : sourceMessage.content)
-        .addFields({ name: `Jump to Message`, value: `[Click to jump](${sourceMessage.url})` })
-        .setFooter({ text: `Quoted by ${message.author.username}#${message.author.discriminator}` })
-        .setTimestamp(sourceMessage.createdTimestamp);
-
-        if ( sourceMessage.attachments.size >= 1 )
+        // NodeJS stop being stupid please
+        if ( sourceGuild instanceof Discord.Guild )
         {
-            quoteEmbed.setImage(sourceMessage.attachments.first().url);
+            // Ensure Bot has access to source Channel
+            let sourceChannel = await sourceGuild.channels.fetch(linkChannelID).catch((err) => { return; });
+
+            // NodeJS stop being stupid please (part 2)
+            if ( (sourceChannel instanceof Discord.TextChannel) || (sourceChannel instanceof Discord.NewsChannel) )
+            {
+                // Attempt to fetch source Message
+                let sourceMessage = await sourceChannel.messages.fetch(linkMessageID).catch((err) => { return; });
+
+                // NodeJS stop being stupid please (the finale)
+                if ( sourceMessage instanceof Discord.Message )
+                {
+                    // Ensure no System Messages
+                    if ( sourceMessage.system ) { return; }
+
+                    // Assemble Embed for quoting
+                    let quoteEmbed = new Discord.MessageEmbed().setAuthor({ name: `${!sourceMessage.member?.displayName ? sourceMessage.author.username : sourceMessage.member.displayName} (${sourceMessage.author.username}#${sourceMessage.author.discriminator})`, iconURL: !sourceMessage.member ? sourceMessage.author.displayAvatarURL({ dynamic: true, format: 'png' }) : sourceMessage.member.displayAvatarURL({ dynamic: true, format: 'png' }) })
+                    .setColor(!sourceMessage.member?.displayHexColor ? 'RANDOM' : sourceMessage.member.displayHexColor)
+                    .setDescription(!sourceMessage.content ? ' ' : sourceMessage.content)
+                    .addFields({ name: `Jump to Message`, value: `[Click to jump](${sourceMessage.url})` })
+                    .setFooter({ text: `Quoted by ${message.author.username}#${message.author.discriminator}` })
+                    .setTimestamp(sourceMessage.createdTimestamp);
+
+                    if ( sourceMessage.attachments.size >= 1 )
+                    {
+                        quoteEmbed.setImage(sourceMessage.attachments.first().url);
+                    }
+                
+                    // Send message
+                    return await message.reply({ embeds: [quoteEmbed], allowedMentions: { parse: [], repliedUser: false } });
+                }
+            }
         }
 
-        // Send message
-        return await message.reply({ embeds: [quoteEmbed], allowedMentions: { parse: [], repliedUser: false } });
+        return;
     }
 }
