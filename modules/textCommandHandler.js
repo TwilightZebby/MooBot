@@ -1,92 +1,95 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
+const CONSTANTS = require('../constants.js');
 const { PREFIX, TwilightZebbyID } = require('../config.js');
-
-const ErrorModule = require('./errorLog.js');
 
 module.exports = {
     /**
-     * Main function for the Text-based Command Handler
+     * Main function for Text-based Command Handler
      * 
-     * @param {Discord.Message} message
+     * @param {Discord.Message} message Source Message that triggered this
      * 
      * @returns {Promise<Boolean|*>} False if not a command
      */
     async Main(message)
     {
-        // Prefix check
+        // CHECK FOR PREFIX (including @mention of the Bot itself)
         const escapePrefix = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapePrefix(PREFIX)})\\s*`);
 
         if ( !prefixRegex.test(message.content) )
         {
-            // No prefix found, so ignore
+            // No prefix found, not a command attempt
             return false;
         }
         else
         {
             // Slice off Prefix and assemble command
             const [, matchedPrefix] = message.content.match(prefixRegex);
-            const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
-            const commandName = args.shift().toLowerCase();
-            const command = client.commands.get(commandName);
-
+            const arguments = message.content.slice(matchedPrefix.length).trim().split(/ +/);
+            const commandName = arguments.shift().toLowerCase();
+            const command = client.textCommands.get(commandName);
 
             if ( !command )
             {
-                // No command found, return
+                // No command found
                 return;
             }
 
 
-
-
-
-
-
-            // DM Test
-            if ( command.dmOnly && !(message.channel instanceof Discord.DMChannel) )
+            // Test for DM usage
+            if ( command.dmOnly && !(message.channel instanceof Discord.DMChannel) ) 
             {
-                return await message.channel.send({ content: `**${message.author.username}** sorry, but this command can only be used in DMs with this Bot.` });
+                return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_DMS_ONLY, allowedMentions: { parse: [], repliedUser: false } });
             }
 
 
-
-
-            // Guild Test
+            // Test for Guild usage
             if ( command.guildOnly && (message.channel instanceof Discord.DMChannel) )
             {
-                return await message.channel.send({ content: `**${message.author.username}** sorry, but this command can only be used within Servers, not in DMs.` });
+                return await message.channel.send({ content: CONSTANTS.errorMessages.TEXT_COMMAND_GUILDS_ONLY, allowedMentions: { parse: [], repliedUser: false } });
             }
-
-
 
 
             // Command Limitations
+            // If missing from command, default to "everyone can use this"
             if ( command.limitation )
             {
                 switch ( command.limitation )
                 {
-                    case "dev":
-                        // Only TwilightZebby, the Bot's developer, can use
+                    case "developer":
+                        // Only TwilightZebby, the Bot's Developer, can use
                         if ( message.author.id !== TwilightZebbyID )
                         {
-                            return await message.channel.send({ content: `**${message.author.username}** sorry, but this command can only be used by **TwilightZebby#1955**` });
+                            return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_DEVELOPER, allowedMentions: { parse: [], repliedUser: false } });
                         }
                         break;
-
-
 
                     case "owner":
-                        // Only TwilightZebby, and Server Owners, can use
+                        // Server Owners and TwilightZebby can use
                         if ( message.author.id !== TwilightZebbyID && message.author.id !== message.guild.ownerId )
                         {
-                            return await message.channel.send({ content: `**${message.author.username}** sorry, but this command can only be used by Server Owners.` });
+                            return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_OWNER, allowedMentions: { parse: [], repliedUser: false } });
                         }
                         break;
 
+                    case "admin":
+                        // Server Owners, those with Admin Permission, and TwilightZebby can use
+                        if ( message.author.id !== TwilightZebbyID && message.author.id !== message.guild.ownerId && !message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) )
+                        {
+                            return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_ADMIN, allowedMentions: { parse: [], repliedUser: false } });
+                        }
 
+                    case "moderator":
+                        // Those with Moderator-level permissions, Admin Permission, Server Owners, and TwilightZebby can use
+                        if ( message.author.id !== TwilightZebbyID && message.author.id !== message.guild.ownerId && !message.member.permissions.has("ADMINISTRATOR") && ( !message.member.permissions.has("BAN_MEMBERS") || !message.member.permissions.has("KICK_MEMBERS") || !message.member.permissions.has("MANAGE_CHANNELS") || !message.member.permissions.has("MANAGE_GUILD") || !message.member.permissions.has("MANAGE_MESSAGES") || !message.member.permissions.has("MANAGE_ROLES") || !message.member.permissions.has("MANAGE_THREADS") || !message.member.permissions.has("MODERATE_MEMBERS")) )
+                        {
+                            return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_MODERATOR, allowedMentions: { parse: [], repliedUser: false } });
+                        }
 
+                    case "everyone":
                     default:
                         break;
                 }
@@ -94,32 +97,34 @@ module.exports = {
 
 
 
-
             // Argument checks
-            if ( command.requiresArgs && ( !args.length || args.length === 0 ) )
+            // Check for required arguments
+            if ( command.requiresArguments && ( !arguments.length || arguments.length === 0 ) )
             {
-                return await message.channel.send({ content: `**${message.author.username}** sorry, this command requires arguments to be passed to it, and I am unable to detect any in your command usage.` });
+                return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_ARGUMENTS_REQUIRED, allowedMentions: { parse: [], repliedUser: false } });
             }
 
-            if ( command.requiresArgs && args.length >= 1 )
+            // Check for minimum amount of required arguments
+            if ( command.requiresArguments && arguments.length >= 1 )
             {
-                // Check for minimum args
-                if ( args.length < command.minimumArgs )
+                if ( arguments.length < command.minimumArguments )
                 {
-                    return await message.channel.send({ content: `**${message.author.username}** sorry, but this command requires a **minimum** of **${command.minimumArgs}** arguments, while you only gave ${args.length} arguments.` });
+                    let errorMsg = CONSTANTS.errorMessages.TEXT_COMMAND_ARGUMENTS_MINIMUM.replace("{{minimumArguments}}", command.minimumArguments).replace("{{givenArguments}}", arguments.length);
+                    return await message.reply({ content: errorMsg, allowedMentions: { parse: [], repliedUser: false } });
                 }
             }
 
-            // Check for maximum args
-            if ( args.length > command.maximumArgs )
+            // Check for maximum allowed arguments
+            if ( arguments.length > command.maximumArguments )
             {
-                return await message.channel.send({ content: `**${message.author.username}** sorry, but this command has a **maximum** limit of **${command.maximumArgs}** arguments, while you gave ${args.length} arguments.` });
+                let errorMsg = CONSTANTS.errorMessages.TEXT_COMMAND_ARGUMENTS_MAXIMUM.replace("{{maximumArguments}}", command.maximumArguments).replace("{{givenArguments}}", arguments.length);
+                return await message.reply({ content: errorMsg, allowedMentions: { parse: [], repliedUser: false } });
             }
 
 
 
 
-            // Command Cooldowns
+            // Command Cooldown
             if ( !client.cooldowns.has(command.name) )
             {
                 // No current cooldown found, make a new one
@@ -146,18 +151,35 @@ module.exports = {
                     if ( timeLeft >= 60 && timeLeft < 3600 )
                     {
                         timeLeft /= 60;
-                        return await message.channel.send({ content: `**${message.author.username}** please wait ${timeLeft.toFixed(1)} more minutes before using the \`${command.name}\` command again.` });
+                        let cooldownMessage = CONSTANTS.errorMessages.TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more minutes`).replace("{{commandName}}", `**${command.name}**`);
+                        return await message.reply({ content: cooldownMessage, allowedMentions: { parse: [], repliedUser: false } });
                     }
                     // Hours
                     else if ( timeLeft >= 3600 )
                     {
                         timeLeft /= 3600;
-                        return await message.channel.send({ content: `**${message.author.username}** please wait ${timeLeft.toFixed(1)} more hours before using the \`${command.name}\` command again.` });
+                        let cooldownMessage = CONSTANTS.errorMessages.TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more hours`).replace("{{commandName}}", `**${command.name}**`);
+                        return await message.reply({ content: cooldownMessage, allowedMentions: { parse: [], repliedUser: false } });
+                    }
+                    // Days
+                    else if ( timeLeft >= 86400 && timeLeft < 2.628e+6 )
+                    {
+                        timeLeft /= 86400;
+                        let cooldownMessage = CONSTANTS.errorMessages.TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more days`).replace("{{commandName}}", `**${command.name}**`);
+                        return await message.reply({ content: cooldownMessage, allowedMentions: { parse: [], repliedUser: false } });
+                    }
+                    // Months
+                    else if ( timeLeft >= 2.628e+6 )
+                    {
+                        timeLeft /= 2.628e+6;
+                        let cooldownMessage = CONSTANTS.errorMessages.TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more months`).replace("{{commandName}}", `**${command.name}**`);
+                        return await message.reply({ content: cooldownMessage, allowedMentions: { parse: [], repliedUser: false } });
                     }
                     // Seconds
                     else
                     {
-                        return await message.channel.send({ content: `**${message.author.username}** please wait ${timeLeft.toFixed(1)} more seconds before using the \`${command.name}\` command again.` });
+                        let cooldownMessage = CONSTANTS.errorMessages.TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more seconds`).replace("{{commandName}}", `**${command.name}**`);
+                        return await message.reply({ content: cooldownMessage, allowedMentions: { parse: [], repliedUser: false } });
                     }
                 }
             }
@@ -170,21 +192,18 @@ module.exports = {
 
 
 
-
-
             // Attempt to run command
             try
             {
-                await command.execute(message, args);
+                await command.execute(message, arguments);
             }
             catch (err)
             {
-                await ErrorModule.LogCustom(err, `Execute Text-based Command Failed: `);
-                await message.channel.send({ content: `**${message.author.username}** sorry, but there was a problem trying to run the \`${commandName}\` command.` });
+                console.error(err);
+                await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_GENERIC_FAILED.replace("{{commandName}}", `**${command.name}**`), allowedMentions: { parse: [], repliedUser: false } });
             }
 
             return;
-
         }
     }
-}
+};

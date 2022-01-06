@@ -6,11 +6,11 @@ const CONSTANTS = require('../constants.js');
 
 module.exports = {
     // Command Name
-    name: 'commandName',
+    name: 'clearcomp',
     // Description of command
-    description: `Description`,
+    description: `Removes components (Buttons/Selects) from a specific Message sent by this Bot`,
     // Category of Command, used for Help Command
-    category: 'general',
+    category: 'development',
 
     // Alias(es) of command, if any
     // Uncomment if there will be some
@@ -18,7 +18,7 @@ module.exports = {
 
     // Command Cooldown, in seconds
     // If not provided or is commented out, will default to 3 seconds
-    cooldown: 3,
+    cooldown: 10,
 
     // Is command intended for DM usage with the Bot only?
     // DO NOT HAVE THIS AND "guildOnly" UNCOMMENTED - ONLY ONE OR THE OTHER OR NEITHER
@@ -29,7 +29,7 @@ module.exports = {
     //guildOnly: true,
 
     // Is at least one argument required?
-    //requiresArguments: true,
+    requiresArguments: true,
 
     // What is the minimum required arguments?
     // THIS REQUIRES "requiresArguments" TO BE UNCOMMENTED
@@ -45,7 +45,7 @@ module.exports = {
     //    - "admin" for those with the ADMIN Guild Permission, Guild Owners, & TwilightZebby
     //    - "moderator" for those with Moderator-level Guild Permissions, Admins, Guild Owners, & TwilightZebby
     //    - "everyone" (or commented out) for everyone to use this command
-    limitation: "everyone",
+    limitation: "developer",
 
 
 
@@ -58,7 +58,21 @@ module.exports = {
     async execute(message, arguments)
     {
 
-        // .
+        // Ensure message ID was of a message sent by this Bot
+        let targetMessage = await message.channel.messages.fetch(arguments.shift())
+        .catch(async (err) => { return await message.reply({ content: `I could not find any Message in this Channel with that Message ID.\nPlease try again, ensuring the Message ID if of a Message sent in the same Channel as this command, and that the Message hasn't been deleted.`, allowedMentions: { parse: [], repliedUser: false } }); });
 
+        // Ensure Message was sent by the Bot
+        if ( targetMessage.author.id !== client.user.id )
+        {
+            return await message.reply({ content: `That Message wasn't sent by me!\nI can only remove components from Messages sent by me.`, allowedMentions: { parse: [], repliedUser: false } });
+        }
+
+        // Attempt component removal
+        await targetMessage.edit({ components: [] })
+        .then(async () => { return await message.reply({ content: `Successfully removed the components from my message\n(Message Link: <${targetMessage.url}> )`, allowedMentions: { parse: [], repliedUser: false } }); })
+        .catch(async (err) => { return await message.reply({ content: CONSTANTS.errorMessages.GENERIC, allowedMentions: { parse: [], repliedUser: false } }); });
+
+        return;
     }
 };

@@ -1,48 +1,51 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
-
+const CONSTANTS = require('../constants.js');
 
 module.exports = {
-    name: 'commandName',
-    description: `A Description of the command`,
-    
-    // Cooldown is in seconds
+    // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
+    name: 'commandname',
+    // Slash Command's description
+    description: `Description`,
+    // Category of Slash Command, used for Help (text) Command
+    category: 'general',
+
+    // Slash Command's Cooldown, in seconds
+    // If not provided or is commented out, will default to 3 seconds
     cooldown: 3,
-
-    // Uncomment for making the command only usable in DMs with the Bot
-    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
-    //dmOnly: true,
-
-    // Uncomment for making the command only usable in Servers
-    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
-    //guildOnly: true,
 
 
     /**
-     * Returns data to be used for registering the Slash Command
+     * Returns data used for registering this Slash Command
      * 
-     * @returns {Discord.ApplicationCommandData} 
+     * @returns {Discord.ChatInputApplicationCommandData}
      */
-    async registerData() {
-
+    registerData()
+    {
         const data = {};
+
+        // Slash Command's Name, Description, and Application Command Type
         data.name = this.name;
         data.description = this.description;
-        data.type = "CHAT_INPUT"; // Slash Command
-
+        data.type = "CHAT_INPUT";
+        
         return data;
-
     },
 
 
-    /**
-     * Entry point that runs the slash command
-     * 
-     * @param {Discord.CommandInteraction} slashInteraction Slash Command Interaction
-     */
-    async execute(slashInteraction) {
 
-        //.
+
+    /**
+     * Main function that runs this Slash Command
+     * 
+     * @param {Discord.CommandInteraction} slashCommand Slash Command Interaction
+     */
+    async execute(slashCommand)
+    {
+
+        // .
 
     }
-}
+};

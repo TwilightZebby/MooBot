@@ -1,93 +1,101 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
+const CONSTANTS = require('../constants.js');
 
-// Thy Button (but disabled!)
+// The Button (but disabled!)
 const messageActionRowDisabled = new Discord.MessageActionRow().addComponents(
-    new Discord.MessageButton().setCustomId(`potatodisabled`).setLabel(`Pass Potato!`).setStyle('PRIMARY').setEmoji('🥔').setDisabled(true)
+    new Discord.MessageButton().setCustomId(`disabled_potato`).setLabel(`Potato Exploded!`).setStyle('DANGER').setEmoji('🥔').setDisabled(true)
 );
 
 
 module.exports = {
+    // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
     name: 'potato',
+    // Slash Command's description
     description: `Starts a Hot Potato game!`,
-    category: 'misc',
-    
-    // Cooldown is in seconds
-    cooldown: 60,
+    // Category of Slash Command, used for Help (text) Command
+    category: 'general',
 
-    // Uncomment for making the command only usable in DMs with the Bot
-    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
-    //dmOnly: true,
-
-    // Uncomment for making the command only usable in Servers
-    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
-    guildOnly: true,
+    // Slash Command's Cooldown, in seconds
+    // If not provided or is commented out, will default to 3 seconds
+    cooldown: 120,
 
 
     /**
-     * Returns data to be used for registering the Slash Command
+     * Returns data used for registering this Slash Command
      * 
-     * @returns {Discord.ApplicationCommandData} 
+     * @returns {Discord.ChatInputApplicationCommandData}
      */
-    async registerData() {
-
+    registerData()
+    {
         const data = {};
+
+        // Slash Command's Name, Description, and Application Command Type
         data.name = this.name;
         data.description = this.description;
-        data.type = "CHAT_INPUT"; // Slash Command
-
+        data.type = "CHAT_INPUT";
+        
         return data;
-
     },
 
 
-    /**
-     * Entry point that runs the slash command
-     * 
-     * @param {Discord.CommandInteraction} slashInteraction Slash Command Interaction
-     */
-    async execute(slashInteraction) {
 
-        // If there is an existing Potato game on-going in this channel, don't start a new one!
-        let fetchedPotato = client.potato.get(slashInteraction.channelId);
+
+    /**
+     * Main function that runs this Slash Command
+     * 
+     * @param {Discord.CommandInteraction} slashCommand Slash Command Interaction
+     */
+    async execute(slashCommand)
+    {
+
+        // Ensure not used in DMs
+        if ( slashCommand.channel instanceof Discord.DMChannel )
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GUILDS_ONLY });
+        }
+
+
+
+        // Ensure there isn't already an existing, on-going, Potato game in this channel
+        let fetchedPotato = client.potato.get(slashCommand.channelId);
         if ( fetchedPotato )
         {
-            return await slashInteraction.reply({ content: `Whoops, you cannot start a new Hot Potato game in this channel as there is currently one still going!`, ephemeral: true });
+            return await slashCommand.reply({ content: `Sorry, you cannot start a new Hot Potato game when there is already one going in this Channel!`, ephemeral: true });
         }
 
         let channelMembers;
         let startingMember;
 
-
-        // Determine what type of text based channel this was used in
-        if ( slashInteraction.channel instanceof Discord.ThreadChannel )
+        // Determine which type of Text Channel this was used in
+        if ( slashCommand.channel instanceof Discord.ThreadChannel )
         {
-            // THREAD CHANNEL
-            //     Go based off Thread's Members
-            channelMembers = slashInteraction.channel.guildMembers.filter(member => !member.user.bot);
+            // THREAD CHANNEL - thus go based off Thread Members
+            channelMembers = slashCommand.channel.guildMembers.filter(member => !member.user.bot);
             startingMember = channelMembers.random();
         }
-        else if ( slashInteraction.channel instanceof Discord.TextChannel )
+        else if ( slashCommand.channel instanceof Discord.TextChannel )
         {
-            // (regular) TEXT CHANNEL
-            //     Go based off recent messages as I cannot be bothered to try and make an auto-cleaning member cache :S
-            let recentMessages = await slashInteraction.channel.messages.fetch({ limit: 25 });
+            // GUILD TEXT CHANNEL - thus go based off most recent messages
+            let recentMessages = await slashCommand.channel.messages.fetch({ limit: 25 });
             channelMembers = new Discord.Collection();
 
-            // Remove Bot users & system messages
+            // Filter out Bots and System Messages
             recentMessages = recentMessages.filter(message => !message.author.bot);
             recentMessages = recentMessages.filter(message => !message.system);
 
-            // Error checking
+            // Error Checking for edge case
             if ( recentMessages.size < 1 )
             {
-                return await slashInteraction.reply({ content: `Whoops! An error occured while attempting to start the Hot Potato game!`, ephemeral: true });
+                return await slashCommand.reply({ content: `An error occurred while attempting to start a Hot Potato game.\nPlease try again, ensuring you aren't using this command in a channel flooded with Bot and/or System Messages.`, ephemeral: true });
             }
 
-            // Do the thing
-            recentMessages.each(message => {
 
-                // Make sure there isn't duplicate Members
+            // Add to collection and variable
+            recentMessages.each(message => {
+                // Ensure no duplicate Members
                 if ( channelMembers.has(message.author.id) )
                 {
                     // Continue
@@ -97,175 +105,67 @@ module.exports = {
                     channelMembers.set(message.author.id, message.author);
                 }
             });
-            
+
             startingMember = channelMembers.random();
         }
         else
         {
-            // NEWS AND DM CHANNELS
-            return await slashInteraction.reply({ content: `Sorry, but this Slash Command can only be used within Text or Thread Channels, not in Announcement Channels nor DMs!`, ephemeral: true });
+            // NEWS, DM, and VOICE Channels
+            //    - VCs are only included as future-proofing against the upcoming Text in Voice update
+            return await slashCommand.reply({ content: `Sorry, but this Slash Command can only be used within a standard Text Channel, or a Thread Channel.\nAnnouncement Channels, Direct Messages, and Voice Channels are not supported for this Command!`, ephemeral: true });
         }
 
 
 
-
-        // Thy Button
+        // Make Button for message
         let messageActionRow = new Discord.MessageActionRow().addComponents(
-            new Discord.MessageButton().setCustomId(`potato_${startingMember instanceof Discord.GuildMember ? startingMember.user.id : startingMember.id}`).setLabel(`Pass Potato!`).setStyle('PRIMARY').setEmoji('🥔')
+            new Discord.MessageButton().setCustomId(`potato_${startingMember instanceof Discord.GuildMember ? startingMember.user.id : startingMember.id}`)
+            .setLabel(`Pass Potato!`)
+            .setStyle('PRIMARY')
+            .setEmoji('🥔')
         );
 
-        // Construct Object
+
+        // Construct temp object
         let potatoConstruct = {
-            previousUserID: slashInteraction.user.id,
-            previousUserName: slashInteraction.user.username,
+            previousUserID: slashCommand.user.id,
+            previousUserName: slashCommand.user.username,
             currentUserID: startingMember instanceof Discord.GuildMember ? startingMember.user.id : startingMember.id,
             currentUserName: startingMember instanceof Discord.GuildMember ? startingMember.user.username : startingMember.username,
-            channelID: slashInteraction.channelId
+            channelID: slashCommand.channelId
         };
+
 
         // Pick a random amount of time between 1 minute and 5 minutes (in milliseconds)
         let randomTime = Math.floor(( Math.random() * 300000 ) + 60000);
 
 
-
-
-        await slashInteraction.reply({ content: `<@${slashInteraction.user.id}> ( **${slashInteraction.user.username}** ) has started a Hot Potato game and passed it to <@${startingMember instanceof Discord.GuildMember ? startingMember.user.id : startingMember.id}> ( **${startingMember instanceof Discord.GuildMember ? startingMember.user.username : startingMember.username}** )!\n\nPress the button attached to this message to pass the Hot Potato on before it explodes!`,
+        // Send starting Message
+        await slashCommand.reply({ content: `<@${slashCommand.user.id}> ( **${slashCommand.user.username}** ) has started a Hot Potato game and passed it to <@${startingMember instanceof Discord.GuildMember ? startingMember.user.id : startingMember.id}> ( **${startingMember instanceof Discord.GuildMember ? startingMember.user.username : startingMember.username}** )!\n\nPress the button attached to this message to pass the Hot Potato on before it explodes!`,
         components: [messageActionRow], allowedMentions: { parse: [], repliedUser: false } })
         .then(async (message) => {
-
             // Add to Collection
-            client.potato.set(slashInteraction.channelId, potatoConstruct);
+            client.potato.set(slashCommand.channelId, potatoConstruct);
 
+            // End game after time chosen
             setTimeout(() => {
-                // refetch to make sure we have latest current user
-                let refetchedPotato = client.potato.get(slashInteraction.channelId);
+                // Refresh to ensure updated information
+                let refreshedPotato = client.potato.get(slashCommand.channelId);
 
-                // Update message to remove buttons
-                slashInteraction.editReply({ components: [messageActionRowDisabled], allowedMentions: { parse: [] } });
-                
-                // Send new follow-up type message in order to respect Message Edit Ratelimits a little lol
-                slashInteraction.followUp({ content: `Times up! The Hot Potato has exploded, taking <@${refetchedPotato.currentUserID}> ( **${refetchedPotato.currentUserName}** ) with it!`, allowedMentions: { parse: [] } });
+                // Update message to disable button
+                slashCommand.editReply({ components: [messageActionRowDisabled], allowedMentions: { parse: [] } });
 
-                // Delete object, ready for new game
-                client.potato.delete(slashInteraction.channelId);
+                // Send new follow-up message, in order to respect Edit Message Ratelimits and in case original message gets pushed up chat
+                slashCommand.followUp({ content: `Times up!\nThe Hot Potato exploded, taking <@${refreshedPotato.currentUserID}> ( **${refreshedPotato.currentUserName}** ) with it!`, allowedMentions: { parse: [] } });
+
+                // Delete object, ready for a new game
+                client.potato.delete(slashCommand.channelId);
             }, randomTime);
 
             return;
         });
 
         delete randomTime;
-
         return;
-
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * For handling of the button :P
-     * 
-     * @param {Discord.ButtonInteraction} buttonInteraction
-     */
-    async HandleButton(buttonInteraction)
-    {
-        // Hot Potato Game!
-        let nextUserID = buttonInteraction.customId.slice(7);
- 
-        // First, make sure the User *is* the current one with the Potato
-        if ( buttonInteraction.user.id !== nextUserID )
-        {
-            return await buttonInteraction.reply({ content: `You can't pass the Potato when you don't have it!`, ephemeral: true });
-        }
-        else
-        {
-            let potatoObject = client.potato.get(buttonInteraction.channelId);
- 
-            // Double check a game is ongoing, just in case
-            if ( !potatoObject )
-            {
-                return await buttonInteraction.reply({ content: `Sorry, the Potato has already exploded!`, ephemeral: true });
-            }
-
-
-
-            let channelMembers;
-            let nextMember;
-
-
-            // Determine what type of text based channel this was used in
-            if ( buttonInteraction.channel instanceof Discord.ThreadChannel )
-            {
-                // THREAD CHANNEL
-                //     Go based off Thread's Members
-                channelMembers = buttonInteraction.channel.guildMembers.filter(member => !member.user.bot);
-                nextMember = channelMembers.random();
-            }
-            else if ( buttonInteraction.channel instanceof Discord.TextChannel )
-            {
-                // (regular) TEXT CHANNEL
-                //     Go based off recent messages as I cannot be bothered to try and make an auto-cleaning member cache :S
-                let recentMessages = await buttonInteraction.channel.messages.fetch({ limit: 25 });
-                channelMembers = new Discord.Collection();
-
-                // Remove Bot users & system messages
-                recentMessages = recentMessages.filter(message => !message.author.bot);
-                recentMessages = recentMessages.filter(message => !message.system);
-
-                // Do the thing
-                recentMessages.each(message => {
-
-                    // Make sure there isn't duplicate Members
-                    if ( channelMembers.has(message.author.id) )
-                    {
-                        // Continue
-                    }
-                    else
-                    {
-                        channelMembers.set(message.author.id, message.author);
-                    }
-                });
-
-                // Error checking
-                if ( channelMembers.size < 1 )
-                {
-                    return await buttonInteraction.reply({ content: `Whoops! An error occured while attempting to pass the Hot Potato!`, ephemeral: true });
-                }
-            
-                nextMember = channelMembers.random();
-            }
-            else
-            {
-                // NEWS AND DM CHANNELS
-                return await buttonInteraction.reply({ content: `I don't understand how you managed to get this button in an Announcement Channel or DM, but you shouldn't have!`, ephemeral: true });
-            }
-
-
-
- 
-            potatoObject.previousUserID = potatoObject.currentUserID;
-            potatoObject.previousUserName = potatoObject.currentUserName;
-            potatoObject.currentUserID = nextMember instanceof Discord.GuildMember ? nextMember.user.id : nextMember.id;
-            potatoObject.currentUserName = nextMember instanceof Discord.GuildMember ? nextMember.user.username : nextMember.username;
- 
-            client.potato.set(buttonInteraction.channelId, potatoObject);
- 
-            let messageActionRow = new Discord.MessageActionRow().addComponents(
-                new Discord.MessageButton().setCustomId(`potato_${nextMember instanceof Discord.GuildMember ? nextMember.user.id : nextMember.id}`).setLabel(`Pass Potato!`).setStyle('PRIMARY').setEmoji('🥔')
-            );
- 
-            return await buttonInteraction.update({ content: `<@${potatoObject.previousUserID}> ( **${potatoObject.previousUserName}** ) has passed the Potato to <@${nextMember instanceof Discord.GuildMember ? nextMember.user.id : nextMember.id}> ( **${nextMember instanceof Discord.GuildMember ? nextMember.user.username : nextMember.username}** )!\n\nPress the button below to pass the Potato before it explodes!`,
-            components: [messageActionRow], allowedMentions: { parse: [] } });
-        }
     }
-}
+};

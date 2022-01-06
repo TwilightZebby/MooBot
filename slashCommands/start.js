@@ -1,35 +1,44 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
+const CONSTANTS = require('../constants.js');
+
+
+// Activity IDs
+const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
+.set("chess", "832012774040141894").set("doodle", "878067389634314250")
+.set("youtube", "880218394199220334").set("letter", "879863686565621790")
+.set("snacks", "879863976006127627").set("spell", "852509694341283871")
+.set("checkers", "832013003968348200");
 
 
 module.exports = {
+    // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
     name: 'start',
-    description: `Start a Discord Voice Activity or Game in a Voice Channel`,
-    category: 'misc',
-    
-    // Cooldown is in seconds
+    // Slash Command's description
+    description: `Starts a Discord Activity or Game in a Voice Channel`,
+    // Category of Slash Command, used for Help (text) Command
+    category: 'general',
+
+    // Slash Command's Cooldown, in seconds
+    // If not provided or is commented out, will default to 3 seconds
     cooldown: 120,
-
-    // Uncomment for making the command only usable in DMs with the Bot
-    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
-    //dmOnly: true,
-
-    // Uncomment for making the command only usable in Servers
-    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
-    guildOnly: true,
 
 
     /**
-     * Returns data to be used for registering the Slash Command
+     * Returns data used for registering this Slash Command
      * 
-     * @returns {Discord.ApplicationCommandData} 
+     * @returns {Discord.ChatInputApplicationCommandData}
      */
-    async registerData() {
-
+    registerData()
+    {
         const data = {};
+
+        // Slash Command's Name, Description, and Application Command Type
         data.name = this.name;
         data.description = this.description;
-        data.type = "CHAT_INPUT"; // Slash Command
+        data.type = "CHAT_INPUT";
         data.options = [
             {
                 type: "CHANNEL",
@@ -55,65 +64,66 @@ module.exports = {
                 ]
             }
         ];
-
+        
         return data;
-
     },
 
 
+
+
     /**
-     * Entry point that runs the slash command
+     * Main function that runs this Slash Command
      * 
-     * @param {Discord.CommandInteraction} slashInteraction Slash Command Interaction
+     * @param {Discord.CommandInteraction} slashCommand Slash Command Interaction
      */
-    async execute(slashInteraction) {
+    async execute(slashCommand)
+    {
+        // Ensure no DM usage
+        if ( slashCommand.channel instanceof Discord.DMChannel )
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GUILDS_ONLY, ephemeral: true });
+        }
+
 
         // Fetch arguments
-        const argChannel = slashInteraction.options.getChannel("channel", true);
-        const argActivity = slashInteraction.options.get("activity").value;
+        const argumentChannel = slashCommand.options.getChannel("channel", true);
+        const argumentActivity = slashCommand.options.get("activity").value;
 
-        
-        // Check given channel
-        if ( !(argChannel instanceof Discord.VoiceChannel) )
+
+        // Check given Channel, as an edge case
+        if ( !(argumentChannel instanceof Discord.VoiceChannel) )
         {
-            await slashInteraction.reply({ content: `That wasn't a Voice Channel!\nPlease try again with a valid Voice Channel.`, ephemeral: true });
-            delete argActivity, argChannel;
+            await slashCommand.reply({ content: `That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel (not Stage, Text, Announcement, Store, Thread, Category, Directory, or DM Channel)`, ephemeral: true });
+            delete argumentChannel, argumentActivity;
             return;
         }
 
 
         // Check for Invite Permission
-        if ( !argChannel.permissionsFor(client.user.id).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE, true) )
+        if ( !argumentChannel.permissionsFor(client.user.id).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE, true) )
         {
-            await slashInteraction.reply({ content: `Sorry, but it seems like I don't have the \`CREATE_INVITE\` Permission for that Voice Channel.\nThis Permission is required for this Slash Command to work!`, ephemeral: true });
-            delete argChannel, argActivity;
+            await slashCommand.reply({ content: `Sorry, but I don't seem to have the \`CREATE_INVITE\` Permission for the **${argumentChannel.name}** Voice Channel.\nThis Permission is required for this Slash Command to work!`, ephemeral: true });
+            delete argumentChannel, argumentActivity;
             return;
         }
 
 
-        let activitySnowflake = argActivity === "poker" ? "755827207812677713" :
-            argActivity === "chess" ? "832012774040141894" :
-                argActivity === "youtube" ? "880218394199220334" :
-                    argActivity === "doodle" ? "878067389634314250" :
-                        argActivity === "letter" ? "879863686565621790" :
-                            argActivity === "snacks" ? "879863976006127627" :
-                                argActivity === "spell" ? "852509694341283871" :
-                                    "832013003968348200"; // Last one is Checkers in the Park
+        // Pick Activity ID based off selected Activity
+        let activitySnowflake = ActivityIDs.get(argumentActivity);
 
-
-        // Create Link
-        await argChannel.createInvite({
-            maxAge: 600,
+        // Create Invite Link to Activity in Voice Channel
+        await argumentChannel.createInvite({
+            maxAge: 600, // Ten Minutes
             targetType: 2,
             targetApplication: activitySnowflake
         })
+        // Send User the link
         .then(async (invite) => {
-            await slashInteraction.reply({ content: `[Click here to start the **${argActivity}** Activity inside the <#${argChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
-            delete argChannel, argActivity;
+            await slashCommand.reply({ content: `[Click here to start the **${argumentActivity}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
+            delete argumentChannel, argumentActivity;
             return;
         });
 
         return;
-
     }
-}
+};

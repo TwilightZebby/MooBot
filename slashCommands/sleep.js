@@ -1,36 +1,36 @@
+// Imports
 const Discord = require('discord.js');
+//const fs = require('fs');
 const { client } = require('../constants.js');
-const ActionModule = require('../modules/actionModule.js');
-
+const CONSTANTS = require('../constants.js');
+const Action = require('../modules/actionModule.js');
 
 module.exports = {
+    // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
     name: 'sleep',
+    // Slash Command's description
     description: `Tell someone to go to sleep!`,
+    // Category of Slash Command, used for Help (text) Command
     category: 'action',
-    
-    // Cooldown is in seconds
+
+    // Slash Command's Cooldown, in seconds
+    // If not provided or is commented out, will default to 3 seconds
     cooldown: 5,
-
-    // Uncomment for making the command only usable in DMs with the Bot
-    //    - DO NOT have both this AND "guildOnly" uncommented, only one or neither
-    //dmOnly: true,
-
-    // Uncomment for making the command only usable in Servers
-    //   - DO NOT have both this AND "dmOnly" uncommented, only one or neither
-    guildOnly: true,
 
 
     /**
-     * Returns data to be used for registering the Slash Command
+     * Returns data used for registering this Slash Command
      * 
-     * @returns {Discord.ApplicationCommandData} 
+     * @returns {Discord.ChatInputApplicationCommandData}
      */
-    async registerData() {
-
+    registerData()
+    {
         const data = {};
+
+        // Slash Command's Name, Description, and Application Command Type
         data.name = this.name;
         data.description = this.description;
-        data.type = "CHAT_INPUT"; // Slash Command
+        data.type = "CHAT_INPUT";
         data.options = [
             {
                 type: "MENTIONABLE",
@@ -51,20 +51,28 @@ module.exports = {
                 required: false
             }
         ];
-
+        
         return data;
-
     },
 
 
+
+
     /**
-     * Entry point that runs the slash command
+     * Main function that runs this Slash Command
      * 
-     * @param {Discord.CommandInteraction} slashInteraction Slash Command Interaction
+     * @param {Discord.CommandInteraction} slashCommand Slash Command Interaction
      */
-    async execute(slashInteraction) {
-
-        return await ActionModule.slashRespond(slashInteraction);
-
+    async execute(slashCommand)
+    {
+        // Ensure no DM usage
+        if ( slashCommand.channel instanceof Discord.DMChannel )
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GUILDS_ONLY, ephemeral: true });
+        }
+        else
+        {
+            return await Action.slashRespond(slashCommand);
+        }
     }
-}
+};
