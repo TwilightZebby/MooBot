@@ -158,7 +158,16 @@ module.exports = {
             }
             else
             {
-                if ( displayButton ) { await slashCommand.reply({ content: displayMessage, components: [actionReturnActionRow], allowedMentions: { parse: [] } }); }
+                if ( displayButton )
+                {
+                    // Send Message
+                    let sentActionMessage = await slashCommand.reply({ content: displayMessage, components: [actionReturnActionRow], allowedMentions: { parse: [] }, fetchReply: true });
+                    
+                    // Auto remove Button after 5 minutes, just to keep chats clean :)
+                    setTimeout(async () => {
+                        return await sentActionMessage.edit({ components: [] });
+                    }, 60000);
+                }
                 else { await slashCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } }); }
             }
 
