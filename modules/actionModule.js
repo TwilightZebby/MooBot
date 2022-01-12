@@ -39,6 +39,12 @@ module.exports = {
         let reasonArgument = slashCommand.options.get("reason");
         let reasonOption = reasonArgument == null ? undefined : reasonArgument.value;
 
+        // Create Button for returning the action
+        let actionReturnActionRow = new Discord.MessageActionRow().addComponents(
+            new Discord.MessageButton().setStyle('PRIMARY').setCustomId(`areturn_${slashCommand.commandName}_${slashCommand.user.id}_${personArgument.id}`).setLabel(`Return ${slashCommand.commandName}`)
+        );
+        let displayButton = false; // For knowing if the Button should be included or not, since it only wants to appear when Target is a User, not a Role
+
 
         let displayMessage = "";
 
@@ -82,6 +88,7 @@ module.exports = {
             else
             {
                 // USER MENTION - used on someone else
+                displayButton = true;
                 displayMessage = USER_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
@@ -119,6 +126,7 @@ module.exports = {
             if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id !== slashCommand.user.id) )
             {
                 // USER MENTION - used on literally anyone else
+                displayButton = true;
                 displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.displayName}`);
             }
 
@@ -150,7 +158,17 @@ module.exports = {
             }
             else
             {
-                await slashCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } });
+                if ( displayButton )
+                {
+                    // Send Message
+                    let sentActionMessage = await slashCommand.reply({ content: displayMessage, components: [actionReturnActionRow], allowedMentions: { parse: [] }, fetchReply: true });
+                    
+                    // Auto remove Button after 5 minutes, just to keep chats clean :)
+                    setTimeout(async () => {
+                        return await sentActionMessage.edit({ components: [] });
+                    }, 60000);
+                }
+                else { await slashCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } }); }
             }
 
             return;
