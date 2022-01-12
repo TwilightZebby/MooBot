@@ -43,6 +43,12 @@ module.exports = {
                 name: "gif",
                 description: "True to display a GIF, otherwise leave blank or use False",
                 required: false
+            },
+            {
+                type: "STRING",
+                name: "reason",
+                description: "A custom message to add onto the end of the built-in messages",
+                required: false
             }
         ];
         
