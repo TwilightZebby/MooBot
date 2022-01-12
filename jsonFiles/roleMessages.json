@@ -11,5 +11,7 @@
 
     "kiss": "**{author}** kissed **{role}**",
 
-    "slap": "**{author}** slapped **{role}**"
+    "slap": "**{author}** slapped **{role}**",
+
+    "muda": "**{author}** pummeled **{role}**"
 }

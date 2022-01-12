@@ -11,5 +11,7 @@
 
     "kiss": "**{author}** kissed **{receiver}**",
 
-    "slap": "**{author}** slapped **{receiver}**"
+    "slap": "**{author}** slapped **{receiver}**",
+
+    "muda": "**{author}** pummeled **{receiver}**"
 }
