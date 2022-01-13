@@ -38,12 +38,12 @@ module.exports = {
                 description: "The person you want to pummel",
                 required: true
             },
-            {
+            /* {
                 type: "BOOLEAN",
                 name: "gif",
-                description: "True to display a GIF, otherwise leave blank or use False",
+                description: "Set to False to hide the GIF",
                 required: false
-            },
+            }, */
             {
                 type: "STRING",
                 name: "reason",

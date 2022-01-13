@@ -45,6 +45,9 @@ module.exports = {
         );
         let displayButton = false; // For knowing if the Button should be included or not, since it only wants to appear when Target is a User, not a Role
 
+        // For the /muda command, since that will use a GIF by default
+        if ( slashCommand.commandName === "muda" ) { gifOption = true; }
+
 
         let displayMessage = "";
 
