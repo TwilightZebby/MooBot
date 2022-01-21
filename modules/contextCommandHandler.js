@@ -18,7 +18,7 @@ module.exports = {
         // Catch for spaces in Context Command Names
         if ( contextInteraction.commandName.includes(" ") )
         {
-            contextInteraction.commandName = contextInteraction.commandName.split(" ").join("_");
+            contextInteraction.commandName = contextInteraction.commandName.split("_").join(" ");
         }
 
         // Find context command
