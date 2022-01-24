@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 //const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
-const Utility = require('./utilityModule.js');
+const Utility = require('../modules/utilityModule.js');
 
 // REGEXS
 const authorRegEx = new RegExp(/{author}/g);
