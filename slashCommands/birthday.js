@@ -72,32 +72,29 @@ module.exports = {
                     },
                     {
                         type: 'STRING',
-                        name: 'offset',
-                        description: 'Your Timezone offset from UTC +00:00, used to identify when your midnight is',
+                        name: 'timezone',
+                        description: 'Your Timezone, used to identify when your midnight is',
                         autocomplete: true,
                         required: true,
                         choices: [
-                            { name: "-09:00", value: "-09:00" },
-                            { name: "-08:00", value: "-08:00" },
-                            { name: "-07:00", value: "-07:00" },
-                            { name: "-06:00", value: "-06:00" },
-                            { name: "-05:00", value: "-05:00" },
-                            { name: "-04:00", value: "-04:00" },
-                            { name: "-03:30", value: "-03:30" },
-                            { name: "-03:00", value: "-03:00" },
-                            { name: "-02:00", value: "-02:00" },
-                            { name: "-01:00", value: "-01:00" },
-                            { name: "+00:00 (UTC)", value: "+00:00" },
-                            { name: "+01:00", value: "+01:00" },
-                            { name: "+02:00", value: "+02:00" },
-                            { name: "+03:00", value: "+03:00" },
-                            { name: "+03:30", value: "+03:30" },
-                            { name: "+04:00", value: "+04:00" },
-                            { name: "+04:30", value: "+04:30" },
-                            { name: "+05:00", value: "+05:00" },
-                            { name: "+05:30", value: "+05:30" },
-                            { name: "+05:45", value: "+05:45" },
-                            { name: "+06:00", value: "+06:00" }
+                            { name: "UTC", value: "Etc/UTC" },
+                            { name: "America/Los_Angeles", value: "America/Los_Angeles" },
+                            { name: "America/Phoenix", value: "America/Phoenix" },
+                            { name: "America/Costa_Rica", value: "America/Costa_Rica" },
+                            { name: "America/New_York", value: "America/New_York" },
+                            { name: "America/Dominica", value: "America/Dominica" },
+                            { name: "Atlantic/South_Georgia", value: "Atlantic/South_Georgia" },
+                            { name: "Atlantic/Cape_Verde", value: "Atlantic/Cape_Verde" },
+                            { name: "Europe/London", value: "Europe/London" },
+                            { name: "Europe/Paris", value: "Europe/Paris" },
+                            { name: "Europe/Amsterdam", value: "Europe/Amsterdam" },
+                            { name: "Europe/Stockholm", value: "Europe/Stockholm" },
+                            { name: "Europe/Warsaw", value: "Europe/Warsaw" },
+                            { name: "Africa/Johannesburg", value: "Africa/Johannesburg" },
+                            { name: "Antarctica/Mawson", value: "Antarctica/Mawson" },
+                            { name: "Australia/Sydney", value: "Australia/Sydney" },
+                            { name: "Asia/Tokyo", value: "Asia/Tokyo" },
+                            { name: "Asia/Hong_Kong", value: "Asia/Hong_Kong" }
                         ]
                     }
                 ]
@@ -124,6 +121,7 @@ module.exports = {
     {
 
         // .
+        
 
     },
 
