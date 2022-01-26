@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
+const TIMEZONES = require('../hiddenJsonFiles/timezones.js'); // Yes I know it's not a JSON file shush
 
 const Month31Days = [ 0, 2, 4, 6, 7, 9, 11 ];
 const Month30Days = [ 3, 5, 8, 10 ];
