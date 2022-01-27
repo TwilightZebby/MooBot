@@ -207,6 +207,7 @@ const SlashCommandHandler = require('./modules/slashCommandHandler.js');
 const ButtonHandler = require('./modules/buttonHandler.js');
 const SelectMenuHandler = require('./modules/selectMenuHandler.js');
 const ContextCommandHandler = require('./modules/contextCommandHandler.js');
+const AutoCompleteHandler = require('./modules/autoCompleteHandler.js');
 
 client.on('interactionCreate', async (interaction) => {
     if ( interaction.isCommand() )
@@ -228,6 +229,11 @@ client.on('interactionCreate', async (interaction) => {
     {
         // Is a Select Component
         return await SelectMenuHandler.Main(interaction);
+    }
+    else if ( interaction.isAutocomplete() )
+    {
+        // Is an AutoComplete Interaction
+        return await AutoCompleteHandler.Main(interaction);
     }
     else
     {

@@ -125,6 +125,23 @@ module.exports = {
         
 
     },
+    
+
+
+
+
+
+    /**
+     * Handles the autocomplete argument(s) of this Slash Command
+     * 
+     * @param {Discord.AutocompleteInteraction} autoCompleteInteraction 
+     */
+    async autocomplete(autoCompleteInteraction)
+    {
+        // Since there is only the Timezone argument that has autocomplete in this Slash Command,
+        //    there is no need to check which argument we're seeing
+
+    },
 
 
 
