@@ -76,27 +76,7 @@ module.exports = {
                         name: 'timezone',
                         description: 'Your Timezone, used to identify when your midnight is',
                         autocomplete: true,
-                        required: true,
-                        choices: [
-                            { name: "UTC", value: "Etc/UTC" },
-                            { name: "America/Los_Angeles", value: "America/Los_Angeles" },
-                            { name: "America/Phoenix", value: "America/Phoenix" },
-                            { name: "America/Costa_Rica", value: "America/Costa_Rica" },
-                            { name: "America/New_York", value: "America/New_York" },
-                            { name: "America/Dominica", value: "America/Dominica" },
-                            { name: "Atlantic/South_Georgia", value: "Atlantic/South_Georgia" },
-                            { name: "Atlantic/Cape_Verde", value: "Atlantic/Cape_Verde" },
-                            { name: "Europe/London", value: "Europe/London" },
-                            { name: "Europe/Paris", value: "Europe/Paris" },
-                            { name: "Europe/Amsterdam", value: "Europe/Amsterdam" },
-                            { name: "Europe/Stockholm", value: "Europe/Stockholm" },
-                            { name: "Europe/Warsaw", value: "Europe/Warsaw" },
-                            { name: "Africa/Johannesburg", value: "Africa/Johannesburg" },
-                            { name: "Antarctica/Mawson", value: "Antarctica/Mawson" },
-                            { name: "Australia/Sydney", value: "Australia/Sydney" },
-                            { name: "Asia/Tokyo", value: "Asia/Tokyo" },
-                            { name: "Asia/Hong_Kong", value: "Asia/Hong_Kong" }
-                        ]
+                        required: true
                     }
                 ]
             },
@@ -141,6 +121,25 @@ module.exports = {
         // Since there is only the Timezone argument that has autocomplete in this Slash Command,
         //    there is no need to check which argument we're seeing
 
+        /** @type {String} */
+        const focusedValue = autoCompleteInteraction.options.getFocused();
+        let filteredTimezones;
+
+        // Catch for no search (when blank)
+        if ( !focusedValue || focusedValue === "" || focusedValue === " " )
+        {
+            filteredTimezones = TIMEZONES[`TIMEZONES`];
+        }
+
+        filteredTimezones = TIMEZONES[`TIMEZONES`].filter(timezone => timezone.toLowerCase().startsWith(focusedValue.toLowerCase()) || timezone.toLowerCase().includes(focusedValue.toLowerCase()));
+
+        // To keep within 25 Choice limit
+        if ( filteredTimezones.length > 25 )
+        {
+            filteredTimezones = filteredTimezones.slice(0, 24);
+        }
+
+        return await autoCompleteInteraction.respond(filteredTimezones.map(timezone => ({ name: timezone, value: timezone })) );
     },
 
 
