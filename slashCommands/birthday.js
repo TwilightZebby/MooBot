@@ -101,7 +101,29 @@ module.exports = {
     async execute(slashCommand)
     {
 
-        // .
+        // Fetch subcommand used
+        const birthdaySubCommand = slashCommand.options.getSubcommand(false);
+
+        // Catch for edge case of no sub command
+        if ( !birthdaySubCommand || birthdaySubCommand === "" )
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_SUB_COMMAND_FAILED, ephemeral: true });
+        }
+        // Set Birthday
+        else if ( birthdaySubCommand === "set" )
+        {
+            return await this.set(slashCommand);
+        }
+        // Remove Birthday
+        else if ( birthdaySubCommand === "remove" )
+        {
+            return await this.remove(slashCommand);
+        }
+        // Edge cases
+        else
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED.replace("{{commandName}}", slashCommand.commandName), ephemeral: true });
+        }
         
 
     },
@@ -200,5 +222,58 @@ module.exports = {
         let birthdayJSON = require('../hiddenJsonFiles/birthdayDates.json');
         let monthValue = parseInt(slashCommand.options.get("month").value); // 0 for Jan, 11 for Dec
         let dateValue = parseInt(slashCommand.options.get("date").value);
+
+
+        // ***** Check inputted date exists
+        // Months with 31 days
+        if ( Month31Days.includes(monthValue) && ( dateValue < 1 || dateValue > 31 ) )
+        {
+            return await slashCommand.editReply({ content: `That wasn't a valid date!\n(Must be a day between 1 and 31, inclusive, for that month)`, ephemeral: true });
+        }
+        // Months with 30 days
+        else if ( Month30Days.includes(monthValue) && ( dateValue < 1 || dateValue > 30 ) )
+        {
+            return await slashCommand.editReply({ content: `That wasn't a valid date!\n(Must be a day between 1 and 30, inclusive, for that month)`, ephemeral: true });
+        }
+        // Feb 30th (never exists)
+        else if ( monthValue === 1 && dateValue > 29 )
+        {
+            return await slashCommand.editReply({ content: `That wasn't a valid date!\n(Must be a day between 1 and 29, inclusive, for February)`, ephemeral: true });
+        }
+        // Special button for Feb 29th (only exists on Leap Years)
+        else if ( monthValue === 1 && dateValue === 29 )
+        {
+            let confirmationRow = new Discord.MessageActionRow().addComponents(
+                new Discord.MessageButton().setCustomId(`feb29_${slashCommand.user.id}`).setLabel(`Confirm`).setStyle('PRIMARY')
+            );
+
+            return await slashCommand.editReply({
+                content: `You are about to set your Birthday as February 29th, a date that can only exist during Leap Years. As such, we will give you the Birthday Role on February 28th on other, non-leap years.\n\nPlease confirm if this is ok for you by pressing the button attached to this message, otherwise, you can safely ignore or delete this message to cancel.`,
+                components: [confirmationRow],
+                ephemeral: true
+            });
+        }
+        // All other, valid, dates
+        else
+        {
+            birthdayJSON[slashCommand.user.id] = {
+                userID: slashCommand.user.id,
+                month: monthValue,
+                date: dateValue
+            };
+
+            // Write to JSON file
+            fs.writeFile('./hiddenJsonFiles/birthdayDates.json', JSON.stringify(birthdayJSON, null, 4), async (err) => {
+                if (err)
+                {
+                    await slashCommand.editReply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GENERIC_FAILED.replace("{{commandName}}", slashCommand.commandName), ephemeral: true });
+                    return console.error(err);
+                }
+            });
+
+            // ACK to user
+            return await slashCommand.editReply({ content: `✅ Successfully set your Birthday as ${IntToMonths[monthValue]} ${dateValue}${[1, 21, 31].includes(dateValue) ? "st" : [2, 22].includes(dateValue) ? "nd" : [3, 23].includes(dateValue) ? "rd" : "th"}`, ephemeral: true });
+        }
+
     }
 };

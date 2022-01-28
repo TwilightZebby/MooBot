@@ -27,6 +27,7 @@ module.exports = {
 
         SLASH_COMMAND_GENERIC_FAILED: `Sorry, but there was a problem trying to run the {{commandName}} Slash Command.`,
         SLASH_COMMAND_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to run the {{commandName}} Slash Command.\nIf you continue to see this error, please contact TwilightZebby#1955`,
+        SLASH_COMMAND_SUB_COMMAND_FAILED: `Sorry, but I was unable to see the Sub-Command used...`,
         SLASH_COMMAND_DMS_ONLY: `Sorry, but this Slash Command can only be used in DMs with me.`,
         SLASH_COMMAND_GUILDS_ONLY: `Sorry, but this Slash Command can only be used in Servers, not in DMs with me.`,
         SLASH_COMMAND_COOLDOWN: `Please wait {{commandCooldown}} before using the {{commandName}} Slash Command again.`,
