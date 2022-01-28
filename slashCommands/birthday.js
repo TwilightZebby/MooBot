@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
-const TIMEZONES = require('../hiddenJsonFiles/timezones.js'); // Yes I know it's not a JSON file shush
+//const TIMEZONES = require('../hiddenJsonFiles/timezones.js'); // Yes I know it's not a JSON file shush
 
 const Month31Days = [ 0, 2, 4, 6, 7, 9, 11 ];
 const Month30Days = [ 3, 5, 8, 10 ];
@@ -70,14 +70,14 @@ module.exports = {
                         minValue: 0,
                         maxValue: 31
                         // Can't use pre-set choices for the Date as Discord only allows a max of 25 choices per option, and there are up to 31 days in a month!
-                    },
-                    {
+                    }
+                    /* {
                         type: 'STRING',
                         name: 'timezone',
                         description: 'Your Timezone, used to identify when your midnight is',
                         autocomplete: true,
                         required: true
-                    }
+                    } */
                 ]
             },
             {
@@ -113,16 +113,17 @@ module.exports = {
 
     /**
      * Handles the autocomplete argument(s) of this Slash Command
+     * Commented out to possibly use at a later date
      * 
      * @param {Discord.AutocompleteInteraction} autoCompleteInteraction 
      */
-    async autocomplete(autoCompleteInteraction)
+    /* async autocomplete(autoCompleteInteraction)
     {
         // Since there is only the Timezone argument that has autocomplete in this Slash Command,
         //    there is no need to check which argument we're seeing
 
         /** @type {String} */
-        const focusedValue = autoCompleteInteraction.options.getFocused();
+        /* const focusedValue = autoCompleteInteraction.options.getFocused();
         let filteredTimezones;
 
         // Catch for no search (when blank)
@@ -140,7 +141,7 @@ module.exports = {
         }
 
         return await autoCompleteInteraction.respond(filteredTimezones.map(timezone => ({ name: timezone, value: timezone })) );
-    },
+    }, */
 
 
 
