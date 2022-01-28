@@ -76,12 +76,18 @@ for ( const file of selectFiles )
 
 /******************************************************************************* */
 // DISCORD - READY EVENT
+const BirthdayRoleModule = require('./modules/birthdayModule.js');
+
 client.once('ready', () => {
     client.user.setPresence({
         status: 'online'
     });
 
     console.log("I am ready!");
+
+    setInterval(await BirthdayRoleModule.Main(), 300000);
+    // 300000 = 5 mins, for testing
+    // 2.16e+7 = 6 hours, for production
 });
 
 
