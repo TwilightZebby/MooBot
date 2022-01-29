@@ -7,10 +7,10 @@ const CONSTANTS = require('../constants.js');
 
 // Activity IDs
 const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
-.set("chess", "832012774040141894").set("doodle", "878067389634314250")
+.set("chess", "832012774040141894").set("sketch", "902271654783242291")
 .set("youtube", "880218394199220334").set("letter", "879863686565621790")
 .set("snacks", "879863976006127627").set("spell", "852509694341283871")
-.set("checkers", "832013003968348200");
+.set("checkers", "832013003968348200").set("ocho", "832025144389533716");
 
 
 module.exports = {
@@ -56,11 +56,12 @@ module.exports = {
                     { name: "Poker Night", value: "poker" },
                     { name: "Chess in the Park", value: "chess" },
                     { name: "YouTube Together", value: "youtube" },
-                    { name: "Doodle", value: "doodle" },
-                    { name: "Letter Tile", value: "letter" },
+                    { name: "Sketch Heads", value: "sketch" },
+                    { name: "Letter League", value: "letter" },
                     { name: "Word Snacks", value: "snacks" },
                     { name: "SpellCast", value: "spell" },
-                    { name: "Checkers in the Park", value: "checkers" }
+                    { name: "Checkers in the Park", value: "checkers" },
+                    { name: "Ocho", value: "ocho" }
                 ]
             }
         ];

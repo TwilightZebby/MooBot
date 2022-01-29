@@ -82,7 +82,7 @@ module.exports = {
         else if ( argumentCommandType === "context" )
         {
             // CONTEXT COMMAND
-            applicationCommand = client.contextCommands.get(argumentCommandName.split(" ").join("_"));
+            applicationCommand = client.contextCommands.get(argumentCommandName.split("_").join(" "));
 
             if ( !applicationCommand )
             {
