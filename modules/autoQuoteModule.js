@@ -21,11 +21,16 @@ module.exports = {
         // ****************************************
         
 
-        // Grab Guild, Channel, and Message ID from Link
+        // Split up message for ease
         let splitMessage = message.content.split("/");
-        const linkMessageID = splitMessage[splitMessage.length - 1];
-        const linkChannelID = splitMessage[splitMessage.length - 2];
-        const linkGuildID = splitMessage[splitMessage.length - 3];
+
+        // If message link is surrounded by < > then don't auto-quote
+        if ( splitMessage[0].startsWith("<") && splitMessage[6].endsWith(">") ) { return; }
+
+        // Grab Message, Channel, and Guild IDs for ease
+        const linkMessageID = splitMessage[6];
+        const linkChannelID = splitMessage[5];
+        const linkGuildID = splitMessage[4];
 
         // Ensure it wasn't a link to a DM message
         if ( linkGuildID === "@me" ) { return; }
@@ -55,7 +60,6 @@ module.exports = {
                     let quoteEmbed = new Discord.MessageEmbed().setAuthor({ name: `${!sourceMessage.member?.displayName ? sourceMessage.author.username : sourceMessage.member.displayName} (${sourceMessage.author.username}#${sourceMessage.author.discriminator})`, iconURL: !sourceMessage.member ? sourceMessage.author.displayAvatarURL({ dynamic: true, format: 'png' }) : sourceMessage.member.displayAvatarURL({ dynamic: true, format: 'png' }) })
                     .setColor(!sourceMessage.member?.displayHexColor ? 'RANDOM' : sourceMessage.member.displayHexColor)
                     .setDescription(!sourceMessage.content ? ' ' : sourceMessage.content)
-                    .addFields({ name: `Jump to Message`, value: `[Click to jump](${sourceMessage.url})` })
                     .setFooter({ text: `Quoted by ${message.author.username}#${message.author.discriminator}` })
                     .setTimestamp(sourceMessage.createdTimestamp);
 
@@ -63,6 +67,9 @@ module.exports = {
                     {
                         quoteEmbed.setImage(sourceMessage.attachments.first().url);
                     }
+
+                    // Add Jump Link
+                    quoteEmbed.addFields({ name: `Jump to Message`, value: `[Click to jump](${sourceMessage.url})` });
                 
                     // Send message
                     return await message.reply({ embeds: [quoteEmbed], allowedMentions: { parse: [], repliedUser: false } });
