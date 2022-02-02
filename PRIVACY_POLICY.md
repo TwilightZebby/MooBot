@@ -11,6 +11,9 @@ The Developer of **The Bot**, TwilightZebby, is contactable via the listed metho
 - GitHub, preferrably via opening an Issue Ticket or Discussion on **The Bot**'s [GitHub Repo](https://github.com/TwilightZebby/ActionsBot);
 - Discord, by asking TwilightZebby in Dr1fterX's Discord Server ( found at https://discord.gg/URH5E34FZf );
     - Please note, TwilightZebby has his Discord Direct Messages (DM's) disabled unless you are also in one of very few servers that he has them enabled for, hense why this isn't offered as a contact method
+    - TwilightZebby's Discord Name: `TwilightZebby#1955`, and Discord User ID: `156482326887530498`
 - Twitter, [@TwilightZebby](https://twitter.com/TwilightZebby)
+
+Please also see [Discord's own Privacy Policy](https://discord.com/privacy).
 
 *This Privacy Policy is subject to change at any time.*
