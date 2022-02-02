@@ -69,7 +69,15 @@ module.exports = {
         }
 
         // Send message
-        return await message.channel.send({ content: repeatedMessage, allowedMentions: { parse: [] } }); // VERY IMPORTANT TO *NOT* ALLOW ANY MENTIONS
+        await message.channel.send({ content: repeatedMessage, allowedMentions: { parse: [] } }); // VERY IMPORTANT TO *NOT* ALLOW ANY MENTIONS
 
+        // Check if Bot has MANAGE_MESSAGES Permission in that Channel
+        if ( message.guild.me.permissionsIn(message.channel).has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) )
+        {
+            // Delete trigger command, since we have Permissions to do so
+            await message.delete();
+        }
+
+        return;
     }
 };
