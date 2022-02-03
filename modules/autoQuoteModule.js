@@ -68,12 +68,36 @@ module.exports = {
                         // If spoilered, don't embed
                         if ( sourceMessage.attachments.first().spoiler )
                         {
-                            quoteEmbed.addFields({ name: "\u200B", value: "*This message contains spoiler-marked image(s)*" });
+                            quoteEmbed.addFields({ name: `\u200B`, value: "*This message contains spoiler-marked image(s)*" });
                         }
                         // Check if first Attachment is an Image or GIF that can be embedded and displayed
                         else if ( ["image/png", "image/jpeg", "image/webp", "image/gif"].includes(sourceMessage.attachments.first().contentType) )
                         {
                             quoteEmbed.setImage(sourceMessage.attachments.first().url);
+                        }
+                        // Not embeddable, denote with string
+                        else
+                        {
+                            quoteEmbed.addFields({ name: `\u200B`, value: `*This message contains a(n) ${sourceMessage.attachments.first().contentType} attachment` });
+                        }
+
+                        // If there are more than 2 attachments
+                        if ( sourceMessage.attachments.size >= 2 )
+                        {
+                            // To reduce Embed clutter
+                            if ( quoteEmbed.fields[quoteEmbed.fields.length - 1].name === `\u200B` )
+                            {
+                                quoteEmbed.fields[quoteEmbed.fields.length - 1].value += `\n*This message has ${sourceMessage.attachments.size - 1} more attachments*`;
+                            }
+                            // For different wording when there is an embedded image
+                            else if ( quoteEmbed.image !== null && quoteEmbed.image !== undefined )
+                            {
+                                quoteEmbed.addFields({ name: `\u200B`, value: `*This message has ${sourceMessage.attachments.size - 1} more attachments*` });
+                            }
+                            else
+                            {
+                                quoteEmbed.addFields({ name: `\u200B`, value: `*This message has ${sourceMessage.attachments.size} total attachments*` });
+                            }
                         }
                     }
 
