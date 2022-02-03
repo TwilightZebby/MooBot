@@ -65,7 +65,16 @@ module.exports = {
 
                     if ( sourceMessage.attachments.size >= 1 )
                     {
-                        quoteEmbed.setImage(sourceMessage.attachments.first().url);
+                        // If spoilered, don't embed
+                        if ( sourceMessage.attachments.first().spoiler )
+                        {
+                            quoteEmbed.addFields({ name: "\u200B", value: "*This message contains spoiler-marked image(s)*" });
+                        }
+                        // Check if first Attachment is an Image or GIF that can be embedded and displayed
+                        else if ( ["image/png", "image/jpeg", "image/webp", "image/gif"].includes(sourceMessage.attachments.first().contentType) )
+                        {
+                            quoteEmbed.setImage(sourceMessage.attachments.first().url);
+                        }
                     }
 
                     // Add Jump Link
