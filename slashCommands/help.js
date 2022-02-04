@@ -54,6 +54,21 @@ module.exports = {
 
         // Construct initial embed
         const initialEmbed = this.constructEmbed("info");
+
+        // Construct Select Menu for pagination
+        const selectPagination = new Discord.MessageActionRow().addComponents(
+            new Discord.MessageSelectMenu().setCustomId(`help_${slashCommand.user.id}`)
+            .setMinValues(1).setMaxValues(1)
+            .setOptions([
+                { label: `Information`, value: `info`, description: `General information about the Bot`, emoji: 'ℹ', default: true },
+                { label: `Slash Commands`, value: `slash`, description: `What I can do when slashing`, emoji: "<:MessageIconSlashCommands:785919558376488990>" },
+                { label: `Context Commands`, value: `context`, description: `Things I can do with right-clicky bois`, emoji: "<:IconIntegration:775420929567227926>" },
+                { label: `Text-based Commands`, value: `text`, description: `My commands that still use old-fashion Text Prefixes`, emoji: "<:ChannelText:779036156175188001>" }
+            ])
+        );
+
+        // Send to User
+        return await slashCommand.reply({ embeds: [initialEmbed], components: [selectPagination], ephemeral: true });
     },
 
 
@@ -85,7 +100,7 @@ module.exports = {
 
                 return new Discord.MessageEmbed().setColor('AQUA')
                 .setTitle(`General Information`)
-                .setDescription(client.application.description)
+                .setDescription(`Adds some Kawaii-bot style Slash Commands, among other things, for Dr1fterX's Discord Server. Made and developed by TwilightZebby#1955`)
                 .addFields(
                     { name: `Uptime`, value: `${uptime.toFixed(1)} ${uptimeUnit}`, inline: true },
                     { name: `Bot Version`, value: `${PACKAGE.version}`, inline: true },
