@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 //const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
+const { PREFIX } = require('../config.js');
 const PACKAGE = require('../package.json');
 
 module.exports = {
@@ -88,7 +89,23 @@ module.exports = {
     {
         switch (embedPage)
         {
+            case "text":
+                return new Discord.MessageEmbed().setColor('AQUA')
+                .setTitle(`Text-based Commands`)
+                .setDescription(`All the Text-based Commands I have.\nThese are useable either by \`@mention\`ing the Bot, or through use of my \`${PREFIX}\` Prefix`);
+
+            case "context":
+                return new Discord.MessageEmbed().setColor('AQUA')
+                .setTitle(`Context Commands`)
+                .setDescription(`All the Context Commands I have.\nThese are usable when right-clicking on a Message or User.`);
+
+            case "slash":
+                return new Discord.MessageEmbed().setColor('AQUA')
+                .setTitle(`Slash Commands`)
+                .setDescription(`All the Slash Commands I have.`);
+
             case "info":
+            default:
                 // Fetch uptime, in human-readable format
                 let uptime = client.uptime / 1000; // SECONDS
                 let uptimeUnit = "seconds";
