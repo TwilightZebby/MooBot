@@ -90,9 +90,34 @@ module.exports = {
         switch (embedPage)
         {
             case "text":
-                return new Discord.MessageEmbed().setColor('AQUA')
+                // Grab the commands
+                let textCommandsEveryone = client.textCommands.filter(command => !command.limitation || command.limitation === "everyone").map(command => command.name); // Text CMDs everyone can use
+                let textCommandsModerator = client.textCommands.filter(command => command.limitation === "moderator").map(command => command.name); // CMDs only those with Moderator Permissions and above can use
+                let textCommandsAdmin = client.textCommands.filter(command => command.limitation === "admin").map(command => command.name); // CMDs only those with Admin Permission and above can use
+                let textCommandsOwner = client.textCommands.filter(command => command.limitation === "owner").map(command => command.name); // CMDs only Server Owners and above can use
+                let textCommandsDeveloper = client.textCommands.filter(command => command.limitation === "developer").map(command => command.name); // CMDs only the Bot's Developer can use, while hiding `shutdown` command.
+
+                // Construct Embed
+                let textCommandsEmbed = new Discord.MessageEmbed().setColor('AQUA')
                 .setTitle(`Text-based Commands`)
-                .setDescription(`All the Text-based Commands I have.\nThese are useable either by \`@mention\`ing the Bot, or through use of my \`${PREFIX}\` Prefix`);
+                .setDescription(`All the Text-based Commands I have, sorted by Permission Level.\nThese are useable either by \`@mention\`ing the Bot, or through use of my \`${PREFIX}\` Prefix`);
+
+                // ***** Populate Embed with Commands
+                // Catch for edge case of no text commands
+                if ( textCommandsEveryone.length < 1 && textCommandsModerator.length < 1 && textCommandsAdmin.length < 1 && textCommandsOwner.length < 1 && textCommandsDeveloper.length < 1 )
+                {
+                    textCommandsEmbed.addFields({ name: `\u200B`, value: `*No Text Commands found or available*` });
+                }
+
+                // Only add the field if there is a command for that permission level
+                if ( textCommandsEveryone.length >= 1 ) { textCommandsEmbed.addFields({ name: `General Commands`, value: textCommandsEveryone.join(', ') }); }
+                if ( textCommandsModerator.length >= 1 ) { textCommandsEmbed.addFields({ name: `Moderator Commands`, value: textCommandsModerator.join(', ') }); }
+                if ( textCommandsAdmin.length >= 1 ) { textCommandsEmbed.addFields({ name: `Admin Commands`, value: textCommandsAdmin.join(', ') }); }
+                if ( textCommandsOwner.length >= 1 ) { textCommandsEmbed.addFields({ name: `Server Owner Commands`, value: textCommandsOwner.join(', ') }); }
+                if ( textCommandsDeveloper.length >= 1 ) { textCommandsEmbed.addFields({ name: `Developer Commands`, value: textCommandsDeveloper.join(', ') }); }
+
+                // Return Embed
+                return textCommandsEmbed;
 
             case "context":
                 return new Discord.MessageEmbed().setColor('AQUA')
