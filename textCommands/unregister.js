@@ -45,7 +45,7 @@ module.exports = {
     //    - "admin" for those with the ADMIN Guild Permission, Guild Owners, & TwilightZebby
     //    - "moderator" for those with Moderator-level Guild Permissions, Admins, Guild Owners, & TwilightZebby
     //    - "everyone" (or commented out) for everyone to use this command
-    limitation: "everyone",
+    limitation: "developer",
 
 
 
