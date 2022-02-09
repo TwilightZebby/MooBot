@@ -122,9 +122,25 @@ module.exports = {
                 return textCommandsEmbed;
 
             case "context":
-                return new Discord.MessageEmbed().setColor('AQUA')
+                // Fetch Context Commands
+                let contextCommands = client.contextCommands.map(command => command.name);
+
+                // Construct Embed
+                let contextCommandEmbed = new Discord.MessageEmbed().setColor('AQUA')
                 .setTitle(`Context Commands`)
                 .setDescription(`All the Context Commands I have.\nThese are usable when right-clicking on a Message or User.`);
+
+                // Edge case for no Context Commands
+                if ( !contextCommands.length || contextCommands.length < 1 )
+                {
+                    contextCommandEmbed.addFields({ name: `\u200B`, value: `*No Context Commands found or available*` });
+                }
+                else
+                {
+                    contextCommandEmbed.addFields({ name: `\u200B`, value: contextCommands.join(', ') });
+                }
+
+                return slashCommandsEmbed;
 
             case "slash":
                 // Fetch Slash Commands
