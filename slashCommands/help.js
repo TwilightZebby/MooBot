@@ -140,7 +140,7 @@ module.exports = {
                     contextCommandEmbed.addFields({ name: `\u200B`, value: contextCommands.join(', ') });
                 }
 
-                return slashCommandsEmbed;
+                return contextCommandsEmbed;
 
             case "slash":
                 // Fetch Slash Commands
