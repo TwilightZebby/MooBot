@@ -108,13 +108,15 @@ module.exports = {
                 {
                     textCommandsEmbed.addFields({ name: `\u200B`, value: `*No Text Commands found or available*` });
                 }
-
-                // Only add the field if there is a command for that permission level
-                if ( textCommandsEveryone.length >= 1 ) { textCommandsEmbed.addFields({ name: `General Commands`, value: textCommandsEveryone.join(', ') }); }
-                if ( textCommandsModerator.length >= 1 ) { textCommandsEmbed.addFields({ name: `Moderator Commands`, value: textCommandsModerator.join(', ') }); }
-                if ( textCommandsAdmin.length >= 1 ) { textCommandsEmbed.addFields({ name: `Admin Commands`, value: textCommandsAdmin.join(', ') }); }
-                if ( textCommandsOwner.length >= 1 ) { textCommandsEmbed.addFields({ name: `Server Owner Commands`, value: textCommandsOwner.join(', ') }); }
-                if ( textCommandsDeveloper.length >= 1 ) { textCommandsEmbed.addFields({ name: `Developer Commands`, value: textCommandsDeveloper.join(', ') }); }
+                else
+                {
+                    // Only add the field if there is a command for that permission level
+                    if ( textCommandsEveryone.length >= 1 ) { textCommandsEmbed.addFields({ name: `General Commands`, value: textCommandsEveryone.join(', ') }); }
+                    if ( textCommandsModerator.length >= 1 ) { textCommandsEmbed.addFields({ name: `Moderator Commands`, value: textCommandsModerator.join(', ') }); }
+                    if ( textCommandsAdmin.length >= 1 ) { textCommandsEmbed.addFields({ name: `Admin Commands`, value: textCommandsAdmin.join(', ') }); }
+                    if ( textCommandsOwner.length >= 1 ) { textCommandsEmbed.addFields({ name: `Server Owner Commands`, value: textCommandsOwner.join(', ') }); }
+                    if ( textCommandsDeveloper.length >= 1 ) { textCommandsEmbed.addFields({ name: `Developer Commands`, value: textCommandsDeveloper.join(', ') }); }
+                }
 
                 // Return Embed
                 return textCommandsEmbed;
@@ -125,9 +127,26 @@ module.exports = {
                 .setDescription(`All the Context Commands I have.\nThese are usable when right-clicking on a Message or User.`);
 
             case "slash":
-                return new Discord.MessageEmbed().setColor('AQUA')
+                // Fetch Slash Commands
+                let slashCommands = client.slashCommands.map(command => command.name);
+
+                // Construct Embed
+                let slashCommandsEmbed = new Discord.MessageEmbed().setColor('AQUA')
                 .setTitle(`Slash Commands`)
                 .setDescription(`All the Slash Commands I have.`);
+
+                // Edge case for no Slash Commands
+                if ( !slashCommands.length || slashCommands.length < 1 )
+                {
+                    slashCommandsEmbed.addFields({ name: `\u200B`, value: `*No Slash Commands found or available*` });
+                }
+                else
+                {
+                    // Populate Embed
+                    slashCommandsEmbed.addFields({ name: `\u200B`, value: slashCommands.join(', ') });
+                }
+
+                return slashCommandsEmbed;
 
             case "info":
             default:
