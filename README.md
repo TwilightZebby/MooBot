@@ -18,7 +18,7 @@ A small Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https
 ## Why did you make this Bot?
 
 > This Bot was born out from a mixture of "felt like it" and a want to bring back some of the commands from the long-since discontinued Kawaii Bot.
-<!-- > The Bot, with its original name of "Actions Bot", was originally added to Dr1fterX's Server in January 2021, getting renamed to "Twilight Bot" in January 2021.
+<!-- > The Bot, with its original name of "Actions Bot", was originally added to Dr1fterX's Server in January 2021, getting renamed to "Twilight Bot" in x 2022.
 
 
 ## Why did you rename the Bot?
@@ -29,7 +29,7 @@ A small Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https
 
 ## How many Slash Commands are there/will there be?
 
-> For now I am limiting myself to a maximum of 10.
+> For now I am limiting myself to a maximum of 11.
 > Even though Discord's API supports up to 100 Guild Slash Commands per Bot per Guild, and another 100 Global Slash Commands per Bot; I am using this lower limit to prevent flooding the Slash Command Interface/GUI :)
 > 
 > *(Well actually the true limit is 62.5k commands per scope, should you account for sub-commands and sub-command groups. But the UI still needs improving for this lol)*
@@ -47,15 +47,16 @@ A small Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https
 
 ## Action Slash Commands
 
-| Command  | Description                 |
-|----------|-----------------------------|
-| /bonk    | Bonks someone               |
-| /boop    | Boops someone               |
-| /headpat | Give someone a headpat      |
-| /hug     | Give someone a cuddle       |
-| /kiss    | Slap a kiss on someone      |
-| /sleep   | Tell someone to go to sleep |
-| /slap    | Slap someone                |
+| Command  | Description                 | Note                                                         |
+|----------|-----------------------------|--------------------------------------------------------------|
+| /bonk    | Bonks someone               |                                                              |
+| /boop    | Boops someone               |                                                              |
+| /headpat | Give someone a headpat      |                                                              |
+| /hug     | Give someone a cuddle       |                                                              |
+| /kiss    | Slap a kiss on someone      |                                                              |
+| /pummel  | Pummel someone, JoJo style  | Does *not* have the GIF toggle option, will always use a GIF |
+| /slap    | Slap someone                |                                                              |
+| /sleep   | Tell someone to go to sleep | Does *not* have a "Return to Sender" Button                  |
 
 
 ### Action Slash Command Options/Arguments
@@ -77,6 +78,7 @@ A small Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https
 |---------------|------------------------------------------------------------|----------------------------------------------------------------------------|
 | /start\*\*    | Used to trigger one of Discord's built-in Voice Activities | Will be removed when Discord fully releases their Voice Activities feature |
 | /potato       | Starts a Hot Potato game for the current Channel           |                                                                            |
+| /help         | Bring up some basic information about the Bot and its CMDs |                                                                            |
 
 \*\* *This Slash Command will be removed from this Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc). As an additional note, if you want to help Discord test their Voice Game/Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 
@@ -97,5 +99,8 @@ A small Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https
 |-----------------------|--------------------------------------------------------|-----------------|
 | a!register            | Adds a new Slash/Context Command to the Bot            | Developer\*\*\* |
 | a!unregister          | Removes an existing Slash/Context Command from the Bot | Developer\*\*\* |
+| a!addgif              | Adds a new GIF link to the specified Action Slash CMD  | Developer\*\*\* |
+| a!clearcomp           | Clears components from a Message sent by this Bot      | Developer\*\*\* |
+| a!say                 | Silly Command                                          | Developer\*\*\* |
 
 \*\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*
