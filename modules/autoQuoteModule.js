@@ -21,11 +21,16 @@ module.exports = {
         // ****************************************
         
 
-        // Grab Guild, Channel, and Message ID from Link
+        // Split up message for ease
         let splitMessage = message.content.split("/");
-        const linkMessageID = splitMessage[splitMessage.length - 1];
-        const linkChannelID = splitMessage[splitMessage.length - 2];
-        const linkGuildID = splitMessage[splitMessage.length - 3];
+
+        // If message link is surrounded by < > then don't auto-quote
+        if ( splitMessage[0].startsWith("<") && splitMessage[6].endsWith(">") ) { return; }
+
+        // Grab Message, Channel, and Guild IDs for ease
+        const linkMessageID = splitMessage[6];
+        const linkChannelID = splitMessage[5];
+        const linkGuildID = splitMessage[4];
 
         // Ensure it wasn't a link to a DM message
         if ( linkGuildID === "@me" ) { return; }
@@ -55,14 +60,49 @@ module.exports = {
                     let quoteEmbed = new Discord.MessageEmbed().setAuthor({ name: `${!sourceMessage.member?.displayName ? sourceMessage.author.username : sourceMessage.member.displayName} (${sourceMessage.author.username}#${sourceMessage.author.discriminator})`, iconURL: !sourceMessage.member ? sourceMessage.author.displayAvatarURL({ dynamic: true, format: 'png' }) : sourceMessage.member.displayAvatarURL({ dynamic: true, format: 'png' }) })
                     .setColor(!sourceMessage.member?.displayHexColor ? 'RANDOM' : sourceMessage.member.displayHexColor)
                     .setDescription(!sourceMessage.content ? ' ' : sourceMessage.content)
-                    .addFields({ name: `Jump to Message`, value: `[Click to jump](${sourceMessage.url})` })
                     .setFooter({ text: `Quoted by ${message.author.username}#${message.author.discriminator}` })
                     .setTimestamp(sourceMessage.createdTimestamp);
 
                     if ( sourceMessage.attachments.size >= 1 )
                     {
-                        quoteEmbed.setImage(sourceMessage.attachments.first().url);
+                        // If spoilered, don't embed
+                        if ( sourceMessage.attachments.first().spoiler )
+                        {
+                            quoteEmbed.addFields({ name: `\u200B`, value: "*This message contains spoiler-marked image(s)*" });
+                        }
+                        // Check if first Attachment is an Image or GIF that can be embedded and displayed
+                        else if ( ["image/png", "image/jpeg", "image/webp", "image/gif"].includes(sourceMessage.attachments.first().contentType) )
+                        {
+                            quoteEmbed.setImage(sourceMessage.attachments.first().url);
+                        }
+                        // Not embeddable, denote with string
+                        else
+                        {
+                            quoteEmbed.addFields({ name: `\u200B`, value: `*This message contains a(n) ${sourceMessage.attachments.first().contentType} attachment` });
+                        }
+
+                        // If there are more than 2 attachments
+                        if ( sourceMessage.attachments.size >= 2 )
+                        {
+                            // To reduce Embed clutter
+                            if ( quoteEmbed.fields[quoteEmbed.fields.length - 1].name === `\u200B` )
+                            {
+                                quoteEmbed.fields[quoteEmbed.fields.length - 1].value += `\n*This message has ${sourceMessage.attachments.size - 1} more attachments*`;
+                            }
+                            // For different wording when there is an embedded image
+                            else if ( quoteEmbed.image !== null && quoteEmbed.image !== undefined )
+                            {
+                                quoteEmbed.addFields({ name: `\u200B`, value: `*This message has ${sourceMessage.attachments.size - 1} more attachments*` });
+                            }
+                            else
+                            {
+                                quoteEmbed.addFields({ name: `\u200B`, value: `*This message has ${sourceMessage.attachments.size} total attachments*` });
+                            }
+                        }
                     }
+
+                    // Add Jump Link
+                    quoteEmbed.addFields({ name: `Jump to Message`, value: `[Click to jump](${sourceMessage.url})` });
                 
                     // Send message
                     return await message.reply({ embeds: [quoteEmbed], allowedMentions: { parse: [], repliedUser: false } });
