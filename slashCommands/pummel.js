@@ -7,7 +7,7 @@ const Action = require('../modules/actionModule.js');
 
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
-    name: 'muda',
+    name: 'pummel',
     // Slash Command's description
     description: `Pummel someone with a MUDA MUDA MUDA MUDA MUDAAAAAA!`,
     // Category of Slash Command, used for Help (text) Command
