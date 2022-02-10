@@ -147,6 +147,12 @@ module.exports = {
         }
 
 
+        // Do NOT show the Return To Sender Button for these CMDs
+        if ( ["sleep"].includes(slashCommand.commandName) )
+        {
+            displayButton = false;
+        }
+
 
         // Check GIF argument
         if ( !gifOption || gifOption === false )
