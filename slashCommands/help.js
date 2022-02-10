@@ -182,7 +182,8 @@ module.exports = {
                     { name: `Uptime`, value: `${uptime.toFixed(1)} ${uptimeUnit}`, inline: true },
                     { name: `Bot Version`, value: `${PACKAGE.version}`, inline: true },
                     { name: `Discord.JS Version`, value: `${PACKAGE.dependencies['discord.js']}`, inline: true },
-                    { name: `GitHub Repository`, value: `[github.com/TwilightZebby/ActionsBot](https://github.com/TwilightZebby/ActionsBot)` }
+                    { name: `GitHub Repository`, value: `[github.com/TwilightZebby/ActionsBot](https://github.com/TwilightZebby/ActionsBot)` },
+                    { name: `Prviacy Policy`, value: `[Click to view on GitHub](https://github.com/TwilightZebby/ActionsBot/blob/development/PRIVACY_POLICY.md)` }
                 );
         }
     }
