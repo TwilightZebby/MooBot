@@ -25,6 +25,8 @@ client.selectCooldowns = new Discord.Collection();
 
 client.potato = new Discord.Collection();
 
+client.debugMode = false;
+
 
 // BRING IN ALL THE COMMANDS AND INTERACTIONS
 // Text-based Commands
