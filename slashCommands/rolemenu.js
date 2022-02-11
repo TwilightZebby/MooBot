@@ -64,6 +64,12 @@ module.exports = {
      */
     async execute(slashCommand)
     {
+        // Check User has MANAGE_ROLES Permission
+        if ( !slashCommand.member.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES, true) )
+        {
+            return await slashCommand.reply({ content: `⚠ You cannot use this Slash Command, as you do *not* have the \`MANAGE_ROLES\` Permission.`, ephemeral: true });
+        }
+
         // Create starting menu
         let initialMenuPageComponents = new Discord.MessageActionRow().addComponents(
             new Discord.MessageSelectMenu().setCustomId(`rolemenu`).setMaxValues(1).setMinValues(1).setOptions([
