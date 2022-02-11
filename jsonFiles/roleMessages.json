@@ -13,5 +13,5 @@
 
     "slap": "**{author}** slapped **{role}**",
 
-    "muda": "**{author}** pummeled **{role}**"
+    "pummel": "**{author}** pummeled **{role}**"
 }
