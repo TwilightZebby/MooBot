@@ -24,6 +24,7 @@ client.buttonCooldowns = new Discord.Collection();
 client.selectCooldowns = new Discord.Collection();
 
 client.potato = new Discord.Collection();
+client.roleMenu = new Discord.Collection();
 
 
 // BRING IN ALL THE COMMANDS AND INTERACTIONS
