@@ -32,9 +32,9 @@ module.exports = {
                 let createMenuEmbed = new Discord.MessageEmbed().setDescription("*Role Menu is currently empty. Please use the Select Menu below to configure this Role Menu*");
                 let createMenuConfig = new Discord.MessageActionRow().addComponents(
                     new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
-                        { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed" },
-                        { label: "Add Role", value: "add_role", description: "Add a Role to the Menu" },
-                        { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu" }
+                        { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:IconSettings:778931333459738626>" },
+                        { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
+                        { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" }
                     ])
                 );
                 await selectInteraction.update({ content: `__**Self-Assignable Role Menu Creation**__\n\nAn auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.\nUse the Select Menu to configure the Embed and Role Buttons`,
