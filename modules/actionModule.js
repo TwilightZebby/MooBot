@@ -111,22 +111,33 @@ module.exports = {
                 // EVERYONE & HERE MENTIONS
                 displayMessage = displayMessage.replace(receiverRegEx, `everyone`);
             }
-            
-            if ( (personArgument instanceof Discord.Role) && (personArgument.id !== personArgument.guild.id) )
+            else if ( (personArgument instanceof Discord.Role) && (personArgument.id !== personArgument.guild.id) )
             {
                 // ROLES THERE ARE NOT EVERYONE AND HERE MENTIONS
                 displayMessage = displayMessage.replace(receiverRegEx, `<@&${personArgument.id}>`);
             }
-            
-            if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === slashCommand.user.id) )
+            else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === slashCommand.user.id) )
             {
                 // USER MENTION - used on self
                 displayMessage = SELF_MESSAGES[`${slashCommand.commandName}`];
                 displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
                 displayMessage += ` ${reasonOption}`;
             }
-
-            if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id !== slashCommand.user.id) )
+            else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id === client.user.id) )
+            {
+                // USER MENTION - used on the Bot itself
+                displayMessage = TWILIGHT_BOT_MESSAGES[`${slashCommand.commandName}`];
+                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+                displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.user.username}`);
+            }
+            else if ( (personArgument instanceof Discord.GuildMember) && personArgument.user.bot )
+            {
+                // USER MENTION - used on a bot user
+                displayMessage = BOT_MESSAGES[`${slashCommand.commandName}`];
+                displayMessage = displayMessage.replace(authorRegEx, `${slashCommand.member.displayName}`);
+                displayMessage = displayMessage.replace(receiverRegEx, `${personArgument.user.username}`);
+            }
+            else if ( (personArgument instanceof Discord.GuildMember) && (personArgument.user.id !== slashCommand.user.id) )
             {
                 // USER MENTION - used on literally anyone else
                 displayButton = true;
