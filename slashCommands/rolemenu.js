@@ -85,7 +85,7 @@ module.exports = {
             components: [initialMenuPageComponents], ephemeral: true, fetchReply: true });
 
         // Store
-        client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId });
+        client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });
 
         return;
     }

@@ -29,6 +29,7 @@ module.exports = {
         switch(selectAction)
         {
             case "create_menu":
+                // Construct stuff
                 let createMenuEmbed = new Discord.MessageEmbed().setDescription("*Role Menu is currently empty. Please use the Select Menu below to configure this Role Menu*");
                 let createMenuConfig = new Discord.MessageActionRow().addComponents(
                     new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
@@ -37,8 +38,11 @@ module.exports = {
                         { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" }
                     ])
                 );
+                // ACK to User
                 await selectInteraction.update({ content: `__**Self-Assignable Role Menu Creation**__\n\nAn auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.\nUse the Select Menu to configure the Embed and Role Buttons`,
                     components: [createMenuConfig], embeds: [createMenuEmbed] });
+                // Store Embed
+                client.roleMenu.set("createEmbed", createMenuEmbed);
                 break;
 
             default:

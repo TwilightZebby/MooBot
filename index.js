@@ -16,6 +16,7 @@ client.slashCommands = new Discord.Collection();
 client.contextCommands = new Discord.Collection();
 client.buttons = new Discord.Collection();
 client.selects = new Discord.Collection();
+client.modals = new Discord.Collection();
 
 client.cooldowns = new Discord.Collection();
 client.slashCooldowns = new Discord.Collection();
@@ -66,6 +67,14 @@ for ( const file of selectFiles )
 {
     const tempCMD = require(`./selects/${file}`);
     client.selects.set(tempCMD.name, tempCMD);
+}
+
+// Modals
+const modalFiles = fs.readdirSync('./modals').filter(file => file.endsWith('.js'));
+for ( const file of modalFiles )
+{
+    const tempCMD = require(`./modals/${file}`);
+    client.modals.set(tempCMD.name, tempCMD);
 }
 
 
@@ -208,6 +217,7 @@ const SlashCommandHandler = require('./modules/slashCommandHandler.js');
 const ButtonHandler = require('./modules/buttonHandler.js');
 const SelectMenuHandler = require('./modules/selectMenuHandler.js');
 const ContextCommandHandler = require('./modules/contextCommandHandler.js');
+const ModelHandler = require('./modules/modalHandler.js');
 
 client.on('interactionCreate', async (interaction) => {
     if ( interaction.isCommand() )
@@ -229,6 +239,11 @@ client.on('interactionCreate', async (interaction) => {
     {
         // Is a Select Component
         return await SelectMenuHandler.Main(interaction);
+    }
+    else if ( interaction.isModalSubmit() )
+    {
+        // Is an Input Modal
+        return await ModelHandler.Main(interaction);
     }
     else
     {
