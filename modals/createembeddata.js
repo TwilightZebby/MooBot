@@ -27,10 +27,15 @@ module.exports = {
         /** @type {Discord.MessageEmbed} */
         let menuEmbed = client.roleMenu.get("createEmbed");
 
-        // Set Embed data
-        menuEmbed.setTitle(inputEmbedTitle)
-        .setDescription(inputEmbedDescription)
-        .setColor(inputEmbedColour);
+        // Set Embed data, if given
+        if ( inputEmbedTitle !== "" && inputEmbedTitle !== " " && inputEmbedTitle !== null && inputEmbedTitle !== undefined ) { menuEmbed.setTitle(inputEmbedTitle) }
+        else { delete menuEmbed.title; }
+
+        if ( inputEmbedDescription !== "" && inputEmbedDescription !== " " && inputEmbedDescription !== null && inputEmbedDescription !== undefined ) { menuEmbed.setDescription(inputEmbedDescription) }
+        else { delete menuEmbed.description; }
+
+        if ( inputEmbedColour !== "" && inputEmbedColour !== " " && inputEmbedColour !== null && inputEmbedColour !== undefined ) { menuEmbed.setColor(inputEmbedColour) }
+        else { delete menuEmbed.color; }
 
         let data = {
             "embeds": [menuEmbed]
