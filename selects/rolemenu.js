@@ -41,8 +41,6 @@ module.exports = {
                 // ACK to User
                 await selectInteraction.update({ content: `__**Self-Assignable Role Menu Creation**__\n\nAn auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.\nUse the Select Menu to configure the Embed and Role Buttons`,
                     components: [createMenuConfig], embeds: [createMenuEmbed] });
-                // Store Embed
-                client.roleMenu.set("createEmbed", createMenuEmbed);
                 break;
 
             default:

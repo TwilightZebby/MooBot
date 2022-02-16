@@ -27,6 +27,8 @@ module.exports = {
         /** @type {Discord.MessageEmbed} */
         let menuEmbed = client.roleMenu.get("createEmbed");
 
+        if ( !menuEmbed ) { menuEmbed = new Discord.MessageEmbed(); }
+
         // Set Embed data, if given
         if ( inputEmbedTitle !== "" && inputEmbedTitle !== " " && inputEmbedTitle !== null && inputEmbedTitle !== undefined ) { menuEmbed.setTitle(inputEmbedTitle) }
         else { delete menuEmbed.title; }
@@ -37,13 +39,17 @@ module.exports = {
         if ( inputEmbedColour !== "" && inputEmbedColour !== " " && inputEmbedColour !== null && inputEmbedColour !== undefined ) { menuEmbed.setColor(inputEmbedColour) }
         else { delete menuEmbed.color; }
 
+        // Update Stored Embed
+        client.roleMenu.set("createEmbed", menuEmbed);
+
         let data = {
-            "embeds": [menuEmbed]
+            "type": 7,
+            "data": {
+                "embeds": [menuEmbed]
+            }
         };
 
         // ACK
-        let fetchedOriginal = client.roleMenu.get("originalResponse");
-        client.api.webhooks(client.user.id)[fetchedOriginal.interactionToken].messages("@original").patch({data});
-        return await modalInteraction.reply({ content: `Set the Embed Data for you! (See above)`, ephemeral: true });
+        return client.api.interactions(`${modalInteraction.id}`)[`${modalInteraction.token}`].callback.post({data});
     }
 };
