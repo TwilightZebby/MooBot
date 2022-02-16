@@ -40,8 +40,19 @@ module.exports = {
                 await selectInteraction.showModal(embedModal);
                 break;
 
+            case "add_role":
+                let newRoleModal = new Discord.Modal().setCustomId("createaddrole").setTitle("Add Assignable Role").addComponents([
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("roleid").setLabel("Role ID").setMaxLength(20).setMinLength(17).setStyle("SHORT").setRequired(true) ),
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("buttonlabel").setLabel("Role's Button Label (Required if no emoji)").setMaxLength(80).setStyle("SHORT") ),
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("buttonemoji").setLabel("Role's Button Emoji (Required if no label)").setStyle("SHORT") )
+                ]);
+                await selectInteraction.showModal(newRoleModal);
+                break;
+
             default:
                 return await selectInteraction.reply({ content: CONSTANTS.errorMessages.GENERIC, ephemeral: true });
         }
+
+        return;
     }
 };
