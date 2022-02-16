@@ -81,7 +81,7 @@ module.exports = {
         );
 
         // Send Menu and grab response
-        let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Management**__\n\nPlease use the below Select Menu to select what you want to do\nIt is recommended that you have the relevant Message and/or Role IDs noted somewhere (for example, in a notepad program) ready to be pasted when prompted, as you wont be able to copy them from Discord while an Input Form is shown on screen.`,
+        let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Management**__\n\nPlease use the below Select Menu to select what you want to do.`,
             components: [initialMenuPageComponents], ephemeral: true, fetchReply: true });
 
         // Store

@@ -39,7 +39,7 @@ module.exports = {
                     ])
                 );
                 // ACK to User
-                await selectInteraction.update({ content: `__**Self-Assignable Role Menu Creation**__\n\nAn auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.\nUse the Select Menu to configure the Embed and Role Buttons`,
+                await selectInteraction.update({ content: `__**Self-Assignable Role Menu Creation**__\n\nUse the Select Menu to configure the Embed and Role Buttons.\nPlease make sure to have the relevant Role IDs ready (such as in a notepad program) as you won't be able to copy from a Discord message while an Input Form is open.\nAn auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.`,
                     components: [createMenuConfig], embeds: [createMenuEmbed] });
                 break;
 
