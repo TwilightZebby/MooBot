@@ -40,5 +40,36 @@ module.exports = {
 
         BUTTON_GENERIC_FAILED: `Sorry, but there was a problem trying to process that Button press.`,
         BUTTON_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to process that Button press.\nIf you continue to see this error, please contact TwilightZebby#1955`
+    },
+
+
+
+
+    // COMPONENTS
+    components: {
+        selects: {
+            /** Initial Select Menu that is shown upon triggering /rolemenu
+             * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
+             */
+            ROLE_MENU_INITIAL: new Discord.MessageActionRow().addComponents(
+                new Discord.MessageSelectMenu().setCustomId(`rolemenu`).setMaxValues(1).setMinValues(1).setOptions([
+                    { label: "Create Menu", value: "create_menu", description: "Creates a new Menu for Users to toggle Roles from", emoji: "<:ChannelCategory:816771723264393236>" },
+                    { label: "Add Role", value: "add_role", description: "Add a Role to an existing Menu", emoji: "<:plusGrey:941654979222077490>" },
+                    { label: "Edit Role", value: "edit_role", description: "Edit an existing Button for a Role", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from an existing Menu", emoji: "<:binGrey:941654671716655154>" }
+                ]).setPlaceholder("Please select an action")
+            ),
+            /** Select Menu shown when wanting to create a new Role Menu
+             * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
+             */
+            ROLE_MENU_CREATE: new Discord.MessageActionRow().addComponents(
+                new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
+                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" },
+                    { label: "Save and Display", value: "save", description: "Saves the new Menu, and displays it for members to use", emoji: "<:IconActivity:815246970457161738>" }
+                ])
+            )
+        }
     }
 }

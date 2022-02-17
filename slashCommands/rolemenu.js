@@ -70,19 +70,9 @@ module.exports = {
             return await slashCommand.reply({ content: `⚠ You cannot use this Slash Command, as you do *not* have the \`MANAGE_ROLES\` Permission.`, ephemeral: true });
         }
 
-        // Create starting menu
-        let initialMenuPageComponents = new Discord.MessageActionRow().addComponents(
-            new Discord.MessageSelectMenu().setCustomId(`rolemenu`).setMaxValues(1).setMinValues(1).setOptions([
-                { label: "Create Menu", value: "create_menu", description: "Creates a new Menu for Users to toggle Roles from", emoji: "<:ChannelCategory:816771723264393236>" },
-                { label: "Add Role", value: "add_role", description: "Add a Role to an existing Menu", emoji: "<:plusGrey:941654979222077490>" },
-                { label: "Edit Role", value: "edit_role", description: "Edit an existing Button for a Role", emoji: "<:IconSettings:778931333459738626>" },
-                { label: "Remove Role", value: "remove_role", description: "Remove a Role from an existing Menu", emoji: "<:binGrey:941654671716655154>" }
-            ]).setPlaceholder("Please select an action")
-        );
-
         // Send Menu and grab response
         let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Management**__\n\nPlease use the below Select Menu to select what you want to do.`,
-            components: [initialMenuPageComponents], ephemeral: true, fetchReply: true });
+            components: [CONSTANTS.components.selects.ROLE_MENU_INITIAL], ephemeral: true, fetchReply: true });
 
         // Store
         client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });

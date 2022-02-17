@@ -42,7 +42,15 @@ module.exports = {
             // Validate
             if ( !UTILITY.hexColourRegex.test(inputEmbedColour) )
             {
-                return modalInteraction.reply({ content: `That wasn't a valid Hex Colour Code! Please try again, using a valid Hex Colour Code (including the \`#\` (hash) at the start!)`, ephemeral: true });
+                // TODO: Fix annoying error
+                let errorData = {
+                    "type": 7,
+                    "data": {
+                        "components": [CONSTANTS.components.selects.ROLE_MENU_CREATE]
+                    }
+                };
+                await client.api.interactions(`${modalInteraction.id}`)[`${modalInteraction.token}`].callback.post({errorData});
+                return modalInteraction.followUp({ content: `That wasn't a valid Hex Colour Code! Please try again, using a valid Hex Colour Code (including the \`#\` (hash) at the start!)`, ephemeral: true });
             }
             else { menuEmbed.setColor(inputEmbedColour); }
         }
