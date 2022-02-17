@@ -1,5 +1,6 @@
 // Imports
 const Discord = require('discord.js');
+const emojiRegex = require('emoji-regex')();
 //const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
@@ -23,6 +24,27 @@ module.exports = {
         let inputRoleID = modalInteraction.getTextInputValue("roleid");
         let inputButtonLabel = modalInteraction.getTextInputValue("buttonlabel");
         let inputButtonEmoji = modalInteraction.getTextInputValue("buttonemoji");
+
+        // Valdate
+        // Role ID
+        if ( !RegExp(/[0-9]{17,19}/g).test(inputRoleID) )
+        {
+            return await modalInteraction.reply({ content: `That didn't seem like a valid Role ID... Please try again, using a valid Role ID *from this Server* is used.`, ephemeral: true });
+        }
+
+        // Role ID is of a Role from this Guild
+        let fetchedRole = modalInteraction.guild.roles.fetch(inputRoleID)
+        .catch(err => { fetchedRole = null; });
+        if ( !fetchedRole )
+        {
+            return await modalInteraction.reply({ content: `That Role ID didn't seem like it came from a Role in *this* Server. Please try again, using a Role ID for a Role in *this* Server.`, ephemeral: true });
+        }
+
+        // Emoji
+        if ( !RegExp(/<a?:(?<name>[a-zA-Z0-9\_]+):(?<id>\d{15,21})>/g).test(inputButtonEmoji) && !emojiRegex.test(inputButtonEmoji) )
+        {
+            return await modalInteraction.reply({ content: `That didn't seem like a Unicode Emoji, nor a custom Discord Emoji. Please try again, ensuring that, if using a custom Discord Emoji, you use the raw Custom Emoji format \`<:emojiName:emojiId>\` or \`<a:animatedEmojiName:animatedEmojiId>\``, ephemeral: true });
+        }
 
         return await modalInteraction.reply({ content: `Role ID: "${inputRoleID}", Button Label: "${inputButtonLabel}", Button Emoji: "${inputButtonEmoji}"`, ephemeral: true });
 
