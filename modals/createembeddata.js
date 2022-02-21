@@ -16,14 +16,14 @@ module.exports = {
     /**
      * Main function that runs this modal
      * 
-     * @param {Discord.ModalSubmitInteraction} modalInteraction Modal Interaction
+     * @param {Discord.ModalMessageModalSubmitInteraction} modalInteraction Modal Interaction
      */
     async execute(modalInteraction)
     {
         // Grab inputs
-        let inputEmbedTitle = modalInteraction.getTextInputValue("title");
-        let inputEmbedDescription = modalInteraction.getTextInputValue("description");
-        let inputEmbedColour = modalInteraction.getTextInputValue("hexcolour");
+        let inputEmbedTitle = modalInteraction.fields.getTextInputValue("title");
+        let inputEmbedDescription = modalInteraction.fields.getTextInputValue("description");
+        let inputEmbedColour = modalInteraction.fields.getTextInputValue("hexcolour");
 
         /** @type {Discord.MessageEmbed} */
         let menuEmbed = client.roleMenu.get("createEmbed");
@@ -42,12 +42,7 @@ module.exports = {
             // Validate
             if ( !UTILITY.hexColourRegex.test(inputEmbedColour) )
             {
-                let data = {
-                    "type": 7,
-                    "data": { "components": [CONSTANTS.components.selects.ROLE_MENU_CREATE] }
-                };
-
-                client.api.interactions(`${modalInteraction.id}`)[`${modalInteraction.token}`].callback.post({data});
+                await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
                 return await modalInteraction.followUp({ content: `That wasn't a valid Hex Colour Code! Please try again, using a valid Hex Colour Code (including the \`#\` (hash) at the start!)`, ephemeral: true });
             }
             else { menuEmbed.setColor(inputEmbedColour); }
@@ -57,12 +52,7 @@ module.exports = {
         // Update Stored Embed
         client.roleMenu.set("createEmbed", menuEmbed);
 
-        let data = {
-            "type": 7,
-            "data": { "embeds": [menuEmbed] }
-        };
-
         // ACK
-        return client.api.interactions(`${modalInteraction.id}`)[`${modalInteraction.token}`].callback.post({data});
+        return await modalInteraction.update({ embeds: [menuEmbed] });
     }
 };
