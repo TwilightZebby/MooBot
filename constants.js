@@ -62,6 +62,15 @@ module.exports = {
             /** Select Menu shown when wanting to create a new Role Menu
              * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
              */
+             ROLE_MENU_CREATE_NO_SAVE: new Discord.MessageActionRow().addComponents(
+                new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
+                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" }
+                ])
+            ),
+            /** Select Menu shown when wanting to create a new Role Menu, for when there are added Role Buttons
+             * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
+             */
             ROLE_MENU_CREATE: new Discord.MessageActionRow().addComponents(
                 new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
                     { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:IconSettings:778931333459738626>" },
