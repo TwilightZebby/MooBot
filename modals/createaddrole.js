@@ -29,6 +29,7 @@ module.exports = {
         // Role ID
         if ( !RegExp(/[0-9]{17,19}/g).test(inputRoleID) )
         {
+            await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
             return await modalInteraction.reply({ content: `That didn't seem like a valid Role ID... Please try again, using a valid Role ID *from this Server* is used.`, ephemeral: true });
         }
 
