@@ -41,6 +41,12 @@ module.exports = {
                 break;
 
             case "add_role":
+                // Validate Menu doesn't already have the max of 10 Buttons
+                /** @type {Array<Discord.MessageButton>} */
+                let fetchedButtons = client.roleMenu.get("createMenuButtons");
+                if ( fetchedButtons?.length === 10 ) { return await selectInteraction.reply({ content: `Sorry, but you cannot add more than 10 (ten) Role Buttons to a single Menu!`, ephemeral: true }); }
+
+                // Construct & Display Modal
                 let newRoleModal = new Discord.Modal().setCustomId("createaddrole").setTitle("Add Assignable Role").addComponents([
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("roleid").setLabel("Role ID").setMaxLength(19).setMinLength(17).setStyle("SHORT").setRequired(true).setPlaceholder("Example: 5981450330692649077") ),
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("buttonlabel").setLabel("Role's Button Label (Required if no emoji)").setMaxLength(80).setStyle("SHORT") ),
