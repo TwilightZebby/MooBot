@@ -11,7 +11,7 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("youtube", "880218394199220334").set("letter", "879863686565621790")
 .set("snacks", "879863976006127627").set("spell", "852509694341283871")
 .set("checkers", "832013003968348200").set("ocho", "832025144389533716")
-.set("putt", "910224161476083792");
+.set("putt", "945737671223947305");
 
 
 module.exports = {
