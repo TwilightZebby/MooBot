@@ -30,7 +30,7 @@ module.exports = {
         if ( !RegExp(/[0-9]{17,19}/g).test(inputRoleID) )
         {
             await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
-            return await modalInteraction.reply({ content: `That didn't seem like a valid Role ID... Please try again, using a valid Role ID *from this Server* is used.`, ephemeral: true });
+            return await modalInteraction.followUp({ content: `That didn't seem like a valid Role ID... Please try again, using a valid Role ID *from this Server* is used.`, ephemeral: true });
         }
 
         // Role ID is of a Role from this Guild
@@ -81,37 +81,49 @@ module.exports = {
         // Construct Arrays for Buttons to go onto the Menu
         /** @type {Array<Discord.MessageActionRow>} */
         let updatedComponentsArray = [];
-        for ( let i = 0; i < createMenuButtons.length - 1; i++ )
+        let temp;
+        for ( let i = 0; i <= createMenuButtons.length - 1; i++ )
         {
-            if ( updatedComponentsArray.length < 1 )
+            if ( i === 0 )
             {
-                let newRow = new Discord.MessageActionRow().addComponents(createMenuButtons[i]);
-                updatedComponentsArray.push(newRow);
+                // First button on first row
+                temp = new Discord.MessageActionRow().addComponents(createMenuButtons[i]);
+                // Push early if only button
+                if ( createMenuButtons.length - 1 === i ) { updatedComponentsArray.push(temp); }
             }
-            else if ( updatedComponentsArray.length === 1 )
+            else if ( i > 0 && i < 4 )
             {
-                if ( updatedComponentsArray[0].components.length === 5 )
-                {
-                    let secondRow = new Discord.MessageActionRow().addComponents(createMenuButtons[i]);
-                    updatedComponentsArray.push(secondRow);
-                }
-                else
-                {
-                    updatedComponentsArray[0].components.push(createMenuButtons[i]);
-                }
+                // First row, not the first button
+                temp.addComponents(createMenuButtons[i]);
+                // Push early, if these are the only buttons
+                if ( createMenuButtons.length - 1 === i ) { updatedComponentsArray.push(temp); }
             }
-            else if ( updatedComponentsArray.length === 2 )
+            else if ( i === 4 )
             {
-                if ( updatedComponentsArray[1].components.length === 5 ) { break; }
-                else
-                {
-                    updatedComponentsArray[1].components.push(createMenuButtons[i]);
-                }
+                // Last button of the first row
+                temp.addComponents(createMenuButtons[i]);
+                // Free up TEMP ready for second row
+                updatedComponentsArray.push(temp);
+                temp = new Discord.MessageActionRow();
             }
+            else if ( i > 4 && i < 9 )
+            {
+                // Second row, buttons 1 through 4
+                temp.addComponents(createMenuButtons[i]);
+                // Push early, if these are the only buttons
+                if ( createMenuButtons.length - 1 === i ) { updatedComponentsArray.push(temp); }
+            }
+            else if ( i === 9 )
+            {
+                // Second row, last button
+                temp.addComponents(createMenuButtons[i]);
+                updatedComponentsArray.push(temp);
+            }
+            else { break; }
         }
 
         // Now add Select Menu
-        updatedComponentsArray.push(new Discord.MessageActionRow().addComponents(CONSTANTS.components.selects.ROLE_MENU_CREATE));
+        updatedComponentsArray.push(CONSTANTS.components.selects.ROLE_MENU_CREATE);
 
         return await modalInteraction.update({ components: updatedComponentsArray });
 
