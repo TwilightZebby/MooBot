@@ -42,6 +42,15 @@ module.exports = {
             return await modalInteraction.followUp({ content: `That Role ID didn't seem like it came from a Role in *this* Server. Please try again, using a Role ID for a Role in *this* Server.`, ephemeral: true });
         }
 
+        // Ensure given Role is LOWER than the Bot's own highest role
+        let botMember = modalInteraction.guild.me;
+        let roleCompare = modalInteraction.guild.roles.comparePositions(inputRoleID, botMember.roles.highest.id);
+        if ( roleCompare >= 0 )
+        {
+            await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
+            return await modalInteraction.followUp({ content: `That Role ID is for a Role higher than this Bot's highest Role! As such, I won't be able to grant or revoke it for other Members.`, ephemeral: true });
+        }
+
         // Validate at least one of either label or emoji is given
         if ( (inputButtonLabel === "" && inputButtonLabel === " " && inputButtonLabel === null && inputButtonLabel === undefined) && (inputButtonEmoji === "" && inputButtonEmoji === " " && inputButtonEmoji === null && inputButtonEmoji === undefined) )
         {
