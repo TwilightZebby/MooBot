@@ -34,7 +34,7 @@ module.exports = {
 
                 let embedModal = new Discord.Modal().setCustomId("createembeddata").setTitle("Configure Menu Embed").addComponents([
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("title").setLabel("Embed Title").setMaxLength(256).setStyle("SHORT").setRequired(true).setValue(!embedData?.title ? "" : embedData.title) ),
-                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("description").setLabel("Embed Description").setMaxLength(4000).setStyle("PARAGRAPH").setValue(!embedData?.description ? "" : embedData.description) ),
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("description").setLabel("Embed Description").setMaxLength(3000).setStyle("PARAGRAPH").setValue(!embedData?.description ? "" : embedData.description) ),
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("hexcolour").setLabel("Embed Colour (In Hex Format)").setMaxLength(7).setMinLength(7).setStyle("SHORT").setValue(!embedData?.hexColor ? "" : embedData.hexColor).setPlaceholder("Example: #5865F2") )
                 ]);
                 await selectInteraction.showModal(embedModal);

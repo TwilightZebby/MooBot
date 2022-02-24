@@ -68,10 +68,27 @@ module.exports = {
             }
         }
 
-        // Construct Button
+        // Construct Button, and cache object
+        /** @type {Array<Object>} */
+        let updatedRoleCache = client.roleMenu.get("createMenuRoleCache");
+        if ( !updatedRoleCache ) { updatedRoleCache = []; }
+        let newRoleCacheObject = { roleID: inputRoleID, label: null, emoji: null };
         let newRoleButton = new Discord.MessageButton().setStyle('PRIMARY').setCustomId(`role_${inputRoleID}`);
-        if ( inputButtonLabel !== "" && inputButtonLabel !== " " && inputButtonLabel !== null && inputButtonLabel !== undefined ) { newRoleButton.setLabel(inputButtonLabel); }
-        if ( inputButtonEmoji !== "" && inputButtonEmoji !== " " && inputButtonEmoji !== null && inputButtonEmoji !== undefined ) { newRoleButton.setEmoji(inputButtonEmoji); }
+        
+        if ( inputButtonLabel !== "" && inputButtonLabel !== " " && inputButtonLabel !== null && inputButtonLabel !== undefined )
+        {
+            newRoleButton.setLabel(inputButtonLabel);
+            newRoleCacheObject.label = inputButtonLabel;
+        }
+        
+        if ( inputButtonEmoji !== "" && inputButtonEmoji !== " " && inputButtonEmoji !== null && inputButtonEmoji !== undefined )
+        {
+            newRoleButton.setEmoji(inputButtonEmoji);
+            newRoleCacheObject.emoji = inputButtonEmoji;
+        }
+
+        updatedRoleCache.push(newRoleCacheObject);
+        client.roleMenu.set("createMenuRoleCache", updatedRoleCache);
 
         // Fetch existing Buttons, if any
         /** @type {Array<Discord.MessageButton>} */
@@ -137,7 +154,36 @@ module.exports = {
         // Now add Select Menu
         updatedComponentsArray.push(CONSTANTS.components.selects.ROLE_MENU_CREATE);
 
-        return await modalInteraction.update({ components: updatedComponentsArray });
+
+        // Add Role(s) to Embed
+        /** @type {Discord.MessageEmbed} */
+        let menuEmbed = client.roleMenu.get("createEmbed");
+        if ( !menuEmbed ) { menuEmbed = new Discord.MessageEmbed(); }
+
+        let roleEmbedTextFieldOne = "";
+        let roleEmbedTextFieldTwo = "";
+        for ( let i = 0; i <= updatedRoleCache.length - 1; i++ )
+        {
+            if ( roleEmbedTextFieldOne.length >= 950 )
+            {
+                // Switch to Field Two
+                roleEmbedTextFieldTwo += `• <@&${updatedRoleCache[i].roleID}> - ${updatedRoleCache[i].emoji !== null ? updatedRoleCache[i].emoji : ""} ${updatedRoleCache[i].label !== null ? updatedRoleCache[i].label : ""}\n`;
+            }
+            else
+            {
+                // Stay on Field One
+                roleEmbedTextFieldOne += `• <@&${updatedRoleCache[i].roleID}> - ${updatedRoleCache[i].emoji !== null ? updatedRoleCache[i].emoji : ""} ${updatedRoleCache[i].label !== null ? updatedRoleCache[i].label : ""}\n`;
+            }
+        }
+
+        menuEmbed.spliceFields(0, 25); // Reset, just in case
+        menuEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldOne });
+        if ( roleEmbedTextFieldTwo !== "" && roleEmbedTextFieldTwo !== " " )
+        {
+            menuEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldTwo });
+        }
+
+        return await modalInteraction.update({ components: updatedComponentsArray, embeds: [menuEmbed] });
 
         //return await modalInteraction.reply({ content: `Role ID: "${inputRoleID}", Button Label: "${inputButtonLabel}", Button Emoji: "${inputButtonEmoji}"`, ephemeral: true });
     }
