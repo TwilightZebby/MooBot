@@ -29,6 +29,7 @@ module.exports = {
         switch(createOption)
         {
             case "configure_embed":
+                // Edit the Embed
                 /** @type {Discord.MessageEmbed} */
                 let embedData = client.roleMenu.get("createEmbed");
 
@@ -41,6 +42,7 @@ module.exports = {
                 break;
 
             case "add_role":
+                // Add a new Role to the Menu
                 // Validate Menu doesn't already have the max of 10 Buttons
                 /** @type {Array<Discord.MessageButton>} */
                 let fetchedButtons = client.roleMenu.get("createMenuButtons");
@@ -53,6 +55,14 @@ module.exports = {
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("buttonemoji").setLabel("Role's Button Emoji (Required if no label)").setStyle("SHORT").setPlaceholder("Example: <:grass_block:601353406577246208>") )
                 ]);
                 await selectInteraction.showModal(newRoleModal);
+                break;
+
+            case "remove_role":
+                // Remove a Role from the menu
+                let removeRoleModal = new Discord.Modal().setCustomId("createremoverole").setTitle("Remove Assignable Role").addComponents([
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("roleid").setLabel("Role ID").setMaxLength(19).setMinLength(17).setStyle("SHORT").setRequired(true).setPlaceholder("Example: 5981450330692649077") )
+                ]);
+                await selectInteraction.showModal(removeRoleModal);
                 break;
 
             default:

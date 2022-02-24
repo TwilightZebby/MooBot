@@ -79,6 +79,7 @@ A small Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https
 | /start\*\*    | Used to trigger one of Discord's built-in Voice Activities | Will be removed when Discord fully releases their Voice Activities feature |
 | /potato       | Starts a Hot Potato game for the current Channel           |                                                                            |
 | /help         | Bring up some basic information about the Bot and its CMDs |                                                                            |
+| /rolemenu     | Used to create or edit Self-Assignable Role Menus          | Only usable by Staff                                                       |
 
 \*\* *This Slash Command will be removed from this Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc). As an additional note, if you want to help Discord test their Voice Game/Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 
