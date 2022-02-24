@@ -184,7 +184,5 @@ module.exports = {
         }
 
         return await modalInteraction.update({ components: updatedComponentsArray, embeds: [menuEmbed] });
-
-        //return await modalInteraction.reply({ content: `Role ID: "${inputRoleID}", Button Label: "${inputButtonLabel}", Button Emoji: "${inputButtonEmoji}"`, ephemeral: true });
     }
 };
