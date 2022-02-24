@@ -62,9 +62,9 @@ module.exports = {
             /** Select Menu shown when wanting to create a new Role Menu
              * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
              */
-             ROLE_MENU_CREATE_NO_SAVE: new Discord.MessageActionRow().addComponents(
+             ROLE_MENU_CREATE_NO_ROLES: new Discord.MessageActionRow().addComponents(
                 new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
-                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
                     { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" }
                 ])
             ),
@@ -73,8 +73,9 @@ module.exports = {
              */
             ROLE_MENU_CREATE: new Discord.MessageActionRow().addComponents(
                 new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
-                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
                     { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
+                    { label: "Edit Role", value: "edit_role", description: "Edit a Role on the Menu", emoji: "<:IconSettings:778931333459738626>" }
                     { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" },
                     { label: "Save and Display", value: "save", description: "Saves the new Menu, and displays it for members to use", emoji: "<:IconActivity:815246970457161738>" }
                 ])
