@@ -87,6 +87,9 @@ module.exports = {
             createMenuButtons.push(newRoleButton);
         }
 
+        // Save Buttons to Cache
+        client.roleMenu.set("createMenuButtons", createMenuButtons);
+
         // Construct Arrays for Buttons to go onto the Menu
         /** @type {Array<Discord.MessageActionRow>} */
         let updatedComponentsArray = [];
@@ -96,21 +99,21 @@ module.exports = {
             if ( i === 0 )
             {
                 // First button on first row
-                temp = new Discord.MessageActionRow().addComponents(createMenuButtons[i]);
+                temp = new Discord.MessageActionRow().addComponents(createMenuButtons[i].setDisabled(true));
                 // Push early if only button
                 if ( createMenuButtons.length - 1 === i ) { updatedComponentsArray.push(temp); }
             }
             else if ( i > 0 && i < 4 )
             {
                 // First row, not the first button
-                temp.addComponents(createMenuButtons[i]);
+                temp.addComponents(createMenuButtons[i].setDisabled(true));
                 // Push early, if these are the only buttons
                 if ( createMenuButtons.length - 1 === i ) { updatedComponentsArray.push(temp); }
             }
             else if ( i === 4 )
             {
                 // Last button of the first row
-                temp.addComponents(createMenuButtons[i]);
+                temp.addComponents(createMenuButtons[i].setDisabled(true));
                 // Free up TEMP ready for second row
                 updatedComponentsArray.push(temp);
                 temp = new Discord.MessageActionRow();
@@ -118,14 +121,14 @@ module.exports = {
             else if ( i > 4 && i < 9 )
             {
                 // Second row, buttons 1 through 4
-                temp.addComponents(createMenuButtons[i]);
+                temp.addComponents(createMenuButtons[i].setDisabled(true));
                 // Push early, if these are the only buttons
                 if ( createMenuButtons.length - 1 === i ) { updatedComponentsArray.push(temp); }
             }
             else if ( i === 9 )
             {
                 // Second row, last button
-                temp.addComponents(createMenuButtons[i]);
+                temp.addComponents(createMenuButtons[i].setDisabled(true));
                 updatedComponentsArray.push(temp);
             }
             else { break; }
