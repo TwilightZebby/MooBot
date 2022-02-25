@@ -55,7 +55,16 @@ module.exports = {
         // Update Stored Embed
         client.roleMenu.set("createEmbed", menuEmbed);
 
-        // ACK
-        return await modalInteraction.update({ embeds: [menuEmbed] });
+        // Update Component to "no roles" one, if it was first Embed edit
+        if ( modalInteraction.message.components[0].components[0].options.length === 1 )
+        {
+            // ACK
+            return await modalInteraction.update({ embeds: [menuEmbed], components: [CONSTANTS.components.selects.ROLE_MENU_CREATE_NO_ROLES] });
+        }
+        else
+        {
+            // ACK
+            return await modalInteraction.update({ embeds: [menuEmbed] });
+        }
     }
 };
