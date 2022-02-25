@@ -114,21 +114,21 @@ module.exports = {
             if ( i === 0 )
             {
                 // First button on first row
-                temp = new Discord.MessageActionRow().addComponents(newMenuButtons[i]);
+                temp = new Discord.MessageActionRow().addComponents(newMenuButtons[i].setDisabled(false));
                 // Push early if only button
                 if ( newMenuButtons.length - 1 === i ) { menuComponentsArray.push(temp); }
             }
             else if ( i > 0 && i < 4 )
             {
                 // First row, not the first button
-                temp.addComponents(newMenuButtons[i]);
+                temp.addComponents(newMenuButtons[i].setDisabled(false));
                 // Push early, if these are the only buttons
                 if ( newMenuButtons.length - 1 === i ) { menuComponentsArray.push(temp); }
             }
             else if ( i === 4 )
             {
                 // Last button of the first row
-                temp.addComponents(newMenuButtons[i]);
+                temp.addComponents(newMenuButtons[i].setDisabled(false));
                 // Free up TEMP ready for second row
                 menuComponentsArray.push(temp);
                 temp = new Discord.MessageActionRow();
@@ -136,14 +136,14 @@ module.exports = {
             else if ( i > 4 && i < 9 )
             {
                 // Second row, buttons 1 through 4
-                temp.addComponents(newMenuButtons[i]);
+                temp.addComponents(newMenuButtons[i].setDisabled(false));
                 // Push early, if these are the only buttons
                 if ( newMenuButtons.length - 1 === i ) { menuComponentsArray.push(temp); }
             }
             else if ( i === 9 )
             {
                 // Second row, last button
-                temp.addComponents(newMenuButtons[i]);
+                temp.addComponents(newMenuButtons[i].setDisabled(false));
                 menuComponentsArray.push(temp);
             }
             else { break; }

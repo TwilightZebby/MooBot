@@ -170,12 +170,12 @@ module.exports = {
             if ( roleEmbedTextFieldOne.length >= 950 )
             {
                 // Switch to Field Two
-                roleEmbedTextFieldTwo += `• <@&${updatedRoleCache[i].roleID}> - ${updatedRoleCache[i].emoji !== null ? updatedRoleCache[i].emoji : ""} ${updatedRoleCache[i].label !== null ? updatedRoleCache[i].label : ""}\n`;
+                roleEmbedTextFieldTwo += `• <@&${updatedRoleCache[i].roleID}> - ${updatedRoleCache[i].label !== null ? updatedRoleCache[i].label : ""}\n`;
             }
             else
             {
                 // Stay on Field One
-                roleEmbedTextFieldOne += `• <@&${updatedRoleCache[i].roleID}> - ${updatedRoleCache[i].emoji !== null ? updatedRoleCache[i].emoji : ""} ${updatedRoleCache[i].label !== null ? updatedRoleCache[i].label : ""}\n`;
+                roleEmbedTextFieldOne += `• <@&${updatedRoleCache[i].roleID}> - ${updatedRoleCache[i].label !== null ? updatedRoleCache[i].label : ""}\n`;
             }
         }
 
