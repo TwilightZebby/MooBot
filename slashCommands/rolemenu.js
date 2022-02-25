@@ -70,6 +70,12 @@ module.exports = {
             return await slashCommand.reply({ content: `⚠ You cannot use this Slash Command, as you do *not* have the \`MANAGE_ROLES\` Permission.`, ephemeral: true });
         }
 
+        // Check the BOT has MANAGE_ROLES Permission
+        if ( !slashCommand.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES, true) )
+        {
+            return await slashCommand.reply({ content: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.`, ephemeral: true });
+        }
+
         // Send Menu and grab response
         let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Management**__\n\nPlease use the below Select Menu to select what you want to do.`,
             components: [CONSTANTS.components.selects.ROLE_MENU_INITIAL], ephemeral: true, fetchReply: true });
