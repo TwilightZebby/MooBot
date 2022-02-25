@@ -1,6 +1,6 @@
 // Imports
 const Discord = require('discord.js');
-//const fs = require('fs');
+const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
 
@@ -65,10 +65,111 @@ module.exports = {
                 await selectInteraction.showModal(removeRoleModal);
                 break;
 
+            case "save":
+                // Save and Display new Menu
+                await this.saveAndDisplay(selectInteraction);
+                break;
+
             default:
                 return await selectInteraction.reply({ content: CONSTANTS.errorMessages.GENERIC, ephemeral: true });
         }
 
+        return;
+    },
+
+
+
+
+
+
+
+
+    /**
+     * Saves and Displays the new Menu for Members to use
+     * 
+     * @param {Discord.SelectMenuInteraction} selectInteraction Select Interaction
+     */
+    async saveAndDisplay(selectInteraction)
+    {
+        // Defer, just in case
+        await selectInteraction.deferUpdate();
+
+        // Bring in JSON
+        let RoleMenuJson = require('../hiddenJsonFiles/roleMenus.json');
+
+        // Fetch all the data
+        /** @type {Array<Discord.MessageButton>} */
+        let newMenuButtons = client.roleMenu.get("createMenuButtons");
+        /** @type {Discord.MessageEmbed} */
+        let newMenuEmbed = client.roleMenu.get("createEmbed");
+        /** @type {Array<Object>} */
+        let newMenuRoleCache = client.roleMenu.get("createMenuRoleCache");
+
+        // Prepare Buttons
+        /** @type {Array<Discord.MessageActionRow>} */
+        let menuComponentsArray = [];
+        let temp;
+        for ( let i = 0; i <= newMenuButtons.length - 1; i++ )
+        {
+            if ( i === 0 )
+            {
+                // First button on first row
+                temp = new Discord.MessageActionRow().addComponents(newMenuButtons[i]);
+                // Push early if only button
+                if ( newMenuButtons.length - 1 === i ) { menuComponentsArray.push(temp); }
+            }
+            else if ( i > 0 && i < 4 )
+            {
+                // First row, not the first button
+                temp.addComponents(newMenuButtons[i]);
+                // Push early, if these are the only buttons
+                if ( newMenuButtons.length - 1 === i ) { menuComponentsArray.push(temp); }
+            }
+            else if ( i === 4 )
+            {
+                // Last button of the first row
+                temp.addComponents(newMenuButtons[i]);
+                // Free up TEMP ready for second row
+                menuComponentsArray.push(temp);
+                temp = new Discord.MessageActionRow();
+            }
+            else if ( i > 4 && i < 9 )
+            {
+                // Second row, buttons 1 through 4
+                temp.addComponents(newMenuButtons[i]);
+                // Push early, if these are the only buttons
+                if ( newMenuButtons.length - 1 === i ) { menuComponentsArray.push(temp); }
+            }
+            else if ( i === 9 )
+            {
+                // Second row, last button
+                temp.addComponents(newMenuButtons[i]);
+                menuComponentsArray.push(temp);
+            }
+            else { break; }
+        }
+
+        // Send Message containing new Menu
+        let newMenuMessage = await selectInteraction.channel.send({ embeds: [newMenuEmbed], components: menuComponentsArray, allowedMentions: { parse: [] } });
+
+        // Store details in JSON, ready for future edits or role removals
+        RoleMenuJson[`${newMenuMessage.id}`] = {
+            messageID: newMenuMessage.id,
+            channelID: newMenuMessage.channel.id,
+            roles: newMenuRoleCache,
+            embedData: { title: newMenuEmbed.title,
+                description: newMenuEmbed.description !== null && newMenuEmbed.description !== undefined && newMenuEmbed.description !== "" && newMenuEmbed.description !== " " ? newMenuEmbed.description : null,
+                color: newMenuEmbed.hexColor
+            }
+        };
+
+        // Save back to JSON
+        fs.writeFile('./hiddenJsonFiles/roleMenus.json', JSON.stringify(RoleMenuJson, null, 4), async (err) => {
+            if ( err ) { return await selectInteraction.followUp({ content: `An error occurred while trying to save your new Role Menu...`, ephemeral: true }); }
+        });
+
+        // ACK to User
+        await selectInteraction.editReply({ content: `✅ Successfully saved and displayed your new Role Menu!\nNow your Server Members can grant/revoke those Roles for themselves by simply pressing the respective button(s) :)`, embeds: [], components: [] });
         return;
     }
 };
