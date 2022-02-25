@@ -170,6 +170,9 @@ module.exports = {
 
         // ACK to User
         await selectInteraction.editReply({ content: `✅ Successfully saved and displayed your new Role Menu!\nNow your Server Members can grant/revoke those Roles for themselves by simply pressing the respective button(s) :)`, embeds: [], components: [] });
+
+        // Wipe Caches, ready for next Menu
+        client.roleMenu.clear();
         return;
     }
 };
