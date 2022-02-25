@@ -25,6 +25,9 @@ module.exports = {
         let inputEmbedDescription = modalInteraction.fields.getTextInputValue("description");
         let inputEmbedColour = modalInteraction.fields.getTextInputValue("hexcolour");
 
+        // Just for them errors
+        let originalModalMessageComponents = modalInteraction.message.components;
+
         /** @type {Discord.MessageEmbed} */
         let menuEmbed = client.roleMenu.get("createEmbed");
 
@@ -42,7 +45,7 @@ module.exports = {
             // Validate
             if ( !UTILITY.hexColourRegex.test(inputEmbedColour) )
             {
-                await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
+                await modalInteraction.update({ components: originalModalMessageComponents });
                 return await modalInteraction.followUp({ content: `That wasn't a valid Hex Colour Code! Please try again, using a valid Hex Colour Code (including the \`#\` (hash) at the start!)`, ephemeral: true });
             }
             else { menuEmbed.setColor(inputEmbedColour); }
