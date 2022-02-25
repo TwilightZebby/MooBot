@@ -21,12 +21,15 @@ module.exports = {
     {
         let inputRoleID = modalInteraction.fields.getTextInputValue("roleid");
 
+        // Just for them errors
+        let originalModalMessageComponents = modalInteraction.message.components;
+
         // Validate Role does indeed exist on the Menu
         /** @type {Array<Object>} */
         let roleCache = client.roleMenu.get("createMenuRoleCache");
         if ( !roleCache )
         {
-            await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
+            await modalInteraction.update({ components: originalModalMessageComponents });
             return await modalInteraction.followUp({ content: CONSTANTS.errorMessages.GENERIC, ephemeral: true });
         }
 
@@ -43,7 +46,7 @@ module.exports = {
 
         if ( !doesRoleExist )
         {
-            await modalInteraction.update({ components: [CONSTANTS.components.selects.ROLE_MENU_CREATE] });
+            await modalInteraction.update({ components: originalModalMessageComponents });
             return await modalInteraction.followUp({ content: `That Role ID doesn't seem to match an existing Role on the Menu.\nPlease try again, ensuring the Role ID is for a Role already on this Menu`, ephemeral: true });
         }
 
