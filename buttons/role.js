@@ -12,7 +12,7 @@ module.exports = {
 
     // Button's Cooldown, in seconds
     // If not provided or is commented out, will default to 3 seconds
-    cooldown: 5,
+    cooldown: 10,
 
 
 
