@@ -30,7 +30,7 @@ module.exports = {
         data.name = this.name;
         data.description = this.description;
         data.type = "CHAT_INPUT";
-        /* data.options = [
+        data.options = [
             {
                 type: "SUB_COMMAND",
                 name: "create",
@@ -38,18 +38,18 @@ module.exports = {
             },
             {
                 type: "SUB_COMMAND",
-                name: "edit",
-                description: "Add, edit, or remove Roles from an existing Menu",
+                name: "configure",
+                description: "Manage the Roles, Buttons, and Embeds on an existing Menu",
                 options: [
                     {
                         type: "STRING",
-                        name: "messageid",
-                        description: "The ID of the Message in this Channel containing a Role Menu",
+                        name: "message",
+                        description: "The ID of the Message containing an existing Menu",
                         required: true
                     }
                 ]
             }
-        ]; */
+        ];
         
         return data;
     },
