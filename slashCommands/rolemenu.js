@@ -76,12 +76,34 @@ module.exports = {
             return await slashCommand.reply({ content: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.`, ephemeral: true });
         }
 
+
+        let subCommandName = slashCommand.options.getSubcommand();
+
+        // Menu Creation
+        if ( subCommandName === "create" )
+        {
+            // Construct stuff
+            let createMenuEmbed = new Discord.MessageEmbed().setDescription("*Role Menu is currently empty. Please use the Select Menu below to configure this Role Menu*");
+                
+            // ACK to User
+            let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Creation**__\nUse the Select Menu to configure the Embed and Role Buttons.\nPlease make sure to have the relevant Role IDs - and Emoji IDs if including in Buttons - ready (such as in a notepad program) as you won't be able to copy from a Discord message while an Input Form is open.\n\nAn auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.`,
+                components: [CONSTANTS.components.selects.ROLE_MENU_CREATE_NO_EMBED], embeds: [createMenuEmbed], ephemeral: true });
+
+            // Store
+            client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });
+        }
+        // Menu Editing
+        else if ( subCommandName === "configure" )
+        {
+            // .
+        }
+
         // Send Menu and grab response
-        let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Management**__\n\nPlease use the below Select Menu to select what you want to do.`,
-            components: [CONSTANTS.components.selects.ROLE_MENU_INITIAL], ephemeral: true, fetchReply: true });
+        //let commandResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Management**__\n\nPlease use the below Select Menu to select what you want to do.`,
+           // components: [CONSTANTS.components.selects.ROLE_MENU_INITIAL], ephemeral: true, fetchReply: true });
 
         // Store
-        client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });
+        //client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });
 
         return;
     }
