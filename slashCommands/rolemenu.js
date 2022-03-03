@@ -95,9 +95,36 @@ module.exports = {
         // Menu Editing
         else if ( subCommandName === "configure" )
         {
-            // .
+            // Check that message *does* have a Menu
+            let roleMenuJson = require('../hiddenJsonFiles/roleMenus.json');
+            let messageID = slashCommand.options.getString("message", true);
+            if ( !roleMenuJson[messageID] )
+            {
+                return await slashCommand.reply({ content: `That Message ID isn't for a Message containing one of my Role Menus!`, ephemeral: true });
+            }
+            else
+            {
+                return await this.configure(slashCommand);
+            }
         }
 
         return;
+    },
+
+
+
+
+
+
+
+
+    /**
+     * Starts the Configuration Process for editing a Role Menu
+     * @param {Discord.CommandInteraction} slashCommand 
+     */
+    async configure(slashCommand)
+    {
+        //.
+        return await slashCommand.reply({ content: "test done gud", ephemeral: true });
     }
 };
