@@ -104,7 +104,7 @@ module.exports = {
             }
             else
             {
-                return await this.configure(slashCommand);
+                return await this.configure(slashCommand, messageID);
             }
         }
 
@@ -121,8 +121,9 @@ module.exports = {
     /**
      * Starts the Configuration Process for editing a Role Menu
      * @param {Discord.CommandInteraction} slashCommand 
+     * @param {String} messageId ID of the Message containing the Menu
      */
-    async configure(slashCommand)
+    async configure(slashCommand, messageId)
     {
         //.
         return await slashCommand.reply({ content: "test done gud", ephemeral: true });

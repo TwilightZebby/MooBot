@@ -152,6 +152,9 @@ const TextCommandHandler = require('./modules/textCommandHandler.js');
 const AutoQuote = require('./modules/autoQuoteModule.js');
 
 client.on('messageCreate', async (message) => {
+    // Ignore Partial Messages
+    if ( message.partial ) { return; }
+
     // Prevent other Bots and Discord's System stuff from triggering this Bot
     if ( message.author.bot || message.system || message.author.system ) { return; }
 
@@ -250,6 +253,54 @@ client.on('interactionCreate', async (interaction) => {
         // Is none of the above types
         return console.log(`Unrecognised or new Interaction type triggered`);
     }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************* */
+// DISCORD - MESSAGE DELETE EVENT
+//         - The reason I had to enable Message Partials :S
+//         - Used for deleting existing Role Menus from the JSON when their linked Message is deleted
+
+client.on('messageDelete', (message) => {
+    let roleMenuJSON = require('./hiddenJsonFiles/roleMenus.json');
+
+    // Delete from Role Menu JSON, if it exists in there
+    if ( roleMenuJSON[message.id] )
+    {
+        delete roleMenuJSON[message.id];
+        fs.writeFile('./hiddenJsonFiles/gifLinks.json', JSON.stringify(roleMenuJSON, null, 4), async (err) => {
+            if ( err ) { return console.error(err); }
+        });
+    }
+
+    return;
 });
 
 
