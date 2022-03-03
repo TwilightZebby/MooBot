@@ -125,7 +125,17 @@ module.exports = {
      */
     async configure(slashCommand, messageId)
     {
-        //.
-        return await slashCommand.reply({ content: "test done gud", ephemeral: true });
+        // Just so we can grab the Channel and Guild IDs for the Message Link
+        let roleMenuJSON = require('../hiddenJsonFiles/roleMenus.json');
+        let thisMenu = roleMenuJSON[messageId];
+
+        // Construct & Send initial message
+        let originalEditMenuResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Management**__\nPlease use the Select Menu to select what you want to change of the Role Menu ([Jump Link to current Menu](<https://discord.com/channels/${thisMenu.guildID}/${thisMenu.channelID}/${messageId}>)).`,
+            components: [CONSTANTS.components.selects.ROLE_MENU_EDIT], ephemeral: true, fetchReply: true });
+        
+        // Save to Collection
+        client.roleMenu.set("originalEditResponse", { messageID: originalEditMenuResponse.id, guildID: originalEditMenuResponse.guildId, channelID: originalEditMenuResponse.channelId, interactionToken: slashCommand.token });
+
+        return;
     }
 };

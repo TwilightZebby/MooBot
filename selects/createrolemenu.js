@@ -152,10 +152,11 @@ module.exports = {
         // Send Message containing new Menu
         let newMenuMessage = await selectInteraction.channel.send({ embeds: [newMenuEmbed], components: menuComponentsArray, allowedMentions: { parse: [] } });
 
-        // Store details in JSON, ready for future edits or role removals
+        // Store details in JSON, ready for future edits or removals
         RoleMenuJson[`${newMenuMessage.id}`] = {
             messageID: newMenuMessage.id,
             channelID: newMenuMessage.channel.id,
+            guildID: newMenuMessage.guild.id,
             roles: newMenuRoleCache,
             embedData: { title: newMenuEmbed.title,
                 description: newMenuEmbed.description !== null && newMenuEmbed.description !== undefined && newMenuEmbed.description !== "" && newMenuEmbed.description !== " " ? newMenuEmbed.description : null,

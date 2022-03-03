@@ -48,17 +48,6 @@ module.exports = {
     // COMPONENTS
     components: {
         selects: {
-            /** Initial Select Menu that is shown upon triggering /rolemenu
-             * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
-             */
-            ROLE_MENU_INITIAL: new Discord.MessageActionRow().addComponents(
-                new Discord.MessageSelectMenu().setCustomId(`rolemenu`).setMaxValues(1).setMinValues(1).setOptions([
-                    { label: "Create Menu", value: "create_menu", description: "Creates a new Menu for Users to toggle Roles from", emoji: "<:ChannelCategory:816771723264393236>" },
-                    { label: "Add Role", value: "add_role", description: "Add a Role to an existing Menu", emoji: "<:plusGrey:941654979222077490>" },
-                    { label: "Edit Role", value: "edit_role", description: "Edit an existing Button for a Role", emoji: "<:IconSettings:778931333459738626>" },
-                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from an existing Menu", emoji: "<:binGrey:941654671716655154>" }
-                ]).setPlaceholder("Please select an action")
-            ),
             /** Select Menu shown when wanting to create a new Role Menu
              * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
              */
@@ -85,7 +74,30 @@ module.exports = {
                     { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
                     //{ label: "Edit Role", value: "edit_role", description: "Edit a Role on the Menu", emoji: "<:IconSettings:778931333459738626>" },
                     { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" },
-                    { label: "Save and Display", value: "save", description: "Saves the new Menu, and displays it for members to use", emoji: "<:IconActivity:815246970457161738>" }
+                    { label: "Save and Display", value: "save", description: "Saves the new Menu, and displays it for Members to use", emoji: "<:IconActivity:815246970457161738>" }
+                ])
+            ),
+            /** Select menu shown when wanting to edit an existing Role Menu
+             * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
+             */
+            ROLE_MENU_EDIT: new Discord.MessageActionRow().addComponents(
+                new Discord.MessageSelectMenu().setCustomId(`editrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
+                    { label: "Edit Embed", value: "edit_embed", description: "Change the Title, Description, and/or Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
+                    { label: "Add Role", value: "add_role", description: "Add a new Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
+                    { label: "Edit Role Button", value: "edit_role_button", description: "Edit or disable a Role Button on the Menu", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" }
+                ])
+            ),
+            /** Select menu shown when wanting to edit an existing Role Menu, with Save option
+             * @type {Discord.MessageActionRow<Discord.MessageSelectMenu>}
+             */
+             ROLE_MENU_EDIT_SAVE: new Discord.MessageActionRow().addComponents(
+                new Discord.MessageSelectMenu().setCustomId(`editrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
+                    { label: "Edit Embed", value: "edit_embed", description: "Change the Title, Description, and/or Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
+                    { label: "Add Role", value: "add_role", description: "Add a new Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
+                    { label: "Edit Role Button", value: "edit_role_button", description: "Edit or disable a Role Button on the Menu", emoji: "<:IconSettings:778931333459738626>" },
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" },
+                    { label: "Save and Update", value: "save", description: "Saves your changes to the Menu, and displays them", emoji: "<:IconActivity:815246970457161738>" }
                 ])
             )
         }
