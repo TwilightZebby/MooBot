@@ -129,9 +129,16 @@ module.exports = {
         let roleMenuJSON = require('../hiddenJsonFiles/roleMenus.json');
         let thisMenu = roleMenuJSON[messageId];
 
-        // Construct & Send initial message
+        // Construct Embed for auto-updating preview
+        let previewEmbed = new Discord.MessageEmbed().setTitle(thisMenu.embed.title);
+        if ( thisMenu.embed.description !== null ) { previewEmbed.setDescription(thisMenu.embed.description); }
+        if ( thisMenu.embed.color !== null ) { previewEmbed.setColor(thisMenu.embed.color); }
+
+
+
+        // Send initial message
         let originalEditMenuResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Management**__\nPlease use the Select Menu to select what you want to change of the Role Menu ([Jump Link to current Menu](<https://discord.com/channels/${thisMenu.guildID}/${thisMenu.channelID}/${messageId}>)).`,
-            components: [CONSTANTS.components.selects.ROLE_MENU_EDIT], ephemeral: true, fetchReply: true });
+            components: [CONSTANTS.components.selects.ROLE_MENU_EDIT], embeds: [previewEmbed], ephemeral: true, fetchReply: true });
         
         // Save to Collection
         client.roleMenu.set("originalEditResponse", { messageID: originalEditMenuResponse.id, guildID: originalEditMenuResponse.guildId, channelID: originalEditMenuResponse.channelId, interactionToken: slashCommand.token });

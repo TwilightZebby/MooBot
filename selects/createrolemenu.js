@@ -158,7 +158,7 @@ module.exports = {
             channelID: newMenuMessage.channel.id,
             guildID: newMenuMessage.guild.id,
             roles: newMenuRoleCache,
-            embedData: { title: newMenuEmbed.title,
+            embed: { title: newMenuEmbed.title,
                 description: newMenuEmbed.description !== null && newMenuEmbed.description !== undefined && newMenuEmbed.description !== "" && newMenuEmbed.description !== " " ? newMenuEmbed.description : null,
                 color: newMenuEmbed.hexColor
             }
