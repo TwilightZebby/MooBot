@@ -136,15 +136,39 @@ module.exports = {
 
 
         // Construct Buttons for auto-updating preview
+        // Also, add the Roles to the Embed
         /** @type {Array<Discord.MessageButton>} */
         let previewButtons = [];
+        let roleEmbedTextFieldOne = "";
+        let roleEmbedTextFieldTwo = "";
         for (let i = 0; i <= thisMenu.roles.length - 1; i++)
         {
+            // Construct Button
             let tempButton = new Discord.MessageButton().setStyle('PRIMARY').setCustomId(`roleedit_${thisMenu.roles[i].roleID}`);
             if ( thisMenu.roles[i].label !== null ) { tempButton.setLabel(thisMenu.roles[i].label); }
             if ( thisMenu.roles[i].emoji !== null ) { tempButton.setEmoji(thisMenu.roles[i].emoji); }
             previewButtons.push(tempButton);
+
+            // Add to Embed
+            if ( roleEmbedTextFieldOne.length >= 950 )
+            {
+                // Switch to Field Two
+                roleEmbedTextFieldTwo += `• <@&${thisMenu.roles[i].roleID}> - ${thisMenu.roles[i].emoji !== null ? thisMenu.roles[i].emoji : ""} ${thisMenu.roles[i].label !== null ? thisMenu.roles[i].label : ""}\n`;
+            }
+            else
+            {
+                // Stay on Field One
+                roleEmbedTextFieldOne += `• <@&${thisMenu.roles[i].roleID}> - ${thisMenu.roles[i].emoji !== null ? thisMenu.roles[i].emoji : ""} ${thisMenu.roles[i].label !== null ? thisMenu.roles[i].label : ""}\n`;
+            }
         }
+
+        // Display on Embed
+        previewEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldOne });
+        if ( roleEmbedTextFieldTwo !== "" && roleEmbedTextFieldTwo !== " " )
+        {
+            previewEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldTwo });
+        }
+        
 
         // Prepare for display
         /** @type {Array<Discord.MessageActionRow>} */
