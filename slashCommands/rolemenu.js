@@ -168,7 +168,7 @@ module.exports = {
         {
             previewEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldTwo });
         }
-        
+
 
         // Prepare for display
         /** @type {Array<Discord.MessageActionRow>} */
@@ -219,7 +219,7 @@ module.exports = {
 
 
         // Send initial message
-        let originalEditMenuResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Management**__\nPlease use the Select Menu to select what you want to change of the Role Menu ([Jump Link to current Menu](<https://discord.com/channels/${thisMenu.guildID}/${thisMenu.channelID}/${messageId}>)).\nTo edit a Button, simply press/tap it.\n\nAn auto-updating preview of your Menu is shown below:`,
+        let originalEditMenuResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Management**__\n([Jump Link to current Menu](<https://discord.com/channels/${thisMenu.guildID}/${thisMenu.channelID}/${messageId}>))\nIf you want to edit a Role Button, simply press/tab on it; otherwise, for editing the Embed or adding/removing Roles, use the Select Menu.\n\nAn auto-updating preview of your Menu is shown below:`,
             components: previewComponentArray, embeds: [previewEmbed], ephemeral: true, fetchReply: true });
         
         // Save to Collection
