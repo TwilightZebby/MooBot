@@ -34,7 +34,7 @@ module.exports = {
             case "add_role":
                 // Add a new Role
 
-            case "edit_role_button":
+            //case "edit_role_button":
                 // Edit the Emoji/Label or Disabled State of an existing Button
 
             case "remove_role":

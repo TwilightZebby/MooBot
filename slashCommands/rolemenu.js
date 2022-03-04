@@ -135,10 +135,68 @@ module.exports = {
         if ( thisMenu.embed.color !== null ) { previewEmbed.setColor(thisMenu.embed.color); }
 
 
+        // Construct Buttons for auto-updating preview
+        /** @type {Array<Discord.MessageButton>} */
+        let previewButtons = [];
+        for (let i = 0; i <= thisMenu.roles.length - 1; i++)
+        {
+            let tempButton = new Discord.MessageButton().setStyle('PRIMARY').setCustomId(`roleedit_${thisMenu.roles[i].roleID}`);
+            if ( thisMenu.roles[i].label !== null ) { tempButton.setLabel(thisMenu.roles[i].label); }
+            if ( thisMenu.roles[i].emoji !== null ) { tempButton.setEmoji(thisMenu.roles[i].emoji); }
+            previewButtons.push(tempButton);
+        }
+
+        // Prepare for display
+        /** @type {Array<Discord.MessageActionRow>} */
+        let previewComponentArray = [];
+        let temp;
+        for ( let i = 0; i <= previewButtons.length - 1; i++ )
+        {
+            if ( i === 0 )
+            {
+                // First button on first row
+                temp = new Discord.MessageActionRow().addComponents(previewButtons[i].setDisabled(false));
+                // Push early if only button
+                if ( previewButtons.length - 1 === i ) { previewComponentArray.push(temp); }
+            }
+            else if ( i > 0 && i < 4 )
+            {
+                // First row, not the first button
+                temp.addComponents(previewButtons[i].setDisabled(false));
+                // Push early, if these are the only buttons
+                if ( previewButtons.length - 1 === i ) { previewComponentArray.push(temp); }
+            }
+            else if ( i === 4 )
+            {
+                // Last button of the first row
+                temp.addComponents(previewButtons[i].setDisabled(false));
+                // Free up TEMP ready for second row
+                previewComponentArray.push(temp);
+                temp = new Discord.MessageActionRow();
+            }
+            else if ( i > 4 && i < 9 )
+            {
+                // Second row, buttons 1 through 4
+                temp.addComponents(previewButtons[i].setDisabled(false));
+                // Push early, if these are the only buttons
+                if ( previewButtons.length - 1 === i ) { previewComponentArray.push(temp); }
+            }
+            else if ( i === 9 )
+            {
+                // Second row, last button
+                temp.addComponents(previewButtons[i].setDisabled(false));
+                previewComponentArray.push(temp);
+            }
+            else { break; }
+        }
+
+        // Add Select Menu
+        previewComponentArray.push(CONSTANTS.components.selects.ROLE_MENU_EDIT);
+
 
         // Send initial message
-        let originalEditMenuResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Management**__\nPlease use the Select Menu to select what you want to change of the Role Menu ([Jump Link to current Menu](<https://discord.com/channels/${thisMenu.guildID}/${thisMenu.channelID}/${messageId}>)).`,
-            components: [CONSTANTS.components.selects.ROLE_MENU_EDIT], embeds: [previewEmbed], ephemeral: true, fetchReply: true });
+        let originalEditMenuResponse = await slashCommand.reply({ content: `__**Self-Assignable Role Menu Management**__\nPlease use the Select Menu to select what you want to change of the Role Menu ([Jump Link to current Menu](<https://discord.com/channels/${thisMenu.guildID}/${thisMenu.channelID}/${messageId}>)).\nTo edit a Button, simply press/tap it.\n\nAn auto-updating preview of your Menu is shown below:`,
+            components: previewComponentArray, embeds: [previewEmbed], ephemeral: true, fetchReply: true });
         
         // Save to Collection
         client.roleMenu.set("originalEditResponse", { messageID: originalEditMenuResponse.id, guildID: originalEditMenuResponse.guildId, channelID: originalEditMenuResponse.channelId, interactionToken: slashCommand.token });
