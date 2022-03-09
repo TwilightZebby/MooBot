@@ -62,6 +62,14 @@ module.exports = {
 
             case "remove_role":
                 // Remove a Role from a Menu
+                let removeRoleModal = new Discord.Modal().setCustomId("editremoverole").setTitle("Remove Assignable Role").addComponents([
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("roleid").setLabel("Role ID").setMaxLength(19).setMinLength(17).setStyle("SHORT").setRequired(true).setPlaceholder("Example: 5981450330692649077") )
+                ]);
+                await selectInteraction.showModal(removeRoleModal);
+                break;
+
+            case "save":
+                // Save and update Menu
 
             default:
                 return await selectInteraction.reply({ content: CONSTANTS.errorMessages.GENERIC, ephemeral: true });
