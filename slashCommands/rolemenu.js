@@ -224,6 +224,8 @@ module.exports = {
         
         // Save to Collection
         client.roleMenu.set("originalEditResponse", { messageID: originalEditMenuResponse.id, guildID: originalEditMenuResponse.guildId, channelID: originalEditMenuResponse.channelId, interactionToken: slashCommand.token });
+        client.roleMenu.set("editEmbed", previewEmbed);
+        client.roleMenu.set("editButtons", previewButtons);
 
         return;
     }

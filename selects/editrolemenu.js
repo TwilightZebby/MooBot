@@ -30,6 +30,16 @@ module.exports = {
         {
             case "edit_embed":
                 // Edit the Embed
+                /** @type {Discord.MessageEmbed} */
+                let previewEmbed = client.roleMenu.get("editEmbed");
+
+                let embedModal = new Discord.Modal().setCustomId("editembeddata").setTitle("Edit Menu Embed").addComponents([
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("title").setLabel("Embed Title").setMaxLength(256).setStyle("SHORT").setRequired(true).setValue(!previewEmbed?.title ? "" : previewEmbed.title) ),
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("description").setLabel("Embed Description").setMaxLength(3000).setStyle("PARAGRAPH").setValue(!previewEmbed?.description ? "" : previewEmbed.description) ),
+                    new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("hexcolour").setLabel("Embed Colour (In Hex Format)").setMaxLength(7).setMinLength(7).setStyle("SHORT").setValue(!previewEmbed?.hexColor ? "" : previewEmbed.hexColor).setPlaceholder("Example: #5865F2") )
+                ]);
+                await selectInteraction.showModal(embedModal);
+                break;
 
             case "add_role":
                 // Add a new Role
@@ -43,5 +53,7 @@ module.exports = {
             default:
                 return await selectInteraction.reply({ content: CONSTANTS.errorMessages.GENERIC, ephemeral: true });
         }
+
+        return;
     }
 };
