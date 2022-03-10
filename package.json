@@ -7,7 +7,7 @@
     "utf-8-validate": "^5.0.8",
     "zlib-sync": "^0.1.7"
   },
-  "name": "actionsbot",
+  "name": "moobot",
   "description": "A small bot made by TwilightZebby for Dr1fterX's Discord Server",
   "version": "5.2.2",
   "main": "index.js",
