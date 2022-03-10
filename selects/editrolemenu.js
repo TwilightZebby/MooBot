@@ -57,9 +57,6 @@ module.exports = {
                 await selectInteraction.showModal(newRoleModal);
                 break;
 
-            //case "edit_role_button":
-                // Edit the Emoji/Label or Disabled State of an existing Button
-
             case "remove_role":
                 // Remove a Role from a Menu
                 let removeRoleModal = new Discord.Modal().setCustomId("editremoverole").setTitle("Remove Assignable Role").addComponents([
