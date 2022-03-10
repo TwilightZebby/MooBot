@@ -227,6 +227,7 @@ module.exports = {
         client.roleMenu.set("editEmbed", previewEmbed);
         client.roleMenu.set("editButtons", previewButtons);
         client.roleMenu.set("editRoles", thisMenu.roles);
+        client.roleMenu.set("menuMessageID", messageId);
 
         return;
     }
