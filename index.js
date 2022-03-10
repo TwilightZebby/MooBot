@@ -16,6 +16,7 @@ client.slashCommands = new Discord.Collection();
 client.contextCommands = new Discord.Collection();
 client.buttons = new Discord.Collection();
 client.selects = new Discord.Collection();
+client.modals = new Discord.Collection();
 
 client.cooldowns = new Discord.Collection();
 client.slashCooldowns = new Discord.Collection();
@@ -24,6 +25,7 @@ client.buttonCooldowns = new Discord.Collection();
 client.selectCooldowns = new Discord.Collection();
 
 client.potato = new Discord.Collection();
+client.roleMenu = new Discord.Collection();
 
 
 // BRING IN ALL THE COMMANDS AND INTERACTIONS
@@ -65,6 +67,14 @@ for ( const file of selectFiles )
 {
     const tempCMD = require(`./selects/${file}`);
     client.selects.set(tempCMD.name, tempCMD);
+}
+
+// Modals
+const modalFiles = fs.readdirSync('./modals').filter(file => file.endsWith('.js'));
+for ( const file of modalFiles )
+{
+    const tempCMD = require(`./modals/${file}`);
+    client.modals.set(tempCMD.name, tempCMD);
 }
 
 
@@ -142,6 +152,9 @@ const TextCommandHandler = require('./modules/textCommandHandler.js');
 const AutoQuote = require('./modules/autoQuoteModule.js');
 
 client.on('messageCreate', async (message) => {
+    // Ignore Partial Messages
+    if ( message.partial ) { return; }
+
     // Prevent other Bots and Discord's System stuff from triggering this Bot
     if ( message.author.bot || message.system || message.author.system ) { return; }
 
@@ -207,6 +220,7 @@ const SlashCommandHandler = require('./modules/slashCommandHandler.js');
 const ButtonHandler = require('./modules/buttonHandler.js');
 const SelectMenuHandler = require('./modules/selectMenuHandler.js');
 const ContextCommandHandler = require('./modules/contextCommandHandler.js');
+const ModelHandler = require('./modules/modalHandler.js');
 
 client.on('interactionCreate', async (interaction) => {
     if ( interaction.isCommand() )
@@ -229,11 +243,64 @@ client.on('interactionCreate', async (interaction) => {
         // Is a Select Component
         return await SelectMenuHandler.Main(interaction);
     }
+    else if ( interaction.isModalSubmit() )
+    {
+        // Is an Input Modal
+        return await ModelHandler.Main(interaction);
+    }
     else
     {
         // Is none of the above types
         return console.log(`Unrecognised or new Interaction type triggered`);
     }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************* */
+// DISCORD - MESSAGE DELETE EVENT
+//         - The reason I had to enable Message Partials :S
+//         - Used for deleting existing Role Menus from the JSON when their linked Message is deleted
+
+client.on('messageDelete', (message) => {
+    let roleMenuJSON = require('./hiddenJsonFiles/roleMenus.json');
+
+    // Delete from Role Menu JSON, if it exists in there
+    if ( roleMenuJSON[message.id] )
+    {
+        delete roleMenuJSON[message.id];
+        fs.writeFile('./hiddenJsonFiles/gifLinks.json', JSON.stringify(roleMenuJSON, null, 4), async (err) => {
+            if ( err ) { return console.error(err); }
+        });
+    }
+
+    return;
 });
 
 
