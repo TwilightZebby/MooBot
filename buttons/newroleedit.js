@@ -6,7 +6,7 @@ const CONSTANTS = require('../constants.js');
 
 module.exports = {
     // Button's Name, used as start of its Custom ID
-    name: 'roleedit',
+    name: 'newroleedit',
     // Button's description, purely for documentation
     description: `Used to edit a Role Button on during Menu creation`,
 
