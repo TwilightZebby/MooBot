@@ -156,7 +156,7 @@ module.exports = {
         }
 
         // Insert Select Menu
-        updatedComponentsArray.push(CONSTANTS.components.selects.ROLE_MENU_EDIT_SAVE);
+        updatedComponentsArray.push(CONSTANTS.components.selects.ROLE_MENU_CREATE);
 
         // Now to update the Embed
         /** @type {Discord.MessageEmbed} */
