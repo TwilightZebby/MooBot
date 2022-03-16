@@ -251,7 +251,7 @@ client.on('interactionCreate', async (interaction) => {
     else
     {
         // Is none of the above types
-        return console.log(`Unrecognised or new Interaction type triggered`);
+        return console.log(`Unrecognised or new unhandled Interaction type triggered`);
     }
 });
 
