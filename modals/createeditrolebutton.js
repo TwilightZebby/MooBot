@@ -7,7 +7,7 @@ const CONSTANTS = require('../constants.js');
 
 module.exports = {
     // Modal's Name, used as start of its Custom ID
-    name: 'editrolebutton',
+    name: 'createeditrolebutton',
     // Modal's description, purely for documentation
     description: `Handles edits to existing Role Buttons on new Menus`,
 
