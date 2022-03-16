@@ -1,21 +1,22 @@
 {
   "dependencies": {
     "bufferutil": "^4.0.6",
-    "discord.js": "^13.6.0",
+    "discord.js": "github:discordjs/discord.js#pull/7431",
+    "emoji-regex": "^10.0.0",
     "erlpack": "github:discord/erlpack",
     "utf-8-validate": "^5.0.8",
     "zlib-sync": "^0.1.7"
   },
-  "name": "actionsbot",
+  "name": "moobot",
   "description": "A small bot made by TwilightZebby for Dr1fterX's Discord Server",
-  "version": "5.2.2",
+  "version": "5.3.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TwilightZebby/ActionsBot.git"
+    "url": "git+https://github.com/TwilightZebby/MooBot.git"
   },
   "keywords": [
     "discord",

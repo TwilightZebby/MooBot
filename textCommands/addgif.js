@@ -76,7 +76,7 @@ module.exports = {
         // Save to JSON
         fs.writeFile('./jsonFiles/gifLinks.json', JSON.stringify(GIF_LINKS, null, 4), async (err) => {
             if ( err ) { return await message.reply({ content: CONSTANTS.errorMessages.GENERIC, allowedMentions: { parse: [], repliedUser: false } }); }
-        })
+        });
 
         return await message.reply({ content: `Successfully added the linked GIF to the **${actionCommandName}** Action Slash Command.`, allowedMentions: { parse: [], repliedUser: false } });
     }
