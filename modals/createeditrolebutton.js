@@ -46,9 +46,9 @@ module.exports = {
         }
 
         // Update caches
-        let roleCache = client.roleMenu.get("editRoles");
+        let roleCache = client.roleMenu.get("createMenuRoleCache");
         /** @type {Array<Discord.MessageButton>} */
-        let buttonCache = client.roleMenu.get("editButtons");
+        let buttonCache = client.roleMenu.get("createMenuButtons");
 
         // ROLE CACHE
         for ( let i = 0; i <= roleCache.length - 1; i++ )
@@ -80,7 +80,7 @@ module.exports = {
         // BUTTON CACHE
         for ( let i = 0; i <= buttonCache.length - 1; i++ )
         {
-            if ( buttonCache[i].customId === `roleedit_${roleID}` )
+            if ( buttonCache[i].customId === `newroleedit_${roleID}` )
             {
                 if ( inputButtonLabel !== "" && inputButtonLabel !== " " && inputButtonLabel !== null && inputButtonLabel !== undefined )
                 {
@@ -106,8 +106,8 @@ module.exports = {
 
 
         // Save back to caches
-        client.roleMenu.set("editRoles", roleCache);
-        client.roleMenu.set("editButtons", buttonCache);
+        client.roleMenu.set("createMenuRoleCache", roleCache);
+        client.roleMenu.set("createMenuButtons", buttonCache);
 
         
         // Reconstruct Component Rows
@@ -160,7 +160,7 @@ module.exports = {
 
         // Now to update the Embed
         /** @type {Discord.MessageEmbed} */
-        let cachedEmbed = client.roleMenu.get("editEmbed");
+        let cachedEmbed = client.roleMenu.get("createEmbed");
         cachedEmbed.spliceFields(0, 25); // Reset, just in case
 
         if ( buttonCache.length >= 1 )
