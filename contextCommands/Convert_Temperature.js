@@ -159,7 +159,10 @@ module.exports = {
             let convertedF = ( originalValue * 9/5 ) + 32;
             let convertedK = originalValue + 273.15;
 
-            return `${originalValue.toFixed(1)}C is ${convertedF.toFixed(1)}F or ${convertedK.toFixed(1)}K`;
+            // Check for invalid temp
+            if ( convertedK < 0 ) { return `⚠ ${originalValue}C is a temperature that does not exist! (It's below Absolute Zero)`; }
+
+            return `${originalValue.toFixed(0)}C is about ${convertedF.toFixed(0)}F or ${convertedK.toFixed(0)}K`;
         }
         else if ( originalSystem === "f" )
         {
@@ -167,7 +170,9 @@ module.exports = {
             let convertedC = ( originalValue - 32 ) * 5/9;
             let convertedK = ( originalValue - 32 ) * 5/9 + 273.15;
 
-            return `${originalValue.toFixed(1)}F is ${convertedC.toFixed(1)}C or ${convertedK.toFixed(1)}K`;
+            if ( convertedK < 0 ) { return `⚠ ${originalValue}F is a temperature that does not exist! (It's below Absolute Zero)`; }
+
+            return `${originalValue.toFixed(0)}F is about ${convertedC.toFixed(0)}C or ${convertedK.toFixed(0)}K`;
         }
         else if ( originalSystem === "k" )
         {
@@ -175,7 +180,9 @@ module.exports = {
             let convertedF = ( originalValue - 273.15 ) * 9/5 + 32;
             let convertedC = originalValue - 273.15;
 
-            return `${originalValue.toFixed(1)}K is ${convertedF.toFixed(1)}F or ${convertedC.toFixed(1)}C`;
+            if ( originalValue < 0 ) { return `⚠ ${originalValue}K is a temperature that does not exist! (It's below Absolute Zero)`; }
+
+            return `${originalValue.toFixed(0)}K is about ${convertedF.toFixed(0)}F or ${convertedC.toFixed(0)}C`;
         }
     }
 };
