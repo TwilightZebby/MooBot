@@ -173,7 +173,7 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 #### `/rolemenu create`
 *Starts the process of creating a new Role Menu*
 
-#### `/rolemenu configure message`
+#### `/rolemenu configure [message]`
 *Starts the process of editing an existing Role Menu*
 
 | Argument | Type          | Description                                                          | Required |
