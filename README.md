@@ -178,7 +178,7 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 
 | Argument | Type          | Description                                                          | Required |
 |----------|---------------|----------------------------------------------------------------------|----------|
-| message  | String        | The ID of the Message containing the existing Menu to be editied     | ✔️      |
+| message  | String        | The ID of the Message containing the existing Menu to be edited      | ✔️      |
 
 
 ## Context Commands
