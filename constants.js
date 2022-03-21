@@ -53,7 +53,8 @@ module.exports = {
              */
              ROLE_MENU_CREATE_NO_EMBED: new Discord.MessageActionRow().addComponents(
                 new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
-                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" }
+                    { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
+                    { label: "Cancel Creation", value: "cancel", description: "Cancels creation of this Role Menu", emoji: "❌" }
                 ])
             ),
             /** Select Menu shown when wanting to create a new Role Menu, after initial configuring of the Embed (needs at least the Title!)
@@ -62,7 +63,8 @@ module.exports = {
              ROLE_MENU_CREATE_NO_ROLES: new Discord.MessageActionRow().addComponents(
                 new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
                     { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
-                    { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" }
+                    { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
+                    { label: "Cancel Creation", value: "cancel", description: "Cancels creation of this Role Menu", emoji: "❌" }
                 ])
             ),
             /** Select Menu shown when wanting to create a new Role Menu, for when there are added Role Buttons
@@ -72,8 +74,9 @@ module.exports = {
                 new Discord.MessageSelectMenu().setCustomId(`createrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
                     { label: "Configure Embed", value: "configure_embed", description: "Set the Title, Description, and Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
                     { label: "Add Role", value: "add_role", description: "Add a Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
-                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" },
-                    { label: "Save and Display", value: "save", description: "Saves the new Menu, and displays it for Members to use", emoji: "<:IconActivity:815246970457161738>" }
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:IconDeleteTrashcan:750152850310561853>" },
+                    { label: "Save and Display", value: "save", description: "Saves the new Menu, and displays it for Members to use", emoji: "<:IconActivity:815246970457161738>" },
+                    { label: "Cancel Creation", value: "cancel", description: "Cancels creation of this Role Menu", emoji: "❌" }
                 ])
             ),
             /** Select menu shown when wanting to edit an existing Role Menu
@@ -83,7 +86,8 @@ module.exports = {
                 new Discord.MessageSelectMenu().setCustomId(`editrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
                     { label: "Edit Embed", value: "edit_embed", description: "Change the Title, Description, and/or Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
                     { label: "Add Role", value: "add_role", description: "Add a new Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
-                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" }
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:IconDeleteTrashcan:750152850310561853>" },
+                    { label: "Cancel Editing", value: "cancel", description: "Cancels editing of this Role Menu", emoji: "❌" }
                 ])
             ),
             /** Select menu shown when wanting to edit an existing Role Menu, with Save option
@@ -93,8 +97,9 @@ module.exports = {
                 new Discord.MessageSelectMenu().setCustomId(`editrolemenu`).setMaxValues(1).setMinValues(1).setPlaceholder("Please select an action").setOptions([
                     { label: "Edit Embed", value: "edit_embed", description: "Change the Title, Description, and/or Colour of the Embed", emoji: "<:StatusRichPresence:842328614883295232>" },
                     { label: "Add Role", value: "add_role", description: "Add a new Role to the Menu", emoji: "<:plusGrey:941654979222077490>" },
-                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:binGrey:941654671716655154>" },
-                    { label: "Save and Update", value: "save", description: "Saves your changes to the Menu, and displays them", emoji: "<:IconActivity:815246970457161738>" }
+                    { label: "Remove Role", value: "remove_role", description: "Remove a Role from the Menu", emoji: "<:IconDeleteTrashcan:750152850310561853>" },
+                    { label: "Save and Update", value: "save", description: "Saves your changes to the Menu, and displays them", emoji: "<:IconActivity:815246970457161738>" },
+                    { label: "Cancel Editing", value: "cancel", description: "Cancels editing of this Role Menu", emoji: "❌" }
                 ])
             )
         }

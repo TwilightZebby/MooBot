@@ -295,7 +295,7 @@ client.on('messageDelete', (message) => {
     if ( roleMenuJSON[message.id] )
     {
         delete roleMenuJSON[message.id];
-        fs.writeFile('./hiddenJsonFiles/gifLinks.json', JSON.stringify(roleMenuJSON, null, 4), async (err) => {
+        fs.writeFile('./hiddenJsonFiles/roleMenus.json', JSON.stringify(roleMenuJSON, null, 4), async (err) => {
             if ( err ) { return console.error(err); }
         });
     }

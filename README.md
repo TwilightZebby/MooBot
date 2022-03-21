@@ -1,3 +1,5 @@
+↖ *Want to jump to a specific section/question? Use the navigation menu!*
+
 # MooBot
 A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf).
 
@@ -13,6 +15,8 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 ## What kind of features are there?
 
 > Originally intended to only add Kawaii-bot style Slash Commands (such as `/bonk`, `/boop`, `/headpat`, etc), this Bot has since expanded into a general-purpose Bot to add other features like a Temperature Converter, Button-Role System, and more.
+> 
+> All of this Bot's features are [listed below](https://github.com/TwilightZebby/MooBot#features-list).
 
 
 ## Why did you make this Bot?
@@ -51,64 +55,146 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 
 
 ---
-# Full command list
+# Features list
 
 ## Action Slash Commands
+### `/bonk [target] (gif) (reason)`
+*Outputs a message in chat, bonking the specified User, Role, or Everyone.*
 
-| Command  | Description                 | Note                                                         |
-|----------|-----------------------------|--------------------------------------------------------------|
-| /bonk    | Bonks someone               |                                                              |
-| /boop    | Boops someone               |                                                              |
-| /headpat | Give someone a headpat      |                                                              |
-| /hug     | Give someone a cuddle       |                                                              |
-| /kiss    | Slap a kiss on someone      |                                                              |
-| /pummel  | Pummel someone, JoJo style  | Does *not* have the GIF toggle option, will always use a GIF |
-| /slap    | Slap someone                |                                                              |
-| /sleep   | Tell someone to go to sleep | Does *not* have a "Return to Sender" Button                  |
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/boop [target] (gif) (reason)`
+*Outputs a message in chat, booping the specified User, Role, or Everyone.*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/headpat [target] (gif) (reason)`
+*Outputs a message in chat, giving the specified User, Role, or Everyone a headpat.*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/hug [target] (gif) (reason)`
+*Outputs a message in chat, giving the specified User, Role, or Everyone a cuddle.*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/kiss [target] (gif) (reason)`
+*Outputs a message in chat, kissing the specified User, Role, or Everyone.*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/pummel [target] (gif) (reason)`
+*Outputs a message in chat, pummelling the specified User, Role, or Everyone.*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/slap [target] (gif) (reason)`
+*Outputs a message in chat, slapping the specified User, Role, or Everyone.*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### `/sleep [target] (gif) (reason)`
+*Outputs a message in chat, telling the specified User, Role, or Everyone to go to sleep already!*
+
+| Argument | Type         | Description                                             | Required |
+|----------|--------------|---------------------------------------------------------|----------|
+| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
+| gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| reason   | String       | A custom message to attach to the *end* of the response |          |
+
+### Other Action Command features
+- All the Action Slash Commands, with the exemption of `/sleep` and `/pummel`, include a "Return x" Button alongside their responses, allowing the specified User (NOT Role or Everyone) Target to be able to return the Action within a short (<2 minute) window.
+- All the Action Slash Commands' responses are set to *suppress* all @mentions, as a safety measure against accidental or malicious pinging
 
 
-### Action Slash Command Options/Arguments
-*What parameters can be passed to the Action Slash Commands for extra functionality*
+## General Slash Commands
+### `/start [channel] [activity]`
+*Creates an Invite Link to the specified Voice Channel, allowing for starting one of Discord's built-in (but in beta) Social Activities in that Voice Channel.*
 
-| Option | Requirement | Input Type                   | Description                                         |
-|--------|-------------|------------------------------|-----------------------------------------------------|
-| person | required    | Any User or Role Mention\*   | Used as the receiver of the Command                 |
-| gif    | optional    | True/False                   | Should a GIF be included in the sent message?       |
-| reason | optional    | A String                     | A custom message to attach after the action message |
+| Argument | Type          | Description                                             | Required |
+|----------|---------------|---------------------------------------------------------|----------|
+| channel  | #VoiceChannel | The Voice Channel the Activity should be started in     | ✔️      |
+| activity | String        | The Activity to start (from a pre-set list of options)  | ✔️      |
 
+- ℹ *This Slash Command will be removed from this Bot once Discord fully releases their (currently in testing) Social Activites feature.*
+- ℹ *All this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc).*
+- ℹ *If you want to help Discord test their Social Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 
-\* *In the sent message, @user and @role mentions are suppressed so they don't send a ping/notification. @everyone/@here mentions are replaced with plain-text "everyone"*
+### `/potato`
+*Starts a game of Hot Potato in the current Text or Thread Channel.*
 
+- Once a Hot Potato game starts, a Message will be posted in the Channel stating so, along with who started the game, and who was the first User the Potato is passed to.
+- To pass the Potato, the current "Hot User" (the one currently hold the Potato) will need to press the "Pass Potato" Button that's attached to the origin message.
+- Who the Potato is passed to is picked at random, as long as the User meets the following criteria:
+    - The User is NOT a Bot or System User
+    - IF IN A TEXT CHANNEL: They are one of the Users who have posted at least one of the last 25 messages in chat (and thus, can be assumed active currently)
+    - IF IN A THREAD CHANNEL: They are a Member of the Thread
+- The Hot Potato game lasts a random amount of time, maxing out at 5 minutes
+- Once the game ends (the Potato 'explodes'), the User last holding the Potato is dubbed the 'loser' of the game.
+- Only one Hot Potato game can run at a time per Channel.
 
-## Other Slash Commands
+### `/rolemenu`
+*Used to either create new, or edit existing, Role Menus*
 
-| Command       | Description                                                | Note                                                                       |
-|---------------|------------------------------------------------------------|----------------------------------------------------------------------------|
-| /start\*\*    | Used to trigger one of Discord's built-in Voice Activities | Will be removed when Discord fully releases their Voice Activities feature |
-| /potato       | Starts a Hot Potato game for the current Channel           |                                                                            |
-| /rolemenu     | Used to create or edit Self-Assignable Role Menus          | Only usable by those with the `MANAGE_ROLES` Permission                    |
+⚠ *Only usable by those with the `MANAGE_ROLES` Permission*
 
-\*\* *This Slash Command will be removed from this Bot once Discord fully releases their (currently in testing) Social Activites feature. As an additional note, all this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc). As an additional note, if you want to help Discord test their Voice Game/Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
+- During Menu creation or editing, the Bot will make use of Ephemeral Messages so that you can prepare your Menu without worrying about causing unread markers for other Users
+- Additionally, an auto-updating preview of your Menu will be shown during this process, so you can see exactly how it will look without having to publicly display your work-in-progress menu
+- To edit the Embed, add or remove Role Buttons, and to Save & Display/Update the Menu, use the select menu attached to the bottom of the auto-generating preview
+- To edit the Label or Emoji of one your existing Role Buttons, simply press the Button itself on the preview
+
+#### `/rolemenu create`
+*Starts the process of creating a new Role Menu*
+
+#### `/rolemenu configure [message]`
+*Starts the process of editing an existing Role Menu*
+
+| Argument | Type          | Description                                                          | Required |
+|----------|---------------|----------------------------------------------------------------------|----------|
+| message  | String        | The ID of the Message containing the existing Menu to be edited      | ✔️      |
 
 
 ## Context Commands
-*These are commands that appear when you right-click a Message or User in chat, and found under the "Apps" sub-menu of the Context Menu*
+*These are commands that appear under the "Apps" sub-menu when right-clicking on either a Message or a User in Chat*
 
-*Note: Context Commands are correctly __only__ available/usage on Desktop/Browser Discord, due to the Mobile apps not having support for them yet*
+### Message Commands
+#### Convert Temperature
+*If there are any temperatures detected in the Message, they will be converted into the other units of temperature measurements*
 
-| Command             | Type    | Description                                                                    |
-|---------------------|---------|--------------------------------------------------------------------------------|
-| Convert Temperature | Message | If there is a temperature in the source message, it will be converted to C/F/K |
+- Converts between degrees C, F, and K
+- Supports up to 10 temperatures in a single message
+- Will **not** convert temperatures lower than 0K (Absolute Zero) as those temperatures cannot possibly exist
+- Only supports temperatures in the text-content of the Message, not in images or other forms of media
 
 
-## Text Commands
+## Text-based Commands
+*These command use the classic prefix based text commands system of old*
 
-| Command               | Description                                            | Limitation      |
-|-----------------------|--------------------------------------------------------|-----------------|
-| a!register            | Adds a new Slash/Context Command to the Bot            | Developer\*\*\* |
-| a!unregister          | Removes an existing Slash/Context Command from the Bot | Developer\*\*\* |
-| a!addgif              | Adds a new GIF link to the specified Action Slash CMD  | Developer\*\*\* |
-| a!clearcomp           | Clears components from a Message sent by this Bot      | Developer\*\*\* |
-| a!say                 | Silly Command                                          | Developer\*\*\* |
-
-\*\*\* *Developer-limited Commands can only be used by TwilightZebby himself.*
+⚠ *Currently, all of the text-based commands are developer only, as in, only TwilightZebby can use them. As such, they will not be documentated*
