@@ -70,6 +70,12 @@ module.exports = {
                 await this.saveAndUpdate(selectInteraction);
                 break;
 
+            case "cancel":
+                // Cancels Editing of Menu
+                client.roleMenu.clear();
+                await selectInteraction.update({ content: `Editing of existing Menu has been cancelled. You may now dismiss or delete this message.`, embeds: [], components: [] });
+                break;
+
             default:
                 return await selectInteraction.reply({ content: CONSTANTS.errorMessages.GENERIC, ephemeral: true });
         }
