@@ -150,7 +150,7 @@ module.exports = {
         // Grab the numerical value of the temperature
         let originalValue = originalTemperature.match(new RegExp(/[0-9.\-]/gi));
         originalValue = originalValue.join('');
-        originalValue = parseFloat(originalValue);
+        originalValue = parseInt(originalValue);
 
         // Now CONVERT!
         if ( originalSystem === "c" )
