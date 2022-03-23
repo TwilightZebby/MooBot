@@ -180,6 +180,14 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 |----------|---------------|----------------------------------------------------------------------|----------|
 | message  | String        | The ID of the Message containing the existing Menu to be edited      | ✔️      |
 
+### `/temperature [value] [scale]`
+*A Slash Command version of the `Convert Temperature` Message Command - converts the given temperature between degrees C, F, and K*
+
+| Argument | Type          | Description                                                          | Required |
+|----------|---------------|----------------------------------------------------------------------|----------|
+| value    | Integer       | The numerical value of the original temperature to convert           | ✔️      |
+| scale    | String        | The scale the original temperature is using (either C, F, or K)      | ✔️      |
+
 
 ## Context Commands
 *These are commands that appear under the "Apps" sub-menu when right-clicking on either a Message or a User in Chat*
