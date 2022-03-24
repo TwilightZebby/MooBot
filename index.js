@@ -1,6 +1,7 @@
 // LIBRARIES
 const fs = require('fs');
 const Discord = require('discord.js');
+const {Statuspage, StatuspageUpdates} = require('statuspage.js');
 
 
 // GLOBAL STUFF
@@ -8,6 +9,8 @@ const CONSTANTS = require('./constants.js'); // Mostly for the strings
 const { client } = require('./constants.js'); // Makes things easier
 const CONFIG = require('./config.js');
 const UTILITY = require('./modules/utilityModule.js');
+
+const DiscordStatus = new StatuspageUpdates(CONFIG.DiscordStatusPageID, 10000);
 
 
 // MAPS AND COLLECTIONS
@@ -26,6 +29,7 @@ client.selectCooldowns = new Discord.Collection();
 
 client.potato = new Discord.Collection();
 client.roleMenu = new Discord.Collection();
+client.statusUpdates = new Discord.Collection();
 
 
 // BRING IN ALL THE COMMANDS AND INTERACTIONS
@@ -303,6 +307,86 @@ client.on('messageDelete', (message) => {
     return;
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************* */
+// STATUSPAGE - ON STATUS UPDATE
+
+DiscordStatus.on('incident_update', async (incident) => {
+    // Ensure we can actually access/send messages into the Discord Guild
+    // ...So that we don't crash Bot if a Discord Outage affects sending messages!
+    let discordGuild = await client.guilds.fetch(CONFIG.ErrorLogGuildID);
+    
+    if ( !discordGuild.available ) { return; }
+
+    // Guild is available, thus fetch Channel for later
+    /** @type {Discord.GuildTextBasedChannel} */
+    let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
+
+    // So that we know if we need to send a new message or update an existing one
+    let existingUpdate = client.statusUpdates.get(incident.id);
+    
+    if ( !existingUpdate )
+    {
+        // Not existing, thus create new message
+        let newStatusEmbed = new Discord.MessageEmbed()
+            .setColor(incident.impact === "none" ? 'DEFAULT' : incident.impact === "minor" ? '#13b307' : incident.impact === "major" ? '#e8e409' : '#940707')
+            .setTitle(incident.name)
+            .setURL(incident.shortlink)
+            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds()}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
+            .setTimestamp(incident.created_at);
+        
+        // Send
+        let sentMessage = await discordChannel.send({ content: `**Discord Outage:**`, embeds: [newStatusEmbed] });
+        
+        // Store
+        client.statusUpdates.set(incident.id, sentMessage.id);
+        return;
+    }
+    else
+    {
+        // Existing, thus update message
+        // Check we have READ_MESSAGE_HISTORY Permission in the channel
+        if ( !discordChannel.permissionsFor(discordGuild.me).has(Discord.Permissions.FLAGS.READ_MESSAGE_HISTORY) ) { return; }
+
+        // Construct new Embed
+        let updateStatusEmbed = new Discord.MessageEmbed()
+            .setColor(incident.impact === "none" ? 'DEFAULT' : incident.impact === "minor" ? '#13b307' : incident.impact === "major" ? '#e8e409' : '#940707')
+            .setTitle(incident.name)
+            .setURL(incident.shortlink)
+            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds()}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
+            .setTimestamp(incident.created_at);
+        
+        // Fetch & Update Message
+        let fetchedMessage = await discordChannel.messages.fetch(existingUpdate);
+        await fetchedMessage.edit({ embeds: [updateStatusEmbed] });
+        return;
+    }
+});
 
 
 
