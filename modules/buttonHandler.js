@@ -25,6 +25,73 @@ module.exports = {
         }
 
 
+
+        // Cooldowns
+        if ( !client.buttonCooldowns.has(button.name) )
+        {
+            // No cooldown found, make it
+            client.buttonCooldowns.set(button.name, new Discord.Collection());
+        }
+
+
+
+        const now = Date.now();
+        const timestamps = client.buttonCooldowns.get(button.name);
+        const cooldownAmount = ( button.cooldown || 3 ) * 1000;
+
+
+
+        if ( timestamps.has(buttonInteraction.user.id) )
+        {
+            const expirationTime = timestamps.get(buttonInteraction.user.id) + cooldownAmount;
+
+            if ( now < expirationTime )
+            {
+                let timeLeft = ( expirationTime - now ) / 1000;
+
+                // Minutes
+                if ( timeLeft >= 60 && timeLeft < 3600 )
+                {
+                    timeLeft /= 60;
+                    let cooldownMessage = CONSTANTS.errorMessages.BUTTON_COOLDOWN.replace("{{buttonCooldown}}", `${timeLeft.toFixed(1)} more minutes`);
+                    return await buttonInteraction.reply({ content: cooldownMessage, ephemeral: true });
+                }
+                // Hours
+                else if ( timeLeft >= 3600 && timeLeft < 86400 )
+                {
+                    timeLeft /= 3600;
+                    let cooldownMessage = CONSTANTS.errorMessages.BUTTON_COOLDOWN.replace("{{buttonCooldown}}", `${timeLeft.toFixed(1)} more hours`);
+                    return await buttonInteraction.reply({ content: cooldownMessage, ephemeral: true });
+                }
+                // Days
+                else if ( timeLeft >= 86400 && timeLeft < 2.628e+6 )
+                {
+                    timeLeft /= 86400;
+                    let cooldownMessage = CONSTANTS.errorMessages.BUTTON_COOLDOWN.replace("{{buttonCooldown}}", `${timeLeft.toFixed(1)} more days`);
+                    return await buttonInteraction.reply({ content: cooldownMessage, ephemeral: true });
+                }
+                // Months
+                else if ( timeLeft >= 2.628e+6 )
+                {
+                    timeLeft /= 2.628e+6;
+                    let cooldownMessage = CONSTANTS.errorMessages.BUTTON_COOLDOWN.replace("{{buttonCooldown}}", `${timeLeft.toFixed(1)} more months`);
+                    return await buttonInteraction.reply({ content: cooldownMessage, ephemeral: true });
+                }
+                // Seconds
+                else
+                {
+                    let cooldownMessage = CONSTANTS.errorMessages.BUTTON_COOLDOWN.replace("{{buttonCooldown}}", `${timeLeft.toFixed(1)} more seconds`);
+                    return await buttonInteraction.reply({ content: cooldownMessage, ephemeral: true });
+                }
+            }
+        }
+        else
+        {
+            timestamps.set(buttonInteraction.user.id, now);
+            setTimeout(() => timestamps.delete(buttonInteraction.user.id), cooldownAmount);
+        }
+
+
         
         // Attempt to process the Button choice
         try
