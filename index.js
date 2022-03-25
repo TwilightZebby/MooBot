@@ -357,6 +357,7 @@ DiscordStatus.on('incident_update', async (incident) => {
             .setColor(incident.impact === "none" ? 'DEFAULT' : incident.impact === "minor" ? '#13b307' : incident.impact === "major" ? '#e8e409' : '#940707')
             .setTitle(incident.name)
             .setURL(incident.shortlink)
+            .setDescription(`Impact: ${incident.impact}`)
             .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds()}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
             .setTimestamp(incident.created_at);
         
@@ -378,6 +379,7 @@ DiscordStatus.on('incident_update', async (incident) => {
             .setColor(incident.impact === "none" ? 'DEFAULT' : incident.impact === "minor" ? '#13b307' : incident.impact === "major" ? '#e8e409' : '#940707')
             .setTitle(incident.name)
             .setURL(incident.shortlink)
+            .setDescription(`Impact: ${incident.impact}`)
             .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds()}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
             .setTimestamp(incident.created_at);
         
