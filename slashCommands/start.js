@@ -19,6 +19,21 @@ const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "b
 const T2BoostRequirement = [  ];
 const T3BoostRequirement = [  ];
 
+// For mapping values back into Activity Names
+const ValueToName = {
+    "youtube": "YouTube Together",
+    "sketch": "Sketch Heads",
+    "snacks": "Word Snacks",
+    "poker": "Poker Night",
+    "chess": "Chess in the Park",
+    "letter": "Letter League",
+    "spell": "SpellCast",
+    "checkers": "Checkers in the Park",
+    "blazing": "Blazing 8s",
+    "putt": "Putt Party",
+    "land": "Land-io"
+};
+
 
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
@@ -122,15 +137,15 @@ module.exports = {
         const serverCurrentBoost = slashCommand.guild.premiumTier === "NONE" ? 0 : slashCommand.guild.premiumTier === "TIER_1" ? 1 : slashCommand.guild.premiumTier === "TIER_2" ? 2 : 3;
         if ( serverCurrentBoost === 0 && !NoBoostRequirement.includes(argumentActivity) )
         {
-            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${argumentActivity}** Activity to require a minimum of at least Server Boost Tier 1, yet this Server is currently not at any Server Boost Tier! ;-;`, ephemeral: true });
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${ValueToName[argumentActivity]}** Activity to require a minimum of at least Server Boost Tier 1, yet this Server is currently not at any Server Boost Tier! ;-;`, ephemeral: true });
         }
         else if ( serverCurrentBoost <= 1 && !NoBoostRequirement.includes(argumentActivity) && !T1BoostRequirement.includes(argumentActivity) )
         {
-            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${argumentActivity}** Activity to require a minimum of at least Server Boost Tier 2, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${ValueToName[argumentActivity]}** Activity to require a minimum of at least Server Boost Tier 2, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
         }
         else if ( serverCurrentBoost <= 2 && !NoBoostRequirement.includes(argumentActivity) && !T1BoostRequirement.includes(argumentActivity) && !T2BoostRequirement.includes(argumentActivity) )
         {
-            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${argumentActivity}** Activity to require a minimum of at least Server Boost Tier 3, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${ValueToName[argumentActivity]}** Activity to require a minimum of at least Server Boost Tier 3, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
         }
 
 
@@ -145,7 +160,7 @@ module.exports = {
         })
         // Send User the link
         .then(async (invite) => {
-            await slashCommand.reply({ content: `[Click here to start the **${argumentActivity}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
+            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
         });
