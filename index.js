@@ -156,6 +156,8 @@ const TextCommandHandler = require('./modules/textCommandHandler.js');
 const AutoQuote = require('./modules/autoQuoteModule.js');
 
 client.on('messageCreate', async (message) => {
+    console.log(`MESSAGE_CREATE\n\n${message.channel}\n***********************************************************************************`);
+
     // Ignore Partial Messages
     if ( message.partial ) { return; }
 
@@ -227,6 +229,8 @@ const ContextCommandHandler = require('./modules/contextCommandHandler.js');
 const ModelHandler = require('./modules/modalHandler.js');
 
 client.on('interactionCreate', async (interaction) => {
+    console.log(`INTERACTION_CREATE\n\n${interaction.channel}\n***********************************************************************************`);
+
     if ( interaction.isCommand() )
     {
         // Is a Slash Command
@@ -293,6 +297,8 @@ client.on('interactionCreate', async (interaction) => {
 //         - Used for deleting existing Role Menus from the JSON when their linked Message is deleted
 
 client.on('messageDelete', (message) => {
+    console.log(`MESSAGE_DELETE\n\n${message.channel}\n***********************************************************************************`);
+
     let roleMenuJSON = require('./hiddenJsonFiles/roleMenus.json');
 
     // Delete from Role Menu JSON, if it exists in there
@@ -342,6 +348,8 @@ DiscordStatus.on('incident_update', async (incident) => {
     let discordGuild = await client.guilds.fetch(CONFIG.ErrorLogGuildID);
     
     if ( !discordGuild.available ) { return; }
+
+    console.log(`${incident}\n***********************************************************************************`);
 
     // Guild is available, thus fetch Channel for later
     /** @type {Discord.GuildTextBasedChannel} */

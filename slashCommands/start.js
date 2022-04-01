@@ -13,6 +13,12 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("checkers", "832013003968348200").set("blazing", "832025144389533716")
 .set("putt", "945737671223947305").set("land", "903769130790969345");
 
+// Boost Requirements for Activities
+const NoBoostRequirement = [ "youtube", "sketch", "snacks" ];
+const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land" ];
+const T2BoostRequirement = [  ];
+const T3BoostRequirement = [  ];
+
 
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
@@ -54,17 +60,17 @@ module.exports = {
                 description: "Name of the Activity to start",
                 required: true,
                 choices: [
-                    { name: "Poker Night", value: "poker" },
-                    { name: "Chess in the Park", value: "chess" },
-                    { name: "YouTube Together", value: "youtube" },
-                    { name: "Sketch Heads", value: "sketch" },
-                    { name: "Letter League", value: "letter" },
-                    { name: "Word Snacks", value: "snacks" },
-                    { name: "SpellCast", value: "spell" },
-                    { name: "Checkers in the Park", value: "checkers" },
-                    { name: "Blazing 8s", value: "blazing" },
-                    { name: "Putt Party", value: "putt" },
-                    { name: "Land-io", value: "land" }
+                    { name: "YouTube Together", value: "youtube" }, // No Boost Requirement
+                    { name: "Sketch Heads", value: "sketch" }, // No Boost Requirement
+                    { name: "Word Snacks", value: "snacks" }, // No Boost Requirement
+                    { name: "Poker Night", value: "poker" }, // Boost T1
+                    { name: "Chess in the Park", value: "chess" }, // Boost T1
+                    { name: "Letter League", value: "letter" }, // Boost T1
+                    { name: "SpellCast", value: "spell" }, // Boost T1
+                    { name: "Checkers in the Park", value: "checkers" }, // Boost T1
+                    { name: "Blazing 8s", value: "blazing" }, // Boost T1
+                    { name: "Putt Party", value: "putt" }, // Boost T1
+                    { name: "Land-io", value: "land" } // Boost T1
                 ]
             }
         ];
@@ -109,6 +115,22 @@ module.exports = {
             await slashCommand.reply({ content: `Sorry, but I don't seem to have the \`CREATE_INVITE\` Permission for the **${argumentChannel.name}** Voice Channel.\nThis Permission is required for this Slash Command to work!`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
+        }
+
+
+        // Check Boost Requirement ;-;
+        const serverCurrentBoost = slashCommand.guild.premiumTier === "NONE" ? 0 : slashCommand.guild.premiumTier === "TIER_1" ? 1 : slashCommand.guild.premiumTier === "TIER_2" ? 2 : 3;
+        if ( serverCurrentBoost === 0 && !NoBoostRequirement.includes(argumentActivity) )
+        {
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${argumentActivity}** Activity to require a minimum of at least Server Boost Tier 1, yet this Server is currently not at any Server Boost Tier! ;-;`, ephemeral: true });
+        }
+        else if ( serverCurrentBoost <= 1 && !NoBoostRequirement.includes(argumentActivity) && !T1BoostRequirement.includes(argumentActivity) )
+        {
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${argumentActivity}** Activity to require a minimum of at least Server Boost Tier 2, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
+        }
+        else if ( serverCurrentBoost <= 2 && !NoBoostRequirement.includes(argumentActivity) && !T1BoostRequirement.includes(argumentActivity) && !T2BoostRequirement.includes(argumentActivity) )
+        {
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${argumentActivity}** Activity to require a minimum of at least Server Boost Tier 3, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
         }
 
 
