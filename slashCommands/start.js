@@ -155,12 +155,14 @@ module.exports = {
         // Create Invite Link to Activity in Voice Channel
         await argumentChannel.createInvite({
             maxAge: 600, // Ten Minutes
+            maxUses: 1, // Only usable once
             targetType: 2,
-            targetApplication: activitySnowflake
+            targetApplication: activitySnowflake,
+            reason: `/start Command, for Voice Activities`
         })
         // Send User the link
         .then(async (invite) => {
-            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
+            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes, and is only usable once per use of this command\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
         });
