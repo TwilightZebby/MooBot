@@ -39,7 +39,8 @@ module.exports = {
         SELECT_MENU_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to process that Select Menu choice.\nIf you continue to see this error, please contact TwilightZebby#1955`,
 
         BUTTON_GENERIC_FAILED: `Sorry, but there was a problem trying to process that Button press.`,
-        BUTTON_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to process that Button press.\nIf you continue to see this error, please contact TwilightZebby#1955`
+        BUTTON_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to process that Button press.\nIf you continue to see this error, please contact TwilightZebby#1955`,
+        BUTTON_COOLDOWN: `Please wait {{buttonCooldown}} before using that Button again.`
     },
 
 

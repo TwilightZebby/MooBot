@@ -11,7 +11,28 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("youtube", "880218394199220334").set("letter", "879863686565621790")
 .set("snacks", "879863976006127627").set("spell", "852509694341283871")
 .set("checkers", "832013003968348200").set("blazing", "832025144389533716")
-.set("putt", "945737671223947305");
+.set("putt", "945737671223947305").set("land", "903769130790969345");
+
+// Boost Requirements for Activities
+const NoBoostRequirement = [ "youtube", "sketch", "snacks" ];
+const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land" ];
+const T2BoostRequirement = [  ];
+const T3BoostRequirement = [  ];
+
+// For mapping values back into Activity Names
+const ValueToName = {
+    "youtube": "YouTube Together",
+    "sketch": "Sketch Heads",
+    "snacks": "Word Snacks",
+    "poker": "Poker Night",
+    "chess": "Chess in the Park",
+    "letter": "Letter League",
+    "spell": "SpellCast",
+    "checkers": "Checkers in the Park",
+    "blazing": "Blazing 8s",
+    "putt": "Putt Party",
+    "land": "Land-io"
+};
 
 
 module.exports = {
@@ -54,16 +75,17 @@ module.exports = {
                 description: "Name of the Activity to start",
                 required: true,
                 choices: [
-                    { name: "Poker Night", value: "poker" },
-                    { name: "Chess in the Park", value: "chess" },
-                    { name: "YouTube Together", value: "youtube" },
-                    { name: "Sketch Heads", value: "sketch" },
-                    { name: "Letter League", value: "letter" },
-                    { name: "Word Snacks", value: "snacks" },
-                    { name: "SpellCast", value: "spell" },
-                    { name: "Checkers in the Park", value: "checkers" },
-                    { name: "Blazing 8s", value: "blazing" },
-                    { name: "Putt Party", value: "putt" }
+                    { name: "YouTube Together", value: "youtube" }, // No Boost Requirement
+                    { name: "Sketch Heads", value: "sketch" }, // No Boost Requirement
+                    { name: "Word Snacks", value: "snacks" }, // No Boost Requirement
+                    { name: "Poker Night", value: "poker" }, // Boost T1
+                    { name: "Chess in the Park", value: "chess" }, // Boost T1
+                    { name: "Letter League", value: "letter" }, // Boost T1
+                    { name: "SpellCast", value: "spell" }, // Boost T1
+                    { name: "Checkers in the Park", value: "checkers" }, // Boost T1
+                    { name: "Blazing 8s", value: "blazing" }, // Boost T1
+                    { name: "Putt Party", value: "putt" }, // Boost T1
+                    { name: "Land-io", value: "land" } // Boost T1
                 ]
             }
         ];
@@ -111,18 +133,36 @@ module.exports = {
         }
 
 
+        // Check Boost Requirement ;-;
+        const serverCurrentBoost = slashCommand.guild.premiumTier === "NONE" ? 0 : slashCommand.guild.premiumTier === "TIER_1" ? 1 : slashCommand.guild.premiumTier === "TIER_2" ? 2 : 3;
+        if ( serverCurrentBoost === 0 && !NoBoostRequirement.includes(argumentActivity) )
+        {
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${ValueToName[argumentActivity]}** Activity to require a minimum of at least Server Boost Tier 1, yet this Server is currently not at any Server Boost Tier! ;-;`, ephemeral: true });
+        }
+        else if ( serverCurrentBoost <= 1 && !NoBoostRequirement.includes(argumentActivity) && !T1BoostRequirement.includes(argumentActivity) )
+        {
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${ValueToName[argumentActivity]}** Activity to require a minimum of at least Server Boost Tier 2, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
+        }
+        else if ( serverCurrentBoost <= 2 && !NoBoostRequirement.includes(argumentActivity) && !T1BoostRequirement.includes(argumentActivity) && !T2BoostRequirement.includes(argumentActivity) )
+        {
+            return await slashCommand.reply({ content: `Sorry, but Discord has set the **${ValueToName[argumentActivity]}** Activity to require a minimum of at least Server Boost Tier 3, yet this Server is currently at Server Boost Tier ${serverCurrentBoost} ;-;`, ephemeral: true });
+        }
+
+
         // Pick Activity ID based off selected Activity
         let activitySnowflake = ActivityIDs.get(argumentActivity);
 
         // Create Invite Link to Activity in Voice Channel
         await argumentChannel.createInvite({
             maxAge: 600, // Ten Minutes
+            maxUses: 1, // Only usable once
             targetType: 2,
-            targetApplication: activitySnowflake
+            targetApplication: activitySnowflake,
+            reason: `/start Command, for Voice Activities`
         })
         // Send User the link
         .then(async (invite) => {
-            await slashCommand.reply({ content: `[Click here to start the **${argumentActivity}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
+            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes, and is only usable once per use of this command\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
         });
