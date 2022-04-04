@@ -1,7 +1,7 @@
 // LIBRARIES
 const fs = require('fs');
 const Discord = require('discord.js');
-const {Statuspage, StatuspageUpdates} = require('statuspage.js');
+//const {Statuspage, StatuspageUpdates} = require('statuspage.js');
 
 
 // GLOBAL STUFF
@@ -10,7 +10,7 @@ const { client } = require('./constants.js'); // Makes things easier
 const CONFIG = require('./config.js');
 const UTILITY = require('./modules/utilityModule.js');
 
-const DiscordStatus = new StatuspageUpdates(CONFIG.DiscordStatusPageID, 10000);
+//const DiscordStatus = new StatuspageUpdates(CONFIG.DiscordStatusPageID, 10000);
 
 
 // MAPS AND COLLECTIONS
@@ -156,7 +156,7 @@ const TextCommandHandler = require('./modules/textCommandHandler.js');
 const AutoQuote = require('./modules/autoQuoteModule.js');
 
 client.on('messageCreate', async (message) => {
-    console.log(`MESSAGE_CREATE\n\n${message.channel}\n***********************************************************************************`);
+    //console.log(`MESSAGE_CREATE\n\n${message.channel}\n***********************************************************************************`);
 
     // Ignore Partial Messages
     if ( message.partial ) { return; }
@@ -229,7 +229,7 @@ const ContextCommandHandler = require('./modules/contextCommandHandler.js');
 const ModelHandler = require('./modules/modalHandler.js');
 
 client.on('interactionCreate', async (interaction) => {
-    console.log(`INTERACTION_CREATE\n\n${interaction.channel}\n***********************************************************************************`);
+    //console.log(`INTERACTION_CREATE\n\n${interaction.channel}\n***********************************************************************************`);
 
     if ( interaction.isCommand() )
     {
@@ -297,7 +297,7 @@ client.on('interactionCreate', async (interaction) => {
 //         - Used for deleting existing Role Menus from the JSON when their linked Message is deleted
 
 client.on('messageDelete', (message) => {
-    console.log(`MESSAGE_DELETE\n\n${message.channel}\n***********************************************************************************`);
+    //console.log(`MESSAGE_DELETE\n\n${message.channel}\n***********************************************************************************`);
 
     let roleMenuJSON = require('./hiddenJsonFiles/roleMenus.json');
 
@@ -342,7 +342,7 @@ client.on('messageDelete', (message) => {
 /******************************************************************************* */
 // STATUSPAGE - ON STATUS UPDATE
 
-DiscordStatus.on('incident_update', async (incident) => {
+/*DiscordStatus.on('incident_update', async (incident) => {
     // Ensure we can actually access/send messages into the Discord Guild
     // ...So that we don't crash Bot if a Discord Outage affects sending messages!
     let discordGuild = await client.guilds.fetch(CONFIG.ErrorLogGuildID);
@@ -353,7 +353,7 @@ DiscordStatus.on('incident_update', async (incident) => {
 
     // Guild is available, thus fetch Channel for later
     /** @type {Discord.GuildTextBasedChannel} */
-    let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
+    /*let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
 
     // So that we know if we need to send a new message or update an existing one
     let existingUpdate = client.statusUpdates.get(incident.id);
@@ -396,7 +396,7 @@ DiscordStatus.on('incident_update', async (incident) => {
         await fetchedMessage.edit({ embeds: [updateStatusEmbed] });
         return;
     }
-});
+});*/
 
 
 
