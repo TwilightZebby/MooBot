@@ -29,8 +29,7 @@ const EMOJI_STICKER = "<:Sticker:961186488664600576>";
 
 
 // LINKS
-const LINK_GUILD_FEATURES = "https://github.com/Delitefully/DiscordLists#guild-feature-glossary";
-const LINK_NSFW_ARTICLE = "https://support.discord.com/hc/en-us/articles/1500005389362-Age-restricted-Server-Designation";
+
 
 
 // For making things readable to the User, improving UX
@@ -61,45 +60,45 @@ const nsfwString = {
     "AGE_RESTRICTED": "Age-Restricted"
 };
 const festuresString = {
-    "ANIMATED_BANNER": "[Animated Banner](https://support.discord.com/hc/en-us/articles/360028716472-Server-Banner-Background-Invite-Splash-Image#h_01FPH1EZE9JA71GBFD7XVMCJGQ)",
+    "ANIMATED_BANNER": "Animated Banner",
     "ANIMATED_ICON": "Animated Icon",
-    "AUTO_MODERATION": "[Auto Moderation](https://support.discord.com/hc/en-us/articles/4421269296535-AutoMod-FAQ)",
-    "BANNER": "[Banner](https://support.discord.com/hc/en-us/articles/360028716472-Server-Banner-Background-Invite-Splash-Image#h_01FPGKSG9ZJJTWE5J5QRC5XAN0)",
-    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "[Boosting Tiers Experiment Medium Guild](https://distools.app/experiments/1050686416)",
-    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "[Boosting Tiers Experiment Small Guild](https://distools.app/experiments/2371578323)",
-    "COMMERCE": "[Commerce](https://discord.com/developers/docs/game-and-server-management/special-channels#store-channels)",
+    "AUTO_MODERATION": "[Auto Moderation",
+    "BANNER": "Banner",
+    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild",
+    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild",
+    "COMMERCE": "Commerce",
     "CREATOR_MONETIZABLE": "Creator Monetizable",
     "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled",
-    "COMMUNITY": "[Community](https://support.discord.com/hc/en-us/articles/360047132851-Enabling-Your-Community-Server)",
+    "COMMUNITY": "Community",
     "DISCOVERABLE_DISABLED": "Discoverable Disabled",
     "DISCOVERABLE": "Discoverable",
     "ENABLED_DISCOVERABLE_BEFORE": "Enabled Discoverable Before",
     "EXPOSED_TO_ACTIVITIES_WTP_EXPERIMENT": "Exposed To Activity Experiment",
     "HAD_EARLY_ACTIVITIES_ACCESS": "Had Early Acivities Access",
     "HAS_DIRECTORY_ENTRY": "Has Directory Entry",
-    "HUB": "[Hub](https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ)",
+    "HUB": "Hub",
     "INTERNAL_EMPLOYEE_ONLY": "Internal Employee Only",
     "INVITE_SPLASH": "Invite Splash",
     "MEMBER_PROFILES": "Member Profiles",
     "MEMBER_VERIFICATION_GATE_ENABLED": "Member Verification Gate Enabled",
     "MORE_EMOJI": "More Emoji",
     "MORE_STICKERS": "More Stickers",
-    "NEWS": "[News](https://support.discord.com/hc/en-us/articles/360028384531-Channel-Following-FAQ)",
-    "NEW_THREAD_PERMISSIONS": "[New Thread Permissions](https://support.discord.com/hc/en-us/articles/4403205878423-Threads-FAQ#h_01FDGC4JW2D665Y230KPKWQZPN)",
+    "NEWS": "News",
+    "NEW_THREAD_PERMISSIONS": "New Thread Permissions",
     "PARTNERED": "Partnered",
     "PREMIUM_TIER_3_OVERRIDE": "Premium Tier 3 Override",
     "PREVIEW_ENABLED": "Preview Enabled",
-    "PRIVATE_THREADS": "[Private Threads](https://support.discord.com/hc/en-us/articles/4403205878423-Threads-FAQ#h_01FBQZH4F0E9RX2K078Y6EG6QB)",
+    "PRIVATE_THREADS": "Private Threads",
     "RELAY_ENABLED": "Relay Enabled",
-    "ROLE_ICONS": "[Role Icons](https://support.discord.com/hc/en-us/articles/4409571023639-Custom-Role-Icons-FAQ)",
-    "ROLE_SUBSCRIPTIONS_ENABLED": "[Role Subscriptions Enabled](https://support.discord.com/hc/en-us/articles/4415163187607-Premium-Memberships-for-Servers)",
+    "ROLE_ICONS": "Role Icons",
+    "ROLE_SUBSCRIPTIONS_ENABLED": "Role Subscriptions Enabled",
     "ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE": "Role Subscriptions Available For Purchase",
-    "SEVEN_DAY_THREAD_ARCHIVE": "[Seven Day Thread Archive](https://support.discord.com/hc/en-us/articles/4403205878423-Threads-FAQ#h_01FBMT4YF8HCZK7YYFV8FZTWDY)",
+    "SEVEN_DAY_THREAD_ARCHIVE": "Seven Day Thread Archive",
     "TEXT_IN_VOICE_ENABLED": "Text in Voice Enabled",
     "THREADS_ENABLED_TESTING": "Threads Enabled Testing",
     "THREADS_ENABLED": "Threads Enabled",
     "THREAD_DEFAULT_AUTO_ARCHIVE_DURATION": "Threads Default Auto Archive Duration",
-    "THREE_DAY_THREAD_ARCHIVE": "[Three Day Thread Archive](https://support.discord.com/hc/en-us/articles/4403205878423-Threads-FAQ#h_01FBMT4YF8HCZK7YYFV8FZTWDY)",
+    "THREE_DAY_THREAD_ARCHIVE": "Three Day Thread Archive",
     "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled",
     "VANITY_URL": "Vanity URL",
     "VERIFIED": "Verified",
@@ -229,9 +228,9 @@ module.exports = {
             .setFooter({ text: guildId });
         infoEmbed.setDescription(`${guildPartnered ? `${EMOJI_PARTNER}` : ""}  ${guildVerified ? `${EMOJI_VERIFIED}` : ""}\n${guildDescription}`);
         infoEmbed.setTimestamp(currentGuild.createdAt);
-        infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${tierStrings[guildBoostTier]}\n**Boost Count:** ${guildBoostCount}\n**Channels:** ${totalChannelCount} (${EMOJI_CHANNEL_TEXT}${textChannelCount}, ${EMOJI_CHANNEL_NEWS}${announcementChannelCount}, ${EMOJI_CHANNEL_VOICE}${voiceChannelCount}, ${EMOJI_CHANNEL_STAGE}${stageChannelCount}, ${EMOJI_CHANNEL_CATEGORY}${categoryChannelCount})\n**Emojis:** ${totalEmojiCount}\n**Stickers:** ${totalStickerCount}\n**Roles:** ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
+        infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${EMOJI_OWNER_CROWN} ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${guildBoostTier === "TIER_3" ? `${EMOJI_TIER_THREE}` : guildBoostTier === "TIER_2" ? `${EMOJI_TIER_TWO}` : guildBoostTier === "TIER_1" ? `${EMOJI_TIER_ONE}` : ""} ${tierStrings[guildBoostTier]}\n**Boost Count:** ${EMOJI_BOOST} ${guildBoostCount}\n**Channels:** ${totalChannelCount} (${EMOJI_CHANNEL_TEXT} ${textChannelCount}, ${EMOJI_CHANNEL_NEWS} ${announcementChannelCount}, ${EMOJI_CHANNEL_VOICE} ${voiceChannelCount}, ${EMOJI_CHANNEL_STAGE} ${stageChannelCount}, ${EMOJI_CHANNEL_CATEGORY} ${categoryChannelCount})\n**Emojis:** ${EMOJI_EMOJI} ${totalEmojiCount}\n**Stickers:** ${EMOJI_STICKER} ${totalStickerCount}\n**Roles:** ${EMOJI_ROLE} ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
         infoEmbed.addFields({ name: `>> Security & Moderation`, value: `**Verification Level:** ${verificationString[guildVerificationLevel]}\n**Explicit Content Filter:** ${explicitContentString[guildContentFilter]}\n**Default Notifications:** ${defaultNotifString[guildDefaultNotifications]}\n**2FA-enabled Moderation:** ${mfaString[guildMFALevel]}\n**NSFW Level:** ${nsfwString[guildNSFWLevel]}` });
-        infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.join(', ')}` });
+        infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ')}` });
 
         return await message.reply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } });
     }
