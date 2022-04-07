@@ -56,7 +56,7 @@ module.exports = {
         client.roleMenu.set("createEmbed", menuEmbed);
 
         // Update Component to "no roles" one, if it was first Embed edit
-        if ( modalInteraction.message.components[modalInteraction.message.components.length - 1].components[modalInteraction.message.components[modalInteraction.message.components.length - 1].components.length - 1].options.length === 1 )
+        if ( modalInteraction.message.components[modalInteraction.message.components.length - 1].components[modalInteraction.message.components[modalInteraction.message.components.length - 1].components.length - 1].options.length === 2 )
         {
             // ACK
             return await modalInteraction.update({ embeds: [menuEmbed], components: [CONSTANTS.components.selects.ROLE_MENU_CREATE_NO_ROLES] });
