@@ -102,7 +102,9 @@ const festuresString = {
     "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled",
     "VANITY_URL": "Vanity URL",
     "VERIFIED": "Verified",
-    "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled"
+    "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
+    "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
+    "MEMBER_LIST_DISABLED": "Member List Disabled" // Not used at all, not since Fortnut's 2019 Blackout Event, but thought I'd add it to the list as a "just in case" thing
 };
 const tierStrings = {
     "NONE": "None",
