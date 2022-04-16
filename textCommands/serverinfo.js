@@ -62,7 +62,7 @@ const nsfwString = {
 const festuresString = {
     "ANIMATED_BANNER": "Animated Banner",
     "ANIMATED_ICON": "Animated Icon",
-    "AUTO_MODERATION": "[Auto Moderation",
+    "AUTO_MODERATION": "Auto Moderation",
     "BANNER": "Banner",
     "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild",
     "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild",
