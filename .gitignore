@@ -5,3 +5,4 @@ config.js
 /jsonFiles
 /textCommands/shutdown.js
 /textCommands/experiments.js
+/buttons/shutdown.js

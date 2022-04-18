@@ -103,6 +103,18 @@ module.exports = {
                     { label: "Cancel Editing", value: "cancel", description: "Cancels editing of this Role Menu", emoji: "❌" }
                 ])
             )
+        },
+
+
+        buttons: {
+            /** Button shown for confirming a!shutdown
+             * @type {Discord.MessageButton}
+             */
+            SHUTDOWN_CONFIRM: new Discord.MessageButton().setLabel(`Shutdown`).setStyle('DANGER'),
+            /** Button shown for cancelling a!shutdown
+             * @type {Discord.MessageButton}
+             */
+            SHUTDOWN_CANCEL: new Discord.MessageButton().setLabel(`Cancel`).setStyle('SUCCESS')
         }
     }
 }
