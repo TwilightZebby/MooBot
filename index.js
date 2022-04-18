@@ -1,7 +1,7 @@
 // LIBRARIES
 const fs = require('fs');
 const Discord = require('discord.js');
-//const {Statuspage, StatuspageUpdates} = require('statuspage.js');
+const {Statuspage, StatuspageUpdates} = require('statuspage.js');
 
 
 // GLOBAL STUFF
@@ -10,7 +10,7 @@ const { client } = require('./constants.js'); // Makes things easier
 const CONFIG = require('./config.js');
 const UTILITY = require('./modules/utilityModule.js');
 
-//const DiscordStatus = new StatuspageUpdates(CONFIG.DiscordStatusPageID, 10000);
+const DiscordStatus = new StatuspageUpdates(CONFIG.DiscordStatusPageID, 10000);
 
 
 // MAPS AND COLLECTIONS
@@ -342,7 +342,7 @@ client.on('messageDelete', (message) => {
 /******************************************************************************* */
 // STATUSPAGE - ON STATUS UPDATE
 
-/*DiscordStatus.on('incident_update', async (incident) => {
+DiscordStatus.on('incident_update', async (incident) => {
     // Ensure we can actually access/send messages into the Discord Guild
     // ...So that we don't crash Bot if a Discord Outage affects sending messages!
     let discordGuild = await client.guilds.fetch(CONFIG.ErrorLogGuildID);
@@ -353,7 +353,7 @@ client.on('messageDelete', (message) => {
 
     // Guild is available, thus fetch Channel for later
     /** @type {Discord.GuildTextBasedChannel} */
-    /*let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
+    let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
 
     // So that we know if we need to send a new message or update an existing one
     let existingUpdate = client.statusUpdates.get(incident.id);
@@ -396,7 +396,7 @@ client.on('messageDelete', (message) => {
         await fetchedMessage.edit({ embeds: [updateStatusEmbed] });
         return;
     }
-});*/
+});
 
 
 
@@ -426,3 +426,4 @@ client.on('messageDelete', (message) => {
 /******************************************************************************* */
 
 client.login(CONFIG.TOKEN);
+DiscordStatus.start(); // Start listening for Discord Status Updates
