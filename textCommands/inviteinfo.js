@@ -127,15 +127,16 @@ module.exports = {
         }
 
         // Invite Code fetched, now grab data from it and assemble into an Embed
-        const inviteInfoEmbed = new Discord.MessageEmbed().setAuthor({ name: `Data for Invite Code: ${inviteCode}` });
-        if ( fetchedInvite.createdAt !== null ) { inviteInfoEmbed.addFields({ name: `Invite Created`, value: `<t:${Math.floor(fetchedInvite.createdAt.getTime() / 1000)}:R>` }); }
-        if ( fetchedInvite.expiresAt !== null ) { inviteInfoEmbed.addFields({ name: `Invite Expires`, value: `<t:${Math.floor(fetchedInvite.expiresAt.getTime() / 1000)}:R>` }); }
+        const inviteInfoEmbed = new Discord.MessageEmbed().setAuthor({ name: `Data for Invite Code: ${inviteCode}`, url: `https://discord.gg/${inviteCode}` });
+        if ( fetchedInvite.inviter !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Creator`, value: `**Username:** ${fetchedInvite.inviter.username}\n**Bot User:** ${fetchedInvite.inviter.bot}` }); }
+        if ( fetchedInvite.createdAt !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Created`, value: `<t:${Math.floor(fetchedInvite.createdAt.getTime() / 1000)}:R>` }); }
+        if ( fetchedInvite.expiresAt !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Expires`, value: `<t:${Math.floor(fetchedInvite.expiresAt.getTime() / 1000)}:R>` }); }
         if ( fetchedInvite.guild !== null )
         {
-            inviteInfoEmbed.setAuthor({ iconURL: fetchedInvite.guild.iconURL({ dynamic: true, format: 'png' }), name: `Data for Invite Code: ${inviteCode}` });
+            inviteInfoEmbed.setAuthor({ iconURL: fetchedInvite.guild.iconURL({ dynamic: true, format: 'png' }), name: `Data for Invite Code: ${inviteCode}`, url: `https://discord.gg/${inviteCode}` });
             if ( fetchedInvite.guild.description !== null ) { inviteInfoEmbed.setDescription(fetchedInvite.guild.description); }
             inviteInfoEmbed.addFields({
-                name: `Server's Information`,
+                name: `>> Server's Information`,
                 value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified}`
             });
             
@@ -144,7 +145,7 @@ module.exports = {
             let rawFeatures = rawData["guild"]["features"];
             let guildFeatures = [];
             rawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
-            inviteInfoEmbed.addFields({ name: `Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
+            inviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
         }
 
         return await message.reply({ embeds: [inviteInfoEmbed], allowedMentions: { parse: [], repliedUser: false } });
