@@ -1,7 +1,7 @@
 ↖ *Want to jump to a specific section/question? Use the navigation menu!*
 
 # MooBot
-A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
+A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fterX's [Discord Server](https://discord.gg/Dr1fterX), but can be used in other Servers on a case-by-case basis.
 
 ---
 # Questions

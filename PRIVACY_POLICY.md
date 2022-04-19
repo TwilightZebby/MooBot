@@ -20,7 +20,7 @@ Should the User want to remove a "Role Menu", all they need to do is delete the 
 The Developer of **The Bot**, TwilightZebby, is contactable via the listed methods below should any queries be asked about **The Bot**:
 
 - GitHub, preferrably via opening an Issue Ticket or Discussion on **The Bot**'s [GitHub Repo](https://github.com/TwilightZebby/MooBot);
-- Discord, by asking TwilightZebby in Dr1fterX's Discord Server ( found at https://discord.gg/URH5E34FZf );
+- Discord, by asking TwilightZebby in Dr1fterX's Discord Server ( found at https://discord.gg/Dr1fterX );
     - Please note, TwilightZebby has his Discord Direct Messages (DM's) disabled unless you are also in one of very few servers that he has them enabled for, hense why this isn't offered as a contact method
     - TwilightZebby's Discord Name: `TwilightZebby#1955`, and Discord User ID: `156482326887530498`
 - Twitter, [@TwilightZebby](https://twitter.com/TwilightZebby)
