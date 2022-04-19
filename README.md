@@ -1,16 +1,10 @@
 ↖ *Want to jump to a specific section/question? Use the navigation menu!*
 
 # MooBot
-A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf).
+A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
 
 ---
 # Questions
-
-## Who is Dr1fterX?
-
-> Dr1fterX is a small-ish Live Streamer on Twitch, and used to create content for the [Black Plasma Gaming](https://www.youtube.com/c/BlackPlasmaGaming) channel on YouTube before that YT Channel was archived in early 2020.
-> You can find his Twitch Channel over at [twitch.tv/Dr1fterX](https://twitch.tv/Dr1fterX)
-
 
 ## What kind of features are there?
 
@@ -49,9 +43,11 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 
 ## Can I add this Bot to my own Server?
 
-> **No.**
+> ~~**No.**~~
 > 
-> This Bot is only made for use on Dr1fterX's Discord Server. Go search on [top.gg](https://top.gg) or ask on [r/discord_bots](https://www.reddit.com/r/Discord_Bots/) if you want your own Bot like this.
+> ~~This Bot is only made for use on Dr1fterX's Discord Server. Go search on [top.gg](https://top.gg) or ask on [r/discord_bots](https://www.reddit.com/r/Discord_Bots/) if you want your own Bot like this.~~
+>
+> As of April 2022, TwilightZebby is allowing this MooBot to be added to other Servers, with limitations (won't add to your Server if I don't know you personally, and won't make a permanent public invite link for this Bot - you'd have to ask TwilightZebby directly for the Bot's invite).
 
 
 ---
@@ -187,6 +183,15 @@ A small general-purpose Discord Bot made by TwilightZebby, for Dr1fterX's [Disco
 |----------|---------------|----------------------------------------------------------------------|----------|
 | value    | Integer       | The numerical value of the original temperature to convert           | ✔️      |
 | scale    | String        | The scale the original temperature is using (either C, F, or K)      | ✔️      |
+
+### `/rule [rule]`
+*Used to fetch and display a specific Server Rule*
+
+⚠ *This Slash Command will only be registered and usable in Dr1fterX's Discord Server. It will **not** appear for other Servers.*
+
+| Argument | Type          | Description                                                                         | Required |
+|----------|---------------|-------------------------------------------------------------------------------------|----------|
+| rule     | String        | The Rule to fetch. Uses Autocomplete to support either Rule number or keywords      | ✔️      |
 
 
 ## Context Commands
