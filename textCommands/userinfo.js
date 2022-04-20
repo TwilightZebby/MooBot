@@ -123,8 +123,8 @@ module.exports = {
         const userFlagStrings = [];
         rawUserFlags.toArray().forEach(flag => userFlagStrings.push(UserFlagsToStrings[flag]));
         if ( rawUserFlags.has(1 << 20) ) { userFlagStrings.push("**Known Spammer**"); }
-        userEmbed.addFields({ name: `>> User Flags`, value: userFlagStrings.join(', ') });
-
+        
+        if ( userFlagStrings.length > 0 ) { userEmbed.addFields({ name: `>> User Flags`, value: userFlagStrings.join(', ') }); }
         userEmbed.setFooter({ text: `${targetMember.id}` });
 
         return await message.reply({ embeds: [userEmbed], allowedMentions: { parse: [], repliedUser: false } });
