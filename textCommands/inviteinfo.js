@@ -61,7 +61,17 @@ const festuresString = {
     "VERIFIED": "Verified",
     "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
-    "MEMBER_LIST_DISABLED": "Member List Disabled" // Not used at all, not since Fortnut's 2019 Blackout Event, but thought I'd add it to the list as a "just in case" thing
+    // From here onwards are deprecated Server Features
+    "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
+    "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
+    "CHANNEL_BANNER": "~~Channel Banner~~", // Experiment that was never shipped
+    "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown
+    "PUBLIC_DISABLED": "~~Public Disabled~~", // Removed in favor of COMMUNITY
+    "PUBLIC": "~~Public~~", // Removed in favor of COMMUNITY
+    "FEATURABLE": "~~Featureable~~", // Used to control which Servers were displayed in the Featured section on Server Discovery
+    "FORCE_RELAY": "~~Force Relay~~", // Technical back-end stuff that may be unused now
+    "LURKABLE": "~~Lurkable~~", // Unknown
+    "MONETIZATION_ENABLED": "~~Monetization Enabled~~" // Allowed the Server to cash out Ticketed Stage payouts
 };
 
 
@@ -148,6 +158,7 @@ module.exports = {
             // Server Features, grab from raw API to ensure newer Features are reflected too
             let rawData = await client.api.invites(`${inviteCode}`).get();
             let rawFeatures = rawData["guild"]["features"];
+            console.log(rawFeatures);
             let guildFeatures = [];
             rawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
             inviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
