@@ -371,7 +371,7 @@ DiscordStatus.on('incident_update', async (incident) => {
             .setTitle(incident.name)
             .setURL(incident.shortlink)
             .setDescription(`Impact: ${incident.impact}`)
-            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds() / 1000}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
+            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getMilliseconds() / 1000)}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
             .setTimestamp(incident.created_at);
         
         // Send
@@ -393,7 +393,7 @@ DiscordStatus.on('incident_update', async (incident) => {
             .setTitle(incident.name)
             .setURL(incident.shortlink)
             .setDescription(`Impact: ${incident.impact}`)
-            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds() / 1000}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
+            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getMilliseconds() / 1000)}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
             .setTimestamp(incident.created_at);
         
         // Fetch & Update Message
