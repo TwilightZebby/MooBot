@@ -120,7 +120,7 @@ module.exports = {
         userEmbed.setColor(targetMember.displayHexColor);
         userEmbed.addFields({
             name: `>> General Member Information`,
-            value: `**Display Name:** \`${targetMember.displayName}\`${message.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `**Boosting Server Since: ${EMOJI_BOOST} <t:${targetMember.premiumSince.getTime() / 1000}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
+            value: `**Display Name:** \`${targetMember.displayName}\`${message.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
         });
         userEmbed.addFields({
             name: `>> General User Information`,
