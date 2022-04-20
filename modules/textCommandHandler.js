@@ -84,7 +84,7 @@ module.exports = {
 
                     case "moderator":
                         // Those with Moderator-level permissions, Admin Permission, Server Owners, and TwilightZebby can use
-                        if ( message.author.id !== TwilightZebbyID && message.author.id !== message.guild.ownerId && !message.member.permissions.has("ADMINISTRATOR") && ( !message.member.permissions.has("BAN_MEMBERS") || !message.member.permissions.has("KICK_MEMBERS") || !message.member.permissions.has("MANAGE_CHANNELS") || !message.member.permissions.has("MANAGE_GUILD") || !message.member.permissions.has("MANAGE_MESSAGES") || !message.member.permissions.has("MANAGE_ROLES") || !message.member.permissions.has("MANAGE_THREADS") || !message.member.permissions.has("MODERATE_MEMBERS")) )
+                        if ( message.author.id !== TwilightZebbyID && message.author.id !== message.guild.ownerId && !message.member.permissions.has("ADMINISTRATOR") && !message.member.permissions.has("BAN_MEMBERS") && !message.member.permissions.has("KICK_MEMBERS") && !message.member.permissions.has("MANAGE_CHANNELS") && !message.member.permissions.has("MANAGE_GUILD") && !message.member.permissions.has("MANAGE_MESSAGES") && !message.member.permissions.has("MANAGE_ROLES") && !message.member.permissions.has("MANAGE_THREADS") && !message.member.permissions.has("MODERATE_MEMBERS") )
                         {
                             return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_MODERATOR, allowedMentions: { parse: [], repliedUser: false } });
                         }
