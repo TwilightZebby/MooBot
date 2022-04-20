@@ -7,6 +7,14 @@ const UTILITY = require('../modules/utilityModule.js');
 
 
 
+// EMOJIS
+const EMOJI_OWNER_CROWN = "<:ServerOwner:961186488626847774>";
+const EMOJI_BOOST = "<:Boost:961186488635228170>";
+const EMOJI_ROLE = "<:Role:961186488551342150>";
+const EMOJI_TIMEOUT = "<:timeout:966309135685652480>";
+
+
+
 // User Flags in UX friendly format
 const UserFlagsToStrings = {
     "DISCORD_EMPLOYEE": "Discord Employee",
@@ -112,7 +120,7 @@ module.exports = {
         userEmbed.setColor(targetMember.displayHexColor);
         userEmbed.addFields({
             name: `>> General Member Information`,
-            value: `**Display Name:** \`${targetMember.displayName}\`${message.guild.ownerId === targetMember.id ? `\n**Is Server Owner**` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `**Boosting Server Since: <t:${targetMember.premiumSince.getTime() / 1000}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out` : ""}`
+            value: `**Display Name:** \`${targetMember.displayName}\`${message.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `**Boosting Server Since: ${EMOJI_BOOST} <t:${targetMember.premiumSince.getTime() / 1000}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
         });
         userEmbed.addFields({
             name: `>> General User Information`,

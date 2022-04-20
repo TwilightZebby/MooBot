@@ -10,6 +10,11 @@ if (!globalThis.fetch) {
 }
 
 
+// EMOJIS
+const EMOJI_PARTNER = "<:Partnered:961186488530395146>";
+const EMOJI_VERIFIED = "<:Verified:961186488626839592>";
+
+
 // For making things readable to the User, improving UX
 const festuresString = {
     "ANIMATED_BANNER": "Animated Banner",
@@ -137,7 +142,7 @@ module.exports = {
             if ( fetchedInvite.guild.description !== null ) { inviteInfoEmbed.setDescription(fetchedInvite.guild.description); }
             inviteInfoEmbed.addFields({
                 name: `>> Server's Information`,
-                value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified}`
+                value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered ? `${EMOJI_PARTNER}` : ""} ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified ? `${EMOJI_VERIFIED}` : ""} ${fetchedInvite.guild.verified}`
             });
             
             // Server Features, grab from raw API to ensure newer Features are reflected too

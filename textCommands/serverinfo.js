@@ -28,10 +28,6 @@ const EMOJI_EMOJI = "<:Emoji:961188706369286164>";
 const EMOJI_STICKER = "<:Sticker:961186488664600576>";
 
 
-// LINKS
-
-
-
 // For making things readable to the User, improving UX
 const verificationString = {
     "NONE": "Disabled",
