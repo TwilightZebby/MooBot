@@ -158,7 +158,6 @@ module.exports = {
             // Server Features, grab from raw API to ensure newer Features are reflected too
             let rawData = await client.api.invites(`${inviteCode}`).get();
             let rawFeatures = rawData["guild"]["features"];
-            console.log(rawFeatures);
             let guildFeatures = [];
             rawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
             inviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
