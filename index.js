@@ -227,6 +227,7 @@ const ButtonHandler = require('./modules/buttonHandler.js');
 const SelectMenuHandler = require('./modules/selectMenuHandler.js');
 const ContextCommandHandler = require('./modules/contextCommandHandler.js');
 const ModelHandler = require('./modules/modalHandler.js');
+const AutocompleteHandler = require('./modules/autocompleteHandler.js');
 
 client.on('interactionCreate', async (interaction) => {
     //console.log(`INTERACTION_CREATE\n\n${interaction.channel}\n***********************************************************************************`);
@@ -255,6 +256,11 @@ client.on('interactionCreate', async (interaction) => {
     {
         // Is an Input Modal
         return await ModelHandler.Main(interaction);
+    }
+    else if ( interaction.isAutocomplete() )
+    {
+        // Is Autocomplete
+        return await AutocompleteHandler.Main(interaction);
     }
     else
     {
@@ -349,7 +355,6 @@ DiscordStatus.on('incident_update', async (incident) => {
     
     if ( !discordGuild.available ) { return; }
 
-    console.log(`${incident}\n***********************************************************************************`);
 
     // Guild is available, thus fetch Channel for later
     /** @type {Discord.GuildTextBasedChannel} */
@@ -366,7 +371,7 @@ DiscordStatus.on('incident_update', async (incident) => {
             .setTitle(incident.name)
             .setURL(incident.shortlink)
             .setDescription(`Impact: ${incident.impact}`)
-            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds()}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
+            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getMilliseconds() / 1000)}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
             .setTimestamp(incident.created_at);
         
         // Send
@@ -388,7 +393,7 @@ DiscordStatus.on('incident_update', async (incident) => {
             .setTitle(incident.name)
             .setURL(incident.shortlink)
             .setDescription(`Impact: ${incident.impact}`)
-            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${incidentUpdate.updated_at.getMilliseconds()}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
+            .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getMilliseconds() / 1000)}:R> )`, value: incidentUpdate.body || "No information available." } }).slice(-24))
             .setTimestamp(incident.created_at);
         
         // Fetch & Update Message
