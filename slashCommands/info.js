@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 //const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
+const PACKAGE = require('../package.json');
 const fetch = require('node-fetch');
 
 if (!globalThis.fetch) {
@@ -26,6 +27,7 @@ const EMOJI_CHANNEL_CATEGORY = "<:ChannelCategory:961186488572313620>";
 const EMOJI_ROLE = "<:Role:961186488551342150>";
 const EMOJI_EMOJI = "<:Emoji:961188706369286164>";
 const EMOJI_STICKER = "<:Sticker:961186488664600576>";
+const EMOJI_TIMEOUT = "<:timeout:966309135685652480>";
 
 
 
@@ -90,12 +92,10 @@ const festuresString = {
     "ROLE_ICONS": "Role Icons",
     "ROLE_SUBSCRIPTIONS_ENABLED": "Role Subscriptions Enabled",
     "ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE": "Role Subscriptions Available For Purchase",
-    "SEVEN_DAY_THREAD_ARCHIVE": "Seven Day Thread Archive",
     "TEXT_IN_VOICE_ENABLED": "Text in Voice Enabled",
     "THREADS_ENABLED_TESTING": "Threads Enabled Testing",
     "THREADS_ENABLED": "Threads Enabled",
     "THREAD_DEFAULT_AUTO_ARCHIVE_DURATION": "Threads Default Auto Archive Duration",
-    "THREE_DAY_THREAD_ARCHIVE": "Three Day Thread Archive",
     "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled",
     "VANITY_URL": "Vanity URL",
     "VERIFIED": "Verified",
@@ -111,14 +111,31 @@ const festuresString = {
     "FEATURABLE": "~~Featureable~~", // Used to control which Servers were displayed in the Featured section on Server Discovery
     "FORCE_RELAY": "~~Force Relay~~", // Technical back-end stuff that may be unused now
     "LURKABLE": "~~Lurkable~~", // Unknown
-    "MONETIZATION_ENABLED": "~~Monetization Enabled~~" // Allowed the Server to cash out Ticketed Stage payouts
+    "MONETIZATION_ENABLED": "~~Monetization Enabled~~", // Allowed the Server to cash out Ticketed Stage payouts
+    "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // Used for unlocking the 3-day Auto Archive option for Threads at T1 Boost. Made free as of 25th April 2022
+    "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~" // Used for unlocking the 7-day Auto Archive option for Threads at T2 Boost. Made free as of 25th April 2022
 };
 const tierStrings = {
     "NONE": "None",
     "TIER_1": "Tier 1",
     "TIER_2": "Tier 2",
     "TIER_3": "Tier 3"
-}
+};
+const UserFlagsToStrings = {
+    "DISCORD_EMPLOYEE": "Discord Employee",
+    "PARTNERED_SERVER_OWNER": "Partnered Server Owner",
+    "HYPESQUAD_EVENTS": "HypeSquad Events",
+    "BUGHUNTER_LEVEL_1": "Bug Hunter Tier 1",
+    "BUGHUNTER_LEVEL_2": "Bug Hunter Tier 2",
+    "HOUSE_BRAVERY": "HypeSquad Bravery House",
+    "HOUSE_BRILLIANCE": "HypeSquad Brilliance House",
+    "HOUSE_BALANCE": "HypeSquad Balance House",
+    "EARLY_SUPPORTER": "Early Nitro Supporter",
+    "VERIFIED_BOT": "Verified Bot",
+    "EARLY_VERIFIED_BOT_DEVELOPER": "Early Verified Bot Developer",
+    "DISCORD_CERTIFIED_MODERATOR": "Discord Certified Moderator",
+    "BOT_HTTP_INTERACTIONS": "HTTP Interactions-only Bot"
+};
 
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
@@ -367,7 +384,46 @@ module.exports = {
      */
     async userInfo(slashCommand)
     {
+        // Defer
+        await slashCommand.deferReply();
+
+        /** @type {Discord.GuildMember} */
+        let targetMember;
         
+        const fetchedArgument = slashCommand.options.getMember("user");
+        if ( !fetchedArgument || fetchedArgument === null )
+        {
+            // If the User Argument wasn't filled, use the Member of the Slash Command instead
+            targetMember = await slashCommand.guild.members.fetch(slashCommand.user.id);
+        }
+        else
+        {
+            // Target Member, as given in the User Argument
+            targetMember = await slashCommand.guild.members.fetch(fetchedArgument.id);
+        }
+
+        // Grab the data to display in Embed
+        const userEmbed = new Discord.MessageEmbed();
+        userEmbed.setAuthor({ iconURL: targetMember.displayAvatarURL({ dynamic: true, format: 'png' }), name: `${targetMember.user.username}#${targetMember.user.discriminator}` });
+        userEmbed.setColor(targetMember.displayHexColor);
+        userEmbed.addFields({
+            name: `>> General Member Information`,
+            value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
+        });
+        userEmbed.addFields({
+            name: `>> General User Information`,
+            value: `**Account Created:** <t:${Math.floor(targetMember.user.createdAt.getTime() / 1000)}:R>\n**Bot User:** ${targetMember.user.bot}${targetMember.user.system ? `\nIs Discord's official System User` : ""}`
+        });
+        // Now for the User's Flags
+        const rawUserFlags = await targetMember.user.fetchFlags();
+        const userFlagStrings = [];
+        rawUserFlags.toArray().forEach(flag => userFlagStrings.push(UserFlagsToStrings[flag]));
+        if ( rawUserFlags.has(1 << 20) ) { userFlagStrings.push("**Known Spammer**"); }
+        
+        if ( userFlagStrings.length > 0 ) { userEmbed.addFields({ name: `>> User Flags`, value: userFlagStrings.join(', ') }); }
+        userEmbed.setFooter({ text: `${targetMember.id}` });
+
+        return await slashCommand.editReply({ embeds: [userEmbed], allowedMentions: { parse: [], repliedUser: false } });
     },
 
 
@@ -382,6 +438,34 @@ module.exports = {
      */
     async botInfo(slashCommand)
     {
-        
+        // Defer
+        await slashCommand.deferReply();
+
+        // Fetch current Uptime
+        const currentMillisecondsUptime = client.millisecondsUptime;
+        // Fetch App Commands registered
+        const registeredGlobalCommands = await client.application.commands.fetch();
+        const registeredGuildCommands = await slashCommand.guild.commands.fetch();
+        const registeredAppCommands = registeredGlobalCommands.size + registeredGuildCommands.size;
+
+        // Construct into embed
+        const botEmbed = new Discord.MessageEmbed();
+        botEmbed.setAuthor({ name: `${client.user.username} Information`, iconURL: `${client.user.avatarURL({ dynamic: true, format: 'png' })}` });
+        botEmbed.setDescription(`A private General Purpose Bot. Has features such as \`/headpat\`, \`/bonk\`, Self-Role Menus, and more.\n[Click here for my full feature documentation](https://github.com/TwilightZebby/MooBot#features-list)`);
+        botEmbed.addFields(
+            { name: `Developer`, value: `TwilightZebby#1955`, inline: true },
+            { name: `Bot Version`, value: `${PACKAGE.version}`, inline: true },
+            { name: `Discord.JS Version`, value: `${PACKAGE.dependencies['discord.js']}`, inline: true },
+
+            { name: `Global Commands`, value: `${registeredGlobalCommands.size}`, inline: true },
+            { name: `Server Commands`, value: `${registeredGuildCommands.size}`, inline: true },
+            { name: `Total App Commands`, value: `${registeredAppCommands}`, inline: true },
+
+            { name: `Current Uptime`, value: `${currentMillisecondsUptime === null ? `Unknown` : `<t:${Math.floor(currentMillisecondsUptime / 1000)}:R>`}`, inline: true },
+            { name: `Servers`, value: `${client.guilds.cache.size}`, inline: true },
+            { name: `\u200B`, value: `\u200B`, inline: true }
+        );
+
+        return await slashCommand.editReply({ embeds: [botEmbed], allowedMentions: { parse: [], repliedUser: false } });
     }
 };
