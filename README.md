@@ -193,6 +193,29 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 |----------|---------------|-------------------------------------------------------------------------------------|----------|
 | rule     | String        | The Rule to fetch. Uses Autocomplete to support either Rule number or keywords      | ✔️      |
 
+### `/info`
+*Used to display basic information about either a User, an Invite Link, the current Server, or MooBot itself; depending on the subcommand used*
+
+#### `/info user (user)`
+*Displays basic information about the User of the Slash Command, or a target User (if given)*
+
+| Argument | Type          | Description                                | Required |
+|----------|---------------|--------------------------------------------|----------|
+| user     | @user         | The User to display information about      |          |
+
+#### `/info invite [inviteCode]`
+*Displays basic information about the given Invite Link, and its target Server's summary (such as its name, partnered status, etc.)*
+
+| Argument       | Type          | Description                                    | Required |
+|----------------|---------------|------------------------------------------------|----------|
+| inviteCode     | String        | A valid Invite Code or Vanity Invite Code      | ✔️      |
+
+#### `/info server`
+*Displays basic information about the Server this command was used in. When compared to using `/info invite` on a Invite pointing to the current Server, this Command (`/info server`) provides slightly more information (such as Boost Count, NSFW status, etc)*
+
+#### `/info bot`
+*Displays basic information about MooBot itself*
+
 
 ## Context Commands
 *These are commands that appear under the "Apps" sub-menu when right-clicking on either a Message or a User in Chat*
