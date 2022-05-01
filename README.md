@@ -211,7 +211,7 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 | inviteCode     | String        | A valid Invite Code or Vanity Invite Code      | ✔️      |
 
 #### `/info server`
-*Displays basic information about the Server this command was used in. This will show more Server information than `/info invite` does*
+*Displays basic information about the Server this command was used in. When compared to using `/info invite` on a Invite pointing to the current Server, this Command (`/info server`) provides slightly more information (such as Boost Count, NSFW status, etc)*
 
 #### `/info bot`
 *Displays basic information about MooBot itself*
