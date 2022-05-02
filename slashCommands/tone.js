@@ -3,20 +3,19 @@ const Discord = require('discord.js');
 //const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
-const RulesJson = require('../hiddenJsonFiles/dr1fterxServerRules.json');
-
+const ToneJson = require('../jsonFiles/toneIndicators.json');
 
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
-    name: 'rule',
+    name: 'tone',
     // Slash Command's description
-    description: `Fetch information about a specific Server Rule`,
+    description: `Shows what each tone indicator means (eg: /j, /s, /lh, etc.)`,
     // Category of Slash Command, used for Help (text) Command
     category: 'general',
 
     // Slash Command's Cooldown, in seconds
     // If not provided or is commented out, will default to 3 seconds
-    cooldown: 120,
+    cooldown: 60,
 
 
     /**
@@ -35,8 +34,8 @@ module.exports = {
         data.options = [
             {
                 type: "STRING",
-                name: "rule",
-                description: "The Server Rule to fetch",
+                name: "indicator",
+                description: "The tone indicator to see information about",
                 autocomplete: true,
                 required: true
             }
@@ -55,10 +54,8 @@ module.exports = {
      */
     async execute(slashCommand)
     {
-        // Grab requested Rule
-        const requestedRuleId = slashCommand.options.getString("rule", true);
-        const requestedRule = RulesJson["rules"][`${requestedRuleId.trimEnd()}`];
-        return await slashCommand.reply({ content: `${requestedRule}\n\n*- <#619492028341944320> ${requestedRuleId}*` });
+        // .
+        return await slashCommand.reply({ content: ToneJson["tones"][`${slashCommand.options.getString("indicator", true)}`], ephemeral: true });
     },
 
 
@@ -80,16 +77,16 @@ module.exports = {
 
         if ( !focusedValue || focusedValue == "" || focusedValue == " " )
         {
-            filteredResults = RulesJson["autocompleteArray"];
+            filteredResults = ToneJson["autocompleteArray"];
         }
         else
         {
-            filteredResults = RulesJson["autocompleteArray"].filter(rule => rule.toLowerCase().startsWith(focusedValue.toLowerCase()) || rule.toLowerCase().includes(focusedValue.toLowerCase()));
+            filteredResults = ToneJson["autocompleteArray"].filter(tone => tone.toLowerCase().startsWith(focusedValue.toLowerCase()) || tone.toLowerCase().includes(focusedValue.toLowerCase()));
         }
 
         // Keep within 25 choice limit
         if ( filteredResults.length > 25 ) { filteredResults.slice(0, 24); }
 
-        return await autocompleteInteraction.respond(filteredResults.map(rule => ({ name: rule, value: rule.slice(0, 4) })));
+        return await autocompleteInteraction.respond(filteredResults.map(tone => ({ name: tone, value: tone.split(' ').shift() })));
     }
 };
