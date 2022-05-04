@@ -213,6 +213,14 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 #### `/info server`
 *Displays basic information about the Server this command was used in. When compared to using `/info invite` on a Invite pointing to the current Server, this Command (`/info server`) provides slightly more information (such as Boost Count, NSFW status, etc)*
 
+ℹ Note: Should the `@everyone` Role __not__ have the `Use External Emojis` Permission, then the emojis to denote Channel Types will be replaced with initials, where:
+
+- T = Text Channels
+- N = News/Announcement Channels
+- V = Voice Channels
+- S = Stage Channels
+- C = Categories
+
 #### `/info bot`
 *Displays basic information about MooBot itself*
 
