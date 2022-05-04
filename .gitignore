@@ -15,6 +15,5 @@ config.js
 /jsonFiles/userReturnMessages.json
 
 /textCommands/shutdown.js
-/textCommands/experiments.js
 
 /buttons/shutdown.js
