@@ -45,6 +45,7 @@ module.exports = {
     //    - "owner" for Guild Owners & TwilightZebby
     //    - "admin" for those with the ADMIN Guild Permission, Guild Owners, & TwilightZebby
     //    - "moderator" for those with Moderator-level Guild Permissions, Admins, Guild Owners, & TwilightZebby
+    //    - "private" for those TwilightZebby explicitly grants permission to use on a per-User allowlist basis. This is non-linear as the above permissions do NOT override this
     //    - "everyone" (or commented out) for everyone to use this command
     limitation: "developer",
 
