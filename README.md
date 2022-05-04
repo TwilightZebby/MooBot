@@ -221,6 +221,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 - S = Stage Channels
 - C = Categories
 
+This limitation in regards to the `Use External Emojis` Permission is on Discord's side; due to how Slash Command Responses function on Discord (inheriting that permission from the `@everyone` Role), and as such there is nothing TwilightZebby can do other than this workaround. ;-;
+
 #### `/info bot`
 *Displays basic information about MooBot itself*
 
