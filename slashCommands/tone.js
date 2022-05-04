@@ -54,7 +54,6 @@ module.exports = {
      */
     async execute(slashCommand)
     {
-        // .
         return await slashCommand.reply({ content: ToneJson["tones"][`${slashCommand.options.getString("indicator", true)}`], ephemeral: true });
     },
 
