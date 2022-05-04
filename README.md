@@ -224,6 +224,13 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 #### `/info bot`
 *Displays basic information about MooBot itself*
 
+### `/tone [indicator]`
+*Displays what the given Tone Indicator means (example: `/s` denotes sarcasm)*
+
+| Argument       | Type          | Description                               | Required |
+|----------------|---------------|-------------------------------------------|----------|
+| indicator      | String        | A tone indicator. Uses Autocomplete.      | ✔️      |
+
 
 ## Context Commands
 *These are commands that appear under the "Apps" sub-menu when right-clicking on either a Message or a User in Chat*
