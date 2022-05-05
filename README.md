@@ -213,8 +213,25 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 #### `/info server`
 *Displays basic information about the Server this command was used in. When compared to using `/info invite` on a Invite pointing to the current Server, this Command (`/info server`) provides slightly more information (such as Boost Count, NSFW status, etc)*
 
+ℹ Note: Should the `@everyone` Role __not__ have the `Use External Emojis` Permission, then the emojis to denote Channel Types will be replaced with initials, where:
+
+- T = Text Channels
+- N = News/Announcement Channels
+- V = Voice Channels
+- S = Stage Channels
+- C = Categories
+
+This limitation in regards to the `Use External Emojis` Permission is on Discord's side; due to how Slash Command Responses function on Discord (inheriting that permission from the `@everyone` Role), and as such there is nothing TwilightZebby can do other than this workaround. ;-;
+
 #### `/info bot`
 *Displays basic information about MooBot itself*
+
+### `/tone [indicator]`
+*Displays what the given Tone Indicator means (example: `/s` denotes sarcasm)*
+
+| Argument       | Type          | Description                               | Required |
+|----------------|---------------|-------------------------------------------|----------|
+| indicator      | String        | A tone indicator. Uses Autocomplete.      | ✔️      |
 
 
 ## Context Commands

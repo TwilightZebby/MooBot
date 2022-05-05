@@ -18,6 +18,7 @@ module.exports = {
         TEXT_COMMAND_NO_PERMISSION_OWNER: `Sorry, but that Command can only be used by the Owner of this Server!`,
         TEXT_COMMAND_NO_PERMISSION_ADMIN: `Sorry, but that Command can only be used by the Owner of this Server, and those with the \`ADMINISTRATOR\` Permission.`,
         TEXT_COMMAND_NO_PERMISSION_MODERATOR: `Sorry, but that Command can only be used by this Server's Moderators, those with the \`ADMINISTRATOR\` Permission, and this Server's Owner.`,
+        TEXT_COMMAND_NO_PERMISSION_GENERIC: `Sorry, but you do not have the permission to use that Command.`,
         TEXT_COMMAND_ARGUMENTS_REQUIRED: `Sorry, but this Command requires arguments to be included in its usage.\n`,
         TEXT_COMMAND_ARGUMENTS_MINIMUM: `Sorry, but this Command requires a **minimum** of {{minimumArguments}} arguments, while you only included {{givenArguments}} arguments.`,
         TEXT_COMMAND_ARGUMENTS_MAXIMUM: `Sorry, but this Command requires a **maximum** of {{maximumArguments}} arguments, while you only included {{givenArguments}} arguments`,

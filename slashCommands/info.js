@@ -254,6 +254,9 @@ module.exports = {
         // Fetch Guild
         const currentGuild = await slashCommand.guild.fetch();
 
+        // Check for External Emoji Permission
+        const externalEmojiPermission = this.checkEmojiPermission(slashCommand);
+
         // General
         const guildId = currentGuild.id;
         const guildName = currentGuild.name;
@@ -311,11 +314,23 @@ module.exports = {
         // Assemble into Embed
         const infoEmbed = new Discord.MessageEmbed().setAuthor({ name: guildName, iconURL: guildIcon })
             .setFooter({ text: guildId });
-        infoEmbed.setDescription(`${guildPartnered ? `${EMOJI_PARTNER}` : ""}  ${guildVerified ? `${EMOJI_VERIFIED}` : ""}\n${guildDescription}`);
-        infoEmbed.setTimestamp(currentGuild.createdAt);
-        infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${EMOJI_OWNER_CROWN} ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${guildBoostTier === "TIER_3" ? `${EMOJI_TIER_THREE}` : guildBoostTier === "TIER_2" ? `${EMOJI_TIER_TWO}` : guildBoostTier === "TIER_1" ? `${EMOJI_TIER_ONE}` : ""} ${tierStrings[guildBoostTier]}\n**Boost Count:** ${EMOJI_BOOST} ${guildBoostCount}\n**Channels:** ${totalChannelCount} (${EMOJI_CHANNEL_TEXT} ${textChannelCount}, ${EMOJI_CHANNEL_NEWS} ${announcementChannelCount}, ${EMOJI_CHANNEL_VOICE} ${voiceChannelCount}, ${EMOJI_CHANNEL_STAGE} ${stageChannelCount}, ${EMOJI_CHANNEL_CATEGORY} ${categoryChannelCount})\n**Emojis:** ${EMOJI_EMOJI} ${totalEmojiCount}\n**Stickers:** ${EMOJI_STICKER} ${totalStickerCount}\n**Roles:** ${EMOJI_ROLE} ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
-        infoEmbed.addFields({ name: `>> Security & Moderation`, value: `**Verification Level:** ${verificationString[guildVerificationLevel]}\n**Explicit Content Filter:** ${explicitContentString[guildContentFilter]}\n**Default Notifications:** ${defaultNotifString[guildDefaultNotifications]}\n**2FA-enabled Moderation:** ${mfaString[guildMFALevel]}\n**NSFW Level:** ${nsfwString[guildNSFWLevel]}` });
-        infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
+
+        if ( externalEmojiPermission )
+        {
+            infoEmbed.setDescription(`${guildPartnered ? `${EMOJI_PARTNER}` : ""}  ${guildVerified ? `${EMOJI_VERIFIED}` : ""}\n${guildDescription}`);
+            infoEmbed.setTimestamp(currentGuild.createdAt);
+            infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${EMOJI_OWNER_CROWN} ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${guildBoostTier === "TIER_3" ? `${EMOJI_TIER_THREE}` : guildBoostTier === "TIER_2" ? `${EMOJI_TIER_TWO}` : guildBoostTier === "TIER_1" ? `${EMOJI_TIER_ONE}` : ""} ${tierStrings[guildBoostTier]}\n**Boost Count:** ${EMOJI_BOOST} ${guildBoostCount}\n**Channels:** ${totalChannelCount} (${EMOJI_CHANNEL_TEXT} ${textChannelCount}, ${EMOJI_CHANNEL_NEWS} ${announcementChannelCount}, ${EMOJI_CHANNEL_VOICE} ${voiceChannelCount}, ${EMOJI_CHANNEL_STAGE} ${stageChannelCount}, ${EMOJI_CHANNEL_CATEGORY} ${categoryChannelCount})\n**Emojis:** ${EMOJI_EMOJI} ${totalEmojiCount}\n**Stickers:** ${EMOJI_STICKER} ${totalStickerCount}\n**Roles:** ${EMOJI_ROLE} ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
+            infoEmbed.addFields({ name: `>> Security & Moderation`, value: `**Verification Level:** ${verificationString[guildVerificationLevel]}\n**Explicit Content Filter:** ${explicitContentString[guildContentFilter]}\n**Default Notifications:** ${defaultNotifString[guildDefaultNotifications]}\n**2FA-enabled Moderation:** ${mfaString[guildMFALevel]}\n**NSFW Level:** ${nsfwString[guildNSFWLevel]}` });
+            infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
+        }
+        else
+        {
+            infoEmbed.setDescription(`${guildPartnered ? `**Partnered!**` : ""}  ${guildVerified ? ` **Verified!**` : ""}\n${guildDescription}`);
+            infoEmbed.setTimestamp(currentGuild.createdAt);
+            infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${tierStrings[guildBoostTier]}\n**Boost Count:** ${guildBoostCount}\n**Channels:** ${totalChannelCount} (T: ${textChannelCount}, N: ${announcementChannelCount}, V: ${voiceChannelCount}, S: ${stageChannelCount}, C: ${categoryChannelCount})\n**Emojis:** ${totalEmojiCount}\n**Stickers:** ${totalStickerCount}\n**Roles:** ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
+            infoEmbed.addFields({ name: `>> Security & Moderation`, value: `**Verification Level:** ${verificationString[guildVerificationLevel]}\n**Explicit Content Filter:** ${explicitContentString[guildContentFilter]}\n**Default Notifications:** ${defaultNotifString[guildDefaultNotifications]}\n**2FA-enabled Moderation:** ${mfaString[guildMFALevel]}\n**NSFW Level:** ${nsfwString[guildNSFWLevel]}` });
+            infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
+        }
 
         return await slashCommand.editReply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } });
     },
@@ -347,6 +362,9 @@ module.exports = {
             return await slashCommand.editReply({ content: `Sorry, but that Invite Code doesn't exist on Discord!`, allowedMentions: { parse: [], repliedUser: false } })
         }
 
+        // Check for External Emoji Permission
+        const externalEmojiPermission = this.checkEmojiPermission(slashCommand);
+
         // Invite Code fetched, now grab data from it and assemble into an Embed
         const inviteInfoEmbed = new Discord.MessageEmbed().setAuthor({ name: `Data for Invite Code: ${inviteCode}`, url: `https://discord.gg/${inviteCode}` });
         if ( fetchedInvite.inviter !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Creator`, value: `**Username:** ${fetchedInvite.inviter.username}\n**Bot User:** ${fetchedInvite.inviter.bot}` }); }
@@ -356,10 +374,22 @@ module.exports = {
         {
             inviteInfoEmbed.setAuthor({ iconURL: fetchedInvite.guild.iconURL({ dynamic: true, format: 'png' }), name: `Data for Invite Code: ${inviteCode}`, url: `https://discord.gg/${inviteCode}` });
             if ( fetchedInvite.guild.description !== null ) { inviteInfoEmbed.setDescription(fetchedInvite.guild.description); }
-            inviteInfoEmbed.addFields({
-                name: `>> Server's Information`,
-                value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered ? `${EMOJI_PARTNER}` : ""} ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified ? `${EMOJI_VERIFIED}` : ""} ${fetchedInvite.guild.verified}`
-            });
+
+            if ( externalEmojiPermission )
+            {
+                inviteInfoEmbed.addFields({
+                    name: `>> Server's Information`,
+                    value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered ? `${EMOJI_PARTNER}` : ""} ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified ? `${EMOJI_VERIFIED}` : ""} ${fetchedInvite.guild.verified}`
+                });
+            }
+            else
+            {
+                inviteInfoEmbed.addFields({
+                    name: `>> Server's Information`,
+                    value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified}`
+                });
+            }
+            
             
             // Server Features, grab from raw API to ensure newer Features are reflected too
             let rawData = await client.api.invites(`${inviteCode}`).get();
@@ -402,14 +432,29 @@ module.exports = {
             targetMember = await slashCommand.guild.members.fetch(fetchedArgument.id);
         }
 
+        // Check for External Emoji Permission
+        const externalEmojiPermission = this.checkEmojiPermission(slashCommand);
+
         // Grab the data to display in Embed
         const userEmbed = new Discord.MessageEmbed();
         userEmbed.setAuthor({ iconURL: targetMember.displayAvatarURL({ dynamic: true, format: 'png' }), name: `${targetMember.user.username}#${targetMember.user.discriminator}` });
         userEmbed.setColor(targetMember.displayHexColor);
-        userEmbed.addFields({
-            name: `>> General Member Information`,
-            value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
-        });
+
+        if ( externalEmojiPermission )
+        {
+            userEmbed.addFields({
+                name: `>> General Member Information`,
+                value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
+            });
+        }
+        else
+        {
+            userEmbed.addFields({
+                name: `>> General Member Information`,
+                value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner**` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out` : ""}`
+            });
+        }
+        
         userEmbed.addFields({
             name: `>> General User Information`,
             value: `**Account Created:** <t:${Math.floor(targetMember.user.createdAt.getTime() / 1000)}:R>\n**Bot User:** ${targetMember.user.bot}${targetMember.user.system ? `\nIs Discord's official System User` : ""}`
@@ -467,5 +512,22 @@ module.exports = {
         );
 
         return await slashCommand.editReply({ embeds: [botEmbed], allowedMentions: { parse: [], repliedUser: false } });
+    },
+
+
+
+
+
+
+    /**
+     * Checks that the Bot has the ability to use Custom External Emojis in its responses
+     * 
+     * @param {Discord.CommandInteraction} slashCommand Slash Command Interaction
+     * 
+     * @returns {Boolean}
+     */
+    checkEmojiPermission(slashCommand)
+    {
+        return slashCommand.guild.roles.everyone.permissions.has('USE_EXTERNAL_EMOJIS');
     }
 };
