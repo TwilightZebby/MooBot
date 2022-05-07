@@ -63,8 +63,8 @@ const festuresString = {
     "ANIMATED_ICON": "Animated Icon",
     "AUTO_MODERATION": "Auto Moderation",
     "BANNER": "Banner",
-    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild",
-    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild",
+    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Server",
+    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Server",
     "COMMERCE": "Commerce",
     "CREATOR_MONETIZABLE": "Creator Monetizable",
     "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled",
@@ -101,6 +101,7 @@ const festuresString = {
     "VERIFIED": "Verified",
     "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
+    "GUILD_HOME_TEST": "Server Home Test",
     // From here onwards are deprecated Server Features
     "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
     "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
