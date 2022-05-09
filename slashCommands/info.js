@@ -63,8 +63,8 @@ const festuresString = {
     "ANIMATED_ICON": "Animated Icon",
     "AUTO_MODERATION": "Auto Moderation",
     "BANNER": "Banner",
-    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild",
-    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild",
+    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Server",
+    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Server",
     "COMMERCE": "Commerce",
     "CREATOR_MONETIZABLE": "Creator Monetizable",
     "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled",
@@ -101,6 +101,7 @@ const festuresString = {
     "VERIFIED": "Verified",
     "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
+    "GUILD_HOME_TEST": "Server Home Test",
     // From here onwards are deprecated Server Features
     "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
     "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
@@ -329,7 +330,7 @@ module.exports = {
             infoEmbed.setTimestamp(currentGuild.createdAt);
             infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${tierStrings[guildBoostTier]}\n**Boost Count:** ${guildBoostCount}\n**Channels:** ${totalChannelCount} (T: ${textChannelCount}, N: ${announcementChannelCount}, V: ${voiceChannelCount}, S: ${stageChannelCount}, C: ${categoryChannelCount})\n**Emojis:** ${totalEmojiCount}\n**Stickers:** ${totalStickerCount}\n**Roles:** ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
             infoEmbed.addFields({ name: `>> Security & Moderation`, value: `**Verification Level:** ${verificationString[guildVerificationLevel]}\n**Explicit Content Filter:** ${explicitContentString[guildContentFilter]}\n**Default Notifications:** ${defaultNotifString[guildDefaultNotifications]}\n**2FA-enabled Moderation:** ${mfaString[guildMFALevel]}\n**NSFW Level:** ${nsfwString[guildNSFWLevel]}` });
-            infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
+            if ( guildFeatures.length > 0 ) { infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
         }
 
         return await slashCommand.editReply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } });
@@ -396,7 +397,7 @@ module.exports = {
             let rawFeatures = rawData["guild"]["features"];
             let guildFeatures = [];
             rawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
-            inviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
+            if ( guildFeatures.length > 0 ) { inviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
         }
 
         return await slashCommand.editReply({ embeds: [inviteInfoEmbed], allowedMentions: { parse: [], repliedUser: false } });
