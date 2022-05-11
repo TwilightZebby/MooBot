@@ -43,12 +43,20 @@ module.exports = {
         if ( inputEmbedColour !== "" && inputEmbedColour !== " " && inputEmbedColour !== null && inputEmbedColour !== undefined )
         {
             // Validate
+            // ***************
+            // FOR THE LOVE OF SANITY DO NOT DELETE THE TWO CONSOLE.LOG LINES HERE
+            // Somehow, without them, this RegEx check fails randomly/most of the time
+            // Yet with them, it works all the time
+            // SO DON'T DELETE THEM
+            // ***************
             if ( !UTILITY.hexColourRegex.test(inputEmbedColour) )
             {
+                console.log(`Value: "${inputEmbedColour}"  -  Test: "${!UTILITY.hexColourRegex.test(inputEmbedColour)}"`);
                 await modalInteraction.update({ components: originalModalMessageComponents });
                 return await modalInteraction.followUp({ content: `That wasn't a valid Hex Colour Code! Please try again, using a valid Hex Colour Code (including the \`#\` (hash) at the start!)`, ephemeral: true });
             }
             else { menuEmbed.setColor(inputEmbedColour); }
+            console.log(`Value: "${inputEmbedColour}"  -  Test: "${!UTILITY.hexColourRegex.test(inputEmbedColour)}"`);
         }
         else { delete menuEmbed.color; }
 
