@@ -273,8 +273,6 @@ This limitation in regards to the `Use External Emojis` Permission is on Discord
 #### Convert Temperature
 *If there are any temperatures detected in the Message, they will be converted into the other units of temperature measurements*
 
-![A short video clip of the Convert Temperature Message Command in use in a Discord Chat](https://zebby.is-from.space/ioXrAz1YBK.mp4)
-
 - Converts between degrees C, F, and K
 - Supports up to 10 temperatures in a single message
 - Will **not** convert temperatures lower than 0K (Absolute Zero) as those temperatures cannot possibly exist
