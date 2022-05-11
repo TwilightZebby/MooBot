@@ -82,6 +82,12 @@ module.exports = {
         // Menu Creation
         if ( subCommandName === "create" )
         {
+            // Check Bot has `SEND_MESSAGES` Permission in current Channel
+            if ( !slashCommand.channel.permissionsFor(slashCommand.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES) )
+            {
+                return await slashCommand.reply({ content: `Sorry, but I cannot create a Role Menu in this Channel without having the \`Send Messages\` Permission!`, ephemeral: true });
+            }
+
             // Construct stuff
             let createMenuEmbed = new Discord.MessageEmbed().setDescription("*Role Menu is currently empty. Please use the Select Menu below to configure this Role Menu*");
                 
@@ -95,6 +101,12 @@ module.exports = {
         // Menu Editing
         else if ( subCommandName === "configure" )
         {
+            // Check Bot has `READ_MESSAGE_HISTORY` Permission in current Channel
+            if ( !slashCommand.channel.permissionsFor(slashCommand.guild.me).has(Discord.Permissions.FLAGS.READ_MESSAGE_HISTORY) )
+            {
+                return await slashCommand.reply({ content: `Sorry, but I cannot edit an existing Role Menu in this Channel without having the \`Read Message History\` Permission!`, ephemeral: true });
+            }
+
             // Check that message *does* have a Menu
             let roleMenuJson = require('../hiddenJsonFiles/roleMenus.json');
             let messageID = slashCommand.options.getString("message", true);
