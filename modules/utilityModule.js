@@ -14,7 +14,7 @@ module.exports = {
     channelRegex: new RegExp(/<#!?(\d{17,19})>/g),
     userRegex: new RegExp(/<@!?(\d{17,19})>/g),
     messageLinkRegex: new RegExp(/(?:ptb\.|canary\.|staging\.|lc\.)?(?:discord(?:app)?|inv)\.(?:com|wtf)?\/channels\/(?<guild_id>\d{15,21}|@me)\/(?<channel_id>\d{15,21})\/(?<message_id>\d{15,21})/im),
-    hexColourRegex: new RegExp(/#[0-9a-fA-F]{6}/g),
+    hexColourRegex: new RegExp(/#[0-9a-fA-F]{6}/),
 
 
 
