@@ -1,4 +1,4 @@
-↖ *Want to jump to a specific section/question? Use the navigation menu!*
+↖ *Want to jump to a specific section/question? Use the navigation menu!* (Which doesn't seem to exist on the GitHub Mobile App 😅)
 
 # MooBot
 A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
@@ -99,7 +99,7 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
-### `/pummel [target] (gif) (reason)`
+### `/pummel [target] (reason)`
 *Outputs a message in chat, pummelling the specified User, Role, or Everyone.*
 
 | Argument | Type         | Description                                             | Required |
