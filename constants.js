@@ -115,7 +115,27 @@ module.exports = {
             /** Button shown for cancelling a!shutdown
              * @type {Discord.MessageButton}
              */
-            SHUTDOWN_CANCEL: new Discord.MessageButton().setLabel(`Cancel`).setStyle('SUCCESS')
+            SHUTDOWN_CANCEL: new Discord.MessageButton().setLabel(`Cancel`).setStyle('SUCCESS'),
+            /** Link Button for /info user's Global Avatar
+             * @type {Discord.MessageButton}
+             */
+            LINK_USER_GLOBAL_AVATAR: new Discord.MessageButton().setLabel(`Global Avatar`).setStyle('LINK'),
+            /** Link Button for /info user's Guild-specific Avatar
+             * @type {Discord.MessageButton}
+             */
+            LINK_USER_GUILD_AVATAR: new Discord.MessageButton().setLabel(`Guild Avatar`).setStyle('LINK'),
+            /** Link Button for /info user's Global Banner
+             * @type {Discord.MessageButton}
+             */
+            LINK_USER_GLOBAL_BANNER: new Discord.MessageButton().setLabel(`Global Banner`).setStyle('LINK'),
+            /** Link Button for /info server's Icon
+             * @type {Discord.MessageButton}
+             */
+            LINK_GUILD_ICON: new Discord.MessageButton().setLabel(`Icon`).setStyle('LINK'),
+            /** Link Button for /info server's Banner
+             * @type {Discord.MessageButton}
+             */
+            LINK_GUILD_BANNER: new Discord.MessageButton().setLabel(`Banner`).setStyle('LINK'),
         }
     }
 }
