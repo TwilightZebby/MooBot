@@ -311,6 +311,10 @@ module.exports = {
         const guildStickers = await currentGuild.stickers.fetch();
         const totalStickerCount = guildStickers.size;
 
+        // Assets
+        const hasBanner = currentGuild.banner === null ? false : true;
+        const hasIcon = currentGuild.icon === null ? false : true;
+
 
         // Assemble into Embed
         const infoEmbed = new Discord.MessageEmbed().setAuthor({ name: guildName, iconURL: guildIcon })
@@ -333,7 +337,13 @@ module.exports = {
             if ( guildFeatures.length > 0 ) { infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
         }
 
-        return await slashCommand.editReply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } });
+        // Asset Buttons
+        const buttonActionRow = new Discord.MessageActionRow();
+        if ( hasIcon ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_GUILD_ICON.setURL(currentGuild.iconURL())); }
+        if ( hasBanner ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_GUILD_BANNER.setURL(currentGuild.bannerURL())); }
+
+        if ( buttonActionRow.components.length > 0 ) { return await slashCommand.editReply({ embeds: [infoEmbed], components: [buttonActionRow], allowedMentions: { parse: [], repliedUser: false } }); }
+        else { return await slashCommand.editReply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } }); }
     },
 
 
