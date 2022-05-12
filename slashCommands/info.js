@@ -451,6 +451,11 @@ module.exports = {
         userEmbed.setAuthor({ iconURL: targetMember.displayAvatarURL({ dynamic: true, format: 'png' }), name: `${targetMember.user.username}#${targetMember.user.discriminator}` });
         userEmbed.setColor(targetMember.displayHexColor);
 
+        // Assets
+        const hasGuildAvatar = targetMember.avatar === null ? false : true;
+        const hasGlobalAvatar = targetMember.user.avatar === null ? false : true;
+        //const hasGlobalBanner = targetMember.user.banner === null ? false : true;
+
         if ( externalEmojiPermission )
         {
             userEmbed.addFields({
@@ -479,7 +484,15 @@ module.exports = {
         if ( userFlagStrings.length > 0 ) { userEmbed.addFields({ name: `>> User Flags`, value: userFlagStrings.join(', ') }); }
         userEmbed.setFooter({ text: `${targetMember.id}` });
 
-        return await slashCommand.editReply({ embeds: [userEmbed], allowedMentions: { parse: [], repliedUser: false } });
+
+        // Asset Link Buttons
+        const buttonActionRow = new Discord.MessageActionRow();
+        if ( hasGuildAvatar ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GUILD_AVATAR.setURL(targetMember.avatarURL())); }
+        if ( hasGlobalAvatar ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GLOBAL_AVATAR.setURL(targetMember.user.avatarURL())); }
+        //if ( hasGlobalBanner ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GLOBAL_BANNER.setURL(targetMember.user.bannerURL())); }
+
+        if ( buttonActionRow.components.length > 0 ) { return await slashCommand.editReply({ embeds: [userEmbed], components: [buttonActionRow], allowedMentions: { parse: [], repliedUser: false } }); }
+        else { return await slashCommand.editReply({ embeds: [userEmbed], allowedMentions: { parse: [], repliedUser: false } }); }
     },
 
 
