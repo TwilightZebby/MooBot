@@ -136,6 +136,10 @@ module.exports = {
              * @type {Discord.MessageButton}
              */
             LINK_GUILD_BANNER: new Discord.MessageButton().setLabel(`Banner`).setStyle('LINK'),
+            /** Button for seeing /info user's Roles
+             * @type {Discord.MessageButton}
+             */
+            INFO_MEMBER_ROLES: new Discord.MessageButton().setLabel(`Roles`).setStyle('PRIMARY').setEmoji('<:Role:961186488551342150>'),
         }
     }
 }
