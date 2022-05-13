@@ -440,7 +440,8 @@ module.exports = {
         else
         {
             // Target Member, as given in the User Argument
-            targetMember = await slashCommand.guild.members.fetch(fetchedArgument.id);
+            targetMember = await slashCommand.guild.members.fetch(fetchedArgument.id)
+            .catch(async (err) => { return await slashCommand.editReply({ content: `Sorry, but that User isn't part of this Server!`, allowedMentions: { parse: [], repliedUser: false} }); });
         }
 
         // Check for External Emoji Permission
