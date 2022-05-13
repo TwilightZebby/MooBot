@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "bufferutil": "^4.0.6",
-    "discord.js": "github:discordjs/discord.js#pull/7431",
+    "discord.js": "^13.7.0",
     "emoji-regex": "^10.0.0",
     "erlpack": "github:discord/erlpack",
     "node-fetch": "^2.6.7",
