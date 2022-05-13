@@ -450,6 +450,7 @@ module.exports = {
         const userEmbed = new Discord.MessageEmbed();
         userEmbed.setAuthor({ iconURL: targetMember.displayAvatarURL({ dynamic: true, format: 'png' }), name: `${targetMember.user.username}#${targetMember.user.discriminator}` });
         userEmbed.setColor(targetMember.displayHexColor);
+        const memberRoles = targetMember.roles.cache.filter(role => role.id !== targetMember.guild.id); // Grab roles while filtering out @everyone
 
         // Assets
         const hasGuildAvatar = targetMember.avatar === null ? false : true;
@@ -460,7 +461,7 @@ module.exports = {
         {
             userEmbed.addFields({
                 name: `>> General Member Information`,
-                value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
+                value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${memberRoles.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
             });
         }
         else
@@ -485,8 +486,10 @@ module.exports = {
         userEmbed.setFooter({ text: `${targetMember.id}` });
 
 
-        // Asset Link Buttons
+        // Buttons
         const buttonActionRow = new Discord.MessageActionRow();
+        // Roles
+        if ( memberRoles.size > 0 ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.INFO_MEMBER_ROLES.setCustomId(`inforole_${targetMember.id}`)); }
         if ( hasGuildAvatar ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GUILD_AVATAR.setURL(targetMember.avatarURL())); }
         if ( hasGlobalAvatar ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GLOBAL_AVATAR.setURL(targetMember.user.avatarURL())); }
         //if ( hasGlobalBanner ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GLOBAL_BANNER.setURL(targetMember.user.bannerURL())); }
