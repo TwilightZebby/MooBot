@@ -57,6 +57,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ### `/bonk [target] (gif) (reason)`
 *Outputs a message in chat, bonking the specified User, Role, or Everyone.*
 
+![Screenshot of the bonk command's response in a Discord Chat](https://i.imgur.com/kMjSwvb.png)
+
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
@@ -65,6 +67,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### `/boop [target] (gif) (reason)`
 *Outputs a message in chat, booping the specified User, Role, or Everyone.*
+
+![Screenshot of the boop command's response in a Discord Chat](https://i.imgur.com/10J8fet.png)
 
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
@@ -75,6 +79,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ### `/headpat [target] (gif) (reason)`
 *Outputs a message in chat, giving the specified User, Role, or Everyone a headpat.*
 
+![Screenshot of the headpat command's response in a Discord Chat](https://i.imgur.com/mfX0n7G.png)
+
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
@@ -83,6 +89,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### `/hug [target] (gif) (reason)`
 *Outputs a message in chat, giving the specified User, Role, or Everyone a cuddle.*
+
+![Screenshot of the hug command's response in a Discord Chat](https://i.imgur.com/nBbY0Xl.png)
 
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
@@ -93,6 +101,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ### `/kiss [target] (gif) (reason)`
 *Outputs a message in chat, kissing the specified User, Role, or Everyone.*
 
+![Screenshot of the kiss command's response in a Discord Chat](https://i.imgur.com/34vxCpR.png)
+
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
@@ -102,6 +112,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ### `/pummel [target] (reason)`
 *Outputs a message in chat, pummelling the specified User, Role, or Everyone.*
 
+![Screenshot of the pummel command's response in a Discord Chat](https://i.imgur.com/uwssQbz.png)
+
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
@@ -109,6 +121,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### `/slap [target] (gif) (reason)`
 *Outputs a message in chat, slapping the specified User, Role, or Everyone.*
+
+![Screenshot of the slap command's response in a Discord Chat](https://i.imgur.com/9r5z1RG.png)
 
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
@@ -118,6 +132,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### `/sleep [target] (gif) (reason)`
 *Outputs a message in chat, telling the specified User, Role, or Everyone to go to sleep already!*
+
+![Screenshot of the sleep command's response in a Discord Chat](https://i.imgur.com/LqiKpH6.png)
 
 | Argument | Type         | Description                                             | Required |
 |----------|--------------|---------------------------------------------------------|----------|
@@ -134,6 +150,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ### `/start [channel] [activity]`
 *Creates an Invite Link to the specified Voice Channel, allowing for starting one of Discord's built-in (but in beta) Social Activities in that Voice Channel.*
 
+![Screenshot of the start command's response in a Discord Chat](https://i.imgur.com/uYNQ3Tg.png)
+
 | Argument | Type          | Description                                             | Required |
 |----------|---------------|---------------------------------------------------------|----------|
 | channel  | #VoiceChannel | The Voice Channel the Activity should be started in     | ✔️      |
@@ -145,6 +163,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### `/potato`
 *Starts a game of Hot Potato in the current Text or Thread Channel.*
+
+![Screenshot of the message when the potato command is used to start a Hot Potato game in a Discord Chat](https://i.imgur.com/2gh9agP.png)
 
 - Once a Hot Potato game starts, a Message will be posted in the Channel stating so, along with who started the game, and who was the first User the Potato is passed to.
 - To pass the Potato, the current "Hot User" (the one currently hold the Potato) will need to press the "Pass Potato" Button that's attached to the origin message.
@@ -158,6 +178,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### `/rolemenu`
 *Used to either create new, or edit existing, Role Menus*
+
+![Screenshot of a Role Menu displayed in a Discord Chat after being set up, featuring buttons for toggling the Roles for oneself](https://i.imgur.com/ENfHgGh.png)
 
 ⚠ *Only usable by those with the `MANAGE_ROLES` Permission*
 
@@ -179,6 +201,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ### `/temperature [value] [scale]`
 *A Slash Command version of the `Convert Temperature` Message Command - converts the given temperature between degrees C, F, and K*
 
+![Screenshot of the temperature command's response in a Discord Chat](https://i.imgur.com/yliIr9G.png)
+
 | Argument | Type          | Description                                                          | Required |
 |----------|---------------|----------------------------------------------------------------------|----------|
 | value    | Integer       | The numerical value of the original temperature to convert           | ✔️      |
@@ -199,6 +223,8 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 #### `/info user (user)`
 *Displays basic information about the User of the Slash Command, or a target User (if given)*
 
+![Screenshot of the info user sub command's response in a Discord Chat](https://i.imgur.com/iJpghE0.png)
+
 | Argument | Type          | Description                                | Required |
 |----------|---------------|--------------------------------------------|----------|
 | user     | @user         | The User to display information about      |          |
@@ -206,12 +232,16 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 #### `/info invite [inviteCode]`
 *Displays basic information about the given Invite Link, and its target Server's summary (such as its name, partnered status, etc.)*
 
+![Screenshot of the info invite sub command's response in a Discord Chat](https://i.imgur.com/v7CFU4u.png)
+
 | Argument       | Type          | Description                                    | Required |
 |----------------|---------------|------------------------------------------------|----------|
 | inviteCode     | String        | A valid Invite Code or Vanity Invite Code      | ✔️      |
 
 #### `/info server`
 *Displays basic information about the Server this command was used in. When compared to using `/info invite` on a Invite pointing to the current Server, this Command (`/info server`) provides slightly more information (such as Boost Count, NSFW status, etc)*
+
+![Screenshot of the info server sub command's response in a Discord Chat](https://i.imgur.com/PVlqorn.png)
 
 ℹ Note: Should the `@everyone` Role __not__ have the `Use External Emojis` Permission, then the emojis to denote Channel Types will be replaced with initials, where:
 
@@ -225,6 +255,8 @@ This limitation in regards to the `Use External Emojis` Permission is on Discord
 
 #### `/info bot`
 *Displays basic information about MooBot itself*
+
+![Screenshot of the info bot sub command's response in a Discord Chat](https://i.imgur.com/Zngxf0E.png)
 
 ### `/tone [indicator]`
 *Displays what the given Tone Indicator means (example: `/s` denotes sarcasm)*

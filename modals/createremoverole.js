@@ -147,10 +147,10 @@ module.exports = {
                 }
             }
 
-            cachedEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldOne });
+            cachedEmbed.addFields({ name: `\u200B`, value: `\u200B${roleEmbedTextFieldOne}` });
             if ( roleEmbedTextFieldTwo !== "" && roleEmbedTextFieldTwo !== " " )
             {
-                cachedEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldTwo });
+                cachedEmbed.addFields({ name: `\u200B`, value: `\u200B${roleEmbedTextFieldTwo}` });
             }
         }
 

@@ -311,6 +311,10 @@ module.exports = {
         const guildStickers = await currentGuild.stickers.fetch();
         const totalStickerCount = guildStickers.size;
 
+        // Assets
+        const hasBanner = currentGuild.banner === null ? false : true;
+        const hasIcon = currentGuild.icon === null ? false : true;
+
 
         // Assemble into Embed
         const infoEmbed = new Discord.MessageEmbed().setAuthor({ name: guildName, iconURL: guildIcon })
@@ -333,7 +337,13 @@ module.exports = {
             if ( guildFeatures.length > 0 ) { infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
         }
 
-        return await slashCommand.editReply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } });
+        // Asset Buttons
+        const buttonActionRow = new Discord.MessageActionRow();
+        if ( hasIcon ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_GUILD_ICON.setURL(currentGuild.iconURL())); }
+        if ( hasBanner ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_GUILD_BANNER.setURL(currentGuild.bannerURL())); }
+
+        if ( buttonActionRow.components.length > 0 ) { return await slashCommand.editReply({ embeds: [infoEmbed], components: [buttonActionRow], allowedMentions: { parse: [], repliedUser: false } }); }
+        else { return await slashCommand.editReply({ embeds: [infoEmbed], allowedMentions: { parse: [], repliedUser: false } }); }
     },
 
 
@@ -430,7 +440,8 @@ module.exports = {
         else
         {
             // Target Member, as given in the User Argument
-            targetMember = await slashCommand.guild.members.fetch(fetchedArgument.id);
+            targetMember = await slashCommand.guild.members.fetch(fetchedArgument.id)
+            .catch(async (err) => { return await slashCommand.editReply({ content: `Sorry, but that User isn't part of this Server!`, allowedMentions: { parse: [], repliedUser: false} }); });
         }
 
         // Check for External Emoji Permission
@@ -440,12 +451,18 @@ module.exports = {
         const userEmbed = new Discord.MessageEmbed();
         userEmbed.setAuthor({ iconURL: targetMember.displayAvatarURL({ dynamic: true, format: 'png' }), name: `${targetMember.user.username}#${targetMember.user.discriminator}` });
         userEmbed.setColor(targetMember.displayHexColor);
+        const memberRoles = targetMember.roles.cache.filter(role => role.id !== targetMember.guild.id); // Grab roles while filtering out @everyone
+
+        // Assets
+        const hasGuildAvatar = targetMember.avatar === null ? false : true;
+        const hasGlobalAvatar = targetMember.user.avatar === null ? false : true;
+        //const hasGlobalBanner = targetMember.user.banner === null ? false : true;
 
         if ( externalEmojiPermission )
         {
             userEmbed.addFields({
                 name: `>> General Member Information`,
-                value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${targetMember.roles.cache.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
+                value: `**Display Name:** \`${targetMember.displayName}\`${slashCommand.guild.ownerId === targetMember.id ? `\n**Is Server Owner** ${EMOJI_OWNER_CROWN}` : ""}\n**Highest Role:** <@&${targetMember.roles.highest.id}>\n**Joined Server:** <t:${Math.floor(targetMember.joinedAt.getTime() / 1000)}:R>\n**Role Count:** ${EMOJI_ROLE} ${memberRoles.size}${targetMember.pending ? `\nHas yet to pass Membership Screening` : ""}${targetMember.premiumSince != null ? `\n**Boosting Server Since:** ${EMOJI_BOOST} <t:${Math.floor(targetMember.premiumSince.getTime() / 1000)}:R>` : ""}${targetMember.isCommunicationDisabled() ? `\nIs currently Timed-out ${EMOJI_TIMEOUT}` : ""}`
             });
         }
         else
@@ -469,7 +486,17 @@ module.exports = {
         if ( userFlagStrings.length > 0 ) { userEmbed.addFields({ name: `>> User Flags`, value: userFlagStrings.join(', ') }); }
         userEmbed.setFooter({ text: `${targetMember.id}` });
 
-        return await slashCommand.editReply({ embeds: [userEmbed], allowedMentions: { parse: [], repliedUser: false } });
+
+        // Buttons
+        const buttonActionRow = new Discord.MessageActionRow();
+        // Roles
+        if ( memberRoles.size > 0 ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.INFO_MEMBER_ROLES.setCustomId(`inforole_${targetMember.id}`)); }
+        if ( hasGuildAvatar ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GUILD_AVATAR.setURL(targetMember.avatarURL())); }
+        if ( hasGlobalAvatar ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GLOBAL_AVATAR.setURL(targetMember.user.avatarURL())); }
+        //if ( hasGlobalBanner ) { buttonActionRow.addComponents(CONSTANTS.components.buttons.LINK_USER_GLOBAL_BANNER.setURL(targetMember.user.bannerURL())); }
+
+        if ( buttonActionRow.components.length > 0 ) { return await slashCommand.editReply({ embeds: [userEmbed], components: [buttonActionRow], allowedMentions: { parse: [], repliedUser: false } }); }
+        else { return await slashCommand.editReply({ embeds: [userEmbed], allowedMentions: { parse: [], repliedUser: false } }); }
     },
 
 
