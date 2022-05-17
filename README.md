@@ -1,7 +1,7 @@
 ↖ *Want to jump to a specific section/question? Use the navigation menu!* (Which doesn't seem to exist on the GitHub Mobile App 😅)
 
 # MooBot
-A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
+A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
 
 ---
 # Questions
@@ -16,13 +16,13 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 ## Why did you make this Bot?
 
 > This Bot was born out from a mixture of "felt like it" and a want to bring back some of the commands from the long-since discontinued Kawaii Bot.
-> The Bot, with its original name of "Actions Bot", was originally added to Dr1fterX's Server in January 2021, getting renamed to "MooBot" in March 2022.
+> The Bot, with its original name of "Actions Bot", was originally first added to Dr1fterX's Server in January 2021, getting renamed to "MooBot" in March 2022.
 
 
 ## Why did you rename the Bot?
 
 > The original name, "Actions Bot", was picked because of the simple nature of the bot - to add action-based Slash Commands.
-> Now that the Bot is being used for more features, which are less action-based (such as the `/potato` command or the Temperature Convertor), TwilightZebby thought a name change was in order since "Actions Bot" isn't accurate anymore.
+> Now that the Bot is being used for more features, which are less action-based (such as Button-Roles or the Temperature Convertor), TwilightZebby thought a name change was in order since "Actions Bot" isn't accurate anymore.
 
 ### Why did you pick "MooBot" as the new name?
 
@@ -38,7 +38,7 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 > 
 > ~~*(Well actually the true limit is 62.5k commands per scope, should you account for sub-commands and sub-command groups. But the UI still needs improving for this lol)*~~
 
-> While the above used to be true, Discord's Application Commands system has since started to improve greatly. As such, TwilightZebby is slowly allowing more Slash Commands to be added (but would like to keep below 20 total until the Slash Command List is improved to support hidden and compacted Commands).
+> While the above used to be true, Discord's Application Commands system has since started to improve greatly. As such, TwilightZebby is slowly allowing more Slash Commands to be added (but would like to keep below 20 total until the Slash Command List is improved to support compacted Sub-Commands).
 
 
 ## Can I add this Bot to my own Server?
@@ -143,7 +143,7 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 ### Other Action Command features
 - All the Action Slash Commands, with the exemption of `/sleep` and `/pummel`, include a "Return x" Button alongside their responses, allowing the specified User (NOT Role or Everyone) Target to be able to return the Action within a short (<2 minute) window.
-- All the Action Slash Commands' responses are set to *suppress* all @mentions, as a safety measure against accidental or malicious pinging
+- All the Action Slash Commands' responses are set to *suppress* all `@mentions`, as a safety measure against accidental or malicious pinging
 
 
 ## General Slash Commands
@@ -159,6 +159,7 @@ A small general-purpose Discord Bot made by TwilightZebby, primarily for Dr1fter
 
 - ℹ *This Slash Command will be removed from this Bot once Discord fully releases their (currently in testing) Social Activites feature.*
 - ℹ *All this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc).*
+- ℹ *Please note that some Activities are locked behind Server Boost Tier 1, as enforced by Discord's API. There is nothing I can do about this.*
 - ℹ *If you want to help Discord test their Social Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
 
 ### `/potato`
