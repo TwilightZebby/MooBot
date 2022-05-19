@@ -46,9 +46,9 @@ module.exports = {
         }
 
         // Update caches
-        let roleCache = client.roleMenu.get("createMenuRoleCache");
+        let roleCache = client.roleMenu.get(`createMenuRoleCache_${modalInteraction.guildId}`);
         /** @type {Array<Discord.MessageButton>} */
-        let buttonCache = client.roleMenu.get("createMenuButtons");
+        let buttonCache = client.roleMenu.get(`createMenuButtons_${modalInteraction.guildId}`);
 
         // ROLE CACHE
         for ( let i = 0; i <= roleCache.length - 1; i++ )
@@ -106,8 +106,8 @@ module.exports = {
 
 
         // Save back to caches
-        client.roleMenu.set("createMenuRoleCache", roleCache);
-        client.roleMenu.set("createMenuButtons", buttonCache);
+        client.roleMenu.set(`createMenuRoleCache_${modalInteraction.guildId}`, roleCache);
+        client.roleMenu.set(`createMenuButtons_${modalInteraction.guildId}`, buttonCache);
 
         
         // Reconstruct Component Rows
@@ -160,7 +160,7 @@ module.exports = {
 
         // Now to update the Embed
         /** @type {Discord.MessageEmbed} */
-        let cachedEmbed = client.roleMenu.get("createEmbed");
+        let cachedEmbed = client.roleMenu.get(`createEmbed_${modalInteraction.guildId}`);
         cachedEmbed.spliceFields(0, 25); // Reset, just in case
 
         if ( buttonCache.length >= 1 )

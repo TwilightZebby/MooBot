@@ -96,7 +96,7 @@ module.exports = {
                 components: [CONSTANTS.components.selects.ROLE_MENU_CREATE_NO_EMBED], embeds: [createMenuEmbed], ephemeral: true, fetchReply: true });
 
             // Store
-            client.roleMenu.set("originalResponse", { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });
+            client.roleMenu.set(`originalResponse_${commandResponse.guildId}`, { messageID: commandResponse.id, guildID: commandResponse.guildId, channelID: commandResponse.channelId, interactionToken: slashCommand.token });
         }
         // Menu Editing
         else if ( subCommandName === "configure" )
@@ -235,11 +235,11 @@ module.exports = {
             components: previewComponentArray, embeds: [previewEmbed], ephemeral: true, fetchReply: true });
         
         // Save to Collection
-        client.roleMenu.set("originalEditResponse", { messageID: originalEditMenuResponse.id, guildID: originalEditMenuResponse.guildId, channelID: originalEditMenuResponse.channelId, interactionToken: slashCommand.token });
-        client.roleMenu.set("editEmbed", previewEmbed);
-        client.roleMenu.set("editButtons", previewButtons);
-        client.roleMenu.set("editRoles", thisMenu.roles);
-        client.roleMenu.set("menuMessageID", messageId);
+        client.roleMenu.set(`originalEditResponse_${originalEditMenuResponse.guildId}`, { messageID: originalEditMenuResponse.id, guildID: originalEditMenuResponse.guildId, channelID: originalEditMenuResponse.channelId, interactionToken: slashCommand.token });
+        client.roleMenu.set(`editEmbed_${originalEditMenuResponse.guildId}`, previewEmbed);
+        client.roleMenu.set(`editButtons_${originalEditMenuResponse.guildId}`, previewButtons);
+        client.roleMenu.set(`editRoles_${originalEditMenuResponse.guildId}`, thisMenu.roles);
+        client.roleMenu.set(`menuMessageID_${originalEditMenuResponse.guildId}`, messageId);
 
         return;
     }

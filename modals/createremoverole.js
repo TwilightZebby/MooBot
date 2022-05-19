@@ -26,7 +26,7 @@ module.exports = {
 
         // Validate Role does indeed exist on the Menu
         /** @type {Array<Object>} */
-        let roleCache = client.roleMenu.get("createMenuRoleCache");
+        let roleCache = client.roleMenu.get(`createMenuRoleCache_${modalInteraction.guildId}`);
         if ( !roleCache )
         {
             await modalInteraction.update({ components: originalModalMessageComponents });
@@ -52,7 +52,7 @@ module.exports = {
 
         // Remove from Button cache as well
         /** @type {Array<Discord.MessageButton>} */
-        let buttonCache = client.roleMenu.get("createMenuButtons");
+        let buttonCache = client.roleMenu.get(`createMenuButtons_${modalInteraction.guildId}`);
 
         for ( let j = 0; j <= buttonCache.length - 1; j++ )
         {
@@ -64,8 +64,8 @@ module.exports = {
         }
 
         // Save back to Collections
-        client.roleMenu.set("createMenuRoleCache", roleCache);
-        client.roleMenu.set("createMenuButtons", buttonCache);
+        client.roleMenu.set(`createMenuRoleCache_${modalInteraction.guildId}`, roleCache);
+        client.roleMenu.set(`createMenuButtons_${modalInteraction.guildId}`, buttonCache);
 
         /** @type {Array<Discord.MessageActionRow>} */
         let updatedComponentsArray = [];
@@ -125,7 +125,7 @@ module.exports = {
 
         // Now to update the Embed
         /** @type {Discord.MessageEmbed} */
-        let cachedEmbed = client.roleMenu.get("createEmbed");
+        let cachedEmbed = client.roleMenu.get(`createEmbed_${modalInteraction.guildId}`);
         cachedEmbed.spliceFields(0, 25); // Reset, just in case
 
         if ( buttonCache.length >= 1 )

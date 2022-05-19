@@ -73,7 +73,7 @@ module.exports = {
 
         // Construct Button, and cache object
         /** @type {Array<Object>} */
-        let updatedRoleCache = client.roleMenu.get("editRoles");
+        let updatedRoleCache = client.roleMenu.get(`editRoles_${modalInteraction.guildId}`);
         if ( !updatedRoleCache ) { updatedRoleCache = []; }
         let newRoleCacheObject = { roleID: inputRoleID, label: null, emoji: null };
         let newRoleButton = new Discord.MessageButton().setStyle('PRIMARY').setCustomId(`roleedit_${inputRoleID}`);
@@ -91,11 +91,11 @@ module.exports = {
         }
 
         updatedRoleCache.push(newRoleCacheObject);
-        client.roleMenu.set("editRoles", updatedRoleCache);
+        client.roleMenu.set(`editRoles_${modalInteraction.guildId}`, updatedRoleCache);
 
         // Fetch existing Buttons, if any
         /** @type {Array<Discord.MessageButton>} */
-        let createMenuButtons = client.roleMenu.get("editButtons");
+        let createMenuButtons = client.roleMenu.get(`editButtons_${modalInteraction.guildId}`);
         if ( !createMenuButtons || createMenuButtons?.length < 1 )
         {
             // No existing buttons made yet
@@ -108,7 +108,7 @@ module.exports = {
         }
 
         // Save Buttons to Cache
-        client.roleMenu.set("editButtons", createMenuButtons);
+        client.roleMenu.set(`editButtons_${modalInteraction.guildId}`, createMenuButtons);
 
         // Construct Arrays for Buttons to go onto the Menu
         /** @type {Array<Discord.MessageActionRow>} */
@@ -160,7 +160,7 @@ module.exports = {
 
         // Add Role(s) to Embed
         /** @type {Discord.MessageEmbed} */
-        let menuEmbed = client.roleMenu.get("editEmbed");
+        let menuEmbed = client.roleMenu.get(`editEmbed_${modalInteraction.guildId}`);
         if ( !menuEmbed ) { menuEmbed = new Discord.MessageEmbed(); }
 
         let roleEmbedTextFieldOne = "";

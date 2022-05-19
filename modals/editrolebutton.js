@@ -46,9 +46,9 @@ module.exports = {
         }
 
         // Update caches
-        let roleCache = client.roleMenu.get("editRoles");
+        let roleCache = client.roleMenu.get(`editRoles_${modalInteraction.guildId}`);
         /** @type {Array<Discord.MessageButton>} */
-        let buttonCache = client.roleMenu.get("editButtons");
+        let buttonCache = client.roleMenu.get(`editButtons_${modalInteraction.guildId}`);
 
         // ROLE CACHE
         for ( let i = 0; i <= roleCache.length - 1; i++ )
@@ -106,8 +106,8 @@ module.exports = {
 
 
         // Save back to caches
-        client.roleMenu.set("editRoles", roleCache);
-        client.roleMenu.set("editButtons", buttonCache);
+        client.roleMenu.set(`editRoles_${modalInteraction.guildId}`, roleCache);
+        client.roleMenu.set(`editButtons_${modalInteraction.guildId}`, buttonCache);
 
         
         // Reconstruct Component Rows
@@ -160,7 +160,7 @@ module.exports = {
 
         // Now to update the Embed
         /** @type {Discord.MessageEmbed} */
-        let cachedEmbed = client.roleMenu.get("editEmbed");
+        let cachedEmbed = client.roleMenu.get(`editEmbed_${modalInteraction.guildId}`);
         cachedEmbed.spliceFields(0, 25); // Reset, just in case
 
         if ( buttonCache.length >= 1 )
