@@ -29,7 +29,7 @@ module.exports = {
         let originalModalMessageComponents = modalInteraction.message.components;
 
         /** @type {Discord.MessageEmbed} */
-        let menuEmbed = client.roleMenu.get("createEmbed");
+        let menuEmbed = client.roleMenu.get(`createEmbed_${modalInteraction.guildId}`);
 
         if ( !menuEmbed ) { menuEmbed = new Discord.MessageEmbed(); }
 

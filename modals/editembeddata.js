@@ -29,7 +29,7 @@ module.exports = {
         let originalModalMessageComponents = modalInteraction.message.components;
 
         /** @type {Discord.MessageEmbed} */
-        let menuEmbed = client.roleMenu.get("editEmbed");
+        let menuEmbed = client.roleMenu.get(`editEmbed_${modalInteraction.guildId}`);
 
         if ( !menuEmbed ) { menuEmbed = new Discord.MessageEmbed(); }
 
@@ -53,7 +53,7 @@ module.exports = {
         else { delete menuEmbed.color; }
 
         // Update Stored Embed
-        client.roleMenu.set("editEmbed", menuEmbed);
+        client.roleMenu.set(`editEmbed_${modalInteraction.guildId}`, menuEmbed);
 
         // Update Select menu since Embed has been edited
         originalModalMessageComponents.pop();

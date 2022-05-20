@@ -31,7 +31,7 @@ module.exports = {
             case "configure_embed":
                 // Edit the Embed
                 /** @type {Discord.MessageEmbed} */
-                let embedData = client.roleMenu.get("createEmbed");
+                let embedData = client.roleMenu.get(`createEmbed_${selectInteraction.guildId}`);
 
                 let embedModal = new Discord.Modal().setCustomId("createembeddata").setTitle("Configure Menu Embed").addComponents([
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("title").setLabel("Embed Title").setMaxLength(256).setStyle("SHORT").setRequired(true).setValue(!embedData?.title ? "" : embedData.title) ),
@@ -45,7 +45,7 @@ module.exports = {
                 // Add a new Role to the Menu
                 // Validate Menu doesn't already have the max of 10 Buttons
                 /** @type {Array<Discord.MessageButton>} */
-                let fetchedButtons = client.roleMenu.get("createMenuButtons");
+                let fetchedButtons = client.roleMenu.get(`createMenuButtons_${selectInteraction.guildId}`);
                 if ( fetchedButtons?.length === 10 ) { return await selectInteraction.reply({ content: `Sorry, but you cannot add more than 10 (ten) Role Buttons to a single Menu!`, ephemeral: true }); }
 
                 // Construct & Display Modal
@@ -105,11 +105,11 @@ module.exports = {
 
         // Fetch all the data
         /** @type {Array<Discord.MessageButton>} */
-        let newMenuButtons = client.roleMenu.get("createMenuButtons");
+        let newMenuButtons = client.roleMenu.get(`createMenuButtons_${selectInteraction.guildId}`);
         /** @type {Discord.MessageEmbed} */
-        let newMenuEmbed = client.roleMenu.get("createEmbed");
+        let newMenuEmbed = client.roleMenu.get(`createEmbed_${selectInteraction.guildId}`);
         /** @type {Array<Object>} */
-        let newMenuRoleCache = client.roleMenu.get("createMenuRoleCache");
+        let newMenuRoleCache = client.roleMenu.get(`createMenuRoleCache_${selectInteraction.guildId}`);
 
         // Prepare Buttons
         /** @type {Array<Discord.MessageActionRow>} */
@@ -182,7 +182,10 @@ module.exports = {
         await selectInteraction.editReply({ content: `✅ Successfully saved and displayed your new Role Menu!\nNow your Server Members can grant/revoke those Roles for themselves by simply pressing the respective button(s) :)`, embeds: [], components: [] });
 
         // Wipe Caches, ready for next Menu
-        client.roleMenu.clear();
+        client.roleMenu.delete(`originalResponse_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`createEmbed_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`createMenuButtons_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`createMenuRoleCache_${selectInteraction.guildId}`);
         return;
     }
 };

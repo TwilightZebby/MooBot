@@ -158,6 +158,7 @@ client.on('error', (err) => { return console.error("******DISCORD ERROR: ", err)
 // DISCORD - MESSAGE CREATE EVENT
 const TextCommandHandler = require('./modules/textCommandHandler.js');
 const AutoQuote = require('./modules/autoQuoteModule.js');
+const AntiSt1gBotSpam = require('./modules/antiSt1gBotSpamModule.js');
 
 client.on('messageCreate', async (message) => {
     //console.log(`MESSAGE_CREATE\n\n${message.channel}\n***********************************************************************************`);
@@ -181,6 +182,7 @@ client.on('messageCreate', async (message) => {
     if ( textCommandSuccess === false )
     {
         // No command prefix detected
+        if ( message.channel.id === CONFIG.Dr1fterXSocialChannel && message.author.id === CONFIG.St1gBotUserID ) { await AntiSt1gBotSpam.main(message); } // Anti St1gBot Spam Module
         if ( UTILITY.messageLinkRegex.test(message.content) ) { await AutoQuote.main(message); } // Auto Quote Module
         return;
     }

@@ -137,6 +137,21 @@ const UserFlagsToStrings = {
     "DISCORD_CERTIFIED_MODERATOR": "Discord Certified Moderator",
     "BOT_HTTP_INTERACTIONS": "HTTP Interactions-only Bot"
 };
+const ChannelTypesToStrings = {
+    "GUILD_TEXT": "Text",
+    "DM": "DM",
+    "GUILD_VOICE": "Voice",
+    "GROUP_DM": "Group DM",
+    "GUILD_CATEGORY": "Category",
+    "GUILD_NEWS": "Announcement",
+    "GUILD_NEWS_THREAD": "Thread (in Announcement Channel)",
+    "GUILD_PUBLIC_THREAD": "Thread (Public)",
+    "GUILD_PRIVATE_THREAD": "Thread (Private)",
+    "GUILD_STAGE_VOICE": "Stage",
+    "GUILD_DIRECTORY": "Directory",
+    "GUILD_STORE": "~~Store~~",
+    "UNKNOWN": "*Unknown Channel Type*"
+}
 
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
@@ -271,6 +286,9 @@ module.exports = {
         const guildBoostCount = currentGuild.premiumSubscriptionCount;
         const guildVanityInviteCode = ( currentGuild.vanityURLCode || null );
 
+        const guildApproxTotalMembers = ( currentGuild.memberCount || null );
+        const guildApproxOnlineMembers = ( currentGuild.presenceCount || null );
+
         // Security & Moderation
         const guildVerificationLevel = currentGuild.verificationLevel;
         const guildContentFilter = currentGuild.explicitContentFilter;
@@ -324,7 +342,7 @@ module.exports = {
         {
             infoEmbed.setDescription(`${guildPartnered ? `${EMOJI_PARTNER}` : ""}  ${guildVerified ? `${EMOJI_VERIFIED}` : ""}\n${guildDescription}`);
             infoEmbed.setTimestamp(currentGuild.createdAt);
-            infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${EMOJI_OWNER_CROWN} ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${guildBoostTier === "TIER_3" ? `${EMOJI_TIER_THREE}` : guildBoostTier === "TIER_2" ? `${EMOJI_TIER_TWO}` : guildBoostTier === "TIER_1" ? `${EMOJI_TIER_ONE}` : ""} ${tierStrings[guildBoostTier]}\n**Boost Count:** ${EMOJI_BOOST} ${guildBoostCount}\n**Channels:** ${totalChannelCount} (${EMOJI_CHANNEL_TEXT} ${textChannelCount}, ${EMOJI_CHANNEL_NEWS} ${announcementChannelCount}, ${EMOJI_CHANNEL_VOICE} ${voiceChannelCount}, ${EMOJI_CHANNEL_STAGE} ${stageChannelCount}, ${EMOJI_CHANNEL_CATEGORY} ${categoryChannelCount})\n**Emojis:** ${EMOJI_EMOJI} ${totalEmojiCount}\n**Stickers:** ${EMOJI_STICKER} ${totalStickerCount}\n**Roles:** ${EMOJI_ROLE} ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}` });
+            infoEmbed.addFields({ name: `>> General Information`, value: `**Created:** <t:${Math.floor(guildCreatedTime / 1000)}:R>\n**Owner**: ${EMOJI_OWNER_CROWN} ${guildOwner.user.username}#${guildOwner.user.discriminator} (<@${guildOwner.id}>)\n**Boost Level:** ${guildBoostTier === "TIER_3" ? `${EMOJI_TIER_THREE}` : guildBoostTier === "TIER_2" ? `${EMOJI_TIER_TWO}` : guildBoostTier === "TIER_1" ? `${EMOJI_TIER_ONE}` : ""} ${tierStrings[guildBoostTier]}\n**Boost Count:** ${EMOJI_BOOST} ${guildBoostCount}\n**Channels:** ${totalChannelCount} (${EMOJI_CHANNEL_TEXT} ${textChannelCount}, ${EMOJI_CHANNEL_NEWS} ${announcementChannelCount}, ${EMOJI_CHANNEL_VOICE} ${voiceChannelCount}, ${EMOJI_CHANNEL_STAGE} ${stageChannelCount}, ${EMOJI_CHANNEL_CATEGORY} ${categoryChannelCount})\n**Emojis:** ${EMOJI_EMOJI} ${totalEmojiCount}\n**Stickers:** ${EMOJI_STICKER} ${totalStickerCount}\n**Roles:** ${EMOJI_ROLE} ${totalRoleCount}${guildVanityInviteCode !== null ? `\n**Vanity URL:** https://discord.gg/${guildVanityInviteCode}` : ""}${guildApproxTotalMembers ? `\n**Total Members:** ~${guildApproxTotalMembers}` : ""}${guildApproxOnlineMembers ? `\n**Online Members:** ~${guildApproxOnlineMembers}` : ""}` });
             infoEmbed.addFields({ name: `>> Security & Moderation`, value: `**Verification Level:** ${verificationString[guildVerificationLevel]}\n**Explicit Content Filter:** ${explicitContentString[guildContentFilter]}\n**Default Notifications:** ${defaultNotifString[guildDefaultNotifications]}\n**2FA-enabled Moderation:** ${mfaString[guildMFALevel]}\n**NSFW Level:** ${nsfwString[guildNSFWLevel]}` });
             infoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` });
         }
@@ -381,6 +399,17 @@ module.exports = {
         if ( fetchedInvite.inviter !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Creator`, value: `**Username:** ${fetchedInvite.inviter.username}\n**Bot User:** ${fetchedInvite.inviter.bot}` }); }
         if ( fetchedInvite.createdAt !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Created`, value: `<t:${Math.floor(fetchedInvite.createdAt.getTime() / 1000)}:R>` }); }
         if ( fetchedInvite.expiresAt !== null ) { inviteInfoEmbed.addFields({ name: `>> Invite Expires`, value: `<t:${Math.floor(fetchedInvite.expiresAt.getTime() / 1000)}:R>` }); }
+        if ( fetchedInvite.channel !== null )
+        {
+            if ( fetchedInvite.channel instanceof Discord.PartialGroupDMChannel )
+            {
+                inviteInfoEmbed.addFields({ name: `>> Invite's Target Channel`, value: `**Channel Type:** Group DM` });
+            }
+            else
+            {
+                inviteInfoEmbed.addFields({ name: `>> Invite's Target Channel`, value: `**Channel Type:** ${ChannelTypesToStrings[fetchedInvite.channel.type]}\n**Channel Name:** ${fetchedInvite.channel.name}` });
+            }
+        }
         if ( fetchedInvite.guild !== null )
         {
             inviteInfoEmbed.setAuthor({ iconURL: fetchedInvite.guild.iconURL({ dynamic: true, format: 'png' }), name: `Data for Invite Code: ${inviteCode}`, url: `https://discord.gg/${inviteCode}` });
@@ -390,7 +419,7 @@ module.exports = {
             {
                 inviteInfoEmbed.addFields({
                     name: `>> Server's Information`,
-                    value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered ? `${EMOJI_PARTNER}` : ""} ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified ? `${EMOJI_VERIFIED}` : ""} ${fetchedInvite.guild.verified}`
+                    value: `**Name:** ${fetchedInvite.guild.name}\n**Partnered:** ${fetchedInvite.guild.partnered ? `${EMOJI_PARTNER}` : ""} ${fetchedInvite.guild.partnered}\n**Verified:** ${fetchedInvite.guild.verified ? `${EMOJI_VERIFIED}` : ""} ${fetchedInvite.guild.verified}${fetchedInvite.memberCount ? `\n**Member Count:** ~${fetchedInvite.memberCount}` : ""}${fetchedInvite.presenceCount ? `\n**Online Members:** ~${fetchedInvite.presenceCount}` : ""}`
                 });
             }
             else

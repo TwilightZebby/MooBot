@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
+const { GifCategoryChannelID, ErrorLogGuildID } = require('../config.js');
 
 module.exports = {
     // Command Name
@@ -78,6 +79,15 @@ module.exports = {
         fs.writeFile('./jsonFiles/gifLinks.json', JSON.stringify(GIF_LINKS, null, 4), async (err) => {
             if ( err ) { return await message.reply({ content: CONSTANTS.errorMessages.GENERIC, allowedMentions: { parse: [], repliedUser: false } }); }
         });
+
+
+        // Save a copy of GIF to the correct GIF Channel on private server
+        const privateGuild = await client.guilds.fetch({ guild: ErrorLogGuildID });
+        /** @type {Discord.CategoryChannel} */
+        const gifCategory = await privateGuild.channels.fetch(GifCategoryChannelID);
+        /** @type {Discord.TextChannel} */
+        const gifChannel = gifCategory.children.find(channel => channel.name === actionCommandName);
+        await gifChannel.send({ content: newGifUrl, allowedMentions: { parse: [] } });
 
         return await message.reply({ content: `Successfully added the linked GIF to the **${actionCommandName}** Action Slash Command.`, allowedMentions: { parse: [], repliedUser: false } });
     }

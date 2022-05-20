@@ -31,7 +31,7 @@ module.exports = {
             case "edit_embed":
                 // Edit the Embed
                 /** @type {Discord.MessageEmbed} */
-                let previewEmbed = client.roleMenu.get("editEmbed");
+                let previewEmbed = client.roleMenu.get(`editEmbed_${selectInteraction.guildId}`);
 
                 let embedModal = new Discord.Modal().setCustomId("editembeddata").setTitle("Edit Menu Embed").addComponents([
                     new Discord.MessageActionRow().addComponents( new Discord.TextInputComponent().setCustomId("title").setLabel("Embed Title").setMaxLength(256).setStyle("SHORT").setRequired(true).setValue(!previewEmbed?.title ? "" : previewEmbed.title) ),
@@ -45,7 +45,7 @@ module.exports = {
                 // Add a new Role
                 // Validate Menu doesn't already have the max of 10 Buttons
                 /** @type {Array<Discord.MessageButton>} */
-                let fetchedButtons = client.roleMenu.get("editButtons");
+                let fetchedButtons = client.roleMenu.get(`editButtons_${selectInteraction.guildId}`);
                 if ( fetchedButtons?.length === 10 ) { return await selectInteraction.reply({ content: `Sorry, but you cannot add more than 10 (ten) Role Buttons to a single Menu!`, ephemeral: true }); }
 
                 // Construct & Display Modal
@@ -104,11 +104,11 @@ module.exports = {
 
         // Fetch all data
         /** @type {Discord.MessageEmbed} */
-        let updatedEmbed = client.roleMenu.get("editEmbed");
+        let updatedEmbed = client.roleMenu.get(`editEmbed_${selectInteraction.guildId}`);
         /** @type {Array<Discord.MessageButton} */
-        let updatedButtons = client.roleMenu.get("editButtons");
+        let updatedButtons = client.roleMenu.get(`editButtons_${selectInteraction.guildId}`);
         /** @type {Array<Object>} */
-        let updatedRoles = client.roleMenu.get("editRoles");
+        let updatedRoles = client.roleMenu.get(`editRoles_${selectInteraction.guildId}`);
 
 
         
@@ -162,7 +162,7 @@ module.exports = {
 
         // Fetch and updating existing Menu's Message
         /** @type {String} */
-        let menuMessageId = client.roleMenu.get("menuMessageID");
+        let menuMessageId = client.roleMenu.get(`menuMessageID_${selectInteraction.guildId}`);
         let menuJSON = RoleMenuJson[menuMessageId];
 
         let fetchedChannel = await selectInteraction.guild.channels.fetch(menuJSON.channelID);
@@ -188,7 +188,11 @@ module.exports = {
         await selectInteraction.editReply({ content: `✅ Successfully saved and updated your changes to the Role Menu!`, embeds: [], components: [] });
 
         // Wipe caches, ready for next time
-        client.roleMenu.clear();
+        client.roleMenu.delete(`originalEditResponse_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`editEmbed_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`editButtons_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`editRoles_${selectInteraction.guildId}`);
+        client.roleMenu.delete(`menuMessageID_${selectInteraction.guildId}`);
         return;
     }
 };
