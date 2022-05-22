@@ -167,7 +167,11 @@ client.on('messageCreate', async (message) => {
     if ( message.partial ) { return; }
 
     // Prevent other Bots and Discord's System stuff from triggering this Bot
-    if ( message.author.bot || message.system || message.author.system ) { return; }
+    if ( message.author.bot || message.system || message.author.system )
+    {
+        if ( message.channel.id === CONFIG.Dr1fterXSocialChannel && message.author.id === CONFIG.St1gBotUserID ) { await AntiSt1gBotSpam.main(message); } // Anti St1gBot Spam Module
+        return;
+    }
 
     // Ignore DM Messages
     if ( message.channel instanceof Discord.DMChannel ) { return; }
@@ -182,7 +186,6 @@ client.on('messageCreate', async (message) => {
     if ( textCommandSuccess === false )
     {
         // No command prefix detected
-        if ( message.channel.id === CONFIG.Dr1fterXSocialChannel && message.author.id === CONFIG.St1gBotUserID ) { await AntiSt1gBotSpam.main(message); } // Anti St1gBot Spam Module
         if ( UTILITY.messageLinkRegex.test(message.content) ) { await AutoQuote.main(message); } // Auto Quote Module
         return;
     }
