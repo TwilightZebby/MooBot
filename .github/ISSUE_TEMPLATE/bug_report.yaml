@@ -1,0 +1,41 @@
+name: Bug Report
+description: Template for reporting Bugs or Issues found with MooBot
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: textarea
+    id: bug-summary
+    attributes:
+      label: Description of Bug
+      description: >-
+        What is the bug or issue you are experiencing with MooBot? Please ensure
+        to be clear yet concise. 
+    validations:
+      required: true
+  - type: textarea
+    id: bug-repro-steps
+    attributes:
+      label: Reproduction Steps
+      description: What are the steps to reproduce the issue?
+    validations:
+      required: true
+  - type: textarea
+    id: bug-expected-result
+    attributes:
+      label: Expected Behaviour
+      description: What would you have expected to happen, should this issue not exist?
+    validations:
+      required: true
+  - type: textarea
+    id: bug-additional-context
+    attributes:
+      label: Additional Context
+      description: >-
+        Is there any additional information or screenshots/video clips that may
+        help to identify and/or resolve this issue?
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://www.issue-forms-creator.app/)
