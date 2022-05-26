@@ -15,5 +15,6 @@ config.js
 /jsonFiles/userReturnMessages.json
 
 /textCommands/shutdown.js
+/textCommands/zeblog.js
 
 /buttons/shutdown.js
