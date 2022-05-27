@@ -140,6 +140,22 @@ module.exports = {
              * @type {Discord.MessageButton}
              */
             INFO_MEMBER_ROLES: new Discord.MessageButton().setLabel(`Roles`).setStyle('PRIMARY').setEmoji('<:Role:961186488551342150>'),
+            /** Button for approving a Guild for the Bot
+             * @type {Discord.MessageButton}
+             */
+            APPROVE_GUILD_JOIN: new Discord.MessageButton().setLabel(`Approve`).setStyle('SUCCESS'),
+            /** Button for rejecting a Guild for the Bot
+             * @type {Discord.MessageButton}
+             */
+            REJECT_GUILD_JOIN: new Discord.MessageButton().setLabel(`Reject`).setStyle('DANGER'),
+            /** Button for after approving a joined Guild
+             * @type {Discord.MessageButton}
+             */
+            GUILD_APPROVED: new Discord.MessageButton().setLabel(`Approved`).setStyle('SUCCESS').setDisabled(true).setCustomId("approved"),
+             /** Button for after rejecting a joined Guild
+              * @type {Discord.MessageButton}
+              */
+            GUILD_REJECTED: new Discord.MessageButton().setLabel(`Rejected`).setStyle('DANGER').setDisabled(true).setCustomId("rejected")
         }
     }
 }

@@ -354,6 +354,42 @@ client.on('messageDelete', (message) => {
 
 
 
+
+
+/******************************************************************************* */
+// DISCORD - GUILD CREATE EVENT (joined a Guild)
+const GuildLogger = require('./modules/guildLoggerModule.js');
+
+client.on('guildCreate', async (guild) => {
+    return await GuildLogger.onJoin(guild);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /******************************************************************************* */
 // STATUSPAGE - ON STATUS UPDATE
 
