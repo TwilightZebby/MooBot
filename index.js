@@ -396,14 +396,14 @@ client.on('guildCreate', async (guild) => {
 DiscordStatus.on('incident_update', async (incident) => {
     // Ensure we can actually access/send messages into the Discord Guild
     // ...So that we don't crash Bot if a Discord Outage affects sending messages!
-    let discordGuild = await client.guilds.fetch(CONFIG.ErrorLogGuildID);
+    let discordGuild = await client.guilds.fetch(CONFIG.DiscordStatusLoggingGuild);
     
     if ( !discordGuild.available ) { return; }
 
 
     // Guild is available, thus fetch Channel for later
     /** @type {Discord.GuildTextBasedChannel} */
-    let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
+    let discordChannel = await discordGuild.channels.fetch(CONFIG.DiscordStatusLoggingChannel);
 
     // So that we know if we need to send a new message or update an existing one
     let existingUpdate = client.statusUpdates.get(incident.id);
