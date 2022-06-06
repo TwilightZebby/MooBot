@@ -1,5 +1,7 @@
 ↖ *Want to jump to a specific section/question? Use the navigation menu!* (Which doesn't seem to exist on the GitHub Mobile App 😅)
 
+⚠ **This README File is currently in the process of being rewritten. If you want to see the old version, please see the `main` branch by [clicking here](https://github.com/TwilightZebby/MooBot/tree/main#moobot).**
+
 # MooBot
 A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
 
