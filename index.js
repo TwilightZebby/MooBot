@@ -167,7 +167,11 @@ client.on('messageCreate', async (message) => {
     if ( message.partial ) { return; }
 
     // Prevent other Bots and Discord's System stuff from triggering this Bot
-    if ( message.author.bot || message.system || message.author.system ) { return; }
+    if ( message.author.bot || message.system || message.author.system )
+    {
+        if ( message.channel.id === CONFIG.Dr1fterXSocialChannel && message.author.id === CONFIG.St1gBotUserID ) { await AntiSt1gBotSpam.main(message); } // Anti St1gBot Spam Module
+        return;
+    }
 
     // Ignore DM Messages
     if ( message.channel instanceof Discord.DMChannel ) { return; }
@@ -182,7 +186,6 @@ client.on('messageCreate', async (message) => {
     if ( textCommandSuccess === false )
     {
         // No command prefix detected
-        if ( message.channel.id === CONFIG.Dr1fterXSocialChannel && message.author.id === CONFIG.St1gBotUserID ) { await AntiSt1gBotSpam.main(message); } // Anti St1gBot Spam Module
         if ( UTILITY.messageLinkRegex.test(message.content) ) { await AutoQuote.main(message); } // Auto Quote Module
         return;
     }
@@ -351,20 +354,56 @@ client.on('messageDelete', (message) => {
 
 
 
+
+
+/******************************************************************************* */
+// DISCORD - GUILD CREATE EVENT (joined a Guild)
+const GuildLogger = require('./modules/guildLoggerModule.js');
+
+client.on('guildCreate', async (guild) => {
+    return await GuildLogger.onJoin(guild);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /******************************************************************************* */
 // STATUSPAGE - ON STATUS UPDATE
 
 DiscordStatus.on('incident_update', async (incident) => {
     // Ensure we can actually access/send messages into the Discord Guild
     // ...So that we don't crash Bot if a Discord Outage affects sending messages!
-    let discordGuild = await client.guilds.fetch(CONFIG.ErrorLogGuildID);
+    let discordGuild = await client.guilds.fetch(CONFIG.DiscordStatusLoggingGuild);
     
     if ( !discordGuild.available ) { return; }
 
 
     // Guild is available, thus fetch Channel for later
     /** @type {Discord.GuildTextBasedChannel} */
-    let discordChannel = await discordGuild.channels.fetch(CONFIG.ErrorLogChannelID);
+    let discordChannel = await discordGuild.channels.fetch(CONFIG.DiscordStatusLoggingChannel);
 
     // So that we know if we need to send a new message or update an existing one
     let existingUpdate = client.statusUpdates.get(incident.id);

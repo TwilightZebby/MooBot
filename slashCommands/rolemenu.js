@@ -64,6 +64,17 @@ module.exports = {
      */
     async execute(slashCommand)
     {
+        // Prevent usage in TiV and Announcement Channels
+        if ( slashCommand.channel instanceof Discord.VoiceChannel )
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_NO_TIV.replace("{{commandName}}", slashCommand.commandName), ephemeral: true });
+        }
+
+        if ( slashCommand.channel instanceof Discord.NewsChannel )
+        {
+            return await slashCommand.reply({ content: `Sorry, but this Slash Command cannot be used in Announcement Channels.`, ephemeral: true });
+        }
+
         // Check User has MANAGE_ROLES Permission
         if ( !slashCommand.member.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES, true) )
         {

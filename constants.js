@@ -25,12 +25,14 @@ module.exports = {
         TEXT_COMMAND_COOLDOWN: `Please wait {{commandCooldown}} before using the **{{commandName}}** Command again.`,
         TEXT_COMMAND_GENERIC_FAILED: `Sorry, but there was a problem trying to run the **{{commandName}}** Command. Please try again in a few moments.`,
         TEXT_COMMAND_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to run the **{{commandName}}** Command. Please try again in a few moments.\nIf you continue to see this error, please contact TwilightZebby#1955`,
+        TEXT_COMMAND_NO_TIV: `Sorry, but **{{commandName}}** cannot be used inside a Voice Channel's Text Chat.`,
 
         SLASH_COMMAND_GENERIC_FAILED: `Sorry, but there was a problem trying to run the **{{commandName}}** Slash Command.`,
         SLASH_COMMAND_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to run the **{{commandName}}** Slash Command.\nIf you continue to see this error, please contact TwilightZebby#1955`,
         SLASH_COMMAND_DMS_ONLY: `Sorry, but this Slash Command can only be used in DMs with me.`,
         SLASH_COMMAND_GUILDS_ONLY: `Sorry, but this Slash Command can only be used in Servers, not in DMs with me.`,
         SLASH_COMMAND_COOLDOWN: `Please wait {{commandCooldown}} before using the **{{commandName}}** Slash Command again.`,
+        SLASH_COMMAND_NO_TIV: `Sorry, but **{{commandName}}** cannot be used inside a Voice Channel's Text Chat.`,
 
         CONTEXT_COMMAND_GENERIC_FAILED: `Sorry, but there was a problem trying to run the **{{commandName}}** Context Command.`,
         CONTEXT_COMMAND_GENERIC_FAILED_RARE: `Sorry, but there was a problem trying to run the **{{commandName}}** Context Command.\nIf you continue to see this error, please contact TwilightZebby#1955`,
@@ -140,6 +142,22 @@ module.exports = {
              * @type {Discord.MessageButton}
              */
             INFO_MEMBER_ROLES: new Discord.MessageButton().setLabel(`Roles`).setStyle('PRIMARY').setEmoji('<:Role:961186488551342150>'),
+            /** Button for approving a Guild for the Bot
+             * @type {Discord.MessageButton}
+             */
+            APPROVE_GUILD_JOIN: new Discord.MessageButton().setLabel(`Approve`).setStyle('SUCCESS'),
+            /** Button for rejecting a Guild for the Bot
+             * @type {Discord.MessageButton}
+             */
+            REJECT_GUILD_JOIN: new Discord.MessageButton().setLabel(`Reject`).setStyle('DANGER'),
+            /** Button for after approving a joined Guild
+             * @type {Discord.MessageButton}
+             */
+            GUILD_APPROVED: new Discord.MessageButton().setLabel(`Approved`).setStyle('SUCCESS').setDisabled(true).setCustomId("approved"),
+             /** Button for after rejecting a joined Guild
+              * @type {Discord.MessageButton}
+              */
+            GUILD_REJECTED: new Discord.MessageButton().setLabel(`Rejected`).setStyle('DANGER').setDisabled(true).setCustomId("rejected")
         }
     }
 }

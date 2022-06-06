@@ -57,6 +57,12 @@ module.exports = {
             return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_GUILDS_ONLY });
         }
 
+        // Block usage in TiV
+        if ( slashCommand.channel instanceof Discord.VoiceChannel )
+        {
+            return await slashCommand.reply({ content: CONSTANTS.errorMessages.SLASH_COMMAND_NO_TIV.replace("{{commandName}}", slashCommand.commandName), ephemeral: true });
+        }
+
 
 
         // Ensure there isn't already an existing, on-going, Potato game in this channel

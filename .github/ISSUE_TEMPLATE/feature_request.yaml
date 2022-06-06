@@ -1,0 +1,35 @@
+name: Feature Request
+description: Template for requesting or suggesting new features, changes, or removals.
+title: '[Request]: '
+labels:
+  - suggestion
+body:
+  - type: textarea
+    id: fq-summary
+    attributes:
+      label: Description of Suggestion
+      description: >-
+        What do you want added, changed, or removed? Please describe and/or
+        explain clearly yet concise, and include why you would like to see this
+        suggestion approved.
+    validations:
+      required: true
+  - type: textarea
+    id: fq-alternatives
+    attributes:
+      label: Alternatives Considered
+      description: >-
+        Are there any alternatives to or for this suggestion that you have
+        considered?
+  - type: textarea
+    id: fq-additional-context
+    attributes:
+      label: Additional Context
+      description: >-
+        Is there any additional information or images/video clips that may help
+        to describe your suggestion?
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://www.issue-forms-creator.app/)
