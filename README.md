@@ -147,5 +147,5 @@ Brings up information about the Server this Sub-Command was used in, including:
 - The number of Custom Emojis, Stickers, and Roles
 - The *approximate* total number of Server Members, and how many are currently online
 - Current status of Security & Moderation Server Settings (as found in `Server Settings > Moderation`, or `Server Settings > Overview`)
-- Current NSFW Status, (currently something only force-set by Discord themselves?)
+- Current NSFW Status, ([See this Discord Support Article for more info](https://support.discord.com/hc/en-us/articles/1500005389362-Age-restricted-Server-Designation))
 - The Feature Flags the Server has ([See more info about Feature Flags here](https://github.com/Delitefully/DiscordLists#guild-feature-glossary))
