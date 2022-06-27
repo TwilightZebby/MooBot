@@ -121,7 +121,7 @@ module.exports = {
         // Check given Channel, as an edge case
         if ( !(argumentChannel instanceof Discord.VoiceChannel) )
         {
-            await slashCommand.reply({ content: `That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel (not Stage, Text, Announcement, Store, Thread, Category, Directory, or DM Channel)`, ephemeral: true });
+            await slashCommand.reply({ content: `That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel (not Stage, Text, Announcement, Thread, Category, Directory, or DM Channel)`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
         }

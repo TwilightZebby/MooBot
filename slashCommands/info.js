@@ -265,7 +265,7 @@ module.exports = {
     async serverInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
 
         // Fetch Guild
         const currentGuild = await slashCommand.guild.fetch();
@@ -377,7 +377,7 @@ module.exports = {
     async inviteInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
 
         // Grab given code
         const inviteCode = slashCommand.options.getString("code", true);
@@ -455,7 +455,7 @@ module.exports = {
     async userInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
 
         /** @type {Discord.GuildMember} */
         let targetMember;
@@ -541,7 +541,7 @@ module.exports = {
     async botInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
 
         // Fetch current Uptime
         const currentMillisecondsUptime = client.millisecondsUptime;

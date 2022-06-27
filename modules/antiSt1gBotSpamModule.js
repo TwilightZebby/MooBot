@@ -23,7 +23,17 @@ module.exports = {
         if ( !message.channel.permissionsFor(message.guild.me).has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) ) { return; }
 
         // If its the Birthday Role message, don't delete!
-        if ( message.embeds?.shift().fields.shift().name.toLowerCase().includes("birthday") ) { return; }
+        // This is only a silly message because Dr1fterX is inconsistent with his Bot's auto-posted embeds :c
+        if ( message.embeds )
+        {
+            if ( message.embeds[0]?.fields )
+            {
+                if ( message.embeds[0]?.fields[0]?.name )
+                {
+                    if ( message.embeds?.shift().fields?.shift().name.toLowerCase().includes("birthday") ) { return; }
+                }
+            }
+        }
 
         // Check to see if St1gBot is spamming
         let messageCollection = await message.channel.messages.fetch({ limit: 25 });
