@@ -80,7 +80,7 @@ module.exports = {
         {
             // Convert the Temperature
             let convertedTemperature = this.convert(temperatureSearch.shift());
-            await contextCommand.reply({ content: `[Jump to source Message](<${sourceMessage.url}>)\nHere is your converted temperature:\n\n• ${convertedTemperature}` });
+            await contextCommand.reply({ content: `[Jump to source Message](<${sourceMessage.url}>)\nHere is your converted temperature:\n\n• ${convertedTemperature}`, ephemeral: true });
             delete convertedTemperature, temperatureSearch;
             return;
         }
@@ -107,7 +107,7 @@ module.exports = {
 
 
             // Send message
-            await contextCommand.editReply({ content: `[Jump to source Message](<${sourceMessage.url}>)\nHere is your converted temperatures:\n\n${convertedTemperatures.join(`\n`)}` });
+            await contextCommand.editReply({ content: `[Jump to source Message](<${sourceMessage.url}>)\nHere is your converted temperatures:\n\n${convertedTemperatures.join(`\n`)}`, ephemeral: true });
             delete convertedTemperatures, temperatureSearch;
             return;
         }
