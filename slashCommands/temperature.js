@@ -4,9 +4,6 @@ const Discord = require('discord.js');
 const { client } = require('../constants.js');
 const CONSTANTS = require('../constants.js');
 
-// Button to display publicly
-const DISPLAY_PUBLIC_BUTTON = new Discord.MessageActionRow().addComponents( new Discord.MessageButton().setCustomId(`publictemp`).setLabel("Display Publicly").setStyle('PRIMARY') );
-
 module.exports = {
     // Slash Command's Name, MUST BE LOWERCASE AND NO SPACES
     name: 'temperature',
@@ -79,7 +76,7 @@ module.exports = {
                 let cToF = (originalTempValue * 9/5) + 32;
                 let cToK = originalTempValue + 273.15;
                 if ( cToK < 0 ) { return await slashCommand.reply({ content: `⚠ ${originalTempValue}C is a temperature that does not exist! (It's below Absolute Zero)`, ephemeral: true }); }
-                await slashCommand.reply({ content: `${originalTempValue.toFixed(0)}C is about ${cToF.toFixed(0)}F or ${cToK.toFixed(0)}K`, ephemeral: true, components: [DISPLAY_PUBLIC_BUTTON] });
+                await slashCommand.reply({ content: `${originalTempValue.toFixed(0)}C is about ${cToF.toFixed(0)}F or ${cToK.toFixed(0)}K`, ephemeral: true });
                 break;
 
             case "f":
@@ -87,7 +84,7 @@ module.exports = {
                 let fToC = (originalTempValue - 32) * 5/9;
                 let fToK = (originalTempValue - 32) * 5/9 + 273.15;
                 if ( fToK < 0 ) { return await slashCommand.reply({ content: `⚠ ${originalTempValue}F is a temperature that does not exist! (It's below Absolute Zero)`, ephemeral: true }); }
-                await slashCommand.reply({ content: `${originalTempValue.toFixed(0)}F is about ${fToC.toFixed(0)}C or ${fToK.toFixed(0)}K`, ephemeral: true, components: [DISPLAY_PUBLIC_BUTTON] });
+                await slashCommand.reply({ content: `${originalTempValue.toFixed(0)}F is about ${fToC.toFixed(0)}C or ${fToK.toFixed(0)}K`, ephemeral: true });
                 break;
 
             case "k":
@@ -95,7 +92,7 @@ module.exports = {
                 let kToC = originalTempValue - 273.15;
                 let kToF = (originalTempValue - 273.15) * 9/5 + 32;
                 if ( originalTempValue < 0 ) { return await slashCommand.reply({ content: `⚠ ${originalTempValue}K is a temperature that does not exist! (It's below Absolute Zero)`, ephemeral: true }); }
-                await slashCommand.reply({ content: `${originalTempValue.toFixed(0)}K is about ${kToC.toFixed(0)}C or ${kToF.toFixed(0)}F`, ephemeral: true, components: [DISPLAY_PUBLIC_BUTTON] });
+                await slashCommand.reply({ content: `${originalTempValue.toFixed(0)}K is about ${kToC.toFixed(0)}C or ${kToF.toFixed(0)}F`, ephemeral: true });
                 break;
 
             default:
