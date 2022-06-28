@@ -30,6 +30,7 @@ client.selectCooldowns = new Discord.Collection();
 client.potato = new Discord.Collection();
 client.roleMenu = new Discord.Collection();
 client.statusUpdates = new Discord.Collection();
+client.st1gbotgrace = false;
 
 client.millisecondsUptime = null;
 
@@ -187,6 +188,12 @@ client.on('messageCreate', async (message) => {
     {
         // No command prefix detected
         if ( UTILITY.messageLinkRegex.test(message.content) ) { await AutoQuote.main(message); } // Auto Quote Module
+        // Exempt !say usage from anti-St1gBot spam module
+        if ( message.author.id === CONFIG.Dr1fterXUserID && message.content.toLowerCase().startsWith("!say") )
+        { 
+            client.st1gbotgrace = true;
+            setTimeout(() => { client.st1gbotgrace = false; }, 120000);
+        }
         return;
     }
     else if ( textCommandSuccess !== false && textCommandSuccess !== true )
