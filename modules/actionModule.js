@@ -36,6 +36,8 @@ module.exports = {
         let personArgument = slashCommand.options.getMentionable("person", true);
         let gifArgument = slashCommand.options.get("gif");
         let gifOption = gifArgument == null ? undefined : gifArgument.value;
+        let returnButtonArgument = slashCommand.options.get("button");
+        let returnButtonOption = returnButtonArgument == null ? undefined : returnButtonArgument.value;
         let reasonArgument = slashCommand.options.get("reason");
         let reasonOption = reasonArgument == null ? undefined : reasonArgument.value;
 
@@ -43,7 +45,7 @@ module.exports = {
         let actionReturnActionRow = new Discord.MessageActionRow().addComponents(
             new Discord.MessageButton().setStyle('PRIMARY').setCustomId(`areturn_${slashCommand.commandName}_${slashCommand.user.id}_${personArgument.id}`).setLabel(`Return ${slashCommand.commandName}`)
         );
-        let displayButton = false; // For knowing if the Button should be included or not, since it only wants to appear when Target is a User, not a Role
+        let displayButton = false; // For knowing if the Button should be included or not, since it only wants to appear when Target is a User, not a Role - and togglable by Author
 
         // For the /pummel command, since that will use a GIF by default
         if ( slashCommand.commandName === "pummel" ) { gifOption = true; }
@@ -159,10 +161,12 @@ module.exports = {
 
 
         // Do NOT show the Return To Sender Button for these CMDs
-        if ( ["sleep"].includes(slashCommand.commandName) )
-        {
-            displayButton = false;
-        }
+        if ( ["sleep"].includes(slashCommand.commandName) ) { displayButton = false; }
+
+        // Hide Return to Sender Button if Author says so
+        if ( returnButtonOption === false ) { displayButton = false; }
+
+
 
 
         // Check GIF argument

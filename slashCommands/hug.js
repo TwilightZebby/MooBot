@@ -45,6 +45,12 @@ module.exports = {
                 required: false
             },
             {
+                type: "BOOLEAN",
+                name: "button",
+                description: "Set if the \"Return Action\" Button should be displayed (Default: true)",
+                required: false
+            },
+            {
                 type: "STRING",
                 name: "reason",
                 description: "A custom message to add onto the end of the built-in messages",
