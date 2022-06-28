@@ -41,7 +41,7 @@ module.exports = {
             /* {
                 type: "BOOLEAN",
                 name: "gif",
-                description: "Set to False to hide the GIF",
+                description: "Set if a random GIF should be displayed (default: true)",
                 required: false
             }, */
             {
