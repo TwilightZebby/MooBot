@@ -18,6 +18,9 @@ module.exports = {
         // Not returning errors to the User here since
         // that would result in possible chat spam.
         // ****************************************
+
+        // Exempt when grace is active
+        if ( client.st1gbotgrace === true ) { return; }
         
         // Error check for MANAGE_MESSAGES Permission
         if ( !message.channel.permissionsFor(message.guild.me).has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) ) { return; }

@@ -49,7 +49,32 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 >
 > As of April 2022, TwilightZebby is allowing this MooBot to be added to other Servers, with limitations (won't add to your Server if I don't know you personally, and won't make a permanent public invite link for this Bot - you'd have to ask TwilightZebby directly for the Bot's invite).
 
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 ---
 # Features list
 
@@ -63,6 +88,7 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| button   | Boolean      | Should the "Return Action" button be included?          |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### `/boop [target] (gif) (reason)`
@@ -74,6 +100,7 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| button   | Boolean      | Should the "Return Action" button be included?          |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### `/headpat [target] (gif) (reason)`
@@ -85,6 +112,7 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| button   | Boolean      | Should the "Return Action" button be included?          |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### `/hug [target] (gif) (reason)`
@@ -96,6 +124,7 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| button   | Boolean      | Should the "Return Action" button be included?          |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### `/kiss [target] (gif) (reason)`
@@ -107,6 +136,7 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| button   | Boolean      | Should the "Return Action" button be included?          |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### `/pummel [target] (reason)`
@@ -128,6 +158,7 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|--------------|---------------------------------------------------------|----------|
 | target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
 | gif      | Boolean      | Should a random GIF be included in the response?        |          |
+| button   | Boolean      | Should the "Return Action" button be included?          |          |
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### `/sleep [target] (gif) (reason)`
@@ -142,9 +173,35 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 | reason   | String       | A custom message to attach to the *end* of the response |          |
 
 ### Other Action Command features
-- All the Action Slash Commands, with the exemption of `/sleep` and `/pummel`, include a "Return x" Button alongside their responses, allowing the specified User (NOT Role or Everyone) Target to be able to return the Action within a short (<2 minute) window.
+- All the Action Slash Commands, with the exemption of `/sleep` and `/pummel`, include a "Return Action" Button alongside their responses, allowing the specified User (NOT Role or Everyone) Target to be able to return the Action within a short (<2 minute) window.
+    - This Button does not appear if the Target is a Role or everyone, or a GIF is included; this button can be disabled using the `button` option in the Commands
 - All the Action Slash Commands' responses are set to *suppress* all `@mentions`, as a safety measure against accidental or malicious pinging
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 
 ## General Slash Commands
 ### `/start [channel] [activity]`
@@ -161,7 +218,32 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 - ℹ *All this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc).*
 - ℹ *Please note that some Activities are locked behind Server Boost Tier 1, as enforced by Discord's API. There is nothing I can do about this.*
 - ℹ *If you want to help Discord test their Social Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 ### `/potato`
 *Starts a game of Hot Potato in the current Text or Thread Channel.*
 
@@ -176,7 +258,32 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 - The Hot Potato game lasts a random amount of time, maxing out at 5 minutes
 - Once the game ends (the Potato 'explodes'), the User last holding the Potato is dubbed the 'loser' of the game.
 - Only one Hot Potato game can run at a time per Channel.
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 ### `/rolemenu`
 *Used to either create new, or edit existing, Role Menus*
 
@@ -198,7 +305,32 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 | Argument | Type          | Description                                                          | Required |
 |----------|---------------|----------------------------------------------------------------------|----------|
 | message  | String        | The ID of the Message containing the existing Menu to be edited      | ✔️      |
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 ### `/temperature [value] [scale]`
 *A Slash Command version of the `Convert Temperature` Message Command - converts the given temperature between degrees C, F, and K*
 
@@ -208,7 +340,32 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 |----------|---------------|----------------------------------------------------------------------|----------|
 | value    | Integer       | The numerical value of the original temperature to convert           | ✔️      |
 | scale    | String        | The scale the original temperature is using (either C, F, or K)      | ✔️      |
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 ### `/rule [rule]`
 *Used to fetch and display a specific Server Rule*
 
@@ -217,7 +374,32 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 | Argument | Type          | Description                                                                         | Required |
 |----------|---------------|-------------------------------------------------------------------------------------|----------|
 | rule     | String        | The Rule to fetch. Uses Autocomplete to support either Rule number or keywords      | ✔️      |
+<!-- Divider
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 ### `/info`
 *Used to display basic information about either a User, an Invite Link, the current Server, or MooBot itself; depending on the subcommand used*
 
@@ -258,13 +440,32 @@ This limitation in regards to the `Use External Emojis` Permission is on Discord
 *Displays basic information about MooBot itself*
 
 ![Screenshot of the info bot sub command's response in a Discord Chat](https://i.imgur.com/Zngxf0E.png)
+<!-- Divider
 
-### `/tone [indicator]`
-*Displays what the given Tone Indicator means (example: `/s` denotes sarcasm)*
 
-| Argument       | Type          | Description                               | Required |
-|----------------|---------------|-------------------------------------------|----------|
-| indicator      | String        | A tone indicator. Uses Autocomplete.      | ✔️      |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
 
 
 ## Context Commands

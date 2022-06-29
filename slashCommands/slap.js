@@ -41,7 +41,13 @@ module.exports = {
             {
                 type: "BOOLEAN",
                 name: "gif",
-                description: "True to display a GIF, otherwise leave blank or use False",
+                description: "Set if a random GIF should be displayed (default: false)",
+                required: false
+            },
+            {
+                type: "BOOLEAN",
+                name: "button",
+                description: "Set if the \"Return Action\" Button should be displayed (Default: true)",
                 required: false
             },
             {
