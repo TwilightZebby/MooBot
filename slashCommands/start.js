@@ -12,11 +12,11 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("snacks", "879863976006127627").set("spell", "852509694341283871")
 .set("checkers", "832013003968348200").set("blazing", "832025144389533716")
 .set("putt", "945737671223947305").set("land", "903769130790969345")
-.set("bobble", "947957217959759964");
+.set("bobble", "947957217959759964").set("ask", "976052223358406656");
 
 // Boost Requirements for Activities
 const NoBoostRequirement = [ "youtube", "sketch", "snacks" ];
-const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble" ];
+const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble", "ask" ];
 const T2BoostRequirement = [  ];
 const T3BoostRequirement = [  ];
 
@@ -33,7 +33,8 @@ const ValueToName = {
     "blazing": "Blazing 8s",
     "putt": "Putt Party",
     "land": "Land-io",
-    "bobble": "Bobble League"
+    "bobble": "Bobble League",
+    "ask": "Ask Away"
 };
 
 
@@ -88,7 +89,8 @@ module.exports = {
                     { name: "Blazing 8s", value: "blazing" }, // Boost T1
                     { name: "Putt Party", value: "putt" }, // Boost T1
                     { name: "Land-io", value: "land" }, // Boost T1
-                    { name: "Bobble League", value: "bobble" } // Boost T1
+                    { name: "Bobble League", value: "bobble" }, // Boost T1
+                    { name: "Ask Away", value: "ask" } // Boost T1
                 ]
             }
         ];
