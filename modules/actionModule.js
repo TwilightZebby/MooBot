@@ -189,7 +189,8 @@ module.exports = {
                     
                     // Auto remove Button after 5 minutes, just to keep chats clean :)
                     setTimeout(async () => {
-                        return await sentActionMessage.edit({ components: [] });
+                        return await slashCommand.editReply({ components: [] });
+                        //return await sentActionMessage.edit({ components: [] });
                     }, 60000);
                 }
                 else { await slashCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } }); }
