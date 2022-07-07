@@ -48,7 +48,7 @@ module.exports = {
         let displayButton = false; // For knowing if the Button should be included or not, since it only wants to appear when Target is a User, not a Role - and togglable by Author
 
         // For the /pummel command, since that will use a GIF by default
-        if ( slashCommand.commandName === "pummel" ) { gifOption = true; }
+        if ( slashCommand.commandName === "pummel" && gifArgument == null ) { gifOption = true; }
 
 
         let displayMessage = "";
