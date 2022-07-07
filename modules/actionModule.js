@@ -48,7 +48,7 @@ module.exports = {
         let displayButton = false; // For knowing if the Button should be included or not, since it only wants to appear when Target is a User, not a Role - and togglable by Author
 
         // For the /pummel command, since that will use a GIF by default
-        if ( slashCommand.commandName === "pummel" ) { gifOption = true; }
+        if ( slashCommand.commandName === "pummel" && gifArgument == null ) { gifOption = true; }
 
 
         let displayMessage = "";
@@ -189,7 +189,8 @@ module.exports = {
                     
                     // Auto remove Button after 5 minutes, just to keep chats clean :)
                     setTimeout(async () => {
-                        return await sentActionMessage.edit({ components: [] });
+                        return await slashCommand.editReply({ components: [] });
+                        //return await sentActionMessage.edit({ components: [] });
                     }, 60000);
                 }
                 else { await slashCommand.reply({ content: displayMessage, allowedMentions: { parse: [] } }); }
