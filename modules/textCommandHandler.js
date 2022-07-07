@@ -82,6 +82,7 @@ module.exports = {
                         {
                             return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_ADMIN, allowedMentions: { parse: [], repliedUser: false } });
                         }
+                        break;
 
                     case "moderator":
                         // Those with Moderator-level permissions, Admin Permission, Server Owners, and TwilightZebby can use
@@ -89,6 +90,7 @@ module.exports = {
                         {
                             return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_MODERATOR, allowedMentions: { parse: [], repliedUser: false } });
                         }
+                        break;
 
                     case "private":
                         // Check per-Command per-User Allow List to see if User has been granted permission to use this Command
@@ -96,6 +98,7 @@ module.exports = {
                         {
                             return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_GENERIC, allowedMentions: { parse: [], repliedUser: false } });
                         }
+                        break;
 
                     case "everyone":
                     default:
