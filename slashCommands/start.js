@@ -15,8 +15,8 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("bobble", "947957217959759964").set("ask", "976052223358406656");
 
 // Boost Requirements for Activities
-const NoBoostRequirement = [ "youtube", "sketch", "snacks" ];
-const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble", "ask" ];
+const NoBoostRequirement = [ "youtube", "sketch", "snacks", "ask" ];
+const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble" ];
 const T2BoostRequirement = [  ];
 const T3BoostRequirement = [  ];
 
