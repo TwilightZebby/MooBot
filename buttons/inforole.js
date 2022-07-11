@@ -27,10 +27,13 @@ module.exports = {
         const targetMemberID = buttonInteraction.customId.slice(9);
         const targetMember = await buttonInteraction.guild.members.fetch(targetMemberID);
         const targetMemberRoles = targetMember.roles.cache.filter(role => role.id !== targetMember.guild.id); // Filter out @everyone
+
+        // Sort Roles by position
+        const sortedMemberRoles = targetMemberRoles.sort((roleA, roleB) => roleB.rawPosition - roleA.rawPosition);
         
         // Role Strings
         let roleStrings = [];
-        targetMemberRoles.forEach(role => roleStrings.push(`<@&${role.id}>`));
+        sortedMemberRoles.forEach(role => roleStrings.push(`<@&${role.id}>`));
 
         // Assemble Role information
         const memberRoleEmbed = new Discord.MessageEmbed().setColor(targetMember.displayHexColor)
