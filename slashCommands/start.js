@@ -81,6 +81,7 @@ module.exports = {
                     { name: "YouTube Together", value: "youtube" }, // No Boost Requirement
                     { name: "Sketch Heads", value: "sketch" }, // No Boost Requirement
                     { name: "Word Snacks", value: "snacks" }, // No Boost Requirement
+                    { name: "Ask Away", value: "ask" }, // No Boost Requirement
                     { name: "Poker Night", value: "poker" }, // Boost T1
                     { name: "Chess in the Park", value: "chess" }, // Boost T1
                     { name: "Letter League", value: "letter" }, // Boost T1
@@ -90,7 +91,6 @@ module.exports = {
                     { name: "Putt Party", value: "putt" }, // Boost T1
                     { name: "Land-io", value: "land" }, // Boost T1
                     { name: "Bobble League", value: "bobble" }, // Boost T1
-                    { name: "Ask Away", value: "ask" } // Boost T1
                 ]
             }
         ];
