@@ -11,7 +11,7 @@
   },
   "name": "moobot",
   "description": "A private Discord bot made by TwilightZebby",
-  "version": "5.13.0",
+  "version": "5.13.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

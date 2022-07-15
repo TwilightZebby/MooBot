@@ -15,8 +15,8 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("bobble", "947957217959759964").set("ask", "976052223358406656");
 
 // Boost Requirements for Activities
-const NoBoostRequirement = [ "youtube", "sketch", "snacks" ];
-const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble", "ask" ];
+const NoBoostRequirement = [ "youtube", "sketch", "snacks", "ask" ];
+const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble" ];
 const T2BoostRequirement = [  ];
 const T3BoostRequirement = [  ];
 
@@ -81,6 +81,7 @@ module.exports = {
                     { name: "YouTube Together", value: "youtube" }, // No Boost Requirement
                     { name: "Sketch Heads", value: "sketch" }, // No Boost Requirement
                     { name: "Word Snacks", value: "snacks" }, // No Boost Requirement
+                    { name: "Ask Away", value: "ask" }, // No Boost Requirement
                     { name: "Poker Night", value: "poker" }, // Boost T1
                     { name: "Chess in the Park", value: "chess" }, // Boost T1
                     { name: "Letter League", value: "letter" }, // Boost T1
@@ -90,7 +91,6 @@ module.exports = {
                     { name: "Putt Party", value: "putt" }, // Boost T1
                     { name: "Land-io", value: "land" }, // Boost T1
                     { name: "Bobble League", value: "bobble" }, // Boost T1
-                    { name: "Ask Away", value: "ask" } // Boost T1
                 ]
             }
         ];

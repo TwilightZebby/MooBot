@@ -72,7 +72,11 @@ module.exports = {
 
             case "cancel":
                 // Cancels creation of Menu
-                client.roleMenu.clear();
+                client.roleMenu.delete(`originalResponse_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`createEmbed_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`createMenuButtons_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`createMenuRoleCache_${selectInteraction.guildId}`);
+                
                 await selectInteraction.update({ content: `Creation of new Menu has been cancelled. You may now dismiss or delete this message.`, embeds: [], components: [] });
                 break;
 
