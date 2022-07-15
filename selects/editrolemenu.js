@@ -72,7 +72,12 @@ module.exports = {
 
             case "cancel":
                 // Cancels Editing of Menu
-                client.roleMenu.clear();
+                client.roleMenu.delete(`originalEditResponse_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`editEmbed_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`editButtons_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`editRoles_${selectInteraction.guildId}`);
+                client.roleMenu.delete(`menuMessageID_${selectInteraction.guildId}`);
+                
                 await selectInteraction.update({ content: `Editing of existing Menu has been cancelled. You may now dismiss or delete this message.`, embeds: [], components: [] });
                 break;
 

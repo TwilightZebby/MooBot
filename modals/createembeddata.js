@@ -53,7 +53,7 @@ module.exports = {
         else { delete menuEmbed.color; }
 
         // Update Stored Embed
-        client.roleMenu.set("createEmbed", menuEmbed);
+        client.roleMenu.set(`createEmbed_${modalInteraction.guildId}`, menuEmbed);
 
         // Update Component to "no roles" one, if it was first Embed edit
         if ( modalInteraction.message.components[modalInteraction.message.components.length - 1].components[modalInteraction.message.components[modalInteraction.message.components.length - 1].components.length - 1].options.length === 2 )

@@ -23,7 +23,7 @@ module.exports = {
      */
     async execute(buttonInteraction)
     {
-        let roleCache = client.roleMenu.get("editRoles");
+        let roleCache = client.roleMenu.get(`editRoles_${buttonInteraction.guildId}`);
 
         // Fetch current details
         let roleID = buttonInteraction.customId.split("_").pop();
