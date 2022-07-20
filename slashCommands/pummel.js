@@ -48,6 +48,7 @@ module.exports = {
                 type: "STRING",
                 name: "reason",
                 description: "A custom message to add onto the end of the built-in messages",
+                max_length: 500,
                 required: false
             }
         ];

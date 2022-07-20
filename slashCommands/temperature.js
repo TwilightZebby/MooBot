@@ -35,6 +35,8 @@ module.exports = {
                 type: "INTEGER",
                 name: "value",
                 description: "The temperature value you want to convert",
+                min_value: -460,
+                max_value: 1000,
                 required: true
             },
             {

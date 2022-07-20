@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "bufferutil": "^4.0.6",
-    "discord.js": "^13.8.1",
+    "discord.js": "^13.9.0",
     "emoji-regex": "^10.0.0",
     "erlpack": "github:discord/erlpack",
     "node-fetch": "^2.6.7",
@@ -11,7 +11,7 @@
   },
   "name": "moobot",
   "description": "A private Discord bot made by TwilightZebby",
-  "version": "5.13.1",
+  "version": "5.14.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

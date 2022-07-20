@@ -194,6 +194,7 @@ module.exports = {
                         type: "STRING",
                         name: "code",
                         description: "The Discord Invite code (the bit after \"discord.gg/\")",
+                        max_length: 150,
                         required: true
                     }
                 ]
