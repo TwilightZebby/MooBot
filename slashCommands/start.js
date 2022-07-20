@@ -21,6 +21,9 @@ const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "b
 const T2BoostRequirement = [  ];
 const T3BoostRequirement = [  ];
 
+// iOS supported Activities
+const iosActivities = [ "land", "spell", "letter" ];
+
 // For mapping values back into Activity Names
 const ValueToName = {
     "youtube": "YouTube Together",
@@ -170,7 +173,7 @@ module.exports = {
         })
         // Send User the link
         .then(async (invite) => {
-            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes, and is only usable once per use of this command\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
+            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes, and is only usable once per use of this command\n${iosActivities.includes(argumentActivity) ? `- Currently, this Activity only works on Desktop, Browser, and iOS Discord. Sorry Android Users!` : `- Currently, this Activity only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`}`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
         });
