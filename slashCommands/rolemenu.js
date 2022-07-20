@@ -45,6 +45,7 @@ module.exports = {
                         type: "STRING",
                         name: "message",
                         description: "The ID of the Message containing an existing Menu",
+                        max_length: 20,
                         required: true
                     }
                 ]
