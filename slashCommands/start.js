@@ -12,13 +12,17 @@ const ActivityIDs = new Discord.Collection().set("poker", "755827207812677713")
 .set("snacks", "879863976006127627").set("spell", "852509694341283871")
 .set("checkers", "832013003968348200").set("blazing", "832025144389533716")
 .set("putt", "945737671223947305").set("land", "903769130790969345")
-.set("bobble", "947957217959759964").set("ask", "976052223358406656");
+.set("bobble", "947957217959759964").set("ask", "976052223358406656")
+.set("meme", "950505761862189096");
 
 // Boost Requirements for Activities
-const NoBoostRequirement = [ "youtube", "sketch", "snacks", "ask" ];
+const NoBoostRequirement = [ "youtube", "sketch", "snacks", "ask", "meme" ];
 const T1BoostRequirement = [ "poker", "chess", "letter", "spell", "checkers", "blazing", "putt", "land", "bobble" ];
 const T2BoostRequirement = [  ];
 const T3BoostRequirement = [  ];
+
+// iOS supported Activities
+const iosActivities = [ "land", "spell", "letter" ];
 
 // For mapping values back into Activity Names
 const ValueToName = {
@@ -34,7 +38,8 @@ const ValueToName = {
     "putt": "Putt Party",
     "land": "Land-io",
     "bobble": "Bobble League",
-    "ask": "Ask Away"
+    "ask": "Ask Away",
+    "meme": "Know What I Meme"
 };
 
 
@@ -82,6 +87,7 @@ module.exports = {
                     { name: "Sketch Heads", value: "sketch" }, // No Boost Requirement
                     { name: "Word Snacks", value: "snacks" }, // No Boost Requirement
                     { name: "Ask Away", value: "ask" }, // No Boost Requirement
+                    { name: "Know What I Meme", value: "meme" }, // No Boost Requirement
                     { name: "Poker Night", value: "poker" }, // Boost T1
                     { name: "Chess in the Park", value: "chess" }, // Boost T1
                     { name: "Letter League", value: "letter" }, // Boost T1
@@ -167,7 +173,7 @@ module.exports = {
         })
         // Send User the link
         .then(async (invite) => {
-            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes, and is only usable once per use of this command\n- Currently this only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`, ephemeral: true });
+            await slashCommand.reply({ content: `[Click here to start the **${ValueToName[argumentActivity]}** Activity inside the <#${argumentChannel.id}> Voice Channel](<https://discord.gg/${invite.code}>)\n\n__Notes:__\n- This will auto-join you to the Voice Channel if you aren't already inside it\n- This link will expire in 10 minutes, and is only usable once per use of this command\n${iosActivities.includes(argumentActivity) ? `- Currently, this Activity only works on Desktop, Browser, and iOS Discord. Sorry Android Users!` : `- Currently, this Activity only works on Desktop and Browser Discord, not Mobile. Sorry Mobile Users!`}`, ephemeral: true });
             delete argumentChannel, argumentActivity;
             return;
         });
