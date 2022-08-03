@@ -1,0 +1,434 @@
+{
+    "en-GB":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "en-US":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "bg":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "zh-CN":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "zh-TW":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "hr":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "cs":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "da":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "fi":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "fr":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "de":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "el":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "hi":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "hu":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "it":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "ja":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "ko":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "lt":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "no":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "pl":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "pt-BR":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "ro":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "ru":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "es-ES":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "sv-SE":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "th":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "tr":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "uk":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    },
+
+
+
+    "vi":
+    {
+        "REGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_SUCCESS_GUILD": "Successfully registered the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+        "REGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command.",
+        "REGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to register the {{COMMAND_NAME}} {{COMMAND_TYPE}} Command to the Guild with the ID of {{GUILD_ID}}",
+
+        "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
+        "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
+        "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+    }
+}
