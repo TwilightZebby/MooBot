@@ -9,7 +9,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -24,7 +26,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -39,7 +43,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -54,7 +60,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -69,7 +77,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -84,7 +94,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -99,7 +111,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -114,7 +128,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -129,7 +145,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -144,7 +162,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -159,7 +179,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -174,7 +196,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -189,7 +213,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -204,7 +230,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -219,7 +247,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -234,7 +264,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -249,7 +281,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -264,7 +298,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -279,7 +315,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -294,7 +332,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -309,7 +349,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -324,7 +366,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -339,7 +383,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -354,7 +400,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -369,7 +417,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -384,7 +434,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -399,7 +451,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -414,7 +468,9 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     },
 
 
@@ -429,6 +485,8 @@
         "UNREGISTER_COMMAND_SUCCESS_GLOBAL": "Successfully unregistered that App Command.",
         "UNREGISTER_COMMAND_SUCCESS_GUILD": "Successfully unregistered that App Command from the Guild with the ID of {{GUILD_ID}}",
         "UNREGISTER_COMMAND_FAIL_GLOBAL": "Something went wrong while attempting to unregister that App Command.",
-        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}"
+        "UNREGISTER_COMMAND_FAIL_GUILD": "Something went wrong while attempting to unregister that App Command from the Guild with the ID of {{GUILD_ID}}",
+
+        "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!"
     }
 }
