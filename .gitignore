@@ -2,4 +2,4 @@
 config.js
 /.vscode
 
-# /JsonFiles
+/JsonFiles/Hidden/

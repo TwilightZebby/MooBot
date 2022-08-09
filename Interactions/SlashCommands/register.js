@@ -97,15 +97,15 @@ module.exports = {
         {
             // Globally register
             return await DiscordClient.application.commands.create(FetchedCommandData)
-            .then(async () => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_SUCCESS_GLOBAL.replace("{{COMMAND_NAME}}", FetchedCommandData.Name).replace("{{COMMAND_TYPE}}", CommandType) }); })
-            .catch(async (err) => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_FAIL_GLOBAL.replace("{{COMMAND_NAME}}", FetchedCommandData.Name).replace("{{COMMAND_TYPE}}", CommandType) }); });
+            .then(async () => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_SUCCESS_GLOBAL.replace("{{COMMAND_NAME}}", fetchedCommand.Name).replace("{{COMMAND_TYPE}}", CommandType) }); })
+            .catch(async (err) => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_FAIL_GLOBAL.replace("{{COMMAND_NAME}}", fetchedCommand.Name).replace("{{COMMAND_TYPE}}", CommandType) }); });
         }
         else
         {
             // Register on a per-Guild basis
             return await DiscordClient.application.commands.create(FetchedCommandData, InputScope)
-            .then(async () => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_SUCCESS_GUILD.replace("{{COMMAND_NAME}}", FetchedCommandData.Name).replace("{{COMMAND_TYPE}}", CommandType).replace("{{GUILD_ID}}", InputScope) }); })
-            .catch(async (err) => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_FAIL_GUILD.replace("{{COMMAND_NAME}}", FetchedCommandData.Name).replace("{{COMMAND_TYPE}}", CommandType).replace("{{GUILD_ID}}", InputScope) }); });
+            .then(async () => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_SUCCESS_GUILD.replace("{{COMMAND_NAME}}", fetchedCommand.Name).replace("{{COMMAND_TYPE}}", CommandType).replace("{{GUILD_ID}}", InputScope) }); })
+            .catch(async (err) => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].REGISTER_COMMAND_FAIL_GUILD.replace("{{COMMAND_NAME}}", fetchedCommand.Name).replace("{{COMMAND_TYPE}}", CommandType).replace("{{GUILD_ID}}", InputScope) }); });
         }
     },
 
