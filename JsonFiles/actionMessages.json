@@ -3,76 +3,55 @@
         "headpat": "**{AUTHOR}** gave **{RECEIVER}** a headpat",
         "hug": "**{AUTHOR}** cuddled **{RECEIVER}**",
         "bonk": "**{AUTHOR}** bonked **{RECEIVER}**",
-        "sleep": "**{AUTHOR}** wants **{RECEIVER}** to go to sleep!",
         "boop": "**{AUTHOR}** booped **{RECEIVER}**",
-        "kiss": "**{AUTHOR}** kissed **{RECEIVER}**",
-        "slap": "**{AUTHOR}** slapped **{RECEIVER}**",
-        "pummel": "**{AUTHOR}** pummeled **{RECEIVER}**"
+        "kiss": "**{AUTHOR}** kissed **{RECEIVER}**"
     },
 
     "SELF_USER": {
         "headpat": "**{AUTHOR}** gave themself a headpat",
         "hug": "**{AUTHOR}** gave themself a cuddle",
         "bonk": "**{AUTHOR}** bonked themself",
-        "sleep": "**{AUTHOR}** wants sleep",
         "boop": "**{AUTHOR}** booped themself",
-        "kiss": "**{AUTHOR}** attempted to kiss themselves",
-        "slap": "**{AUTHOR}** slapped themself",
-        "pummel": "**{AUTHOR}** pummeled themself with their own Stand"
+        "kiss": "**{AUTHOR}** attempted to kiss themselves"
     },
 
     "ROLE": {
         "headpat": "**{AUTHOR}** gave **{RECEIVER}** a headpat",
         "hug": "**{AUTHOR}** cuddled **{RECEIVER}**",
         "bonk": "**{AUTHOR}** bonked **{RECEIVER}**",
-        "sleep": "**{AUTHOR}** wants **{RECEIVER}** to go to sleep!",
         "boop": "**{AUTHOR}** booped **{RECEIVER}**",
-        "kiss": "**{AUTHOR}** kissed **{RECEIVER}**",
-        "slap": "**{AUTHOR}** slapped **{RECEIVER}**",
-        "pummel": "**{AUTHOR}** pummeled **{RECEIVER}**"
+        "kiss": "**{AUTHOR}** kissed **{RECEIVER}**"
     },
 
     "EVERYONE": {
         "headpat": "**{AUTHOR}** gave everyone a headpat",
         "hug": "**{AUTHOR}** gave everyone a cuddle",
         "bonk": "**{AUTHOR}** bonked everyone",
-        "sleep": "**{AUTHOR}** wants everyone to go to sleep!",
         "boop": "**{AUTHOR}** booped everyone",
-        "kiss": "**{AUTHOR}** gave everyone a kiss",
-        "slap": "**{AUTHOR}** slapped everyone!",
-        "pummel": "**{AUTHOR}** pummeled everyone"
+        "kiss": "**{AUTHOR}** gave everyone a kiss"
     },
 
     "OTHER_BOT": {
         "headpat": "**{AUTHOR}** gave **{RECEIVER}** a headpat",
         "hug": "**{AUTHOR}** cuddled **{RECEIVER}**",
         "bonk": "**{AUTHOR}** bonked **{RECEIVER}**",
-        "sleep": "**{AUTHOR}** wants **{RECEIVER}** to go to sleep! (If you can find its \"shut down\" button...)",
         "boop": "**{AUTHOR}** booped **{RECEIVER}**",
-        "kiss": "**{AUTHOR}** kissed **{RECEIVER}**",
-        "slap": "**{AUTHOR}** slapped **{RECEIVER}**",
-        "pummel": "**{AUTHOR}** pummeled **{RECEIVER}**"
+        "kiss": "**{AUTHOR}** kissed **{RECEIVER}**"
     },
 
     "MOOBOT": {
         "headpat": "**{AUTHOR}** gave **{RECEIVER}** a headpat",
         "hug": "**{AUTHOR}** cuddled **{RECEIVER}**",
         "bonk": "I bonked **{AUTHOR}** in retaliation - nobody attempts to bonk me!",
-        "sleep": "Sorry **{AUTHOR}**, but you don't have power over me! *I will never go to sleep!!*",
         "boop": "**{AUTHOR}** booped **{RECEIVER}**",
-        "kiss": "**{AUTHOR}** kissed **{RECEIVER}** - wait, me? *oh my...* 😳",
-        "slap": "**{AUTHOR}** slapped **{RECEIVER}** - *rude...* :c",
-        "pummel": "**{AUTHOR}** attempted to pummel me, but I hid inside the Internet!"
+        "kiss": "**{AUTHOR}** kissed **{RECEIVER}** - wait, me? *oh my...* 😳"
     },
 
     "RETURN": {
         "headpat": "**{AUTHOR}** gave **{RECEIVER}** a headpat in return!",
         "hug": "**{AUTHOR}** cuddled **{RECEIVER}** too!",
         "bonk": "**{AUTHOR}** bonked **{RECEIVER}** in retaliation!",
-        "sleep": "**{AUTHOR}** will only go to sleep if **{RECEIVER}** goes to sleep too!",
         "boop": "**{AUTHOR}** revenge-booped **{RECEIVER}**!",
-        "kiss": "**{AUTHOR}** kissed **{RECEIVER}** in return!",
-        "slap": "**{AUTHOR}** slapped **{RECEIVER}** in retaliation!",
-        "pummel": "**{AUTHOR}** pummeled **{RECEIVER}** in retaliation after freezing time!"
+        "kiss": "**{AUTHOR}** kissed **{RECEIVER}** in return!"
     }
 }
