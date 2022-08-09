@@ -45,6 +45,7 @@ module.exports = {
         Data.description = this.Description;
         Data.type = Discord.ApplicationCommandType.ChatInput;
         Data.dmPermission = false;
+        Data.defaultMemberPermissions = Discord.PermissionFlagsBits.Administrator;
         Data.options = [
             {
                 type: Discord.ApplicationCommandOptionType.String,
