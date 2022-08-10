@@ -70,7 +70,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -146,7 +148,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -222,7 +226,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -298,7 +304,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -374,7 +382,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -450,7 +460,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -526,7 +538,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -602,7 +616,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -678,7 +694,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -754,7 +772,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -830,7 +850,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -906,7 +928,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -982,7 +1006,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1058,7 +1084,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1134,7 +1162,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1210,7 +1240,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1286,7 +1318,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1362,7 +1396,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1438,7 +1474,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1514,7 +1552,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1590,7 +1630,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1666,7 +1708,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1742,7 +1786,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1818,7 +1864,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1894,7 +1942,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -1970,7 +2020,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -2046,7 +2098,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -2122,7 +2176,9 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     },
 
 
@@ -2198,6 +2254,8 @@
 
         "START_COMMAND_NOT_A_VOICE_CHANNEL": "That wasn't a valid Voice Channel!\nPlease try again, selecting a Voice Channel and **not** one of a different type.",
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
-        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier."
+        "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
+
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
     }
 }
