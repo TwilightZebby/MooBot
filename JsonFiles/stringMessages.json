@@ -36,7 +36,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -56,7 +58,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -76,7 +80,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -96,7 +102,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -116,7 +124,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -136,7 +146,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -156,7 +168,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -176,7 +190,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -196,7 +212,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -216,7 +234,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -236,7 +256,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -256,7 +278,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -276,7 +300,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -296,7 +322,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -316,7 +344,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -336,7 +366,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -356,7 +388,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -376,7 +410,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -396,7 +432,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -416,7 +454,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -436,7 +476,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -456,7 +498,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -476,7 +520,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -496,7 +542,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -516,7 +564,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -536,7 +586,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -556,7 +608,9 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     },
 
 
@@ -576,6 +630,8 @@
         "RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET": "You cannot return an Action that wasn't aimed at you!",
 
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
-        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!"
+        "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
+
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
     }
 }
