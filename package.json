@@ -30,7 +30,7 @@
     "discord.js": "^14.2.0",
     "emoji-regex": "^10.1.0",
     "erlpack": "github:discord/erlpack",
-    "node-fetch": "^3.2.10",
+    "node-fetch": "^2.6.7",
     "statuspage.js": "^1.0.17",
     "utf-8-validate": "^5.0.9",
     "zlib-sync": "^0.1.7"

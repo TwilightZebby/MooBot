@@ -29,6 +29,14 @@ module.exports = {
     //     One of the following: DM, GUILD, ALL
     Scope: "ALL",
 
+    // Scope of specific Subcommands Usage
+    //     One of the following: DM, GUILD, ALL
+    //     IF SUBCOMMAND: name as "subcommandName"
+    //     IF SUBCOMMAND GROUP: name as "subcommandGroupName_subcommandName"
+    SubcommandScope: {
+        "example": "GUILD"
+    },
+
 
 
     /**
