@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { Message } = require("discord.js");
 const { DiscordClient, Collections } = require("../constants.js");
 const LocalizedErrors = require("../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../JsonFiles/stringMessages.json");
@@ -44,7 +44,7 @@ module.exports = {
 
     /**
      * Executes the Text Command
-     * @param {Discord.Message} message Origin Message that triggered this Command
+     * @param {Message} message Origin Message that triggered this Command
      * @param {?Array<String>} arguments Given arguments, can be empty!
      */
     async execute(message, arguments)

@@ -1,12 +1,11 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { ChatInputCommandInteraction, ApplicationCommandOptionType, DMChannel, Collection } = require("discord.js");
+const { Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const Config = require("../../config.js");
 
 module.exports = {
     /**
      * Handles and runs received Slash Commands
-     * @param {Discord.ChatInputCommandInteraction} slashInteraction 
+     * @param {ChatInputCommandInteraction} slashInteraction 
      */
     async Main(slashInteraction)
     {
@@ -19,19 +18,19 @@ module.exports = {
         }
 
         // Checks for SubCommand or SubCommand-Groups, so that they can have their own Cooldowns
-        const SubcommandCheck = slashInteraction.options.data.find(cmd => cmd.type === Discord.ApplicationCommandOptionType.Subcommand);
-        const SubcommandGroupCheck = slashInteraction.options.data.find(cmd => cmd.type === Discord.ApplicationCommandOptionType.SubcommandGroup);
+        const SubcommandCheck = slashInteraction.options.data.find(cmd => cmd.type === ApplicationCommandOptionType.Subcommand);
+        const SubcommandGroupCheck = slashInteraction.options.data.find(cmd => cmd.type === ApplicationCommandOptionType.SubcommandGroup);
         if ( SubcommandGroupCheck != undefined ) { return await this.SubcommandGroup(slashInteraction, SlashCommand); }
         if ( SubcommandCheck != undefined ) { return await this.Subcommand(slashInteraction, SlashCommand); }
 
         // DM Check
-        if ( SlashCommand.Scope === 'DM' && !(slashInteraction.channel instanceof Discord.DMChannel) )
+        if ( SlashCommand.Scope === 'DM' && !(slashInteraction.channel instanceof DMChannel) )
         {
             return await slashInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_DMS_ONLY });
         }
 
         // Guild Check
-        if ( SlashCommand.Scope === 'GUILD' && (slashInteraction.channel instanceof Discord.DMChannel) )
+        if ( SlashCommand.Scope === 'GUILD' && (slashInteraction.channel instanceof DMChannel) )
         {
             return await slashInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_GUILDS_ONLY });
         }
@@ -42,12 +41,12 @@ module.exports = {
         if ( !Collections.SlashCooldowns.has(SlashCommand.Name) )
         {
             // No active Cooldowns found, create new one
-            Collections.SlashCooldowns.set(SlashCommand.Name, new Discord.Collection());
+            Collections.SlashCooldowns.set(SlashCommand.Name, new Collection());
         }
 
         // Set initial values
         const Now = Date.now();
-        /** @type {Discord.Collection} */
+        /** @type {Collection} */
         const Timestamps = Collections.SlashCooldowns.get(SlashCommand.Name);
         const CooldownAmount = ( SlashCommand.Cooldown || 3 ) * 1000;
 
@@ -125,7 +124,7 @@ module.exports = {
 
     /**
      * Handles and runs received Slash Commands, when a Subcommand is used
-     * @param {Discord.ChatInputCommandInteraction} slashInteraction 
+     * @param {ChatInputCommandInteraction} slashInteraction 
      * @param {*} SlashCommand File with Slash Command's data
      */
     async Subcommand(slashInteraction, SlashCommand)
@@ -135,13 +134,13 @@ module.exports = {
         const CombinedName = `${slashInteraction.commandName}_${SubcommandName}`;
 
         // DM Check
-        if ( SlashCommand.SubcommandScope[SubcommandName] === 'DM' && !(slashInteraction.channel instanceof Discord.DMChannel) )
+        if ( SlashCommand.SubcommandScope[SubcommandName] === 'DM' && !(slashInteraction.channel instanceof DMChannel) )
         {
             return await slashInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_DMS_ONLY });
         }
  
         // Guild Check
-        if ( SlashCommand.SubcommandScope[SubcommandName] === 'GUILD' && (slashInteraction.channel instanceof Discord.DMChannel) )
+        if ( SlashCommand.SubcommandScope[SubcommandName] === 'GUILD' && (slashInteraction.channel instanceof DMChannel) )
         {
             return await slashInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_GUILDS_ONLY });
         }
@@ -152,12 +151,12 @@ module.exports = {
         if ( !Collections.SlashCooldowns.has(CombinedName) )
         {
             // No active Cooldowns found, create new one
-            Collections.SlashCooldowns.set(CombinedName, new Discord.Collection());
+            Collections.SlashCooldowns.set(CombinedName, new Collection());
         }
  
         // Set initial values
         const Now = Date.now();
-        /** @type {Discord.Collection} */
+        /** @type {Collection} */
         const Timestamps = Collections.SlashCooldowns.get(CombinedName);
         const CooldownAmount = ( SlashCommand.SubcommandCooldown[SubcommandName] || 3 ) * 1000;
  
@@ -235,7 +234,7 @@ module.exports = {
 
     /**
      * Handles and runs received Slash Commands, when a Subcommand Group is used
-     * @param {Discord.ChatInputCommandInteraction} slashInteraction 
+     * @param {ChatInputCommandInteraction} slashInteraction 
      * @param {*} SlashCommand File with Slash Command's data
      */
     async SubcommandGroup(slashInteraction, SlashCommand)
@@ -247,13 +246,13 @@ module.exports = {
         const CombinedName = `${slashInteraction.commandName}_${SubcommandGroupName}_${SubcommandName}`;
 
         // DM Check
-        if ( SlashCommand.SubcommandScope[CombinedSubcommandName] === 'DM' && !(slashInteraction.channel instanceof Discord.DMChannel) )
+        if ( SlashCommand.SubcommandScope[CombinedSubcommandName] === 'DM' && !(slashInteraction.channel instanceof DMChannel) )
         {
             return await slashInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_DMS_ONLY });
         }
  
         // Guild Check
-        if ( SlashCommand.SubcommandScope[CombinedSubcommandName] === 'GUILD' && (slashInteraction.channel instanceof Discord.DMChannel) )
+        if ( SlashCommand.SubcommandScope[CombinedSubcommandName] === 'GUILD' && (slashInteraction.channel instanceof DMChannel) )
         {
             return await slashInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_GUILDS_ONLY });
         }
@@ -264,12 +263,12 @@ module.exports = {
         if ( !Collections.SlashCooldowns.has(CombinedName) )
         {
             // No active Cooldowns found, create new one
-            Collections.SlashCooldowns.set(CombinedName, new Discord.Collection());
+            Collections.SlashCooldowns.set(CombinedName, new Collection());
         }
  
         // Set initial values
         const Now = Date.now();
-        /** @type {Discord.Collection} */
+        /** @type {Collection} */
         const Timestamps = Collections.SlashCooldowns.get(CombinedName);
         const CooldownAmount = ( SlashCommand.SubcommandCooldown[CombinedSubcommandName] || 3 ) * 1000;
  

@@ -1,8 +1,6 @@
-const Discord = require("discord.js");
+const { RateLimitError, DMChannel } = require("discord.js");
 const fs = require("fs");
-
 const { DiscordClient, Collections } = require("./constants.js");
-const LocalizedErrors = require("./JsonFiles/errorMessages.json");
 const Config = require("./config.js");
 
 
@@ -91,7 +89,7 @@ process.on('unhandledRejection', (err) => { return console.error("***UNHANDLED P
 DiscordClient.on('error', (err) => { return console.error("***DISCORD ERROR: ", err); });
 
 // Discord Rate Limit - Only uncomment when debugging
-//DiscordClient.rest.on('rateLimited', (Discord.RateLimitError) => { return console.log("***DISCORD RATELIMIT HIT: ", RateLimitError); });
+//DiscordClient.rest.on('rateLimited', (RateLimitError) => { return console.log("***DISCORD RATELIMIT HIT: ", RateLimitError); });
 
 
 
@@ -115,7 +113,7 @@ DiscordClient.on('messageCreate', async (message) => {
     if ( message.system || message.author.system ) { return; }
 
     // DM Channel Messages
-    if ( message.channel instanceof Discord.DMChannel ) { return; }
+    if ( message.channel instanceof DMChannel ) { return; }
 
     // Safe-guard against Discord Outages
     if ( !message.guild.available ) { return; }

@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction } = require("discord.js");
 const { DiscordClient, Collections } = require("../constants.js");
 const LocalizedErrors = require("../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../JsonFiles/stringMessages.json");
@@ -41,16 +41,16 @@ module.exports = {
 
     /**
      * Returns data needed for registering Slash Command onto Discord's API
-     * @returns {Discord.ChatInputApplicationCommandData}
+     * @returns {ChatInputApplicationCommandData}
      */
     registerData()
     {
-        /** @type {Discord.ChatInputApplicationCommandData} */
+        /** @type {ChatInputApplicationCommandData} */
         const Data = {};
 
         Data.name = this.Name;
         Data.description = this.Description;
-        Data.type = Discord.ApplicationCommandType.ChatInput;
+        Data.type = ApplicationCommandType.ChatInput;
 
         return Data;
     },
@@ -59,7 +59,7 @@ module.exports = {
 
     /**
      * Executes the Slash Command
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async execute(slashCommand)
     {
@@ -70,7 +70,7 @@ module.exports = {
 
     /**
      * Handles given Autocomplete Interactions for any Options in this Slash CMD that uses it
-     * @param {Discord.AutocompleteInteraction} autocompleteInteraction 
+     * @param {AutocompleteInteraction} autocompleteInteraction 
      */
     async autocomplete(autocompleteInteraction)
     {

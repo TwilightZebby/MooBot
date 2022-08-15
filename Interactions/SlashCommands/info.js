@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder } = require("discord.js");
+const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 const Package = require('../../package.json');
@@ -158,12 +158,12 @@ const ChannelTypesToStrings = {
 
 /**
  * Checks if the Bot has the ability to use External Emojis in Interaction Responses
- * @param {Discord.ChatInputCommandInteraction} slashCommand 
+ * @param {ChatInputCommandInteraction} slashCommand 
  * @returns {Boolean}
  */
 function checkEmojiPermission(slashCommand)
 {
-    return slashCommand.appPermissions.has(Discord.PermissionFlagsBits.UseExternalEmojis);
+    return slashCommand.appPermissions.has(PermissionFlagsBits.UseExternalEmojis);
 }
 
 module.exports = {
@@ -210,30 +210,30 @@ module.exports = {
 
     /**
      * Returns data needed for registering Slash Command onto Discord's API
-     * @returns {Discord.ChatInputApplicationCommandData}
+     * @returns {ChatInputApplicationCommandData}
      */
     registerData()
     {
-        /** @type {Discord.ChatInputApplicationCommandData} */
+        /** @type {ChatInputApplicationCommandData} */
         const Data = {};
 
         Data.name = this.Name;
         Data.description = this.Description;
-        Data.type = Discord.ApplicationCommandType.ChatInput;
+        Data.type = ApplicationCommandType.ChatInput;
         Data.dmPermission = false;
         Data.options = [
             {
-                type: Discord.ApplicationCommandOptionType.Subcommand,
+                type: ApplicationCommandOptionType.Subcommand,
                 name: "server",
                 description: "Display information about this Server"
             },
             {
-                type: Discord.ApplicationCommandOptionType.Subcommand,
+                type: ApplicationCommandOptionType.Subcommand,
                 name: "user",
                 description: "Display information about either yourself, or another User",
                 options: [
                     {
-                        type: Discord.ApplicationCommandOptionType.User,
+                        type: ApplicationCommandOptionType.User,
                         name: "user",
                         description: "User to display information about",
                         required: false
@@ -241,12 +241,12 @@ module.exports = {
                 ]
             },
             {
-                type: Discord.ApplicationCommandOptionType.Subcommand,
+                type: ApplicationCommandOptionType.Subcommand,
                 name: "invite",
                 description: "Display information about a given Discord Server Invite",
                 options: [
                     {
-                        type: Discord.ApplicationCommandOptionType.String,
+                        type: ApplicationCommandOptionType.String,
                         name: "code",
                         description: "The Discord Invite Code or Link",
                         max_length: 150,
@@ -255,7 +255,7 @@ module.exports = {
                 ]
             },
             {
-                type: Discord.ApplicationCommandOptionType.Subcommand,
+                type: ApplicationCommandOptionType.Subcommand,
                 name: "bot",
                 description: "Display information about this Bot"
             }
@@ -268,7 +268,7 @@ module.exports = {
 
     /**
      * Executes the Slash Command
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async execute(slashCommand)
     {
@@ -306,7 +306,7 @@ module.exports = {
 
     /**
      * Fetches and Displays the current Server Information
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async fetchServerInfo(slashCommand)
     {
@@ -317,7 +317,7 @@ module.exports = {
 
     /**
      * Fetches and Displays information about the triggering or targeted User
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async fetchUserInfo(slashCommand)
     {
@@ -328,7 +328,7 @@ module.exports = {
 
     /**
      * Fetches and Displays information about the given Discord Invite
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async fetchInviteInfo(slashCommand)
     {
@@ -339,7 +339,7 @@ module.exports = {
 
     /**
      * Fetches and Displays information about this Bot
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async fetchBotInfo(slashCommand)
     {
@@ -352,7 +352,7 @@ module.exports = {
         const TotalRegisteredCommands = RegisteredGlobalCommands.size + RegisteredGuildCommands.size;
 
         // Construct Embed
-        const BotInfoEmbed = new Discord.EmbedBuilder()
+        const BotInfoEmbed = new EmbedBuilder()
         .setAuthor({ name: `${DiscordClient.user.username} Information`, iconURL: `${DiscordClient.user.avatarURL({ extension: 'png' })}` })
         .setDescription(`A private general purpose Bot. Has features such as </bonk:821452644295114772>, Button Role Menus, and more.`)
         .addFields(
@@ -376,7 +376,7 @@ module.exports = {
 
     /**
      * Handles given Autocomplete Interactions for any Options in this Slash CMD that uses it
-     * @param {Discord.AutocompleteInteraction} autocompleteInteraction 
+     * @param {AutocompleteInteraction} autocompleteInteraction 
      */
     async autocomplete(autocompleteInteraction)
     {

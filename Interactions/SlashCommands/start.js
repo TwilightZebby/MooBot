@@ -1,10 +1,10 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, Collection, PermissionFlagsBits, ChannelType, VoiceChannel, GuildPremiumTier, InviteTargetType } = require("discord.js");
+const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 // Activity IDs
-const ActivityIds = new Discord.Collection().set("poker", "755827207812677713")
+const ActivityIds = new Collection().set("poker", "755827207812677713")
 .set("chess", "832012774040141894").set("sketch", "902271654783242291")
 .set("youtube", "880218394199220334").set("letter", "879863686565621790")
 .set("snacks", "879863976006127627").set("spell", "852509694341283871")
@@ -78,28 +78,28 @@ module.exports = {
 
     /**
      * Returns data needed for registering Slash Command onto Discord's API
-     * @returns {Discord.ChatInputApplicationCommandData}
+     * @returns {ChatInputApplicationCommandData}
      */
     registerData()
     {
-        /** @type {Discord.ChatInputApplicationCommandData} */
+        /** @type {ChatInputApplicationCommandData} */
         const Data = {};
 
         Data.name = this.Name;
         Data.description = this.Description;
-        Data.type = Discord.ApplicationCommandType.ChatInput;
+        Data.type = ApplicationCommandType.ChatInput;
         Data.dmPermission = false;
-        Data.defaultMemberPermissions = Discord.PermissionFlagsBits.UseEmbeddedActivities;
+        Data.defaultMemberPermissions = PermissionFlagsBits.UseEmbeddedActivities;
         Data.options = [
             {
-                type: Discord.ApplicationCommandOptionType.Channel,
+                type: ApplicationCommandOptionType.Channel,
                 name: "channel",
                 description: "Voice Channel to start the Activity in",
-                channel_types: [ Discord.ChannelType.GuildVoice ],
+                channel_types: [ ChannelType.GuildVoice ],
                 required: true
             },
             {
-                type: Discord.ApplicationCommandOptionType.String,
+                type: ApplicationCommandOptionType.String,
                 name: "activity",
                 description: "Name of Activity to start",
                 required: true,
@@ -129,7 +129,7 @@ module.exports = {
 
     /**
      * Executes the Slash Command
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async execute(slashCommand)
     {
@@ -138,19 +138,19 @@ module.exports = {
         const ActivityOption = slashCommand.options.get("activity", true).value;
 
         // Edge case check on Channel type
-        if ( !(ChannelOption instanceof Discord.VoiceChannel) )
+        if ( !(ChannelOption instanceof VoiceChannel) )
         {
             return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].START_COMMAND_NOT_A_VOICE_CHANNEL });
         }
 
         // Check for Invite Permission
-        if ( !ChannelOption.permissionsFor(DiscordClient.user.id).has(Discord.PermissionFlagsBits.CreateInstantInvite, true) )
+        if ( !ChannelOption.permissionsFor(DiscordClient.user.id).has(PermissionFlagsBits.CreateInstantInvite, true) )
         {
             return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].START_COMMAND_NO_INVITE_PERMISSION.replace("{{CHANNEL_NAME}}", ChannelOption.name) });
         }
 
         // Check Boost Requirement
-        const CurrentServerBoostTier = slashCommand.guild.premiumTier === Discord.GuildPremiumTier.None ? 0 : slashCommand.guild.premiumTier === Discord.GuildPremiumTier.Tier1 ? 1 : slashCommand.guild.premiumTier === Discord.GuildPremiumTier.Tier2 ? 2 : 3;
+        const CurrentServerBoostTier = slashCommand.guild.premiumTier === GuildPremiumTier.None ? 0 : slashCommand.guild.premiumTier === GuildPremiumTier.Tier1 ? 1 : slashCommand.guild.premiumTier === GuildPremiumTier.Tier2 ? 2 : 3;
         if ( CurrentServerBoostTier === 0 && !NoBoostRequirement.includes(ActivityOption) )
         {
             return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].START_COMMAND_REQUIRES_BOOST.replace("{{ACTIVITY_NAME}}", ValueToName[ActivityOption]).replace("{{BOOST_TIER}}", "1") });
@@ -176,7 +176,7 @@ module.exports = {
         await ChannelOption.createInvite({
             maxAge: 600, // Ten minutes
             maxUses: 1, // Only usable once
-            targetType: Discord.InviteTargetType.EmbeddedApplication, // Voice Activities
+            targetType: InviteTargetType.EmbeddedApplication, // Voice Activities
             targetApplication: ActivitySnowflakeId,
             reason: `/start Command used to start the ${ValueToName[ActivityOption]} Voice Activity`
         })
@@ -189,7 +189,7 @@ module.exports = {
 
     /**
      * Handles given Autocomplete Interactions for any Options in this Slash CMD that uses it
-     * @param {Discord.AutocompleteInteraction} autocompleteInteraction 
+     * @param {AutocompleteInteraction} autocompleteInteraction 
      */
     async autocomplete(autocompleteInteraction)
     {

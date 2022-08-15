@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { ButtonInteraction } = require("discord.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 const ActionStrings = require('../../JsonFiles/actionMessages.json');
@@ -24,7 +23,7 @@ module.exports = {
 
     /**
      * Executes the Button
-     * @param {Discord.ButtonInteraction} buttonInteraction 
+     * @param {ButtonInteraction} buttonInteraction 
      */
     async execute(buttonInteraction)
     {

@@ -1,12 +1,11 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { SelectMenuInteraction, Collection } = require("discord.js");
+const { Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const Config = require("../../config.js");
 
 module.exports = {
     /**
      * Handles and runs received Selects
-     * @param {Discord.SelectMenuInteraction} selectInteraction 
+     * @param {SelectMenuInteraction} selectInteraction 
      */
     async Main(selectInteraction)
     {
@@ -26,12 +25,12 @@ module.exports = {
         if ( !Collections.SelectCooldowns.has(SelectCustomId) )
         {
             // No active Cooldowns found, create new one
-            Collections.SelectCooldowns.set(SelectCustomId, new Discord.Collection());
+            Collections.SelectCooldowns.set(SelectCustomId, new Collection());
         }
 
         // Set initial values
         const Now = Date.now();
-        /** @type {Discord.Collection} */
+        /** @type {Collection} */
         const Timestamps = Collections.SelectCooldowns.get(SelectCustomId);
         const CooldownAmount = ( Select.Cooldown || 3 ) * 1000;
 

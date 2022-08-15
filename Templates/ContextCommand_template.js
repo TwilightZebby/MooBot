@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction } = require("discord.js");
 const { DiscordClient, Collections } = require("../constants.js");
 const LocalizedErrors = require("../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../JsonFiles/stringMessages.json");
@@ -15,8 +15,8 @@ module.exports = {
     Category: "GENERAL",
 
     // Context Command Type
-    //     One of either Discord.ApplicationCommandType.Message, Discord.ApplicationCommandType.User
-    CommandType: Discord.ApplicationCommandType.Message,
+    //     One of either ApplicationCommandType.Message, ApplicationCommandType.User
+    CommandType: ApplicationCommandType.Message,
 
     // Cooldown, in seconds
     //     Defaults to 3 seconds if missing
@@ -30,11 +30,11 @@ module.exports = {
 
     /**
      * Returns data needed for registering Context Command onto Discord's API
-     * @returns {Discord.ApplicationCommandData}
+     * @returns {ApplicationCommandData}
      */
     registerData()
     {
-        /** @type {Discord.ApplicationCommandData} */
+        /** @type {ApplicationCommandData} */
         const Data = {};
 
         Data.name = this.Name;
@@ -48,7 +48,7 @@ module.exports = {
 
     /**
      * Executes the Context Command
-     * @param {Discord.ContextMenuCommandInteraction} contextCommand 
+     * @param {ContextMenuCommandInteraction} contextCommand 
      */
     async execute(contextCommand)
     {

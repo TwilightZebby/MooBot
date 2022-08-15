@@ -1,17 +1,14 @@
-const Discord = require('discord.js');
-const { DiscordClient, Collections } = require('../constants.js');
-const LocalizedErrors = require("../JsonFiles/errorMessages.json");
-const LocalizedStrings = require('../JsonFiles/stringMessages.json');
+const { ChatInputCommandInteraction, ActionRowBuilder, ButtonBuilder, ButtonStyle, Role, GuildMember, EmbedBuilder } = require("discord.js");
+const { DiscordClient } = require('../constants.js');
 const ActionStrings = require('../JsonFiles/actionMessages.json');
 const ActionGifs = require('../JsonFiles/Hidden/ActionGifLinks.json');
-const Config = require("../config.js");
 
 // REGEXS
 const AuthorRegEx = new RegExp(/{AUTHOR}/g);
 const ReceiverRegEx = new RegExp(/{RECEIVER}/g);
 const EveryoneMentionRegEx = new RegExp(/@(everyone|here)/g);
 const RoleMentionRegEx = new RegExp(/<@&(\d{17,20})>/g);
-const UserMentionRegEx = new RegExp(/<@(\!)(\d{17,20})>/g);
+//const UserMentionRegEx = new RegExp(/<@(\!)(\d{17,20})>/g);
 
 /**
  * Checks for [at]Everyone and [at]Here Mentions in a string
@@ -79,7 +76,7 @@ function TestForRoleMention(string, slice)
 module.exports = {
     /**
      * Handles the Action Slash Commands
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async main(slashCommand)
     {
@@ -94,8 +91,8 @@ module.exports = {
 
 
         // Create Button for returning Action
-        const ReturnActionActionRow = new Discord.ActionRowBuilder().addComponents(
-            new Discord.ButtonBuilder().setCustomId(`return-action_${slashCommand.commandName}_${slashCommand.user.id}_${PersonOption.id}`).setStyle(Discord.ButtonStyle.Primary).setLabel(`Return ${slashCommand.commandName}`)
+        const ReturnActionActionRow = new ActionRowBuilder().addComponents(
+            new ButtonBuilder().setCustomId(`return-action_${slashCommand.commandName}_${slashCommand.user.id}_${PersonOption.id}`).setStyle(ButtonStyle.Primary).setLabel(`Return ${slashCommand.commandName}`)
         );
         // Button Boolean, for knowing if the Button should be included or not (do not appear when told not too, when a GIF is wanted, and when the Mention is *not* of a User/Member)
         let displayButton = false;
@@ -107,32 +104,32 @@ module.exports = {
         
         // Assemble the message!
         // @everyone and @here
-        if ( (PersonOption instanceof Discord.Role) && (PersonOption.id === PersonOption.guild.id) )
+        if ( (PersonOption instanceof Role) && (PersonOption.id === PersonOption.guild.id) )
         {
             displayMessage = ActionStrings['EVERYONE'][`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(AuthorRegEx, `${slashCommand.member.displayName}`);
         }
         // @role
-        else if ( (PersonOption instanceof Discord.Role) && (PersonOption.id !== PersonOption.guild.id) )
+        else if ( (PersonOption instanceof Role) && (PersonOption.id !== PersonOption.guild.id) )
         {
             forceDisplayEmbed = true;
             displayMessage = ActionStrings['ROLE'][`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(AuthorRegEx, `${slashCommand.member.displayName}`).replace(ReceiverRegEx, `<@&${PersonOption.id}>`);
         }
         // @user (self)
-        else if ( (PersonOption instanceof Discord.GuildMember) && (PersonOption.id === slashCommand.user.id) )
+        else if ( (PersonOption instanceof GuildMember) && (PersonOption.id === slashCommand.user.id) )
         {
             displayMessage = ActionStrings['SELF_USER'][`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(AuthorRegEx, `${slashCommand.member.displayName}`);
         }
         // @user (this bot)
-        else if ( (PersonOption instanceof Discord.GuildMember) && (PersonOption.id === DiscordClient.user.id) )
+        else if ( (PersonOption instanceof GuildMember) && (PersonOption.id === DiscordClient.user.id) )
         {
             displayMessage = ActionStrings['MOOBOT'][`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(AuthorRegEx, `${slashCommand.member.displayName}`).replace(ReceiverRegEx, `${PersonOption.displayName}`);
         }
         // @user (literally any bot that isn't this one)
-        else if ( (PersonOption instanceof Discord.GuildMember) && PersonOption.user.bot )
+        else if ( (PersonOption instanceof GuildMember) && PersonOption.user.bot )
         {
             displayMessage = ActionStrings['OTHER_BOT'][`${slashCommand.commandName}`];
             displayMessage = displayMessage.replace(AuthorRegEx, `${slashCommand.member.displayName}`).replace(ReceiverRegEx, `${PersonOption.displayName}`);
@@ -161,9 +158,9 @@ module.exports = {
         // GIF was requested
         if ( GifOption )
         {
-            const ActionEmbed = new Discord.EmbedBuilder().setDescription(displayMessage)
+            const ActionEmbed = new EmbedBuilder().setDescription(displayMessage)
             .setImage(ActionGifs[`${slashCommand.commandName}`][Math.floor(( Math.random() * ActionGifs[`${slashCommand.commandName}`].length ) + 0)])
-            .setColor(PersonOption instanceof Discord.Role ? PersonOption.hexColor : PersonOption instanceof Discord.GuildMember ? PersonOption.displayHexColor : 'Random');
+            .setColor(PersonOption instanceof Role ? PersonOption.hexColor : PersonOption instanceof GuildMember ? PersonOption.displayHexColor : 'Random');
 
             await slashCommand.reply({ allowedMentions: { parse: [] }, embeds: [ActionEmbed] });
             delete ActionEmbed;
@@ -174,8 +171,8 @@ module.exports = {
         {
             if ( forceDisplayEmbed )
             {
-                const ActionEmbed = new Discord.EmbedBuilder().setDescription(displayMessage)
-                .setColor(PersonOption instanceof Discord.Role ? PersonOption.hexColor : PersonOption instanceof Discord.GuildMember ? PersonOption.displayHexColor : 'Random');
+                const ActionEmbed = new EmbedBuilder().setDescription(displayMessage)
+                .setColor(PersonOption instanceof Role ? PersonOption.hexColor : PersonOption instanceof GuildMember ? PersonOption.displayHexColor : 'Random');
                 await slashCommand.reply({ allowedMentions: { parse: [] }, embeds: [ActionEmbed] });
                 delete ActionEmbed;
                 return;

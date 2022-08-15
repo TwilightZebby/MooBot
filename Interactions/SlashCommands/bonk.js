@@ -1,7 +1,4 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction } = require("discord.js");
 const ActionCommandModule = require('../../BotModules/ActionModule.js');
 
 module.exports = {
@@ -42,38 +39,38 @@ module.exports = {
 
     /**
      * Returns data needed for registering Slash Command onto Discord's API
-     * @returns {Discord.ChatInputApplicationCommandData}
+     * @returns {ChatInputApplicationCommandData}
      */
     registerData()
     {
-        /** @type {Discord.ChatInputApplicationCommandData} */
+        /** @type {ChatInputApplicationCommandData} */
         const Data = {};
 
         Data.name = this.Name;
         Data.description = this.Description;
-        Data.type = Discord.ApplicationCommandType.ChatInput;
+        Data.type = ApplicationCommandType.ChatInput;
         Data.dmPermission = false;
         Data.options = [
             {
-                type: Discord.ApplicationCommandOptionType.Mentionable,
+                type: ApplicationCommandOptionType.Mentionable,
                 name: "person",
                 description: "Person you want to bonk",
                 required: true
             },
             {
-                type: Discord.ApplicationCommandOptionType.Boolean,
+                type: ApplicationCommandOptionType.Boolean,
                 name: "gif",
                 description: "Should a random GIF be displayed? (default: false)",
                 required: false
             },
             {
-                type: Discord.ApplicationCommandOptionType.Boolean,
+                type: ApplicationCommandOptionType.Boolean,
                 name: "button",
                 description: "Should the \"Return Bonk\" Button be included? (default: true)",
                 required: false
             },
             {
-                type: Discord.ApplicationCommandOptionType.String,
+                type: ApplicationCommandOptionType.String,
                 name: "reason",
                 description: "A custom message to be added onto the end of the default message",
                 max_length: 500,
@@ -88,7 +85,7 @@ module.exports = {
 
     /**
      * Executes the Slash Command
-     * @param {Discord.ChatInputCommandInteraction} slashCommand 
+     * @param {ChatInputCommandInteraction} slashCommand 
      */
     async execute(slashCommand)
     {
@@ -99,7 +96,7 @@ module.exports = {
 
     /**
      * Handles given Autocomplete Interactions for any Options in this Slash CMD that uses it
-     * @param {Discord.AutocompleteInteraction} autocompleteInteraction 
+     * @param {AutocompleteInteraction} autocompleteInteraction 
      */
     async autocomplete(autocompleteInteraction)
     {

@@ -1,12 +1,11 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { ContextMenuCommandInteraction, DMChannel, Collection } = require("discord.js");
+const { Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const Config = require("../../config.js");
 
 module.exports = {
     /**
      * Handles and runs received Context Commands
-     * @param {Discord.ContextMenuCommandInteraction} contextInteraction 
+     * @param {ContextMenuCommandInteraction} contextInteraction 
      */
     async Main(contextInteraction)
     {
@@ -25,13 +24,13 @@ module.exports = {
         }
 
         // DM Check
-        if ( ContextCommand.Scope === 'DM' && !(contextInteraction.channel instanceof Discord.DMChannel) )
+        if ( ContextCommand.Scope === 'DM' && !(contextInteraction.channel instanceof DMChannel) )
         {
             return await contextInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_DMS_ONLY });
         }
 
         // Guild Check
-        if ( ContextCommand.Scope === 'GUILD' && (contextInteraction.channel instanceof Discord.DMChannel) )
+        if ( ContextCommand.Scope === 'GUILD' && (contextInteraction.channel instanceof DMChannel) )
         {
             return await contextInteraction.reply({ ephemeral: true, content: LocalizedErrors[slashInteraction.locale].SLASH_COMMAND_GUILDS_ONLY });
         }
@@ -42,12 +41,12 @@ module.exports = {
         if ( !Collections.ContextCooldowns.has(ContextCommand.Name) )
         {
             // No active Cooldowns found, create new one
-            Collections.ContextCooldowns.set(ContextCommand.Name, new Discord.Collection());
+            Collections.ContextCooldowns.set(ContextCommand.Name, new Collection());
         }
 
         // Set initial values
         const Now = Date.now();
-        /** @type {Discord.Collection} */
+        /** @type {Collection} */
         const Timestamps = Collections.ContextCooldowns.get(ContextCommand.Name);
         const CooldownAmount = ( ContextCommand.Cooldown || 3 ) * 1000;
 

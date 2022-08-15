@@ -1,12 +1,11 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { AutocompleteInteraction } = require("discord.js");
+const { Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const Config = require("../../config.js");
 
 module.exports = {
     /**
      * Handles and runs received Autocomplete Interactions
-     * @param {Discord.AutocompleteInteraction} autocompleteInteraction 
+     * @param {AutocompleteInteraction} autocompleteInteraction 
      */
     async Main(autocompleteInteraction)
     {

@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-const { PermissionFlagsBits, time } = require("discord.js");
+const { PermissionFlagsBits, Message, DMChannel, Collection } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const Config = require("../../config.js");
@@ -7,7 +6,7 @@ const Config = require("../../config.js");
 module.exports = {
     /**
      * Checks for a Text Command in a sent Message, and runs it if true
-     * @param {Discord.Message} message Source Message that triggered this
+     * @param {Message} message Source Message that triggered this
      * @returns {Promise<Boolean|*>} False if not a Command
      */
     async Main(message)
@@ -32,13 +31,13 @@ module.exports = {
             if ( !Command ) { return null; }
 
             // DM Usage
-            if ( Command.Scope === 'DM' && !(message.channel instanceof Discord.DMChannel) )
+            if ( Command.Scope === 'DM' && !(message.channel instanceof DMChannel) )
             {
                 return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_DMS_ONLY });
             }
 
             // Guild Usage
-            if ( Command.Scope === 'GUILD' && (message.channel instanceof Discord.DMChannel) )
+            if ( Command.Scope === 'GUILD' && (message.channel instanceof DMChannel) )
             {
                 return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_GUILDS_ONLY });
             }
@@ -115,12 +114,12 @@ module.exports = {
             if ( !Collections.TextCooldowns.has(Command.Name) )
             {
                 // No active cooldown, start a new one
-                Collections.TextCooldowns.set(Command.Name, new Discord.Collection());
+                Collections.TextCooldowns.set(Command.Name, new Collection());
             }
 
             // Set initial values
             const Now = Date.now();
-            /** @type {Discord.Collection} */
+            /** @type {Collection} */
             const Timestamps = Collections.TextCooldowns.get(Command.Name);
             const CooldownAmount = ( Command.Cooldown || 3 ) * 1000;
 

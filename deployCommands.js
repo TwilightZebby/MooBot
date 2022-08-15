@@ -1,7 +1,4 @@
-const Discord = require("discord.js");
-
 const { DiscordClient, Collections } = require("./constants.js");
-const LocalizedErrors = require("./JsonFiles/errorMessages.json");
 const Config = require("./config.js");
 
 // Bring in Slash Commands for (un)registering

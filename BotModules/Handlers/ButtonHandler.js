@@ -1,12 +1,11 @@
-const Discord = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { ButtonInteraction, Collection } = require("discord.js");
+const { Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const Config = require("../../config.js");
 
 module.exports = {
     /**
      * Handles and runs received Buttons
-     * @param {Discord.ButtonInteraction} buttonInteraction 
+     * @param {ButtonInteraction} buttonInteraction 
      */
     async Main(buttonInteraction)
     {
@@ -26,12 +25,12 @@ module.exports = {
         if ( !Collections.ButtonCooldowns.has(ButtonCustomId) )
         {
             // No active Cooldowns found, create new one
-            Collections.ButtonCooldowns.set(ButtonCustomId, new Discord.Collection());
+            Collections.ButtonCooldowns.set(ButtonCustomId, new Collection());
         }
 
         // Set initial values
         const Now = Date.now();
-        /** @type {Discord.Collection} */
+        /** @type {Collection} */
         const Timestamps = Collections.ButtonCooldowns.get(ButtonCustomId);
         const CooldownAmount = ( Button.Cooldown || 3 ) * 1000;
 
