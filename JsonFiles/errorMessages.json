@@ -72,7 +72,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -150,7 +152,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -228,7 +232,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -306,7 +312,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -384,7 +392,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -462,7 +472,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -540,7 +552,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -618,7 +632,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -696,7 +712,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -774,7 +792,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -852,7 +872,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -930,7 +952,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1008,7 +1032,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1086,7 +1112,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1164,7 +1192,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1242,7 +1272,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1320,7 +1352,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1398,7 +1432,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1476,7 +1512,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1554,7 +1592,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1632,7 +1672,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1710,7 +1752,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1788,7 +1832,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1866,7 +1912,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -1944,7 +1992,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -2022,7 +2072,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -2100,7 +2152,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -2178,7 +2232,9 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     },
 
 
@@ -2256,6 +2312,8 @@
         "START_COMMAND_NO_INVITE_PERMISSION": "Sorry, but I don't seem to have the `CREATE INVITE` Permission for the {{CHANNEL_NAME}} Voice Channel.\nThis Permission is required for this Slash Command to work!",
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
-        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)"
+        "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
     }
 }

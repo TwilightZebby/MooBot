@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
@@ -30,32 +30,135 @@ const EMOJI_TIMEOUT = "<:timeout:997752074366369814>";
 
 
 // For making things readable to the User, improving UX
-const verificationString = {
-    "NONE": "Disabled",
-    "LOW": "Low (Verified Email)",
-    "MEDIUM": "Medium (Account Age > 5 minutes)",
-    "HIGH": "High (Member for > 10 mins)",
-    "VERY_HIGH": "Highest (Verified Phone Number)"
-};
-const explicitContentString = {
-    "DISABLED": "Disabled",
-    "MEMBERS_WITHOUT_ROLES": "Only scan roleless Members' content",
-    "ALL_MEMBERS": "Scan content from everyone"
-};
-const defaultNotifString = {
-    "ALL_MESSAGES": "All Messages",
-    "ONLY_MENTIONS": "Only @mentions"
-};
-const mfaString = {
-    "NONE": "Disabled",
-    "ELEVATED": "Enabled"
-};
-const nsfwString = {
-    "DEFAULT": "Default",
-    "EXPLICIT": "Explicit",
-    "SAFE": "Safe",
-    "AGE_RESTRICTED": "Age-Restricted"
-};
+/**
+ * Readable Guild Verification Level
+ * @param {GuildVerificationLevel} guildVerificationLevel 
+ * @returns {String}
+ */
+function readableVerificationLevel(guildVerificationLevel) {
+    let readableString = "";
+    switch (guildVerificationLevel)
+    {
+        case GuildVerificationLevel.None:
+            readableString = "Unrestricted";
+            break;
+
+        case GuildVerificationLevel.Low:
+            readableString = "Low (Verified Email)";
+            break;
+
+        case GuildVerificationLevel.Medium:
+            readableString = "Medium (Account Age >5 minutes)";
+            break;
+
+        case GuildVerificationLevel.High:
+            readableString = "High (Member for >10 minutes)";
+            break;
+
+        case GuildVerificationLevel.VeryHigh:
+            readableString = "Highest (Verified Phone Number)";
+            break;
+    }
+    return readableString;
+}
+
+/**
+ * Readable Guild Explicit Content Filter
+ * @param {GuildExplicitContentFilter} guildExplicitContentLevel 
+ * @returns {String}
+ */
+function readableExplicitFilter(guildExplicitContentLevel)
+{
+    let readableString = "";
+    switch (guildExplicitContentLevel)
+    {
+        case GuildExplicitContentFilter.Disabled:
+            readableString = "Disabled";
+            break;
+
+        case GuildExplicitContentFilter.MembersWithoutRoles:
+            readableString = "Only scan roleless Members' content";
+            break;
+
+        case GuildExplicitContentFilter.AllMembers:
+            readableString = "Scan content from everyone";
+            break;
+    }
+    return readableString;
+}
+
+/**
+ * Readable Default Message Notification
+ * @param {GuildDefaultMessageNotifications} defaultMessageNotification 
+ * @returns {String}
+ */
+function readableDefaultNotification(defaultMessageNotification)
+{
+    let readableString = "";
+    switch(defaultMessageNotification)
+    {
+        case GuildDefaultMessageNotifications.AllMessages:
+            readableString = "All Messages";
+            break;
+
+        case GuildDefaultMessageNotifications.OnlyMentions:
+            readableString = "Only @mentions";
+            break;
+    }
+    return readableString;
+}
+
+/**
+ * Readable MFA Level
+ * @param {GuildMFALevel} mfaLevel 
+ * @returns {String}
+ */
+function readableMFALevel(mfaLevel)
+{
+    let readableString = "";
+    switch(mfaLevel)
+    {
+        case GuildMFALevel.None:
+            readableString = "None";
+            break;
+
+        case GuildMFALevel.Elevated:
+            readableString = "Enabled";
+            break;
+    }
+    return readableString;
+}
+
+/**
+ * Readable NSFW Level
+ * @param {GuildNSFWLevel} nsfwLevel 
+ * @returns {String}
+ */
+function readableNSFWLevel(nsfwLevel)
+{
+    let readableString = "";
+    switch(nsfwLevel)
+    {
+        case GuildNSFWLevel.Default:
+            readableString = "Default";
+            break;
+
+        case GuildNSFWLevel.Safe:
+            readableString = "Safe";
+            break;
+
+        case GuildNSFWLevel.AgeRestricted:
+            readableString = "Age Restricted";
+            break;
+
+        case GuildNSFWLevel.Explicit:
+            readableString = "Explicit";
+            break;
+    }
+    return readableString;
+}
+
+// This stays as a map because it's using the raw values returned from the API
 const festuresString = {
     "ANIMATED_BANNER": "Animated Banner",
     "ANIMATED_ICON": "Animated Icon",
@@ -74,7 +177,7 @@ const festuresString = {
     "HAD_EARLY_ACTIVITIES_ACCESS": "Had Early Acivities Access",
     "HAS_DIRECTORY_ENTRY": "Has Directory Entry",
     "HUB": "Hub",
-    "INTERNAL_EMPLOYEE_ONLY": "Internal Employee Only",
+    "INTERNAL_EMPLOYEE_ONLY": "**Internal Employee Only**",
     "INVITE_SPLASH": "Invite Splash",
     "MEMBER_PROFILES": "Member Profiles",
     "MEMBER_VERIFICATION_GATE_ENABLED": "Member Verification Gate Enabled",
@@ -82,8 +185,8 @@ const festuresString = {
     "MORE_STICKERS": "More Stickers",
     "NEWS": "News",
     "NEW_THREAD_PERMISSIONS": "New Thread Permissions",
-    "PARTNERED": "Partnered",
-    "PREMIUM_TIER_3_OVERRIDE": "Premium Tier 3 Override",
+    "PARTNERED": "**Partnered**",
+    "PREMIUM_TIER_3_OVERRIDE": "**Premium Tier 3 Override**",
     "PREVIEW_ENABLED": "Preview Enabled",
     "PRIVATE_THREADS": "Private Threads",
     "RELAY_ENABLED": "Relay Enabled",
@@ -96,11 +199,11 @@ const festuresString = {
     "THREAD_DEFAULT_AUTO_ARCHIVE_DURATION": "Threads Default Auto Archive Duration",
     "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled",
     "VANITY_URL": "Vanity URL",
-    "VERIFIED": "Verified",
+    "VERIFIED": "**Verified**",
     "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
     "GUILD_HOME_TEST": "Server Home Test",
-    "INVITES_DISABLED": "Invites Disabled",
+    "INVITES_DISABLED": "**Invites Disabled**",
     // From here onwards are deprecated Server Features
     "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
     "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
@@ -115,12 +218,66 @@ const festuresString = {
     "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // Used for unlocking the 3-day Auto Archive option for Threads at T1 Boost. Made free as of 25th April 2022
     "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~" // Used for unlocking the 7-day Auto Archive option for Threads at T2 Boost. Made free as of 25th April 2022
 };
-const tierStrings = {
-    "NONE": "None",
-    "TIER_1": "Tier 1",
-    "TIER_2": "Tier 2",
-    "TIER_3": "Tier 3"
-};
+
+/**
+ * Readable Boosting Tiers
+ * @param {GuildPremiumTier} premiumTier 
+ * @returns {String}
+ */
+function readableGuildPremiumTier(premiumTier)
+{
+    let readableString = "";
+    switch(premiumTier)
+    {
+        case GuildPremiumTier.None:
+            readableString = "None";
+            break;
+
+        case GuildPremiumTier.Tier1:
+            readableString = "Tier 1";
+            break;
+
+        case GuildPremiumTier.Tier2:
+            readableString = "Tier 2";
+            break;
+
+        case GuildPremiumTier.Tier3:
+            readableString = "Tier 3";
+            break;
+    }
+    return readableString;
+}
+
+/**
+ * Readable Boosting Tiers, returns Emoji Strings
+ * @param {GuildPremiumTier} premiumTier 
+ * @returns {String}
+ */
+function readableGuildPremiumTierEmoji(premiumTier)
+{
+    let readableString = "";
+    switch(premiumTier)
+    {
+        case GuildPremiumTier.None:
+            readableString = "";
+            break;
+
+        case GuildPremiumTier.Tier1:
+            readableString = EMOJI_TIER_ONE;
+            break;
+
+        case GuildPremiumTier.Tier2:
+            readableString = EMOJI_TIER_TWO;
+            break;
+
+        case GuildPremiumTier.Tier3:
+            readableString = EMOJI_TIER_THREE;
+            break;
+    }
+    return readableString;
+}
+
+
 const UserFlagsToStrings = {
     "DISCORD_EMPLOYEE": "Discord Employee",
     "PARTNERED_SERVER_OWNER": "Partnered Server Owner",
@@ -135,9 +292,10 @@ const UserFlagsToStrings = {
     "EARLY_VERIFIED_BOT_DEVELOPER": "Early Verified Bot Developer",
     "DISCORD_CERTIFIED_MODERATOR": "Discord Certified Moderator",
     "BOT_HTTP_INTERACTIONS": "HTTP Interactions-only Bot",
-    "QUARANTINED": "Quarantined",
-    "SPAMMER": "Spammer"
+    "QUARANTINED": "**Quarantined**",
+    "SPAMMER": "**Spammer**"
 };
+
 const ChannelTypesToStrings = {
     "GUILD_TEXT": "Text",
     "DM": "DM",
@@ -188,7 +346,7 @@ module.exports = {
         "server": 60,
         "invite": 60,
         "user": 60,
-        "bot": 60
+        "bot": 10
     },
 
     // Scope of Command's usage
@@ -310,7 +468,141 @@ module.exports = {
      */
     async fetchServerInfo(slashCommand)
     {
-        //.
+        // Defer
+        await slashCommand.deferReply({ ephemeral: true });
+        
+        // Fetch Guild
+        const CurrentGuild = await slashCommand.guild.fetch();
+
+        // If outage happening, return early
+        if ( !CurrentGuild.available ) { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_SERVER_COMMAND_GUILD_UNAVAILABLE }); }
+
+        // Check for External Emoji Permission
+        const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
+
+        // Guild Information
+        const GuildId = CurrentGuild.id;
+        const GuildName = CurrentGuild.name;
+        const GuildDescription = ( CurrentGuild.description || " " );
+        const GuildCreatedTime = CurrentGuild.createdAt.getTime();
+        const GuildOwner = await CurrentGuild.fetchOwner();
+        const GuildPartnered = CurrentGuild.partnered;
+        const GuildVerified = CurrentGuild.verified;
+        const GuildBoostTier = CurrentGuild.premiumTier;
+        const GuildBoostCount = CurrentGuild.premiumSubscriptionCount;
+        const GuildVanityCode = ( CurrentGuild.vanityURLCode || null );
+
+        // Member Counts
+        const GuildApproxTotalMembers = ( CurrentGuild.approximateMemberCount || null );
+        const GuildApproxOnlineMembers = ( CurrentGuild.approximatePresenceCount || null );
+
+        // Security & Moderation
+        const GuildVerificationLevel = CurrentGuild.verificationLevel;
+        const GuildContentFilter = CurrentGuild.explicitContentFilter;
+        const GuildDefaultNotifications = CurrentGuild.defaultMessageNotifications;
+        const GuildMFALevel = CurrentGuild.mfaLevel;
+        const GuildNSFWLevel = CurrentGuild.nsfwLevel;
+
+        // Server Features
+        let rawData = await DiscordClient.rest.get(Routes.guild(GuildId));
+        const RawFeatures = rawData["features"];
+        let guildFeatures = [];
+        RawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
+
+        // Channel Information
+        const GuildChannels = await CurrentGuild.channels.fetch();
+        const TotalChannelCount = GuildChannels.size;
+        let textChannelCount = 0;
+        let voiceChannelCount = 0;
+        let stageChannelCount = 0;
+        let announcementChannelCount = 0;
+        let categoryChannelCount = 0;
+        let unknownChannelCount = 0;
+        GuildChannels.forEach(channel => {
+            if ( channel instanceof TextChannel ) { textChannelCount += 1; }
+            else if ( channel instanceof VoiceChannel ) { voiceChannelCount += 1; }
+            else if ( channel instanceof StageChannel ) { stageChannelCount += 1; }
+            else if ( channel instanceof NewsChannel ) { announcementChannelCount += 1; }
+            else if ( channel instanceof CategoryChannel ) { categoryChannelCount += 1; }
+            else { unknownChannelCount += 1; }
+        });
+        // Special Channels
+        const AfkChannelId = ( CurrentGuild.afkChannelId || null );
+        const RulesChannelId = ( CurrentGuild.rulesChannelId || null );
+        const SystemChannelId = ( CurrentGuild.systemChannelId || null );
+
+        // Role Information
+        const GuildRoles = await CurrentGuild.roles.fetch();
+        const TotalRoleCount = GuildRoles.size;
+
+        // Emojis & Sticker Information
+        const GuildEmojis = await CurrentGuild.emojis.fetch();
+        const GuildStickers = await CurrentGuild.stickers.fetch();
+        const TotalEmojiCount = GuildEmojis.size;
+        const TotalStickerCount = GuildStickers.size;
+
+        // Scheduled Events
+        const GuildScheduledEvents = await CurrentGuild.scheduledEvents.fetch();
+        const TotalScheduledEvents = GuildScheduledEvents.size;
+
+        // Assets
+        const HasBanner = CurrentGuild.banner === null ? false : true;
+        const HasIcon = CurrentGuild.icon === null ? false : true;
+        const HasDiscoverySplash = CurrentGuild.discoverySplash === null ? false : true;
+        const HasInviteSplash = CurrentGuild.splash === null ? false : true;
+
+        // Construct Embed
+        const ServerInfoEmbed = new EmbedBuilder().setAuthor({ name: GuildName }).setFooter({ text: "Created" }).setTimestamp(CurrentGuild.createdAt);
+
+        // IF EXTERNAL EMOJI PERMISSION IS GRANTED TO BOT
+        if ( ExternalEmojiPermission )
+        {
+            ServerInfoEmbed.setDescription(`${GuildPartnered ? `${EMOJI_PARTNER}` : ""} ${GuildVerified ? `${EMOJI_VERIFIED}` : ""}\n${GuildDescription}`)
+            .addFields(
+                {
+                    name: `>> General`,
+                    value: `**Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
+**Boost Level:** ${readableGuildPremiumTierEmoji(GuildBoostTier)} ${readableGuildPremiumTier(GuildBoostTier)}
+**Boost Count:** ${EMOJI_BOOST} ${GuildBoostCount}
+**Emojis:** ${EMOJI_EMOJI} ${TotalEmojiCount}
+**Stickers:** ${EMOJI_STICKER} ${TotalStickerCount}
+**Roles:** ${EMOJI_ROLE} ${TotalRoleCount} / 250${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
+                    inline: true
+                },
+                {
+                    name: `>> Channels (${TotalChannelCount} / 500)`,
+                    value: `${EMOJI_CHANNEL_TEXT} **Text:** ${textChannelCount}
+${EMOJI_CHANNEL_NEWS} **Announcement:** ${announcementChannelCount}
+${EMOJI_CHANNEL_VOICE} **Voice:** ${voiceChannelCount}
+${EMOJI_CHANNEL_STAGE} **Stage:** ${stageChannelCount}
+${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n**Unknown Type(s):** ${unknownChannelCount}` : ""}`,
+                    inline: true
+                },
+                {
+                    name: `>> Security & Moderation`,
+                    value: `**Verification Level:** ${readableVerificationLevel(GuildVerificationLevel)}
+**Explicit Content Filter:** ${readableExplicitFilter(GuildContentFilter)}
+**2FA-enabled Moderation:** ${readableMFALevel(GuildMFALevel)}
+**NSFW Level:** ${readableNSFWLevel(GuildNSFWLevel)}
+**Default Notifications:** ${readableDefaultNotification(GuildDefaultNotifications)}`
+                }
+            );
+            if ( guildFeatures.length > 0 ) { ServerInfoEmbed.addFields({name: `>> Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}`}); }
+        }
+
+        // Add Asset Buttons
+        const ServerInfoActionRow = new ActionRowBuilder();
+        if ( HasIcon )
+        {
+            ServerInfoEmbed.setAuthor({ name: GuildName, iconURL: CurrentGuild.iconURL({ extension: 'png' }) });
+            ServerInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Icon").setURL(CurrentGuild.iconURL()));
+        }
+        if ( HasBanner ) { ServerInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Banner").setURL(CurrentGuild.bannerURL())); }
+        if ( HasInviteSplash ) { ServerInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Invite Splash").setURL(CurrentGuild.splashURL())); }
+        if ( HasDiscoverySplash ) { ServerInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Discovery Splash").setURL(CurrentGuild.discoverySplashURL())); }
+
+        if ( ServerInfoActionRow.components.length > 0 ) { return await slashCommand.editReply({ embeds: [ServerInfoEmbed], components: [ServerInfoActionRow] }); }
+        else { return await slashCommand.editReply({ embeds: [ServerInfoEmbed] }); }
     },
 
 
@@ -346,6 +638,10 @@ module.exports = {
         // Defer
         await slashCommand.deferReply({ ephemeral: true });
 
+        // Create Link Buttons
+        const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
+        const BotInfoActionRow = new ActionRowBuilder().addComponents(PrivacyButton);
+
         // Fetch App Commands
         const RegisteredGlobalCommands = await DiscordClient.application.commands.fetch();
         const RegisteredGuildCommands = await slashCommand.guild.commands.fetch();
@@ -369,7 +665,7 @@ module.exports = {
             { name: `\u200B`, value: `\u200B`, inline: true }
         );
 
-        return await slashCommand.editReply({ embeds: [BotInfoEmbed] });
+        return await slashCommand.editReply({ embeds: [BotInfoEmbed], components: [BotInfoActionRow] });
     },
 
 
