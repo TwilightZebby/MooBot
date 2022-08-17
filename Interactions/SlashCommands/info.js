@@ -22,10 +22,13 @@ const EMOJI_CHANNEL_VOICE = "<:ChannelVoice:997752063612162138>";
 const EMOJI_CHANNEL_STAGE = "<:ChannelStage:997752061330464818>";
 const EMOJI_CHANNEL_NEWS = "<:ChannelAnnouncements:997752058092466236>";
 const EMOJI_CHANNEL_CATEGORY = "<:ChannelCategory:997752059807928431>";
+const EMOJI_CHANNEL_RULES = "<:ChannelRules:1009372446362714174>";
+const EMOJI_SCHEDULED_EVENT = "<:ScheduledEvent:1009372447503552514>";
 const EMOJI_ROLE = "<:Role:997752069605822507>";
 const EMOJI_EMOJI = "<:Emoji:997752064778174515>";
 const EMOJI_STICKER = "<:Sticker:997752072848019527>";
 const EMOJI_TIMEOUT = "<:timeout:997752074366369814>";
+const EMOJI_STATUS_IDLE = "<:StatusIdle:1009372448979947550>";
 
 
 
@@ -484,7 +487,6 @@ module.exports = {
         const GuildId = CurrentGuild.id;
         const GuildName = CurrentGuild.name;
         const GuildDescription = ( CurrentGuild.description || " " );
-        const GuildCreatedTime = CurrentGuild.createdAt.getTime();
         const GuildOwner = await CurrentGuild.fetchOwner();
         const GuildPartnered = CurrentGuild.partnered;
         const GuildVerified = CurrentGuild.verified;
@@ -561,12 +563,12 @@ module.exports = {
             .addFields(
                 {
                     name: `>> General`,
-                    value: `**Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
-**Boost Level:** ${readableGuildPremiumTierEmoji(GuildBoostTier)} ${readableGuildPremiumTier(GuildBoostTier)}
-**Boost Count:** ${EMOJI_BOOST} ${GuildBoostCount}
-**Emojis:** ${EMOJI_EMOJI} ${TotalEmojiCount}
-**Stickers:** ${EMOJI_STICKER} ${TotalStickerCount}
-**Roles:** ${EMOJI_ROLE} ${TotalRoleCount} / 250${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
+                    value: `${EMOJI_OWNER_CROWN} **Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
+${readableGuildPremiumTierEmoji(GuildBoostTier)} **Boost Level:** ${readableGuildPremiumTier(GuildBoostTier)}
+${EMOJI_BOOST} **Boost Count:** ${GuildBoostCount}
+${EMOJI_EMOJI} **Emojis:** ${TotalEmojiCount}
+${EMOJI_STICKER} **Stickers:** ${TotalStickerCount}
+${EMOJI_ROLE} **Roles:** ${TotalRoleCount} / 250${TotalScheduledEvents > 0 ? `\n${EMOJI_SCHEDULED_EVENT} **Scheduled Events:** ${TotalScheduledEvents}` : ""}${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
                     inline: true
                 },
                 {
@@ -575,7 +577,7 @@ module.exports = {
 ${EMOJI_CHANNEL_NEWS} **Announcement:** ${announcementChannelCount}
 ${EMOJI_CHANNEL_VOICE} **Voice:** ${voiceChannelCount}
 ${EMOJI_CHANNEL_STAGE} **Stage:** ${stageChannelCount}
-${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n**Unknown Type(s):** ${unknownChannelCount}` : ""}`,
+${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n❓ **Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n${EMOJI_STATUS_IDLE} **AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n⚙ **System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n${EMOJI_CHANNEL_RULES} **Rules:** <#${RulesChannelId}>` : ""}`,
                     inline: true
                 },
                 {
