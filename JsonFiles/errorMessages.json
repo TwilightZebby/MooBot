@@ -74,7 +74,9 @@
 
         "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
 
-        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later."
+        "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
+        "INFO_INVITE_COMMAND_INVITE_INVALID": "Sorry, but that doesn't seem to be a valid Discord Server Invite",
+        "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, but that Server Invite doesn't exist on Discord!"
     },
 
 

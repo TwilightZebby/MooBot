@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
@@ -8,6 +8,10 @@ const fetch = require('node-fetch');
 if (!globalThis.fetch) { globalThis.fetch = fetch; }
 
 
+
+// REGEXS
+const RegexDiscordInviteShort = new RegExp(/(?<domain>(?:dsc|dis|discord|invite)\.(?:gd|gg|io|me))\/(?<code>[\w-]+)/gim);
+const RegexDiscordInviteLong = new RegExp(/(?<domain>(?:discord(?:app)?|watchanimeattheoffice)\.com)\/(?:invites?|friend-invites?)\/(?<code>[\w-]+)/gim);
 
 // EMOJIS
 const EMOJI_OWNER_CROWN = "<:ServerOwner:997752070436298804>";
@@ -591,6 +595,41 @@ ${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelC
             );
             if ( guildFeatures.length > 0 ) { ServerInfoEmbed.addFields({name: `>> Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}`}); }
         }
+        // BOT DOES NOT HAVE EXTERNAL EMOJIS PERMISSION
+        else
+        {
+            ServerInfoEmbed.setDescription(`${GuildPartnered ? `**Partnered!**` : ""} ${GuildVerified ? ` **Verified!**` : ""}\n${GuildDescription}`)
+            .addFields(
+                {
+                    name: `>> General`,
+                    value: `**Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
+**Boost Level:** ${readableGuildPremiumTier(GuildBoostTier)}
+**Boost Count:** ${GuildBoostCount}
+**Emojis:** ${TotalEmojiCount}
+**Stickers:** ${TotalStickerCount}
+**Roles:** ${TotalRoleCount} / 250${TotalScheduledEvents > 0 ? `\n**Scheduled Events:** ${TotalScheduledEvents}` : ""}${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
+                    inline: true
+                },
+                {
+                    name: `>> Channels (${TotalChannelCount} / 500)`,
+                    value: `**Text:** ${textChannelCount}
+**Announcement:** ${announcementChannelCount}
+**Voice:** ${voiceChannelCount}
+**Stage:** ${stageChannelCount}
+**Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n**Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n**AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n**System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n**Rules:** <#${RulesChannelId}>` : ""}`,
+                    inline: true
+                },
+                {
+                    name: `>> Security & Moderation`,
+                    value: `**Verification Level:** ${readableVerificationLevel(GuildVerificationLevel)}
+**Explicit Content Filter:** ${readableExplicitFilter(GuildContentFilter)}
+**2FA-enabled Moderation:** ${readableMFALevel(GuildMFALevel)}
+**NSFW Level:** ${readableNSFWLevel(GuildNSFWLevel)}
+**Default Notifications:** ${readableDefaultNotification(GuildDefaultNotifications)}`
+                }
+            );
+            if ( guildFeatures.length > 0 ) { ServerInfoEmbed.addFields({name: `>> Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}`}); }
+        }
 
         // Add Asset Buttons
         const ServerInfoActionRow = new ActionRowBuilder();
@@ -626,7 +665,21 @@ ${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelC
      */
     async fetchInviteInfo(slashCommand)
     {
-        //.
+        // Defer
+        await slashCommand.deferReply({ ephemeral: true });
+
+        // Grab given Invite Link
+        const InputInviteLink = slashCommand.options.getString("code", true);
+        // Check input is a valid Invite Link or code
+        if ( ( !RegexDiscordInviteShort.test(InputInviteLink) && !RegexDiscordInviteLong.test(InputInviteLink) ) && !( InputInviteLink.length < 21 && InputInviteLink.length > 17 ) )
+        {
+            return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_INVITE_COMMAND_INVITE_INVALID });
+        }
+        // Check Invite does exist on Discord
+        /** @type {Invite} */
+        let fetchedInvite = null;
+        try { fetchedInvite = await DiscordClient.fetchInvite(InputInviteLink); }
+        catch (err) { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST }); }
     },
 
 
