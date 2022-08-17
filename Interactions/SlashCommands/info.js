@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
@@ -303,20 +303,65 @@ const UserFlagsToStrings = {
     "SPAMMER": "**Spammer**"
 };
 
-const ChannelTypesToStrings = {
-    "GUILD_TEXT": "Text",
-    "DM": "DM",
-    "GUILD_VOICE": "Voice",
-    "GROUP_DM": "Group DM",
-    "GUILD_CATEGORY": "Category",
-    "GUILD_NEWS": "Announcement",
-    "GUILD_NEWS_THREAD": "Thread (in Announcement Channel)",
-    "GUILD_PUBLIC_THREAD": "Thread (Public)",
-    "GUILD_PRIVATE_THREAD": "Thread (Private)",
-    "GUILD_STAGE_VOICE": "Stage",
-    "GUILD_DIRECTORY": "Directory",
-    "GUILD_STORE": "~~Store~~",
-    "UNKNOWN": "*Unknown Channel Type*"
+/**
+ * Readable Channel Types
+ * @param {ChannelType} channelType 
+ * @returns {String}
+ */
+function readableChannelType(channelType)
+{
+    let readableString = "";
+    switch(channelType)
+    {
+        case ChannelType.DM:
+            readableString = "DM";
+            break;
+
+        case ChannelType.GroupDM:
+            readableString = "Group DM";
+            break;
+
+        case ChannelType.GuildCategory:
+            readableString = "Category";
+            break;
+
+        case ChannelType.GuildDirectory:
+            readableString = "Directory";
+            break;
+
+        case ChannelType.GuildForum:
+            readableString = "Forum";
+            break;
+
+        case ChannelType.GuildNews:
+            readableString = "Announcement";
+            break;
+            
+        case ChannelType.GuildNewsThread:
+            readableString = "Thread (in Announcement)";
+            break;
+
+        case ChannelType.GuildPrivateThread:
+            readableString = "Private Thread";
+            break;
+
+        case ChannelType.GuildPublicThread:
+            readableString = "Public Thread";
+            break;
+
+        case ChannelType.GuildStageVoice:
+            readableString = "Stage";
+            break;
+
+        case ChannelType.GuildText:
+            readableString = "Text";
+            break;
+
+        case ChannelType.GuildVoice:
+            readableString = "Voice";
+            break;
+    }
+    return readableString;
 }
 
 
@@ -670,16 +715,70 @@ ${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelC
 
         // Grab given Invite Link
         const InputInviteLink = slashCommand.options.getString("code", true);
-        // Check input is a valid Invite Link or code
-        if ( ( !RegexDiscordInviteShort.test(InputInviteLink) && !RegexDiscordInviteLong.test(InputInviteLink) ) && !( InputInviteLink.length < 21 && InputInviteLink.length > 17 ) )
-        {
-            return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_INVITE_COMMAND_INVITE_INVALID });
-        }
         // Check Invite does exist on Discord
         /** @type {Invite} */
         let fetchedInvite = null;
         try { fetchedInvite = await DiscordClient.fetchInvite(InputInviteLink); }
         catch (err) { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST }); }
+
+        // Check for External Emoji Permission
+        const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
+
+
+        // GRAB INFORMATION
+        // Invite Data
+        const InviteCode = fetchedInvite.code;
+        const InviteCreatedTime = ( fetchedInvite.createdAt?.getTime() || null );
+        const InviteExpireTime = ( fetchedInvite.expiresAt?.getTime() || null );
+        const TargetApplication = ( fetchedInvite.targetApplication || null );
+        const TargetType = ( fetchedInvite.targetType || null );
+        const InviteChannel = ( fetchedInvite.channel || null );
+        const InviteGuild = ( fetchedInvite.guild || null );
+        const InviteCreatorUser = ( fetchedInvite.inviter || null );
+
+
+        // Construct Embed
+        const InviteInfoEmbed = new EmbedBuilder().setAuthor({ name: `Data for Invite Code: ${InviteCode}` });
+        
+        // General Invite Info
+        let generalInviteInfo = "";
+        if ( InviteCreatorUser != null ) { generalInviteInfo += `**Inviter:** ${InviteCreatorUser.username}#${InviteCreatorUser.discriminator}\n**Bot User:** ${InviteCreatorUser.bot}`; }
+        if ( InviteCreatedTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Created:** <t:${InviteCreatedTime / 1000}:R>`; }
+        if ( InviteExpireTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Expires:** <t:${InviteExpireTime / 1000}:R>`; }
+        if ( generalInviteInfo.length > 1 ) { InviteInfoEmbed.addFields({ name: `>> General Info`, value: generalInviteInfo }); }
+        
+        // Invite Target Info
+        let targetInviteInfo = "";
+        if ( InviteChannel != null ) { targetInviteInfo += `**Channel Type:** ${readableChannelType(InviteChannel.type)}\n**Channel Name:** ${InviteChannel.name}`; }
+        if ( TargetType != null && TargetType === InviteTargetType.Stream ) { targetInviteInfo += `${targetInviteInfo.length > 1 ? `\n` : ""}**Target Type:** Screenshare`; }
+        if ( TargetType != null && TargetType === InviteTargetType.EmbeddedApplication ) { targetInviteInfo += `${targetInviteInfo.length > 1 ? `\n` : ""}**Target Type:** Voice Activity${(TargetApplication != null) && (TargetApplication.name != null) ? `\n**Activity Name:** ${TargetApplication.name}` : ""}`; }
+        if ( targetInviteInfo.length > 1 ) { InviteInfoEmbed.addFields({ name: `>> Target Info`, value: targetInviteInfo }); }
+        
+        // Guild Info
+        if ( InviteGuild != null )
+        {
+            if ( InviteGuild.description != null ) { InviteInfoEmbed.setDescription(InviteGuild.description); }
+            if ( InviteGuild.icon != null ) { InviteInfoEmbed.setAuthor({ iconURL: InviteGuild.iconURL({ extension: 'png' }), name: `Data for Invite Code: ${InviteCode}` }); }
+            let guildInviteInfo = `**Name:** ${InviteGuild.name}
+${ExternalEmojiPermission && InviteGuild.partnered ? `${EMOJI_PARTNER}` : ""} **Partnered:** ${InviteGuild.partnered}
+${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED}` : ""} **Verified:** ${InviteGuild.verified}`;
+            if ( InviteGuild.approximateMemberCount != null ) { guildInviteInfo += `\n**Approx. Total Members:** ${InviteGuild.approximateMemberCount}`; }
+            if ( InviteGuild.approximatePresenceCount != null ) { guildInviteInfo += `\n**Approx. Online Members:** ${InviteGuild.approximatePresenceCount}`; }
+            InviteInfoEmbed.addFields({ name: `>> Server Info`, value: guildInviteInfo });
+
+            // Server Feature Flags, grabbing from raw API to ensure up-to-date data
+            let rawData = await DiscordClient.rest.get(Routes.invite(InviteCode));
+            const RawFeatures = rawData["guild"]["features"];
+            let guildFeatures = [];
+            RawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
+            if ( guildFeatures.length > 0 ) { InviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
+        }
+
+        // Construct Invite Button
+        const InviteLinkButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Join Server").setURL(`https://discord.gg/${InviteCode}`);
+        const InviteInfoActionRow = new ActionRowBuilder().addComponents(InviteLinkButton);
+
+        return await slashCommand.editReply({ embeds: [InviteInfoEmbed], components: [InviteInfoActionRow] });
     },
 
 
