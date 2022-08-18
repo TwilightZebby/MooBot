@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
@@ -32,6 +32,7 @@ const EMOJI_ROLE = "<:Role:997752069605822507>";
 const EMOJI_EMOJI = "<:Emoji:997752064778174515>";
 const EMOJI_STICKER = "<:Sticker:997752072848019527>";
 const EMOJI_TIMEOUT = "<:timeout:997752074366369814>";
+const EMOJI_MEMBERSHIP_GATING = "<:MembershipGating:1009751578070224946>";
 const EMOJI_STATUS_IDLE = "<:StatusIdle:1009372448979947550>";
 
 
@@ -285,23 +286,83 @@ function readableGuildPremiumTierEmoji(premiumTier)
 }
 
 
-const UserFlagsToStrings = {
-    "DISCORD_EMPLOYEE": "Discord Employee",
-    "PARTNERED_SERVER_OWNER": "Partnered Server Owner",
-    "HYPESQUAD_EVENTS": "HypeSquad Events",
-    "BUGHUNTER_LEVEL_1": "Bug Hunter Tier 1",
-    "BUGHUNTER_LEVEL_2": "Bug Hunter Tier 2",
-    "HOUSE_BRAVERY": "HypeSquad Bravery House",
-    "HOUSE_BRILLIANCE": "HypeSquad Brilliance House",
-    "HOUSE_BALANCE": "HypeSquad Balance House",
-    "EARLY_SUPPORTER": "Early Nitro Supporter",
-    "VERIFIED_BOT": "Verified Bot",
-    "EARLY_VERIFIED_BOT_DEVELOPER": "Early Verified Bot Developer",
-    "DISCORD_CERTIFIED_MODERATOR": "Discord Certified Moderator",
-    "BOT_HTTP_INTERACTIONS": "HTTP Interactions-only Bot",
-    "QUARANTINED": "**Quarantined**",
-    "SPAMMER": "**Spammer**"
-};
+/**
+ * Readable User Flags
+ * @param {String} userFlag 
+ * @returns {String}
+ */
+function readableUserFlags(userFlag)
+{
+    let readableString = "";
+    switch(userFlag)
+    {
+        case "BotHTTPInteractions":
+            readableString = "HTTP Interactions Bot";
+            break;
+
+        case "BugHunterLevel1":
+            readableString = "Bug Hunter Tier 1";
+            break;
+
+        case "BugHunterLevel2":
+            readableString = "Bug Hunter Tier 2";
+            break;
+
+        case "CertifiedModerator":
+            readableString = "Certified Moderator";
+            break;
+
+        case "HypeSquadOnlineHouse1":
+            readableString = "HypeSquad Bravery House";
+            break;
+
+        case "HypeSquadOnlineHouse2":
+            readableString = "HypeSquad Brilliance House";
+            break;
+
+        case "HypeSquadOnlineHouse3":
+            readableString = "HypeSquad Balance House";
+            break;
+
+        case "Hypesquad":
+            readableString = "HypeSquad Events";
+            break;
+
+        case "Partner":
+            readableString = "Partnered Server Owner";
+            break;
+
+        case "PremiumEarlySupporter":
+            readableString = "Early Nitro Supporter";
+            break;
+
+        case "Quarantined":
+            readableString = "**Quarantined**";
+            break;
+
+        case "Spammer":
+            readableString = "**Spammer**";
+            break;
+
+        case "Staff":
+            readableString = "Discord Employee";
+            break;
+
+        case "TeamPseudoUser":
+            readableString = "Team (Pseudo User)";
+            break;
+
+        case "VerifiedBot":
+            readableString = "Verified Bot";
+            break;
+
+        case "VerifiedDeveloper":
+            readableString = "Early Verified Bot Developer";
+            break;
+    }
+    return readableString;
+}
+
 
 /**
  * Readable Channel Types
@@ -363,6 +424,76 @@ function readableChannelType(channelType)
     }
     return readableString;
 }
+
+
+/**
+ * Readable Bot Application Flags
+ * @param {String} applicationFlag 
+ * @returns {String}
+ */
+function readableApplicationFlags(applicationFlag)
+{
+    let readableString = "";
+    switch(applicationFlag)
+    {
+        case "Embedded":
+            readableString = "Embedded";
+            break;
+
+        case "EmbeddedFirstParty":
+            readableString = "Embedded First Party";
+            break;
+
+        case "EmbeddedReleased":
+            readableString = "Embedded Released";
+            break;
+
+        case "GatewayGuildMembers":
+            readableString = "Has Guild Members Intent (Verified)";
+            break;
+
+        case "GatewayGuildMembersLimited":
+            readableString = "Has Guild Members Intent";
+            break;
+
+        case "GatewayMessageContent":
+            readableString = "Has Message Content Intent (Verified)";
+            break;
+
+        case "GatewayMessageContentLimited":
+            readableString = "Has Message Content Intent";
+            break;
+
+        case "GatewayPresence":
+            readableString = "Has Presence Intent (Verified)";
+            break;
+
+        case "GatewayPresenceLimited":
+            readableString = "Has Presence Intent";
+            break;
+
+        case "GroupDMCreate":
+            readableString = "Group DM Create";
+            break;
+
+        case "ManagedEmoji":
+            readableString = "Managed Emoji";
+            break;
+
+        case "RPCHasConnected":
+            readableString = "RPC Has Connected";
+            break;
+
+        case "VerificationPendingGuildLimit":
+            readableString = "Verification blocked by unusual growth";
+            break;
+    }
+    return readableString;
+}
+
+
+/** Bot Flags to be included in seperate Embed Field to the others */
+const BotIntentFlags = [ "GatewayPresence", "GatewayPresenceLimited", "GatewayMessageContent", "GatewayMessageContentLimited", "GatewayGuildMembers", "GatewayGuildMembersLimited" ];
 
 
 
@@ -660,7 +791,140 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${ca
      */
     async fetchUserInfo(slashCommand)
     {
-        //.
+        // Defer
+        await slashCommand.deferReply({ ephemeral: true });
+
+        // Fetch Member, be it User of Command or Target from input
+        /** @type {GuildMember} */
+        let fetchedMember;
+        const MemberOption = slashCommand.options.getMember("user");
+        if ( !MemberOption || MemberOption == null ) { fetchedMember = await slashCommand.guild.members.fetch(slashCommand.user.id); }
+        else { fetchedMember = await slashCommand.guild.members.fetch(MemberOption.id).catch(async err => { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD }); }); }
+
+        // Check for External Emoji Permission
+        const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
+
+        // Grab Data
+        // Member Information
+        const MemberUser = fetchedMember.user;
+        // Force-fetch User, to ensure up-to-date fields
+        await MemberUser.fetch(true);
+        // Check if standard User or Bot User
+        const IsBot = fetchedMember.user.bot;
+        const MemberDisplayName = ( fetchedMember.displayName || null );
+        const MemberDisplayColorHex = fetchedMember.displayHexColor;
+        const MemberJoinedTime = ( fetchedMember.joinedAt || null );
+        const MemberHighestRole = fetchedMember.roles.highest;
+        const MemberRoleCount = fetchedMember.roles.cache.filter(role => role.id !== fetchedMember.guild.id).size;
+        const MemberTimedOut = ( fetchedMember.communicationDisabledUntil || null );
+
+        // Assets
+        const HasMemberAvatar = fetchedMember.avatar == null ? false : true;
+        const HasGlobalAvatar = MemberUser?.avatar == null ? false : true;
+        const HasGlobalBanner = MemberUser?.banner == null ? false : true;
+
+        // User Flags
+        const RawUserFlags = await MemberUser.fetchFlags(true);
+        const UserFlagStrings = [];
+        RawUserFlags.toArray().forEach(flag => UserFlagStrings.push(readableUserFlags(flag)));
+
+        const UserInfoEmbed = new EmbedBuilder().setAuthor({ iconURL: fetchedMember.displayAvatarURL({ extension: 'png' }), name: `${fetchedMember.user.username}#${fetchedMember.user.discriminator}` })
+        .setColor(MemberDisplayColorHex);
+
+        
+        // IF NOT A BOT
+        if ( !IsBot )
+        {
+            const MemberPending = ( fetchedMember.pending || null );
+            const MemberStartedBoosting = ( fetchedMember.premiumSince || null );
+
+            // Construct strings for Embed
+            // Member Info
+            let memberInformationString = "";
+            if ( MemberUser.id === slashCommand.guild.ownerId ) { memberInformationString += `${ExternalEmojiPermission ? `${EMOJI_OWNER_CROWN} `: ""}**Is Server Owner**`; }
+            if ( MemberDisplayName != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}**Display Name:** \`${MemberDisplayName}\``; }
+            if ( MemberJoinedTime != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}**Joined Server:** <t:${Math.floor(MemberJoinedTime.getTime() / 1000)}:R>`; }
+            if ( MemberHighestRole != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}**Highest Role:** <@&${MemberHighestRole.id}>`; }
+            if ( MemberRoleCount > 0 ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}${ExternalEmojiPermission ? `${EMOJI_ROLE} ` : ""}**Role Count:** ${MemberRoleCount}`; }
+            if ( MemberStartedBoosting != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}${ExternalEmojiPermission ? `${EMOJI_BOOST} ` : ""}**Boosting Server Since:** <t:${Math.floor(MemberStartedBoosting.getTime() / 1000)}:R>`; }
+            if ( MemberPending === true ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}${ExternalEmojiPermission ? `${EMOJI_MEMBERSHIP_GATING} ` : ""}Yet to pass Membership Screening`; }
+            if ( MemberTimedOut != null && MemberTimedOut.getTime() > Date.now() ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}${ExternalEmojiPermission ? `${EMOJI_TIMEOUT} ` : ""}Currently Timed-out (expires <t:${Math.floor(MemberTimedOut.getTime() / 1000)}:R>)`; }
+            if ( memberInformationString.length > 1 ) { UserInfoEmbed.addFields({ name: `>> Member Information`, value: memberInformationString }); }
+
+            // User Info
+            let userInformationString = `**Mention:** <@${MemberUser.id}>
+**Account Created:** <t:${Math.floor(MemberUser.createdAt.getTime() / 1000)}:R>
+**Is Bot:** ${MemberUser.bot}`;
+            UserInfoEmbed.addFields({ name: `>> User Information`, value: userInformationString });
+
+            // User Flags
+            if ( UserFlagStrings.length > 0 ) { UserInfoEmbed.addFields({ name: `>> User Flags`, value: UserFlagStrings.sort().join(', ').slice(0, 1023) }) }
+
+            // Asset Buttons
+            const UserInfoActionRow = new ActionRowBuilder();
+            if ( MemberRoleCount > 0 ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Primary).setCustomId(`info-user-role_${MemberUser.id}`).setLabel("Roles").setEmoji(EMOJI_ROLE)); }
+            if ( HasMemberAvatar ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Member Avatar").setURL(fetchedMember.avatarURL())); }
+            if ( HasGlobalAvatar ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Global Avatar").setURL(MemberUser.avatarURL())); }
+            if ( HasGlobalBanner ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Global Banner").setURL(MemberUser.bannerURL())); }
+
+            // Send Embed and Buttons
+            return await slashCommand.editReply({ embeds: [UserInfoEmbed], components: [UserInfoActionRow] });
+        }
+        // IS A BOT
+        else
+        {
+            // Fetch specific Bot-related Information
+            const BotApplicationFlags = MemberUser.client.application.flags.toArray();
+            let botApplicationFlagStrings = [];
+            let botIntentFlagStrings = [];
+            BotApplicationFlags.forEach(flag => {
+                if ( BotIntentFlags.includes(flag) ) { botIntentFlagStrings.push(readableApplicationFlags(flag)); }
+                else { botApplicationFlagStrings.push(readableApplicationFlags(flag)); }
+            });
+            const BotRequiresCodeGrant = ( MemberUser.client.application.botRequireCodeGrant || null );
+            const BotPubliclyInvitable = ( MemberUser.client.application.botPublic || null );
+            const BotDescription = ( MemberUser.client.application.description || null );
+
+            // Construct strings for Embed
+            // Member Info
+            let memberInformationString = "";
+            if ( MemberUser.id === slashCommand.guild.ownerId ) { memberInformationString += `${ExternalEmojiPermission ? `${EMOJI_OWNER_CROWN} `: ""}**Is Server Owner**`; }
+            if ( MemberDisplayName != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}**Display Name:** \`${MemberDisplayName}\``; }
+            if ( MemberJoinedTime != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}**Joined Server:** <t:${Math.floor(MemberJoinedTime.getTime() / 1000)}:R>`; }
+            if ( MemberHighestRole != null ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}**Highest Role:** <@&${MemberHighestRole.id}>`; }
+            if ( MemberRoleCount > 0 ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}${ExternalEmojiPermission ? `${EMOJI_ROLE} ` : ""}**Role Count:** ${MemberRoleCount}`; }
+            if ( MemberTimedOut != null && MemberTimedOut.getTime() > Date.now() ) { memberInformationString += `${memberInformationString.length > 1 ? `\n`: ""}${ExternalEmojiPermission ? `${EMOJI_TIMEOUT} ` : ""}Currently Timed-out (expires <t:${Math.floor(MemberTimedOut.getTime() / 1000)}:R>)`; }
+            if ( memberInformationString.length > 1 ) { UserInfoEmbed.addFields({ name: `>> Member Information`, value: memberInformationString }); }
+
+            // User Info
+            let userInformationString = `**Mention:** <@${MemberUser.id}>
+**Account Created:** <t:${Math.floor(MemberUser.createdAt.getTime() / 1000)}:R>
+**Is Bot:** ${MemberUser.bot}`;
+            UserInfoEmbed.addFields({ name: `>> User Information`, value: userInformationString });
+
+            // Bot Information
+            let botInformationString = "";
+            if ( BotDescription != null ) { UserInfoEmbed.setDescription(BotDescription); }
+            if ( BotPubliclyInvitable != null ) { botInformationString += `**Is Publicly Invitable:** ${BotPubliclyInvitable}`; }
+            if ( BotRequiresCodeGrant != null ) { botInformationString += `${botInformationString.length > 1 ? `\n` : ""}**Requires OAuth2 Grant:** ${BotRequiresCodeGrant}`; }
+            if ( botIntentFlagStrings.length > 0 ) { botInformationString += `${botInformationString.length > 1 ? `\n` : ""}${botIntentFlagStrings.sort().join(`\n`).slice(0, 1023)}`; }
+            if ( botInformationString.length > 1 ) { UserInfoEmbed.addFields({ name: `>> Bot Information`, value: botInformationString }); }
+
+            // User Flags
+            if ( UserFlagStrings.length > 0 ) { UserInfoEmbed.addFields({ name: `>> User Flags`, value: UserFlagStrings.sort().join(', ').slice(0, 1023) }) }
+            // Bot Application Flags (that aren't Intents)
+            if ( botApplicationFlagStrings.length > 0 ) { UserInfoEmbed.addFields({ name: `>> Bot Flags`, value: botApplicationFlagStrings.sort().join(', ').slice(0, 1023) }); }
+
+            // Asset Buttons
+            const UserInfoActionRow = new ActionRowBuilder();
+            if ( MemberRoleCount > 0 ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Primary).setCustomId(`info-user-role_${MemberUser.id}`).setLabel("Roles").setEmoji(EMOJI_ROLE)); }
+            if ( HasMemberAvatar ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Member Avatar").setURL(fetchedMember.avatarURL())); }
+            if ( HasGlobalAvatar ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Global Avatar").setURL(MemberUser.avatarURL())); }
+            if ( HasGlobalBanner ) { UserInfoActionRow.addComponents(new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Global Banner").setURL(MemberUser.bannerURL())); }
+
+            // Send Embed and Buttons
+            return await slashCommand.editReply({ embeds: [UserInfoEmbed], components: [UserInfoActionRow] });
+        }
     },
 
 
@@ -704,8 +968,8 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${ca
         // General Invite Info
         let generalInviteInfo = "";
         if ( InviteCreatorUser != null ) { generalInviteInfo += `**Inviter:** ${InviteCreatorUser.username}#${InviteCreatorUser.discriminator}\n**Bot User:** ${InviteCreatorUser.bot}`; }
-        if ( InviteCreatedTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Created:** <t:${InviteCreatedTime / 1000}:R>`; }
-        if ( InviteExpireTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Expires:** <t:${InviteExpireTime / 1000}:R>`; }
+        if ( InviteCreatedTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Created:** <t:${Math.floor(InviteCreatedTime / 1000)}:R>`; }
+        if ( InviteExpireTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Expires:** <t:${Math.floor(InviteExpireTime / 1000)}:R>`; }
         if ( generalInviteInfo.length > 1 ) { InviteInfoEmbed.addFields({ name: `>> General Info`, value: generalInviteInfo }); }
         
         // Invite Target Info
@@ -775,8 +1039,8 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
             { name: `Server Commands`, value: `${RegisteredGuildCommands.size}`, inline: true },
             { name: `Total App Commands`, value: `${TotalRegisteredCommands}`, inline: true },
 
-            { name: `Servers`, value: `${DiscordClient.guilds.cache.size}`, inline: true },
             { name: `\u200B`, value: `\u200B`, inline: true },
+            { name: `Servers`, value: `${DiscordClient.guilds.cache.size}`, inline: true },
             { name: `\u200B`, value: `\u200B`, inline: true }
         );
 
