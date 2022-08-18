@@ -605,76 +605,37 @@ module.exports = {
         // Construct Embed
         const ServerInfoEmbed = new EmbedBuilder().setAuthor({ name: GuildName }).setFooter({ text: "Created" }).setTimestamp(CurrentGuild.createdAt);
 
-        // IF EXTERNAL EMOJI PERMISSION IS GRANTED TO BOT
-        if ( ExternalEmojiPermission )
-        {
-            ServerInfoEmbed.setDescription(`${GuildPartnered ? `${EMOJI_PARTNER}` : ""} ${GuildVerified ? `${EMOJI_VERIFIED}` : ""}\n${GuildDescription}`)
-            .addFields(
-                {
-                    name: `>> General`,
-                    value: `${EMOJI_OWNER_CROWN} **Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
-${readableGuildPremiumTierEmoji(GuildBoostTier)} **Boost Level:** ${readableGuildPremiumTier(GuildBoostTier)}
-${EMOJI_BOOST} **Boost Count:** ${GuildBoostCount}
-${EMOJI_EMOJI} **Emojis:** ${TotalEmojiCount}
-${EMOJI_STICKER} **Stickers:** ${TotalStickerCount}
-${EMOJI_ROLE} **Roles:** ${TotalRoleCount} / 250${TotalScheduledEvents > 0 ? `\n${EMOJI_SCHEDULED_EVENT} **Scheduled Events:** ${TotalScheduledEvents}` : ""}${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
-                    inline: true
-                },
-                {
-                    name: `>> Channels (${TotalChannelCount} / 500)`,
-                    value: `${EMOJI_CHANNEL_TEXT} **Text:** ${textChannelCount}
-${EMOJI_CHANNEL_NEWS} **Announcement:** ${announcementChannelCount}
-${EMOJI_CHANNEL_VOICE} **Voice:** ${voiceChannelCount}
-${EMOJI_CHANNEL_STAGE} **Stage:** ${stageChannelCount}
-${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n❓ **Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n${EMOJI_STATUS_IDLE} **AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n⚙ **System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n${EMOJI_CHANNEL_RULES} **Rules:** <#${RulesChannelId}>` : ""}`,
-                    inline: true
-                },
-                {
-                    name: `>> Security & Moderation`,
-                    value: `**Verification Level:** ${readableVerificationLevel(GuildVerificationLevel)}
+        ServerInfoEmbed.setDescription(`${GuildPartnered ? `${ExternalEmojiPermission ? `${EMOJI_PARTNER} ` : "**Partnered!** "}` : ""} ${GuildVerified ? `${ExternalEmojiPermission ? `${EMOJI_VERIFIED}` : "**Verified!**"}` : ""}\n${GuildDescription}`)
+        .addFields(
+            {
+                name: `>> General`,
+                value: `${ExternalEmojiPermission ? `${EMOJI_OWNER_CROWN} ` : ""}**Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
+${ExternalEmojiPermission ? `${readableGuildPremiumTierEmoji(GuildBoostTier)} ` : ""}**Boost Level:** ${readableGuildPremiumTier(GuildBoostTier)}
+${ExternalEmojiPermission ? `${EMOJI_BOOST} ` : ""}**Boost Count:** ${GuildBoostCount}
+${ExternalEmojiPermission ? `${EMOJI_EMOJI} ` : ""}**Emojis:** ${TotalEmojiCount}
+${ExternalEmojiPermission ? `${EMOJI_STICKER} ` : ""}**Stickers:** ${TotalStickerCount}
+${ExternalEmojiPermission ? `${EMOJI_ROLE} ` : ""}**Roles:** ${TotalRoleCount} / 250${TotalScheduledEvents > 0 ? `\n${ExternalEmojiPermission ? `${EMOJI_SCHEDULED_EVENT} ` : ""}**Scheduled Events:** ${TotalScheduledEvents}` : ""}${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
+                inline: true
+            },
+            {
+                 name: `>> Channels (${TotalChannelCount} / 500)`,
+                value: `${ExternalEmojiPermission ? `${EMOJI_CHANNEL_TEXT} ` : ""}**Text:** ${textChannelCount}
+${ExternalEmojiPermission ? `${EMOJI_CHANNEL_NEWS} ` : ""}**Announcement:** ${announcementChannelCount}
+${ExternalEmojiPermission ? `${EMOJI_CHANNEL_VOICE} ` : ""}**Voice:** ${voiceChannelCount}
+${ExternalEmojiPermission ? `${EMOJI_CHANNEL_STAGE} ` : ""}**Stage:** ${stageChannelCount}
+${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n${ExternalEmojiPermission ? `❓ ` : ""}**Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n${ExternalEmojiPermission ? `${EMOJI_STATUS_IDLE} ` : ""}**AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n${ExternalEmojiPermission ? `⚙ ` : ""}**System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n${ExternalEmojiPermission ? `${EMOJI_CHANNEL_RULES} ` : ""}**Rules:** <#${RulesChannelId}>` : ""}`,
+                inline: true
+            },
+            {
+                name: `>> Security & Moderation`,
+                value: `**Verification Level:** ${readableVerificationLevel(GuildVerificationLevel)}
 **Explicit Content Filter:** ${readableExplicitFilter(GuildContentFilter)}
 **2FA-enabled Moderation:** ${readableMFALevel(GuildMFALevel)}
 **NSFW Level:** ${readableNSFWLevel(GuildNSFWLevel)}
 **Default Notifications:** ${readableDefaultNotification(GuildDefaultNotifications)}`
-                }
-            );
-            if ( guildFeatures.length > 0 ) { ServerInfoEmbed.addFields({name: `>> Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}`}); }
-        }
-        // BOT DOES NOT HAVE EXTERNAL EMOJIS PERMISSION
-        else
-        {
-            ServerInfoEmbed.setDescription(`${GuildPartnered ? `**Partnered!**` : ""} ${GuildVerified ? ` **Verified!**` : ""}\n${GuildDescription}`)
-            .addFields(
-                {
-                    name: `>> General`,
-                    value: `**Owner:** ${GuildOwner.user.username}#${GuildOwner.user.discriminator}
-**Boost Level:** ${readableGuildPremiumTier(GuildBoostTier)}
-**Boost Count:** ${GuildBoostCount}
-**Emojis:** ${TotalEmojiCount}
-**Stickers:** ${TotalStickerCount}
-**Roles:** ${TotalRoleCount} / 250${TotalScheduledEvents > 0 ? `\n**Scheduled Events:** ${TotalScheduledEvents}` : ""}${GuildVanityCode != null ? `\n**Vanity URL:** https://discord.gg/${GuildVanityCode}` : ""}${GuildApproxTotalMembers != null ? `\n**Approx. Total Members:** ${GuildApproxTotalMembers}` : ""}${GuildApproxOnlineMembers != null ? `\n**Approx. Online Members:** ${GuildApproxOnlineMembers}` : ""}`,
-                    inline: true
-                },
-                {
-                    name: `>> Channels (${TotalChannelCount} / 500)`,
-                    value: `**Text:** ${textChannelCount}
-**Announcement:** ${announcementChannelCount}
-**Voice:** ${voiceChannelCount}
-**Stage:** ${stageChannelCount}
-**Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n**Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n**AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n**System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n**Rules:** <#${RulesChannelId}>` : ""}`,
-                    inline: true
-                },
-                {
-                    name: `>> Security & Moderation`,
-                    value: `**Verification Level:** ${readableVerificationLevel(GuildVerificationLevel)}
-**Explicit Content Filter:** ${readableExplicitFilter(GuildContentFilter)}
-**2FA-enabled Moderation:** ${readableMFALevel(GuildMFALevel)}
-**NSFW Level:** ${readableNSFWLevel(GuildNSFWLevel)}
-**Default Notifications:** ${readableDefaultNotification(GuildDefaultNotifications)}`
-                }
-            );
-            if ( guildFeatures.length > 0 ) { ServerInfoEmbed.addFields({name: `>> Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}`}); }
-        }
+            }
+        );
+        if ( guildFeatures.length > 0 ) { ServerInfoEmbed.addFields({name: `>> Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}`}); }
 
         // Add Asset Buttons
         const ServerInfoActionRow = new ActionRowBuilder();
@@ -760,8 +721,8 @@ ${EMOJI_CHANNEL_CATEGORY} **Category:** ${categoryChannelCount}${unknownChannelC
             if ( InviteGuild.description != null ) { InviteInfoEmbed.setDescription(InviteGuild.description); }
             if ( InviteGuild.icon != null ) { InviteInfoEmbed.setAuthor({ iconURL: InviteGuild.iconURL({ extension: 'png' }), name: `Data for Invite Code: ${InviteCode}` }); }
             let guildInviteInfo = `**Name:** ${InviteGuild.name}
-${ExternalEmojiPermission && InviteGuild.partnered ? `${EMOJI_PARTNER}` : ""} **Partnered:** ${InviteGuild.partnered}
-${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED}` : ""} **Verified:** ${InviteGuild.verified}`;
+${ExternalEmojiPermission && InviteGuild.partnered ? `${EMOJI_PARTNER} ` : ""}**Partnered:** ${InviteGuild.partnered}
+${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**Verified:** ${InviteGuild.verified}`;
             if ( InviteGuild.approximateMemberCount != null ) { guildInviteInfo += `\n**Approx. Total Members:** ${InviteGuild.approximateMemberCount}`; }
             if ( InviteGuild.approximatePresenceCount != null ) { guildInviteInfo += `\n**Approx. Online Members:** ${InviteGuild.approximatePresenceCount}`; }
             InviteInfoEmbed.addFields({ name: `>> Server Info`, value: guildInviteInfo });
