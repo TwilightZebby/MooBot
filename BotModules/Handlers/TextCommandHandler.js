@@ -15,7 +15,7 @@ module.exports = {
         const EscapePrefix = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const PrefixRegex = new RegExp(`^(<@!?${DiscordClient.user.id}>|${EscapePrefix(Config.PREFIX)})\\s*`);
 
-        if ( !PrefixRegex.text(message.content) )
+        if ( !PrefixRegex.test(message.content) )
         {
             // No prefix found, thus not an attempt to use a Text Command
             return false;

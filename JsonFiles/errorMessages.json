@@ -73,6 +73,10 @@
         "START_COMMAND_REQUIRES_BOOST": "Sorry, but Discord has set the {{ACTIVITY_NAME}} Activity to require Server Boost Tier {{BOOST_TIER}}, yet this Server hasn't reached that Boost Tier.",
 
         "TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO": "⚠ {{TEMPERATURE}} is a temperature that cannot exist! (It is below Absolute Zero!)",
+        "TEMPERATURE_CONTEXT_COMMAND_NOT_A_VALID_MESSAGE": "Sorry, but this Context Command cannot be used on a System or Bot Message.",
+        "TEMPERATURE_CONTEXT_COMMAND_EMPTY_CONTENT": "Sorry, but that Message doesn't have any content! (Attachments aren't checked by this Context Command)",
+        "TEMPERATURE_CONTEXT_COMMAND_NO_TEMPERATURES_FOUND": "Sorry, but I couldn't find any temperatures to convert from that Message.",
+        "TEMPERATURE_CONTEXT_COMMAND_TOO_MANY_TEMPERATURES": "Sorry, but there are too many temperatures found in that Message!\n(I have a maximum limit of 10 temperatures per Message that I can convert)",
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
