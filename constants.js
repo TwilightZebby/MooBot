@@ -18,6 +18,11 @@ module.exports =
         SlashCooldowns: new Collection(),
         ContextCooldowns: new Collection(),
         ButtonCooldowns: new Collection(),
-        SelectCooldowns: new Collection()
+        SelectCooldowns: new Collection(),
+
+        /** @type {Collection<String, {type: String, embed: {title: ?String, description: ?String, color: ?String}, roles: ?Array<{id: String, emoji: ?String, label: ?String}>}>} */
+        RoleMenuCreation: new Collection(),
+        /** @type {Collection<String, {type: String, embed: {title: ?String, description: ?String, color: ?String}, roles: ?Array<{id: String, emoji: ?String, label: ?String}>}>} */
+        RoleMenuConfiguration: new Collection()
     }
 }
