@@ -39,7 +39,7 @@ module.exports = {
         const MenuTypeValue = selectInteraction.values.shift();
         
         // Create entry in Collection for this Guild
-        Collections.RoleMenuCreation.set(`${selectInteraction.guildId}`, { type: MenuTypeValue });
+        Collections.RoleMenuCreation.set(`${selectInteraction.guildId}`, { type: MenuTypeValue, embed: new EmbedBuilder(), roles: [] });
 
         // Allow User to begin creating their Role Menu
         return await selectInteraction.update({ components: [RoleMenuCreateNoEmbed], embeds: [DefaultEmbed], content: `__**Self-Assignable Role Menu Creation**__ - Menu Creation

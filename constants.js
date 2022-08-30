@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Collection, Partials } = require("discord.js");
+const { Client, GatewayIntentBits, Collection, Partials, EmbedBuilder } = require("discord.js");
 
 module.exports =
 {
@@ -20,9 +20,9 @@ module.exports =
         ButtonCooldowns: new Collection(),
         SelectCooldowns: new Collection(),
 
-        /** @type {Collection<String, {type: String, embed: {title: ?String, description: ?String, color: ?String}, roles: ?Array<{id: String, emoji: ?String, label: ?String}>}>} */
+        /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, emoji: ?String, label: ?String}>}>} */
         RoleMenuCreation: new Collection(),
-        /** @type {Collection<String, {type: String, embed: {title: ?String, description: ?String, color: ?String}, roles: ?Array<{id: String, emoji: ?String, label: ?String}>}>} */
+        /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, emoji: ?String, label: ?String}>}>} */
         RoleMenuConfiguration: new Collection()
     }
 }
