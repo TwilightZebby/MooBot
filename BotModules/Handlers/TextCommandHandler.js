@@ -175,7 +175,7 @@ module.exports = {
 
 
             // Attempt to run Command
-            try { await Command.Execute(message, Arguments); }
+            try { await Command.execute(message, Arguments); }
             catch (err)
             {
                 //console.error(err);

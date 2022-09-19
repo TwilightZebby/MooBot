@@ -3,3 +3,5 @@ config.js
 /.vscode
 
 /JsonFiles/Hidden/
+
+/TextCommands/test.js
