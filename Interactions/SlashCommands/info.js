@@ -212,6 +212,10 @@ const festuresString = {
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
     "GUILD_HOME_TEST": "Server Home Test",
     "INVITES_DISABLED": "**Invites Disabled**",
+    "GUILD_HOME_OVERRIDE": "Server Home Override",
+    "INCREASED_THREAD_LIMIT": "Increased Thread Limit",
+    "CREATOR_MONETIZABLE_WHITEGLOVE": "Creator Monetizable Whiteglove",
+    "CREATOR_MONETIZABLE_PROVISIONAL": "Creator Monetizable Provisional",
     // From here onwards are deprecated Server Features
     "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
     "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
