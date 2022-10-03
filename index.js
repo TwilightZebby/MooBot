@@ -4,6 +4,10 @@ const { DiscordClient, Collections } = require("./constants.js");
 const Config = require("./config.js");
 
 
+// Because I need this to be mutable
+DiscordClient.st1gBotGrace = false;
+
+
 
 /******************************************************************************* */
 // BRING IN FILES FOR COMMANDS AND INTERACTIONS
@@ -101,13 +105,19 @@ DiscordClient.on('error', (err) => { return console.error("***DISCORD ERROR: ", 
 /******************************************************************************* */
 // DISCORD - MESSAGE CREATE EVENT
 const TextCommandHandler = require("./BotModules/Handlers/TextCommandHandler.js");
+const AntiSt1gBotSpam = require("./BotModules/AntiSt1gBotSpamModule.js");
 
 DiscordClient.on('messageCreate', async (message) => {
     // Partials
     if ( message.partial ) { return; }
 
     // Bots
-    if ( message.author.bot ) { return; }
+    if ( message.author.bot )
+    { 
+        if ( message.channel.id === Config.Dr1fterXSocialChannel && ( message.author.id === Config.St1gBotUserID || message.author.id === Config.St1gCheckerBotUserID ) )
+        { await AntiSt1gBotSpam.Main(message); }
+        return;
+    }
 
     // System Messages
     if ( message.system || message.author.system ) { return; }
