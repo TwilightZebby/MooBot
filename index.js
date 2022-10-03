@@ -1,4 +1,5 @@
 const { RateLimitError, DMChannel } = require("discord.js");
+const { Statuspage, StatuspageUpdates } = require("statuspage.js");
 const fs = require("fs");
 const { DiscordClient, Collections } = require("./constants.js");
 const Config = require("./config.js");
