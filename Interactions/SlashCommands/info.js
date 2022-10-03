@@ -34,6 +34,20 @@ const EMOJI_STICKER = "<:Sticker:997752072848019527>";
 const EMOJI_TIMEOUT = "<:timeout:997752074366369814>";
 const EMOJI_MEMBERSHIP_GATING = "<:MembershipGating:1009751578070224946>";
 const EMOJI_STATUS_IDLE = "<:StatusIdle:1009372448979947550>";
+// Badges
+const EMOJI_VERIFIED_BOT = "<:BadgeBotVerified:1026417284799021087>";
+const EMOJI_SUPPORTS_APP_COMMANDS = "<:BadgeBotSupportsAppCommands:1026426199347560468>";
+const EMOJI_BUG_HUNTER_TIER_1 = "<:BadgeUserBugHunterTier1:1026417286111838228>";
+const EMOJI_BUG_HUNTER_TIER_2 = "<:BadgeUserBugHunterTier2:1026417287252672562>";
+const EMOJI_CERTIFIED_MOD = "<:BadgeUserCertifiedMod:1026417288406110208>";
+const EMOJI_EARLY_SUPPORTER = "<:BadgeUserEarlySupporter:1026417290268389426>";
+const EMOJI_EARLY_VERIFIED_BOT_DEV = "<:BadgeUserEarlyVerifiedBotDev:1026417291522490449>";
+const EMOJI_HYPESQUAD_BALANCE = "<:BadgeUserHypeSquadBalance:1026417292680105984>";
+const EMOJI_HYPESQUAD_BRAVERY = "<:BadgeUserHypeSquadBravery:1026417293967773696>";
+const EMOJI_HYPESQUAD_BRILLIANCE = "<:BadgeUserHypeSquadBrilliance:1026417295221862411>";
+const EMOJI_HYPESQUAD_EVENTS = "<:BadgeUserHypeSquadEvents:1026417296421437480>";
+const EMOJI_PARTNERED_SERVER_OWNER = "<:BadgeUserPartneredServerOwner:1026417297625202709>";
+const EMOJI_STAFF = "<:BadgeUserStaff:1026417298808000512>";
 
 
 
@@ -367,6 +381,72 @@ function readableUserFlags(userFlag)
     return readableString;
 }
 
+/**
+ * Readable User Flags, returns Emoji strings
+ * @param {String} userFlag 
+ * @returns {String}
+ */
+function readableUserFlagsEmoji(userFlag)
+{
+    let readableString = "";
+    switch(userFlag)
+    {
+        case "BugHunterLevel1":
+            readableString = EMOJI_BUG_HUNTER_TIER_1;
+            break;
+
+        case "BugHunterLevel2":
+            readableString = EMOJI_BUG_HUNTER_TIER_2;
+            break;
+
+        case "CertifiedModerator":
+            readableString = EMOJI_CERTIFIED_MOD;
+            break;
+
+        case "HypeSquadOnlineHouse1":
+            readableString = EMOJI_HYPESQUAD_BRAVERY;
+            break;
+
+        case "HypeSquadOnlineHouse2":
+            readableString = EMOJI_HYPESQUAD_BRILLIANCE;
+            break;
+
+        case "HypeSquadOnlineHouse3":
+            readableString = EMOJI_HYPESQUAD_BALANCE;
+            break;
+
+        case "Hypesquad":
+            readableString = EMOJI_HYPESQUAD_EVENTS;
+            break;
+
+        case "Partner":
+            readableString = EMOJI_PARTNERED_SERVER_OWNER;
+            break;
+
+        case "PremiumEarlySupporter":
+            readableString = EMOJI_EARLY_SUPPORTER;
+            break;
+
+        case "Staff":
+            readableString = EMOJI_STAFF;
+            break;
+
+        case "VerifiedBot":
+            readableString = EMOJI_VERIFIED_BOT;
+            break;
+
+        case "VerifiedDeveloper":
+            readableString = EMOJI_EARLY_VERIFIED_BOT_DEV;
+            break;
+
+        default:
+            // To catch the Flags that DON'T have Badges connected with them
+            readableString = "NULL";
+            break;
+    }
+    return readableString;
+}
+
 
 /**
  * Readable Channel Types
@@ -398,19 +478,19 @@ function readableChannelType(channelType)
             readableString = "Forum";
             break;
 
-        case ChannelType.GuildNews:
+        case ChannelType.GuildAnnouncement:
             readableString = "Announcement";
             break;
             
-        case ChannelType.GuildNewsThread:
+        case ChannelType.AnnouncementThread:
             readableString = "Thread (in Announcement)";
             break;
 
-        case ChannelType.GuildPrivateThread:
+        case ChannelType.PrivateThread:
             readableString = "Private Thread";
             break;
 
-        case ChannelType.GuildPublicThread:
+        case ChannelType.PublicThread:
             readableString = "Public Thread";
             break;
 
@@ -440,6 +520,10 @@ function readableApplicationFlags(applicationFlag)
     let readableString = "";
     switch(applicationFlag)
     {
+        case "ApplicationCommandBadge":
+            readableString = "Supports Application Commands";
+            break;
+
         case "Embedded":
             readableString = "Embedded";
             break;
@@ -830,7 +914,11 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${ca
         // User Flags
         const RawUserFlags = await MemberUser.fetchFlags(true);
         const UserFlagStrings = [];
+        let userFlagEmojis = [];
         RawUserFlags.toArray().forEach(flag => UserFlagStrings.push(readableUserFlags(flag)));
+        RawUserFlags.toArray().forEach(flag => userFlagEmojis.push(readableUserFlagsEmoji(flag)));
+        // Filter out badgeless flags
+        userFlagEmojis = userFlagEmojis.filter(emojiString => emojiString !== "NULL");
 
         const UserInfoEmbed = new EmbedBuilder().setAuthor({ iconURL: fetchedMember.displayAvatarURL({ extension: 'png' }), name: `${fetchedMember.user.username}#${fetchedMember.user.discriminator}` })
         .setColor(MemberDisplayColorHex);
@@ -861,8 +949,9 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${ca
 **Is Bot:** ${MemberUser.bot}`;
             UserInfoEmbed.addFields({ name: `>> User Information`, value: userInformationString });
 
-            // User Flags
+            // User Flags & emojis
             if ( UserFlagStrings.length > 0 ) { UserInfoEmbed.addFields({ name: `>> User Flags`, value: UserFlagStrings.sort().join(', ').slice(0, 1023) }) }
+            if ( userFlagEmojis.length > 0 && ExternalEmojiPermission ) { UserInfoEmbed.setDescription(userFlagEmojis.join(" ")); }
 
             // Asset Buttons
             const UserInfoActionRow = new ActionRowBuilder();
@@ -906,9 +995,13 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${ca
 **Is Bot:** ${MemberUser.bot}`;
             UserInfoEmbed.addFields({ name: `>> User Information`, value: userInformationString });
 
+            // Bot-specific Profile Badges!
+            if ( botApplicationFlagStrings.includes("Supports Application Commands") ) { userFlagEmojis.unshift(EMOJI_SUPPORTS_APP_COMMANDS); }
+
             // Bot Information
             let botInformationString = "";
-            if ( BotDescription != null ) { UserInfoEmbed.setDescription(BotDescription); }
+            if ( BotDescription != null ) { UserInfoEmbed.setDescription(`${userFlagEmojis.length > 0 ? `${userFlagEmojis.join(" ")}` : ""}\n${BotDescription}`); }
+            else if ( BotDescription == null && userFlagEmojis.length > 0 && ExternalEmojiPermission ) { UserInfoEmbed.setDescription(userFlagEmojis.join(" ")); }
             if ( BotPubliclyInvitable != null ) { botInformationString += `**Is Publicly Invitable:** ${BotPubliclyInvitable}`; }
             if ( BotRequiresCodeGrant != null ) { botInformationString += `${botInformationString.length > 1 ? `\n` : ""}**Requires OAuth2 Grant:** ${BotRequiresCodeGrant}`; }
             if ( botIntentFlagStrings.length > 0 ) { botInformationString += `${botInformationString.length > 1 ? `\n` : ""}${botIntentFlagStrings.sort().join(`\n`).slice(0, 1023)}`; }
