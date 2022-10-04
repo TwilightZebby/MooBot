@@ -1,7 +1,7 @@
-const { RateLimitError, DMChannel } = require("discord.js");
+const { RateLimitError, DMChannel, Collection } = require("discord.js");
 const { Statuspage, StatuspageUpdates } = require("statuspage.js");
 const fs = require("fs");
-const { DiscordClient, Collections } = require("./constants.js");
+const { DiscordClient, Collections, DiscordStatusClient } = require("./constants.js");
 const Config = require("./config.js");
 
 
@@ -202,6 +202,23 @@ DiscordClient.on('interactionCreate', async (interaction) => {
         // Unknown or unhandled new type of Interaction
         return console.log(`****Unrecognised or new unhandled Interaction type triggered:\n${interaction.type}\n${interaction}`);
     }
+});
+
+
+
+
+
+
+
+
+/******************************************************************************* */
+// STATUSPAGE - INCIDENT UPDATE EVENT
+DiscordStatusClient.on("incident_update", async (incident) => {
+    // Bring in JSON to update it
+    const FeedSubscriptionJson = require("./JsonFiles/Hidden/StatusSubscriptions.json");
+    const FeedSubscriptionObject = Object.values(FeedSubscriptionJson);
+
+    //.
 });
 
 

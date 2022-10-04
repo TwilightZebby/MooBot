@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionType, ChannelType, TextChannel, ThreadChannel } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionType, ChannelType, TextChannel, ThreadChannel, ForumChannel } = require("discord.js");
 const fs = require('fs');
 const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
@@ -131,19 +131,36 @@ async function subscribeToFeed(slashCommand)
     /** @type {TextChannel|ThreadChannel} */
     const InputChannel = slashCommand.options.getChannel("channel", true);
 
-    // Check Bot has permissions to send Messages in that Channel
-    const BotChannelPermissions = InputChannel.permissionsFor(DiscordClient.user.id);
-    if ( !BotChannelPermissions.has(PermissionFlagsBits.ViewChannel) || (!BotChannelPermissions.has(PermissionFlagsBits.SendMessages) || !BotChannelPermissions.has(PermissionFlagsBits.SendMessagesInThreads)) )
+    // Ensure that, if a Thread is selected, only Threads within Forum Channels can be picked, not Threads in Text|Announcement Channels
+    if ( InputChannel instanceof ThreadChannel && !(InputChannel.parent instanceof ForumChannel) )
     {
-        return await slashCommand.reply({ ephemeral: true, content: `Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts/Threads) in which I do not have both the "View Channel" and "Send Messages" (or "Send Messages in Threads/Posts" if a Forum Post/Thread) Permissions!` });
+        return await slashCommand.reply({ ephemeral: true, content: `Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.
+If you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.
+Otherwise, you can select a standard Text Channel instead.` });
+    }
+
+    // Check Bot has permissions to create Webhooks in that Channel
+    const BotChannelPermissions = InputChannel.permissionsFor(DiscordClient.user.id);
+    if ( !BotChannelPermissions.has(PermissionFlagsBits.ViewChannel) || !BotChannelPermissions.has(PermissionFlagsBits.ManageWebhooks) )
+    {
+        return await slashCommand.reply({ ephemeral: true, content: `Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the "View Channel" and "Manage Webhooks" Permissions!` });
     }
 
     // Check Server isn't already subscribed to feed
     const DiscordOutageFeedJson = require("../../JsonFiles/Hidden/StatusSubscriptions.json");
-    if ( !DiscordOutageFeedJson[`${slashCommand.guildId}`] || !DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_CHANNEL_ID"] )
+    if ( !DiscordOutageFeedJson[`${slashCommand.guildId}`] || !DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_WEBHOOK_ID"] )
     {
-        // Subscribe Server to Feed, using given Channel ID
-        DiscordOutageFeedJson[`${slashCommand.guildId}`] = { "DISCORD_FEED_CHANNEL_ID": InputChannel.id };
+        // Subscribe Server to Feed, by creating a Webhook in that Channel
+        let feedWebhook;
+        let threadId = null;
+        if ( InputChannel instanceof TextChannel ) { feedWebhook = await InputChannel.createWebhook({ name: "Discord Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.username}#${slashCommand.user.discriminator} subscribed to the Discord Outage Feed` }); }
+        else 
+        { 
+            feedWebhook = await InputChannel.parent.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.username}#${slashCommand.user.discriminator} subscribed to the Discord Outage Feed` });
+            threadId = InputChannel.id;
+        }
+
+        DiscordOutageFeedJson[`${slashCommand.guildId}`] = { "DISCORD_FEED_WEBHOOK_ID": feedWebhook.id, "DISCORD_FEED_THREAD_ID": threadId };
 
         fs.writeFile('./JsonFiles/Hidden/StatusSubscriptions.json', JSON.stringify(DiscordOutageFeedJson, null, 4), async (err) => {
             if ( err ) { return await slashCommand.reply({ ephemeral: true, content: `Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.` }); }
@@ -156,7 +173,7 @@ Any Discord Outages will be notified about in the <#${InputChannel.id}> Channel.
     }
     else
     {
-        return await slashCommand.reply({ ephemeral: true, content: `This Server is already subscribed to the Discord Outage Feed! (Currently posting to <#${DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_CHANNEL_ID"]}> )
+        return await slashCommand.reply({ ephemeral: true, content: `This Server is already subscribed to the Discord Outage Feed!
 If you want to remove the existing Feed in this Server, please use the </dstatus unsubscribe:${slashCommand.commandId}> Command.` });
     }
 }
@@ -172,13 +189,24 @@ async function unsubscribeFromFeed(slashCommand)
 {
     // Check if Server actually *is* subscribed to the Feed right now
     const DiscordOutageFeedJson = require("../../JsonFiles/Hidden/StatusSubscriptions.json");
-    if ( !DiscordOutageFeedJson[`${slashCommand.guildId}`] || !DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_CHANNEL_ID"] )
+    if ( !DiscordOutageFeedJson[`${slashCommand.guildId}`] || !DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_WEBHOOK_ID"] )
     {
         return await slashCommand.reply({ ephemeral: true, content: `You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!` });
     }
 
     // Unsubscribe!
-    delete DiscordOutageFeedJson[`${slashCommand.guildId}`].DISCORD_FEED_CHANNEL_ID;
+    // First, remove Webhook, if possible
+    const FeedWebhook = await DiscordClient.fetchWebhook(DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_WEBHOOK_ID"]);
+    let webhookDeletionErrorMessage = null;
+    try {
+        await FeedWebhook.delete(`${slashCommand.user.username}#${slashCommand.user.discriminator} unsubscribed from the Discord Outage Feed`);
+    } 
+    catch (err) {
+        //console.error(err);
+        webhookDeletionErrorMessage = "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!";
+    }    
+
+    delete DiscordOutageFeedJson[`${slashCommand.guildId}`];
 
     fs.writeFile('./JsonFiles/Hidden/StatusSubscriptions.json', JSON.stringify(DiscordOutageFeedJson, null, 4), async (err) => {
         if ( err ) { return await slashCommand.reply({ ephemeral: true, content: `Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later.` }); }
@@ -186,6 +214,7 @@ async function unsubscribeFromFeed(slashCommand)
 
     // ACK to User
     await slashCommand.reply({ ephemeral: true, content: `Successfully unsubscribed from the Discord Outage Feed.
-This Server will no longer receive notifications from this Bot about Discord's Outages.` });
+This Server will no longer receive notifications from this Bot about Discord's Outages.${webhookDeletionErrorMessage != null ? `\n\n${webhookDeletionErrorMessage}` : ""}` });
+    delete FeedWebhook;
     return;
 }
