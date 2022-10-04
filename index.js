@@ -1,4 +1,4 @@
-const { RateLimitError, DMChannel, Collection } = require("discord.js");
+const { RateLimitError, DMChannel, Collection, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Webhook } = require("discord.js");
 const { Statuspage, StatuspageUpdates } = require("statuspage.js");
 const fs = require("fs");
 const { DiscordClient, Collections, DiscordStatusClient } = require("./constants.js");
@@ -218,7 +218,86 @@ DiscordStatusClient.on("incident_update", async (incident) => {
     const FeedSubscriptionJson = require("./JsonFiles/Hidden/StatusSubscriptions.json");
     const FeedSubscriptionObject = Object.values(FeedSubscriptionJson);
 
-    //.
+    // Loop to fetch Webhooks, so that we can send/edit messages via them
+    /** @type {Array<Webhook>} */
+    const WebhookArray = [];
+    FeedSubscriptionObject.forEach(async (item) => {
+        await DiscordClient.fetchWebhook(item.DISCORD_FEED_WEBHOOK_ID)
+        .then(webhookItem => {
+            WebhookArray.push(webhookItem);
+        })
+        .catch(err => {
+            //console.error(err);
+        });
+    });
+
+    // Check if this is a new outage, or an update to an ongoing one
+    const ExistingOutage = Collections.DiscordStatusUpdates.get(incident.id);
+    if ( !ExistingOutage )
+    {
+        // New Outage, so new Message(s)
+        const OutageEmbedNew = new EmbedBuilder()
+        .setColor(incident.impact === "none" ? 'DEFAULT' : incident.impact === "minor" ? '#13b307' : incident.impact === "major" ? '#e8e409' : '#940707')
+        .setTitle(incident.name)
+        .setDescription(`Impact: ${incident.impact}`)
+        .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getTime() / 1000)}:R> )`, value: (incidentUpdate.body || "No information available.") } }).slice(-24))
+        .setThumbnail(incident.created_at);
+
+        // Link Button to link to Outage Page
+        const OutagePageLinkButton = new ActionRowBuilder().addComponents([
+            new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Status Page").setURL(incident.shortlink)
+        ]);
+
+        // Send via Webhooks, while storing sent message IDs for editing later updates into
+        const SentMessageCollection = new Collection();
+        WebhookArray.forEach(async webhookItem => {
+            // To check if thread_id is needed to be included in the payload or not
+            if ( FeedSubscriptionJson[`${webhookItem.guildId}`]["DISCORD_FEED_THREAD_ID"] != null )
+            {
+                await webhookItem.send({ allowedMentions: { parse: [] }, threadId: FeedSubscriptionJson[`${webhookItem.guildId}`]["DISCORD_FEED_THREAD_ID"], content: `**Discord Outage:**`, embeds: [OutageEmbedNew], components: [OutagePageLinkButton] })
+                .then(sentMessage => {SentMessageCollection.set(webhookItem.id, sentMessage.id)})
+                .catch(err => {
+                    //console.error(err);
+                });
+            }
+            else
+            {
+                await webhookItem.send({ allowedMentions: { parse: [] }, content: `**Discord Outage:**`, embeds: [OutageEmbedNew], components: [OutagePageLinkButton] })
+                .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
+                .catch(err => {
+                    //console.error(err);
+                });
+            }
+        });
+
+        // Store
+        Collections.DiscordStatusUpdates.set(incident.id, SentMessageCollection);
+        return;
+    }
+    else
+    {
+        // Ongoing Outage, so edit Message(s)
+        const OutageEmbedUpdate = new EmbedBuilder()
+        .setColor(incident.impact === "none" ? 'DEFAULT' : incident.impact === "minor" ? '#13b307' : incident.impact === "major" ? '#e8e409' : '#940707')
+        .setTitle(incident.name)
+        .setDescription(`Impact: ${incident.impact}`)
+        .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getTime() / 1000)}:R> )`, value: (incidentUpdate.body || "No information available.") } }).slice(-24))
+        .setThumbnail(incident.created_at);
+
+        // Link Button to link to Outage Page
+        const OutagePageLinkButton = new ActionRowBuilder().addComponents([
+            new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Status Page").setURL(incident.shortlink)
+        ]);
+
+        // Edit Messages by cycling through Webhooks
+        WebhookArray.forEach(async webhookItem => {
+            await webhookItem.editMessage(ExistingOutage.get(webhookItem.id), { allowedMentions: { parse: [] }, embeds: [OutageEmbedUpdate], components: [OutagePageLinkButton] })
+            .catch(err => {
+                //console.error(err);
+            });
+        });
+        return;
+    }
 });
 
 
@@ -230,4 +309,5 @@ DiscordStatusClient.on("incident_update", async (incident) => {
 
 /******************************************************************************* */
 
-DiscordClient.login(Config.TOKEN);
+DiscordClient.login(Config.TOKEN); // Login to and start the Discord Bot Client
+DiscordStatusClient.start(); // Start listening for Discord Status Page Updates

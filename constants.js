@@ -29,6 +29,8 @@ module.exports =
         /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, emoji: ?String, label: ?String}>}>} */
         RoleMenuConfiguration: new Collection(),
 
+        /** Contains Message IDs for each Incident, mapped by Webhook IDs, all mapped by Incident IDs
+         * @type {Collection<String, Collection<String, String>} */
         DiscordStatusUpdates: new Collection()
     }
 }
