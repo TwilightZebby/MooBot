@@ -16,7 +16,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -38,7 +43,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -60,7 +70,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -82,7 +97,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -104,7 +124,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -126,7 +151,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -148,7 +178,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -170,7 +205,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -192,7 +232,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -214,7 +259,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -236,7 +286,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -258,7 +313,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -280,7 +340,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -302,7 +367,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -324,7 +394,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -346,7 +421,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -368,7 +448,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -390,7 +475,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -412,7 +502,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -434,7 +529,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -456,7 +556,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -478,7 +583,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -500,7 +610,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -522,7 +637,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -544,7 +664,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -566,7 +691,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -588,7 +718,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -610,7 +745,12 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     },
 
 
@@ -632,6 +772,11 @@
         "START_COMMAND_ACTIVITY_INVITE_IOS_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\nThis link will expire in around 10 minutes, and is only usable once per use of this Command\nCurrently, this Activity only works on Desktop, Browser, and iOS versions of Discord. Sorry Android Users!",
         "START_COMMAND_ACTIVITY_INVITE_NO_MOBILE_SUPPORT": "[Click here to start the {{ACTIVITY_NAME}} Activity inside the <#{{CHANNEL_ID}}> Voice Channel](<https://discord.gg/{{INVITE_CODE}}>)\n\n__Notes:__\n-This will auto-join you to the Voice Channel if you aren't already inside it, and have permissions to Connect to it\n- This link will expire in around 10 minutes, and is only usable once per use of this Command\n- Currently, this Activity only works on Desktop and Browser versions of Discord. Sorry Mobile Users!",
 
-        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}"
+        "TEMPERATURE_COMMAND_SINGLE_RESULT": "{{ORIGINAL_TEMPERATURE}} is about {{CONVERTED_TEMPERATURE_ONE}} or {{CONVERTED_TEMPERATURE_TWO}}",
+        "TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperature:\n\n• ",
+        "TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS": "[Jump to source Message]({{SOURCE_MESSAGE_URL}})\nHere is your converted temperatures:\n\n",
+
+        "DSTATUS_COMMAND_SUBSCRIPTION_SUCCESSFUL": "Successfully subscribed this Server to the Discord Outage Feed!\nAny Discord Outages will be notified about in the {{CHANNEL}} Channel.",
+        "DSTATUS_COMMAND_UNSUBSCRIPTION_SUCCESSFUL": "Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."
     }
 }

@@ -37,7 +37,7 @@ function convertTemperature(originalTemperature, locale)
         // Check for invalid Temperature
         if ( CToK < 0 ) { return LocalizedErrors[locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${originalValue}C`); }
         // Return converted temperatures
-        return `${originalValue.toFixed(0)}C is about ${CToF.toFixed(0)}F or ${CToK.toFixed(0)}K`;
+        return LocalizedStrings[locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${originalValue}C`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${CToF.toFixed(0)}F`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${CToK.toFixed(0)}K`);
     }
     else if ( originalScale === "f" )
     {
@@ -46,7 +46,7 @@ function convertTemperature(originalTemperature, locale)
         // Check for invalid Temperature
         if ( FToK < 0 ) { return LocalizedErrors[locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${originalValue}F`); }
         // Return converted temperatures
-        return `${originalValue.toFixed(0)}F is about ${FToC.toFixed(0)}C or ${FToK.toFixed(0)}K`;
+        return LocalizedStrings[locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${originalValue}F`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${FToC.toFixed(0)}C`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${FToK.toFixed(0)}K`);
     }
     else if ( originalScale === "k" )
     {
@@ -55,7 +55,7 @@ function convertTemperature(originalTemperature, locale)
         // Check for invalid Temperature
         if ( originalValue < 0 ) { return LocalizedErrors[locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${originalValue}K`); }
         // Return converted temperatures
-        return `${originalValue.toFixed(0)}K is about ${KToC.toFixed(0)}C or ${KToF.toFixed(0)}F`;
+        return LocalizedStrings[locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${originalValue}K`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${KToC.toFixed(0)}C`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${KToF.toFixed(0)}F`);
     }
 }
 
@@ -128,7 +128,7 @@ module.exports = {
         else if ( MatchedTemperatures.length === 1 )
         {
             const ConvertedResult = convertTemperature(MatchedTemperatures.shift(), contextCommand.locale);
-            return await contextCommand.reply({ ephemeral: true, content: `[Jump to source Message](<${SourceMessage.url}>)\nHere is your converted temperature:\n\n• ${ConvertedResult}` });
+            return await contextCommand.reply({ ephemeral: true, content: `${LocalizedStrings[contextCommand.locale]["TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT"].replace("{{SOURCE_MESSAGE_URL}}", SourceMessage.url)}${ConvertedResult}` });
         }
         // Between 2 and 10 results (inclusive)
         else
@@ -146,7 +146,7 @@ module.exports = {
             });
 
             // Send Results
-            return await contextCommand.editReply({ content: `[Jump to source Message](<${SourceMessage.url}>)\nHere are your converted temperatures:\n\n${convertedResults.join(`\n`)}` });
+            return await contextCommand.editReply({ content: `${LocalizedStrings[contextCommand.locale]["TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS"].replace("{{SOURCE_MESSAGE_URL}}", SourceMessage.url)}${convertedResults.join(`\n`)}` });
         }
     }
 }

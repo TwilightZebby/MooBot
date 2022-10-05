@@ -87,7 +87,15 @@
         "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
         "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
         "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
-        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server."
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -169,7 +177,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -251,7 +274,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -333,7 +371,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -415,7 +468,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -497,7 +565,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -579,7 +662,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -661,7 +759,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -743,7 +856,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -825,7 +953,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -907,7 +1050,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -989,7 +1147,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1071,7 +1244,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1153,7 +1341,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1235,7 +1438,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1317,7 +1535,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1399,7 +1632,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1481,7 +1729,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1563,7 +1826,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1645,7 +1923,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1727,7 +2020,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1809,7 +2117,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1891,7 +2214,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -1973,7 +2311,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -2055,7 +2408,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -2137,7 +2505,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -2219,7 +2602,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -2301,7 +2699,22 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     },
 
 
@@ -2383,6 +2796,21 @@
 
         "INFO_SERVER_COMMAND_GUILD_UNAVAILABLE": "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later.",
         "INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST": "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!",
-        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!"
+        "INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD": "Sorry, but that User isn't a part of this Server!",
+
+        "ROLEMENU_COMMAND_USER_NO_MANAGE_ROLES_PERMISSION": "Sorry, but you cannot use this Slash Command since you do not have the `Manage Roles` Permission on this Server.",
+        "ROLEMENU_COMMAND_BOT_NO_MANAGE_ROLES_PERMISSION": "Sorry, but I do not seem to have the `Manage Roles` Permission on this Server.\nI need that Permission in order to grant and revoke Roles in the Self-Assignable Role Menus!",
+        "ROLEMENU_COMMAND_BOT_NO_SEND_MESSAGES_PERMISSION": "Sorry, but I do not seem to have the `Send Messages` Permission in this Channel.\nI need that Permission in order to send & display my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_VIEW_CHANNEL_PERMISSION": "Sorry, but I do not seem to have the `View Channel` Permission in this Channel.\nI need that Permission in order to send, display, and edit my Role Menus here!",
+        "ROLEMENU_COMMAND_BOT_NO_READ_MESSAGE_HISTORY_PERMISSION": "Sorry, but I do not seem to have the `Read Message History` Permission in this Channel.\nI need that Permission in order to see & edit my existing Role Menus here!",
+        "ROLEMENU_COMMAND_INVALID_MENU_ID": "Sorry, but that doesn't seem to be a valid ID for an existing Role Menu of mine in this Channel or Server.",
+
+        "DSTATUS_COMMAND_INVALID_THREAD_CHANNEL": "Sorry, but a Thread cannot be selected if its within a Text or Announcement Channel.\nIf you want to subscribe a Thread to the Discord Outage Feed, please pick a Thread that is within a Forum Channel.\nOtherwise, you can select a standard Text Channel instead.",
+        "DSTATUS_COMMAND_MISSING_WEBHOOKS_PERMISSION": "Sorry, but my Discord Outage Feed cannot be subscribed to Channels (or Forum Posts) in which I do not have both the \"View Channel\" and \"Manage Webhooks\" Permissions!",
+        "DSTATUS_COMMAND_FAILED_TO_SUBSCRIBE": "Sorry, something went wrong while trying to subscribe to the Discord Outage Feed... Please try again later.",
+        "DSTATUS_COMMAND_ALREADY_SUBSCRIBED": "This Server is already subscribed to the Discord Outage Feed!\nIf you want to remove the existing Feed in this Server, please use the {{COMMAND}} Command.",
+        "DSTATUS_COMMAND_ALREADY_UNSUBSCRIBED": "You cannot unsubscribe this Server from the Discord Outage Feed when it is *not currently* subscribed!",
+        "DSTATUS_COMMAND_FAILED_WEBHOOK_DELETION": "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!",
+        "DSTATUS_COMMAND_FAILED_TO_UNSUBSCRIBE": "Sorry, something went wrong while trying to unsubscribe from the Discord Outage Feed... Please try again later."
     }
 }
