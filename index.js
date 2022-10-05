@@ -241,7 +241,7 @@ DiscordStatusClient.on("incident_update", async (incident) => {
         .setTitle(incident.name)
         .setDescription(`Impact: ${incident.impact}`)
         .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getTime() / 1000)}:R> )`, value: (incidentUpdate.body || "No information available.") } }).slice(-24))
-        .setThumbnail(incident.created_at);
+        .setTimestamp(incident.created_at);
 
         // Link Button to link to Outage Page
         const OutagePageLinkButton = new ActionRowBuilder().addComponents([
@@ -282,7 +282,7 @@ DiscordStatusClient.on("incident_update", async (incident) => {
         .setTitle(incident.name)
         .setDescription(`Impact: ${incident.impact}`)
         .addFields(incident.incident_updates.reverse().map(incidentUpdate => { return { name: `${incidentUpdate.status.charAt(0).toUpperCase() + incidentUpdate.status.slice(1)} ( <t:${Math.floor(incidentUpdate.updated_at.getTime() / 1000)}:R> )`, value: (incidentUpdate.body || "No information available.") } }).slice(-24))
-        .setThumbnail(incident.created_at);
+        .setTimestamp(incident.created_at);
 
         // Link Button to link to Outage Page
         const OutagePageLinkButton = new ActionRowBuilder().addComponents([
