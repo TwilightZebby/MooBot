@@ -151,7 +151,7 @@ async function subscribeToFeed(slashCommand)
         // Subscribe Server to Feed, by creating a Webhook in that Channel
         let feedWebhook;
         let threadId = null;
-        if ( InputChannel instanceof TextChannel ) { feedWebhook = await InputChannel.createWebhook({ name: "Discord Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.username}#${slashCommand.user.discriminator} subscribed to the Discord Outage Feed` }); }
+        if ( InputChannel instanceof TextChannel ) { feedWebhook = await InputChannel.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.username}#${slashCommand.user.discriminator} subscribed to the Discord Outage Feed` }); }
         else 
         { 
             feedWebhook = await InputChannel.parent.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.username}#${slashCommand.user.discriminator} subscribed to the Discord Outage Feed` });
