@@ -234,7 +234,7 @@ const festuresString = {
     "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
     "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
     "CHANNEL_BANNER": "~~Channel Banner~~", // Experiment that was never shipped
-    "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown
+    "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown, probably an early version of the Premium Memberships Experiment?
     "PUBLIC_DISABLED": "~~Public Disabled~~", // Removed in favor of COMMUNITY
     "PUBLIC": "~~Public~~", // Removed in favor of COMMUNITY
     "FEATURABLE": "~~Featureable~~", // Used to control which Servers were displayed in the Featured section on Server Discovery
