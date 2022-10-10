@@ -182,67 +182,88 @@ function readableNSFWLevel(nsfwLevel)
 
 // This stays as a map because it's using the raw values returned from the API
 const festuresString = {
-    "ANIMATED_BANNER": "Animated Banner",
-    "ANIMATED_ICON": "Animated Icon",
-    "AUTO_MODERATION": "Auto Moderation",
-    "BANNER": "Banner",
-    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Server",
-    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Server",
-    "COMMERCE": "Commerce",
-    "CREATOR_MONETIZABLE": "Creator Monetizable",
-    "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled",
-    "COMMUNITY": "Community",
-    "DISCOVERABLE_DISABLED": "Discoverable Disabled",
-    "DISCOVERABLE": "Discoverable",
-    "ENABLED_DISCOVERABLE_BEFORE": "Enabled Discoverable Before",
-    "EXPOSED_TO_ACTIVITIES_WTP_EXPERIMENT": "Exposed To Activity Experiment",
-    "HAD_EARLY_ACTIVITIES_ACCESS": "Had Early Acivities Access",
-    "HAS_DIRECTORY_ENTRY": "Has Directory Entry",
-    "HUB": "Hub",
-    "INTERNAL_EMPLOYEE_ONLY": "**Internal Employee Only**",
-    "INVITE_SPLASH": "Invite Splash",
-    "MEMBER_PROFILES": "Member Profiles",
-    "MEMBER_VERIFICATION_GATE_ENABLED": "Member Verification Gate Enabled",
-    "MORE_EMOJI": "More Emoji",
-    "MORE_STICKERS": "More Stickers",
-    "NEWS": "News",
-    "NEW_THREAD_PERMISSIONS": "New Thread Permissions",
-    "PARTNERED": "**Partnered**",
-    "PREMIUM_TIER_3_OVERRIDE": "**Premium Tier 3 Override**",
-    "PREVIEW_ENABLED": "Preview Enabled",
-    "PRIVATE_THREADS": "Private Threads",
-    "RELAY_ENABLED": "Relay Enabled",
-    "ROLE_ICONS": "Role Icons",
-    "ROLE_SUBSCRIPTIONS_ENABLED": "Role Subscriptions Enabled",
-    "ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE": "Role Subscriptions Available For Purchase",
-    "TEXT_IN_VOICE_ENABLED": "Text in Voice Enabled",
-    "THREADS_ENABLED_TESTING": "Threads Enabled Testing",
-    "THREADS_ENABLED": "Threads Enabled",
-    "THREAD_DEFAULT_AUTO_ARCHIVE_DURATION": "Threads Default Auto Archive Duration",
-    "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled",
-    "VANITY_URL": "Vanity URL",
-    "VERIFIED": "**Verified**",
-    "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled",
-    "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access",
-    "GUILD_HOME_TEST": "Server Home Test",
-    "INVITES_DISABLED": "**Invites Disabled**",
-    "GUILD_HOME_OVERRIDE": "Server Home Override",
-    "INCREASED_THREAD_LIMIT": "Increased Thread Limit",
-    "CREATOR_MONETIZABLE_WHITEGLOVE": "Creator Monetizable Whiteglove",
-    "CREATOR_MONETIZABLE_PROVISIONAL": "Creator Monetizable Provisional",
-    // From here onwards are deprecated Server Features
-    "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Not used at all, not since Fortnut's 2019 Blackout Event
-    "VIP_REGIONS": "~~VIP Regions~~", // Replaced with 384kbps max bitrate
-    "CHANNEL_BANNER": "~~Channel Banner~~", // Experiment that was never shipped
-    "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown, probably an early version of the Premium Memberships Experiment?
-    "PUBLIC_DISABLED": "~~Public Disabled~~", // Removed in favor of COMMUNITY
-    "PUBLIC": "~~Public~~", // Removed in favor of COMMUNITY
-    "FEATURABLE": "~~Featureable~~", // Used to control which Servers were displayed in the Featured section on Server Discovery
-    "FORCE_RELAY": "~~Force Relay~~", // Technical back-end stuff that may be unused now
+    "ACTIVITIES_ALPHA": "Activities Alpha", // Unknown
+    "ACTIVITIES_EMPLOYEE": "Activities Employee", // Unknown
+    "ACTIVITIES_INTERNAL_DEV": "Activities Internal Dev", // Unknown
+    "ANIMATED_BANNER": "Animated Banner", // Allows uploading custom animated Server Banner
+    "ANIMATED_ICON": "Animated Icon", // Allows uploading custom animated Server Icon
+    "AUTO_MODERATION": "Auto Moderation", // Allows enabling AutoMod Rules
+    "AUTOMOD_TRIGGER_KEYWORD_FILTER": "AutoMod Keyword Filter", // Unknown
+    "AUTOMOD_TRIGGER_ML_SPAM_FILTER": "AutoMod ML Spam Filter", // Guild in 2022-03_automod_trigger_ml_spam_filter Experiment
+    "AUTOMOD_TRIGGER_SPAM_LINK_FILTER": "AutoMod Spam Link Filter", // Unknown
+    "BANNER": "Banner", // Allows uploading a custom static Server Banner
+    "BFG": "**BFG**", // Unknown, probably means Big Fucking Guild. Looking at you, Midjourney
+    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild", // Unknown
+    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild", // Unknown
+    "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access", // Enables early access features for bot & api library developers
+    "COMMUNITY": "Community", // Guild is Community-enabled. Grants access to Insights, Announcement/Stage/Forum Channels, and more
+    "CREATOR_MONETIZABLE": "Creator Monetizable", // Unknown
+    "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled", // Unknown
+    "CREATOR_MONETIZABLE_PROVISIONAL": "Creator Monetizable Provisional", // Unknown
+    "CREATOR_MONETIZABLE_WHITEGLOVE": "Creator Monetizable Whiteglove", // Unknown
+    "CREATOR_MONETIZATION_APPLICATION_ALLOWLIST": "Creator Monetization Application Allowlist", // Unknown
+    "DEVELOPER_SUPPORT_SERVER": "Developer Support Server", // For Guilds marked as a Bot's/App's Support Server in App Directory
+    "DISCOVERABLE_DISABLED": "Discoverable Disabled", // Guild removed from Discovery by Discord
+    "DISCOVERABLE": "Discoverable", // Guild is visible in Server Discovery
+    "ENABLED_DISCOVERABLE_BEFORE": "Enabled Discoverable Before", // Guild has been Discovery-enabled at any point
+    "EXPOSED_TO_ACTIVITIES_WTP_EXPERIMENT": "Exposed to Activities WTP Experiment", // Guild in 2021-11_activities_baseline_engagement_bundle Experiment
+    "GUILD_AUTOMOD_DEFAULT_LIST": "Guild AutoMod Default List", // Guild in 2022-03_guild_automod_default_list Experiment
+    "GUILD_COMMUNICATION_DISABLED_GUILDS": "Guild Communication Disabled Guilds", // Guild in 2021-11_guild_communication_disabled_guilds Experiment
+    "GUILD_HOME_OVERRIDE": "Guild Home Override", // Guild in Treatment 2 of 2022-01_home_tab_guild Experiment
+    "GUILD_HOME_TEST": "Guild Home Test", // Guild in Treatment 1 of 2022-01_home_tab_guild Experiment
+    "GUILD_MEMBER_VERIFICATION_EXPERIMENT": "Guild Member Verification Experiment", // Guild in 2021-11_member_verification_manual_approval Experiment
+    "GUILD_ROLE_SUBSCRIPTIONS": "Guild Role Subscriptions", // Guild in 2021-06_guild_role_subscriptions Experiment
+    "GUILD_ROLE_SUBSCRIPTION_PURCHASE_FEEDBACK_LOOP": "Guild Role Subscription Purchase Feedback Loop", // Guild in 2022-05_mobile_web_role_subscription_purchase_page Experiment
+    "GUILD_ROLE_SUBSCRIPTION_TRIALS": "Guild Role Subscription Trials", // Guild in 2022-01_guild_role_subscription_trials Experiment
+    "HAD_EARLY_ACTIVITIES_ACCESS": "Had Early Activities Access", // Guild previously had access to Voice Activities, and thus bypasses Boost Tier Requirements for Activities
+    "HAS_DIRECTORY_ENTRY": "Has Directory Entry", // Guild is in a Hub's Directory Channel
+    "HUB": "Hub", // Guild is a Student Hub
+    "INCREASED_THREAD_LIMIT": "Increased Thread Limit", // Allows Guild to have more than 1,000 active Threads (Looking at you, Midjourney)
+    "INTERNAL_EMPLOYEE_ONLY": "**Internal Employee Only**", // Only Discord Employees can join this Guild
+    "INVITES_DISABLED": "**Invites Disabled**", // Prevents new Members from joining this Guild, without deleting active Invites
+    "INVITE_SPLASH": "Invite Splash", // Allows Guild to set a custom Invite Splash to be displayed on Invite Links
+    "MEMBER_PROFILES": "Member Profiles", // Allows Members to customise their Profile (Banner, pfp, bio, etc) for this Guild
+    "MEMBER_VERIFICATION_GATE_ENABLED": "Member Verification Gate Enabled", // Guild has Member Verification Gate enabled
+    "MOBILE_WEB_ROLE_SUBSCRIPTION_PURCHASE_PAGE": "Mobile Web Role Subscription Purchase Page", // Guild in 2022-05_mobile_web_role_subscription_purchase_page Experiment
+    "MONETIZATION_ENABLED": "Monetization Enabled", // Allows setting a Team (via Dev Portal) to receive payouts from Role Subscriptions
+    "MORE_EMOJI": "More Emoji", // Adds 150 extra Emoji slots (to both static and animated emoji categories) - not part of Boosting
+    "MORE_STICKERS": "More Stickers", // Adds 60 total Sticker slots - not part of Boosting
+    "NEWS": "News", // Allows creation and use of Announcement Channels & enables Announcement Channel Insights
+    "NEW_THREAD_PERMISSIONS": "New Thread Permissions", // Guild has the updated Thread Permissions ("Send Messages in Threads")
+    "PARTNERED": "**Partnered**", // Guild is Partnered. Enables Server's Partner Badge in Server Name
+    "PREMIUM_TIER_3_OVERRIDE": "**Premium Tier 3 Override**", // Forces Server to Boost Tier 3. Created by an Employee for their own Server, now used across multiple official Discord Servers.
+    "PREVIEW_ENABLED": "Preview Enabled", // Allows new Members to view Server before/without passing Membership Gating
+    "PRIVATE_THREADS": "Private Threads", // Allows Guild to create Private Threads
+    "RELAY_ENABLED": "Relay Enabled", // Shards the Guild's connections
+    "RESTRICT_SPAM_RISK_GUILDS": "Restrict Spam Risk Guilds", // Unknown
+    "ROLE_ICONS": "Role Icons", // Allows uploading/setting a custom Role Icon
+    "ROLE_SUBSCRIPTIONS_ENABLED": "Role Subscriptions Enabled", // Enables viewing & managing Role Subscriptions
+    "ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE": "Role Subscriptions Available for Purchase", // Allows Members to purchase Role Subscriptions, if the Guild has any setup
+    "SOUNDBOARD": "Soundboard", // Guild in 2021-12_soundboardl Experiment
+    "TEXT_IN_STAGE_ENABLED": "Text in Stage Enabled", // Enables a Thread-like Text Chat for the Guild's Stage Channels
+    "TEXT_IN_VOICE_ENABLED": "Text in Voice Enabled", // Enables a Thread-like Text Chat for the Guild's Voice Channels
+    "THREADS_ENABLED_TESTING": "Threads Enabled Testing", // Was used to enable Threads (and their premium Thread features) in Guilds with 5 or less Members AND one Bot for Bot Developers to test Thread support
+    "THREADS_ENABLED": "Threads Enabled", // Guild had enabled Threads during its public early access rollout
+    "THREAD_DEFAULT_AUTO_ARCHIVE_DURATION": "Thread Default Auto Archive Duration", // Unknown. Theory: Possibly used for testing changes to Thread's default auto archive duration
+    "THREADS_ONLY_CHANNEL": "Threads Only Channel", // Guild in 2021-07_threads_only_channel Experiment
+    "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled", // Enables viewing & managing Ticketed Events
+    "VANITY_URL": "Vanity URL", // Enables setting a Vanity Invite Link
+    "VERIFIED": "**Verified**", // Guild is Verified. Enables Verified checkmark in Server name
+    "VOICE_CHANNEL_EFFECTS": "Voice Channel Effects", // Guild in 2022-06_voice_channel_effects Experiment
+    "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled", // Guild has Welcome Screen enabled
+    // From here onwards are deprecated Server Feature Flags
+    "CHANNEL_BANNER": "~~Channel Banner~~", // (Cancelled Experiment) Enabled ability to set a custom image as a Channel's Banner, shown in the Member List
+    "COMMERCE": "~~Commerce~~", // (Removed Feature) Enabled creation & use of Store Channels
+    "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown
+    "PUBLIC_DISABLED": "~~Public Disabled~~", // Unknown, deprecated in favor of COMMUNITY Flag
+    "PUBLIC": "~~Public~~", // Unknown, deprecated in favor of COMMUNITY Flag
+    "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~", // (Removed from Boosting) Enabled use of 7-day archive duration for Threads. Made free as of 25th April 2022
+    "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // (Removed from Boosting) Enabled use of 3-day archive duration for Threads. Made free as of 25th April 2022
+    "FEATURABLE": "~~Featureable~~", // (Unused) Previously used to denote the Guild was displayed in the "Featured" category in Server Discovery
+    "FORCE_RELAY": "~~Force Relay~~", // Same behaviour as RELAY_ENABLED Flag, this one can be assumed removed in favour of RELAY_ENABLED
     "LURKABLE": "~~Lurkable~~", // Unknown
-    "MONETIZATION_ENABLED": "~~Monetization Enabled~~", // Allowed the Server to cash out Ticketed Stage payouts
-    "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // Used for unlocking the 3-day Auto Archive option for Threads at T1 Boost. Made free as of 25th April 2022
-    "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~" // Used for unlocking the 7-day Auto Archive option for Threads at T2 Boost. Made free as of 25th April 2022
+    "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Disables Member List for the Server, replacing it with "There's nothing to see here" - only used for Fortnite's Server during October 2019's Blackout Event
+    "VIP_REGIONS": "~~VIP Regions~~" // Used to mark the Guild as using special Voice regions with better stability. Now replaced with 384kbps max bitrate
 };
 
 /**
