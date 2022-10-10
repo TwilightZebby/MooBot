@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember, ForumChannel } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
@@ -26,6 +26,7 @@ const EMOJI_CHANNEL_VOICE = "<:ChannelVoice:997752063612162138>";
 const EMOJI_CHANNEL_STAGE = "<:ChannelStage:997752061330464818>";
 const EMOJI_CHANNEL_NEWS = "<:ChannelAnnouncements:997752058092466236>";
 const EMOJI_CHANNEL_CATEGORY = "<:ChannelCategory:997752059807928431>";
+const EMOJI_CHANNEL_FORUM = "<:ChannelForum:1029012363048914967>";
 const EMOJI_CHANNEL_RULES = "<:ChannelRules:1009372446362714174>";
 const EMOJI_SCHEDULED_EVENT = "<:ScheduledEvent:1009372447503552514>";
 const EMOJI_ROLE = "<:Role:997752069605822507>";
@@ -808,6 +809,7 @@ module.exports = {
         let stageChannelCount = 0;
         let announcementChannelCount = 0;
         let categoryChannelCount = 0;
+        let forumChannelCount = 0;
         let unknownChannelCount = 0;
         GuildChannels.forEach(channel => {
             if ( channel instanceof TextChannel ) { textChannelCount += 1; }
@@ -815,6 +817,7 @@ module.exports = {
             else if ( channel instanceof StageChannel ) { stageChannelCount += 1; }
             else if ( channel instanceof NewsChannel ) { announcementChannelCount += 1; }
             else if ( channel instanceof CategoryChannel ) { categoryChannelCount += 1; }
+            else if ( channel instanceof ForumChannel ) { forumChannelCount += 1; }
             else { unknownChannelCount += 1; }
         });
         // Special Channels
@@ -863,7 +866,8 @@ ${ExternalEmojiPermission ? `${EMOJI_ROLE} ` : ""}**Roles:** ${TotalRoleCount} /
 ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_NEWS} ` : ""}**Announcement:** ${announcementChannelCount}
 ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_VOICE} ` : ""}**Voice:** ${voiceChannelCount}
 ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_STAGE} ` : ""}**Stage:** ${stageChannelCount}
-${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${categoryChannelCount}${unknownChannelCount > 0 ? `\n${ExternalEmojiPermission ? `❓ ` : ""}**Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n${ExternalEmojiPermission ? `${EMOJI_STATUS_IDLE} ` : ""}**AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n${ExternalEmojiPermission ? `⚙ ` : ""}**System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n${ExternalEmojiPermission ? `${EMOJI_CHANNEL_RULES} ` : ""}**Rules:** <#${RulesChannelId}>` : ""}`,
+${ExternalEmojiPermission ? `${EMOJI_CHANNEL_CATEGORY} ` : ""}**Category:** ${categoryChannelCount}
+${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumChannelCount}${unknownChannelCount > 0 ? `\n${ExternalEmojiPermission ? `❓ ` : ""}**Unknown Type(s):** ${unknownChannelCount}` : ""}${AfkChannelId != null ? `\n${ExternalEmojiPermission ? `${EMOJI_STATUS_IDLE} ` : ""}**AFK:** <#${AfkChannelId}>` : ""}${SystemChannelId != null ? `\n${ExternalEmojiPermission ? `⚙ ` : ""}**System:** <#${SystemChannelId}>` : ""}${RulesChannelId != null ? `\n${ExternalEmojiPermission ? `${EMOJI_CHANNEL_RULES} ` : ""}**Rules:** <#${RulesChannelId}>` : ""}`,
                 inline: true
             },
             {
