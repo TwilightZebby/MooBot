@@ -798,7 +798,7 @@ module.exports = {
         let rawData = await DiscordClient.rest.get(Routes.guild(GuildId));
         const RawFeatures = rawData["features"];
         let guildFeatures = [];
-        RawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
+        RawFeatures.forEach(feature => !festuresString[feature] ? guildFeatures.push(feature) : guildFeatures.push(festuresString[feature]));
 
         // Channel Information
         const GuildChannels = await CurrentGuild.channels.fetch();
@@ -1113,7 +1113,7 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
             let rawData = await DiscordClient.rest.get(Routes.invite(InviteCode));
             const RawFeatures = rawData["guild"]["features"];
             let guildFeatures = [];
-            RawFeatures.forEach(feature => guildFeatures.push(festuresString[feature]));
+            RawFeatures.forEach(feature => !festuresString[feature] ? guildFeatures.push(feature) : guildFeatures.push(festuresString[feature]));
             if ( guildFeatures.length > 0 ) { InviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
         }
 
