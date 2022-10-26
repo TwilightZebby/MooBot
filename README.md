@@ -204,46 +204,6 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
  -->
 
 ## General Slash Commands
-### `/start [channel] [activity]`
-*Creates an Invite Link to the specified Voice Channel, allowing for starting one of Discord's built-in (but in beta) Social Activities in that Voice Channel.*
-
-![Screenshot of the start command's response in a Discord Chat](https://i.imgur.com/uYNQ3Tg.png)
-
-| Argument | Type          | Description                                             | Required |
-|----------|---------------|---------------------------------------------------------|----------|
-| channel  | #VoiceChannel | The Voice Channel the Activity should be started in     | ✔️      |
-| activity | String        | The Activity to start (from a pre-set list of options)  | ✔️      |
-
-- ℹ *This Slash Command will be removed from this Bot once Discord fully releases their (currently in testing) Social Activites feature.*
-- ℹ *All this command does is generate an Invite Link for the chosen Voice Channel, with included data to also point to the chosen Social Activity (such as Watch Together, Poker Night, etc).*
-- ℹ *Please note that some Activities are locked behind Server Boost Tier 1, as enforced by Discord's API. There is nothing I can do about this.*
-- ℹ *If you want to help Discord test their Social Activity features - you can join their official server at [discord.gg/discordgameslab](https://discord.gg/discordgameslab)*
-<!-- Divider
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
 ### `/potato`
 *Starts a game of Hot Potato in the current Text or Thread Channel.*
 
