@@ -197,12 +197,15 @@ const festuresString = {
     "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild", // Unknown
     "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild", // Unknown
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access", // Enables early access features for bot & api library developers
+    "BURST_REACTIONS": "Burst Reactions", // Enables Burst Reactions
+    "CHANNEL_HIGHLIGHTS": "Channel Highlights", // Unknown
     "COMMUNITY": "Community", // Guild is Community-enabled. Grants access to Insights, Announcement/Stage/Forum Channels, and more
     "CREATOR_MONETIZABLE": "Creator Monetizable", // Unknown
     "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled", // Unknown
     "CREATOR_MONETIZABLE_PROVISIONAL": "Creator Monetizable Provisional", // Unknown
     "CREATOR_MONETIZABLE_WHITEGLOVE": "Creator Monetizable Whiteglove", // Unknown
     "CREATOR_MONETIZATION_APPLICATION_ALLOWLIST": "Creator Monetization Application Allowlist", // Unknown
+    "CREATOR_STORE_PAGE": "Creator Store Page", // Unknown
     "DEVELOPER_SUPPORT_SERVER": "Developer Support Server", // For Guilds marked as a Bot's/App's Support Server in App Directory
     "DISCOVERABLE_DISABLED": "Discoverable Disabled", // Guild removed from Discovery by Discord
     "DISCOVERABLE": "Discoverable", // Guild is visible in Server Discovery
@@ -762,7 +765,7 @@ module.exports = {
     async fetchServerInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply({ ephemeral: true });
+        await slashCommand.deferReply();
         
         // Fetch Guild
         const CurrentGuild = await slashCommand.guild.fetch();
@@ -905,7 +908,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
     async fetchUserInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply({ ephemeral: true });
+        await slashCommand.deferReply();
 
         // Fetch Member, be it User of Command or Target from input
         /** @type {GuildMember} */
@@ -1137,7 +1140,7 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
     async fetchBotInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply({ ephemeral: true });
+        await slashCommand.deferReply();
 
         // Create Link Buttons
         const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
