@@ -43,6 +43,7 @@ const EMOJI_BUG_HUNTER_TIER_2 = "<:BadgeUserBugHunterTier2:1026417287252672562>"
 const EMOJI_CERTIFIED_MOD = "<:BadgeUserCertifiedMod:1026417288406110208>";
 const EMOJI_EARLY_SUPPORTER = "<:BadgeUserEarlySupporter:1026417290268389426>";
 const EMOJI_EARLY_VERIFIED_BOT_DEV = "<:BadgeUserEarlyVerifiedBotDev:1026417291522490449>";
+const EMOJI_ACTIVE_DEVELOPER = "<:BadgeUserActiveDeveloper:1040340667869691954>";
 const EMOJI_HYPESQUAD_BALANCE = "<:BadgeUserHypeSquadBalance:1026417292680105984>";
 const EMOJI_HYPESQUAD_BRAVERY = "<:BadgeUserHypeSquadBravery:1026417293967773696>";
 const EMOJI_HYPESQUAD_BRILLIANCE = "<:BadgeUserHypeSquadBrilliance:1026417295221862411>";
@@ -402,6 +403,14 @@ function readableUserFlags(userFlag)
         case "VerifiedDeveloper":
             readableString = "Early Verified Bot Developer";
             break;
+
+        case "ActiveDeveloper":
+            readableString = "Active Developer";
+            break;
+
+        default:
+            readableString = userFlag;
+            break;
     }
     return readableString;
 }
@@ -462,6 +471,10 @@ function readableUserFlagsEmoji(userFlag)
 
         case "VerifiedDeveloper":
             readableString = EMOJI_EARLY_VERIFIED_BOT_DEV;
+            break;
+
+        case "ActiveDeveloper":
+            readableString = EMOJI_ACTIVE_DEVELOPER;
             break;
 
         default:
