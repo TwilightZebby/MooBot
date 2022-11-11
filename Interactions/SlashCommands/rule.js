@@ -98,6 +98,6 @@ module.exports = {
         // Keep within 25 choice limit
         if ( filteredRules.length > 25 ) { filteredRules.slice(0, 24); }
 
-        return await autocompleteInteraction.respond(filteredRules.map(rule => ({ name: rule, value: rule.slice(0, 4) })));
+        return await autocompleteInteraction.respond(filteredRules.map(rule => ({ name: rule, value: rule.split(" - ").shift() })));
     }
 }
