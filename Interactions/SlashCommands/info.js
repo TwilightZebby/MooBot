@@ -987,7 +987,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
             // User Info
             let userInformationString = `**Mention:** <@${MemberUser.id}>
 **Account Created:** <t:${Math.floor(MemberUser.createdAt.getTime() / 1000)}:R>
-**Is Bot:** ${MemberUser.bot}`;
+**Is Bot:** ${MemberUser.id === "156482326887530498" ? `👀` : `${MemberUser.bot}`}`;
             UserInfoEmbed.addFields({ name: `>> User Information`, value: userInformationString });
 
             // User Flags & emojis
