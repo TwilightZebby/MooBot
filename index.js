@@ -107,6 +107,7 @@ DiscordClient.on('error', (err) => { return console.error("***DISCORD ERROR: ", 
 // DISCORD - MESSAGE CREATE EVENT
 const TextCommandHandler = require("./BotModules/Handlers/TextCommandHandler.js");
 const AntiSt1gBotSpam = require("./BotModules/AntiSt1gBotSpamModule.js");
+const ToDThreadModule = require("./BotModules/ToDThreadModule.js");
 
 DiscordClient.on('messageCreate', async (message) => {
     // Partials
@@ -115,8 +116,14 @@ DiscordClient.on('messageCreate', async (message) => {
     // Bots
     if ( message.author.bot )
     { 
+        // Anti-St1gBot-Spam
         if ( message.channel.id === Config.Dr1fterXSocialChannel && ( message.author.id === Config.St1gBotUserID || message.author.id === Config.St1gCheckerBotUserID ) )
         { await AntiSt1gBotSpam.Main(message); }
+
+        // ToD Bot Thread Creation
+        if ( message.guildId === Config.ErrorLogGuildID && message.author.id === Config.TruthOrDareBotID )
+        { await ToDThreadModule.Main(message); }
+
         return;
     }
 

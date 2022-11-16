@@ -1,7 +1,6 @@
 const { Message, PermissionFlagsBits } = require("discord.js");
-const { Collections, DiscordClient } = require("../constants.js");
+const { DiscordClient } = require("../constants.js");
 const { St1gBotUserID, St1gCheckerBotUserID } = require("../config.js");
-const LocalizedErrors = require("../JsonFiles/errorMessages.json");
 
 module.exports = {
     /**
