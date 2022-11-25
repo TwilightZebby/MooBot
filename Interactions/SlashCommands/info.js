@@ -189,6 +189,7 @@ const festuresString = {
     "ACTIVITIES_INTERNAL_DEV": "Activities Internal Dev", // Unknown
     "ANIMATED_BANNER": "Animated Banner", // Allows uploading custom animated Server Banner
     "ANIMATED_ICON": "Animated Icon", // Allows uploading custom animated Server Icon
+    "APPLICATION_COMMAND_PERMISSIONS_V2": "Application Command Permissions v2", // Uses App Cmds Perms v2 system
     "AUTO_MODERATION": "Auto Moderation", // Allows enabling AutoMod Rules
     "AUTOMOD_TRIGGER_KEYWORD_FILTER": "AutoMod Keyword Filter", // Unknown
     "AUTOMOD_TRIGGER_ML_SPAM_FILTER": "AutoMod ML Spam Filter", // Guild in 2022-03_automod_trigger_ml_spam_filter Experiment
@@ -199,11 +200,16 @@ const festuresString = {
     "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild", // Unknown
     "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access", // Enables early access features for bot & api library developers
     "BURST_REACTIONS": "Burst Reactions", // Enables Burst Reactions
+    "COMMUNITY_EXP_LARGE_GATED": "Community Exp. Large Gated", // Unknown
+    "COMMUNITY_EXP_LARGE_UNGATED": "Community Exp. Large Ungated", // Unknown
+    "COMMUNITY_EXP_MEDIUM": "Community Exp. Medium", // Unknown
     "CHANNEL_HIGHLIGHTS": "Channel Highlights", // Unknown
+    "CHANNEL_HIGHLIGHTS_DISABLED": "Channel Highlights Disabled", // Unknown
     "COMMUNITY": "Community", // Guild is Community-enabled. Grants access to Insights, Announcement/Stage/Forum Channels, and more
     "CREATOR_MONETIZABLE": "Creator Monetizable", // Unknown
     "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled", // Unknown
     "CREATOR_MONETIZABLE_PROVISIONAL": "Creator Monetizable Provisional", // Unknown
+    "CREATOR_MONETIZABLE_RESTRICTED": "Creator Monetizable Restricted", // Unknown
     "CREATOR_MONETIZABLE_WHITEGLOVE": "Creator Monetizable Whiteglove", // Unknown
     "CREATOR_MONETIZATION_APPLICATION_ALLOWLIST": "Creator Monetization Application Allowlist", // Unknown
     "CREATOR_STORE_PAGE": "Creator Store Page", // Unknown
@@ -216,6 +222,9 @@ const festuresString = {
     "GUILD_COMMUNICATION_DISABLED_GUILDS": "Guild Communication Disabled Guilds", // Guild in 2021-11_guild_communication_disabled_guilds Experiment
     "GUILD_HOME_OVERRIDE": "Guild Home Override", // Guild in Treatment 2 of 2022-01_home_tab_guild Experiment
     "GUILD_HOME_TEST": "Guild Home Test", // Guild in Treatment 1 of 2022-01_home_tab_guild Experiment
+    "GUILD_ONBOARDING": "Guild Onboarding", // Guild has access to Community Onboarding feature
+    "GUILD_ONBOARDING_ADMIN_ONLY": "Guild Onboarding Admin Only", // Unknown
+    "GUILD_ONBOARDING_EVER_ENABLED": "Guild Onboarding Ever Enabled", // Unknown
     "GUILD_MEMBER_VERIFICATION_EXPERIMENT": "Guild Member Verification Experiment", // Guild in 2021-11_member_verification_manual_approval Experiment
     "GUILD_ROLE_SUBSCRIPTIONS": "Guild Role Subscriptions", // Guild in 2021-06_guild_role_subscriptions Experiment
     "GUILD_ROLE_SUBSCRIPTION_PURCHASE_FEEDBACK_LOOP": "Guild Role Subscription Purchase Feedback Loop", // Guild in 2022-05_mobile_web_role_subscription_purchase_page Experiment
@@ -238,7 +247,7 @@ const festuresString = {
     "PARTNERED": "**Partnered**", // Guild is Partnered. Enables Server's Partner Badge in Server Name
     "PREMIUM_TIER_3_OVERRIDE": "**Premium Tier 3 Override**", // Forces Server to Boost Tier 3. Created by an Employee for their own Server, now used across multiple official Discord Servers.
     "PREVIEW_ENABLED": "Preview Enabled", // Allows new Members to view Server before/without passing Membership Gating
-    "PRIVATE_THREADS": "Private Threads", // Allows Guild to create Private Threads
+    "RAID_ALERTS_ENABLED": "Raid Alerts Enabled", // Unknown
     "RELAY_ENABLED": "Relay Enabled", // Shards the Guild's connections
     "RESTRICT_SPAM_RISK_GUILDS": "Restrict Spam Risk Guilds", // Unknown
     "ROLE_ICONS": "Role Icons", // Allows uploading/setting a custom Role Icon
@@ -255,19 +264,22 @@ const festuresString = {
     "VANITY_URL": "Vanity URL", // Enables setting a Vanity Invite Link
     "VERIFIED": "**Verified**", // Guild is Verified. Enables Verified checkmark in Server name
     "VOICE_CHANNEL_EFFECTS": "Voice Channel Effects", // Guild in 2022-06_voice_channel_effects Experiment
+    "VOICE_IN_THREADS": "Voice in Threads", // Guild has access to Voice in Threads Experiment
     "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled", // Guild has Welcome Screen enabled
+    
     // From here onwards are deprecated Server Feature Flags
     "CHANNEL_BANNER": "~~Channel Banner~~", // (Cancelled Experiment) Enabled ability to set a custom image as a Channel's Banner, shown in the Member List
     "COMMERCE": "~~Commerce~~", // (Removed Feature) Enabled creation & use of Store Channels
     "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown
-    "PUBLIC_DISABLED": "~~Public Disabled~~", // Unknown, deprecated in favor of COMMUNITY Flag
-    "PUBLIC": "~~Public~~", // Unknown, deprecated in favor of COMMUNITY Flag
-    "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~", // (Removed from Boosting) Enabled use of 7-day archive duration for Threads. Made free as of 25th April 2022
-    "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // (Removed from Boosting) Enabled use of 3-day archive duration for Threads. Made free as of 25th April 2022
     "FEATURABLE": "~~Featureable~~", // (Unused) Previously used to denote the Guild was displayed in the "Featured" category in Server Discovery
     "FORCE_RELAY": "~~Force Relay~~", // Same behaviour as RELAY_ENABLED Flag, this one can be assumed removed in favour of RELAY_ENABLED
     "LURKABLE": "~~Lurkable~~", // Unknown
     "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Disables Member List for the Server, replacing it with "There's nothing to see here" - only used for Fortnite's Server during October 2019's Blackout Event
+    "PRIVATE_THREADS": "~~Private Threads~~", // (Removed from Boosting) Allowed Guild to create Private Threads
+    "PUBLIC": "~~Public~~", // Unknown, deprecated in favor of COMMUNITY Flag
+    "PUBLIC_DISABLED": "~~Public Disabled~~", // Unknown, deprecated in favor of COMMUNITY Flag
+    "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~", // (Removed from Boosting) Enabled use of 7-day archive duration for Threads. Made free as of 25th April 2022
+    "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // (Removed from Boosting) Enabled use of 3-day archive duration for Threads. Made free as of 25th April 2022
     "VIP_REGIONS": "~~VIP Regions~~" // Used to mark the Guild as using special Voice regions with better stability. Now replaced with 384kbps max bitrate
 };
 
