@@ -189,7 +189,7 @@ DiscordClient.on('interactionCreate', async (interaction) => {
         // Button
         return await ButtonHandler.Main(interaction);
     }
-    else if ( interaction.isSelectMenu() )
+    else if ( interaction.isAnySelectMenu() )
     {
         // Select
         return await SelectHandler.Main(interaction);
@@ -221,29 +221,10 @@ DiscordClient.on('interactionCreate', async (interaction) => {
 /******************************************************************************* */
 // STATUSPAGE - INCIDENT UPDATE EVENT
 DiscordStatusClient.on("incident_update", async (incident) => {
-    console.log(">>> ON INCIDENT_UPDATE");
     // Bring in JSON to update it
     const FeedSubscriptionJson = require("./JsonFiles/Hidden/StatusSubscriptions.json");
     const FeedSubscriptionObject = Object.values(FeedSubscriptionJson);
-
-    // Loop to fetch Webhooks, so that we can send/edit messages via them
-    /** @type {Array<Webhook>} */
-    let WebhookArray = [];
-    FeedSubscriptionObject.forEach(async (item) => {
-        console.log("------------");
-        console.log(`FeedSubscriptionObject item: ${item}`);
-        await DiscordClient.fetchWebhook(item.DISCORD_FEED_WEBHOOK_ID)
-        .then(webhookItem => {
-            console.log(`FeedSubscriptionObject webhookItem: ${webhookItem}`);
-            WebhookArray.push(webhookItem);
-            console.log(`FeedSubscriptionObject WebhookArray: ${WebhookArray}`);
-        })
-        .catch(err => {
-            console.error(err);
-        });
-    });
-    console.log("------------");
-    console.log(`After FeedSubscriptionObject Loop WebhookArray: ${WebhookArray}`);
+    
 
     // Check if this is a new outage, or an update to an ongoing one
     const ExistingOutage = Collections.DiscordStatusUpdates.get(incident.id);
@@ -264,33 +245,35 @@ DiscordStatusClient.on("incident_update", async (incident) => {
 
         // Send via Webhooks, while storing sent message IDs for editing later updates into
         const SentMessageCollection = new Collection();
-        WebhookArray.forEach(async webhookItem => {
-            console.log("------------");
-            console.log(`+ New Incident, WebhookArray loop, webhookItem: ${webhookItem}`);
-            // To check if thread_id is needed to be included in the payload or not
-            if ( FeedSubscriptionJson[`${webhookItem.guildId}`]["DISCORD_FEED_THREAD_ID"] != null )
-            {
-                await webhookItem.send({ allowedMentions: { parse: [] }, threadId: FeedSubscriptionJson[`${webhookItem.guildId}`]["DISCORD_FEED_THREAD_ID"], content: `**Discord Outage:**`, embeds: [OutageEmbedNew], components: [OutagePageLinkButton] })
-                .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
-                .catch(err => {
-                    console.error(err);
-                });
-                console.log("Sent new message with Thread ID");
-            }
-            else
-            {
-                await webhookItem.send({ allowedMentions: { parse: [] }, content: `**Discord Outage:**`, embeds: [OutageEmbedNew], components: [OutagePageLinkButton] })
-                .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
-                .catch(err => {
-                    console.error(err);
-                });
-                console.log("Sent new message");
-            }
+
+        FeedSubscriptionObject.forEach(async (item) => {
+            // Fetch Webhook
+            await DiscordClient.fetchWebhook(item.DISCORD_FEED_WEBHOOK_ID)
+            .then(async webhookItem => {
+                // Send Message, Checking if thread_id is needed to be included in the payload or not
+                if ( FeedSubscriptionJson[`${webhookItem.guildId}`]["DISCORD_FEED_THREAD_ID"] != null )
+                {
+                    await webhookItem.send({ allowedMentions: { parse: [] }, threadId: FeedSubscriptionJson[`${webhookItem.guildId}`]["DISCORD_FEED_THREAD_ID"], content: `**Discord Outage:**`, embeds: [OutageEmbedNew], components: [OutagePageLinkButton] })
+                    .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
+                    .catch(err => {
+                        console.error(err);
+                    });
+                }
+                else
+                {
+                    await webhookItem.send({ allowedMentions: { parse: [] }, content: `**Discord Outage:**`, embeds: [OutageEmbedNew], components: [OutagePageLinkButton] })
+                    .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
+                    .catch(err => {
+                        console.error(err);
+                    });
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
         });
 
         // Store
-        console.log("------------");
-        console.log(`SentMessageCollection: ${SentMessageCollection}`);
         Collections.DiscordStatusUpdates.set(incident.id, SentMessageCollection);
         return;
     }
@@ -310,10 +293,16 @@ DiscordStatusClient.on("incident_update", async (incident) => {
         ]);
 
         // Edit Messages by cycling through Webhooks
-        WebhookArray.forEach(async webhookItem => {
-            console.log("------------");
-            console.log(`* Ongoing Incident, WebhookArray loop, webhookItem: ${webhookItem}`);
-            await webhookItem.editMessage(ExistingOutage.get(webhookItem.id), { allowedMentions: { parse: [] }, embeds: [OutageEmbedUpdate], components: [OutagePageLinkButton] })
+        FeedSubscriptionObject.forEach(async (item) => {
+            // Fetch Webhooks
+            await DiscordClient.fetchWebhook(item.DISCORD_FEED_WEBHOOK_ID)
+            .then(async webhookItem => {
+                // Edit the Message(s)
+                await webhookItem.editMessage(ExistingOutage.get(webhookItem.id), { allowedMentions: { parse: [] }, embeds: [OutageEmbedUpdate], components: [OutagePageLinkButton] })
+                .catch(err => {
+                    console.error(err);
+                });
+            })
             .catch(err => {
                 console.error(err);
             });

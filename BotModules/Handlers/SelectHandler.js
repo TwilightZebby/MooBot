@@ -1,11 +1,11 @@
-const { SelectMenuInteraction, Collection } = require("discord.js");
+const { StringSelectMenuInteraction, RoleSelectMenuInteraction, ChannelSelectMenuInteraction, UserSelectMenuInteraction, MentionableSelectMenuInteraction, Collection } = require("discord.js");
 const { Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 
 module.exports = {
     /**
      * Handles and runs received Selects
-     * @param {SelectMenuInteraction} selectInteraction 
+     * @param {StringSelectMenuInteraction|RoleSelectMenuInteraction|ChannelSelectMenuInteraction|UserSelectMenuInteraction|MentionableSelectMenuInteraction} selectInteraction 
      */
     async Main(selectInteraction)
     {
