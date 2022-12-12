@@ -41,6 +41,7 @@ const EMOJI_SUPPORTS_APP_COMMANDS = "<:BadgeBotSupportsAppCommands:1026426199347
 const EMOJI_BUG_HUNTER_TIER_1 = "<:BadgeUserBugHunterTier1:1026417286111838228>";
 const EMOJI_BUG_HUNTER_TIER_2 = "<:BadgeUserBugHunterTier2:1026417287252672562>";
 const EMOJI_CERTIFIED_MOD = "<:BadgeUserCertifiedMod:1026417288406110208>";
+const EMOJI_MOD_PROGRAM = "<:BadgeUserModPrograms:1051857830866591826>";
 const EMOJI_EARLY_SUPPORTER = "<:BadgeUserEarlySupporter:1026417290268389426>";
 const EMOJI_EARLY_VERIFIED_BOT_DEV = "<:BadgeUserEarlyVerifiedBotDev:1026417291522490449>";
 const EMOJI_ACTIVE_DEVELOPER = "<:BadgeUserActiveDeveloper:1040340667869691954>";
@@ -365,7 +366,7 @@ function readableUserFlags(userFlag)
             break;
 
         case "CertifiedModerator":
-            readableString = "Certified Moderator";
+            readableString = "Moderator Programs Alumni";
             break;
 
         case "HypeSquadOnlineHouse1":
@@ -446,7 +447,7 @@ function readableUserFlagsEmoji(userFlag)
             break;
 
         case "CertifiedModerator":
-            readableString = EMOJI_CERTIFIED_MOD;
+            readableString = EMOJI_MOD_PROGRAM;
             break;
 
         case "HypeSquadOnlineHouse1":
