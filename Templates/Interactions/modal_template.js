@@ -1,4 +1,4 @@
-const { ModalSubmitInteraction } = require("discord.js");
+const { ModalSubmitInteraction, ModalMessageModalSubmitInteraction } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
@@ -15,7 +15,7 @@ module.exports = {
 
     /**
      * Executes the Modal
-     * @param {ModalSubmitInteraction} modalInteraction 
+     * @param {ModalSubmitInteraction|ModalMessageModalSubmitInteraction} modalInteraction 
      */
     async execute(modalInteraction)
     {
