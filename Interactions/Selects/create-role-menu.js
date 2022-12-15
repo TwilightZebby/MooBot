@@ -1,7 +1,11 @@
-const { StringSelectMenuInteraction, EmbedBuilder, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
+const { StringSelectMenuInteraction, EmbedBuilder, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
 const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
+
+const RoleSelect = new ActionRowBuilder().addComponents([
+    new RoleSelectMenuBuilder().setCustomId(`create-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role")
+]);
 
 module.exports = {
     // Select's Name
@@ -41,6 +45,20 @@ module.exports = {
                 await selectInteraction.showModal(embedModal);
                 break;
 
+
+            // Add new Role to Menu
+            case "add-role":
+                // Validate Menu doesn't already have self-imposed max of 10 Buttons
+                let fetchedButtons = Collections.RoleMenuCreation.get(selectInteraction.guildId).roles;
+                if ( fetchedButtons?.length === 10 )
+                {
+                    await selectInteraction.reply({ ephemeral: true, content: `Sorry, but you cannot add more than 10 (ten) Role Buttons to a single Menu.` });
+                    break;
+                }
+
+                // Ask for which Role to add
+                await selectInteraction.reply({ ephemeral: true, components: [RoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.` });
+                break;
 
             // Cancel creation
             case "cancel":
