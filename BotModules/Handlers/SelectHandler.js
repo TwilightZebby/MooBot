@@ -1,6 +1,5 @@
 const { StringSelectMenuInteraction, RoleSelectMenuInteraction, ChannelSelectMenuInteraction, UserSelectMenuInteraction, MentionableSelectMenuInteraction, Collection } = require("discord.js");
 const { Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 
 module.exports = {
     /**
@@ -16,7 +15,7 @@ module.exports = {
         if ( !Select )
         {
             // Couldn't find the file for this Select
-            return await selectInteraction.reply({ ephemeral: true, content: LocalizedErrors[selectInteraction.locale].SELECT_MENU_GENERIC_FAILED_RARE });
+            return await selectInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Select Menu choice." });
         }
 
 
@@ -49,30 +48,30 @@ module.exports = {
                     // MINUTES
                     case timeLeft >= 60 && timeLeft < 3600:
                         timeLeft = timeLeft / 60; // For UX
-                        let cooldownMinutesMessage = LocalizedErrors[selectInteraction.locale].SELECT_MENU_COOLDOWN_MINUTES.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownMinutesMessage = `Please wait ${timeLeft.toFixed(1)} more minutes before using this Select Menu again.`;
                         return await selectInteraction.reply({ ephemeral: true, content: cooldownMinutesMessage });
 
                     // HOURS
                     case timeLeft >= 3600 && timeLeft < 86400:
                         timeLeft = timeLeft / 3600; // For UX
-                        let cooldownHoursMessage = LocalizedErrors[selectInteraction.locale].SELECT_MENU_COOLDOWN_HOURS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownHoursMessage = `Please wait ${timeLeft.toFixed(1)} more hours before using this Select Menu again.`;
                         return await selectInteraction.reply({ ephemeral: true, content: cooldownHoursMessage });
 
                     // DAYS
                     case timeLeft >= 86400 && timeLeft < 2.628e+6:
                         timeLeft = timeLeft / 86400; // For UX
-                        let cooldownDaysMessage = LocalizedErrors[selectInteraction.locale].SELECT_MENU_COOLDOWN_DAYS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownDaysMessage = `Please wait ${timeLeft.toFixed(1)} more days before using this Select Menu again.`;
                         return await selectInteraction.reply({ ephemeral: true, content: cooldownDaysMessage });
 
                     // MONTHS
                     case timeLeft >= 2.628e+6:
                         timeLeft = timeLeft / 2.628e+6; // For UX
-                        let cooldownMonthsMessage = LocalizedErrors[selectInteraction.locale].SELECT_MENU_COOLDOWN_MONTHS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownMonthsMessage = `Please wait ${timeLeft.toFixed(1)} more days before using this Select Menu again.`;
                         return await selectInteraction.reply({ ephemeral: true, content: cooldownMonthsMessage });
 
                     // SECONDS
                     default:
-                        let cooldownSecondsMessage = LocalizedErrors[selectInteraction.locale].SELECT_MENU_COOLDOWN_SECONDS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownSecondsMessage = `Please wait ${timeLeft.toFixed(1)} more seconds before using this Select Menu again.`;
                         return await selectInteraction.reply({ ephemeral: true, content: cooldownSecondsMessage });
                 }
             }
@@ -93,11 +92,11 @@ module.exports = {
             //console.error(err);
             if ( selectInteraction.deferred )
             {
-                await selectInteraction.editReply({ content: LocalizedErrors[selectInteraction.locale].SELECT_MENU_GENERIC_FAILED });
+                await selectInteraction.editReply({ content: "Sorry, but there was a problem trying to process that Select Menu choice." });
             }
             else
             {
-                await selectInteraction.reply({ ephemeral: true, content: LocalizedErrors[selectInteraction.locale].SELECT_MENU_GENERIC_FAILED });
+                await selectInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Select Menu choice." });
             }
         }
 

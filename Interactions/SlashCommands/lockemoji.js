@@ -1,6 +1,4 @@
 const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionType } = require("discord.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 module.exports = {
     // Command's Name

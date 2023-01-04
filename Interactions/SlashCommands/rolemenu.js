@@ -1,7 +1,5 @@
 const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionType, TextChannel, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
 const { Collections } = require("../../constants");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 const CHANNEL_TYPE_TO_STRING = {
     0: "a Text",
@@ -144,7 +142,9 @@ An auto-updating preview of what your new Self-Assignable Role Menu will look li
             let newDataObject = {
                 type: "",
                 embed: new EmbedBuilder(),
-                roles: []
+                roles: [],
+                buttons: [],
+                interaction: null
             };
 
             Collections.RoleMenuCreation.set(slashCommand.guildId, newDataObject);

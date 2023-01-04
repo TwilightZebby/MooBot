@@ -1,7 +1,5 @@
 const { StringSelectMenuInteraction, RoleSelectMenuInteraction, ChannelSelectMenuInteraction, UserSelectMenuInteraction, MentionableSelectMenuInteraction } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 module.exports = {
     // Select's Name

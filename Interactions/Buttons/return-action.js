@@ -1,6 +1,4 @@
 const { ButtonInteraction } = require("discord.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 const ActionStrings = require('../../JsonFiles/actionMessages.json');
 
 // REGEXS
@@ -37,14 +35,14 @@ module.exports = {
         // Ensure User who pressed Button is the Original Target User
         if ( buttonInteraction.user.id !== OriginalTargetId )
         {
-            return await buttonInteraction.reply({ ephemeral: true, content: LocalizedStrings[buttonInteraction.locale].RETURN_ACTION_BUTTON_NOT_ORIGINAL_TARGET });
+            return await buttonInteraction.reply({ ephemeral: true, content: "You cannot return an Action that wasn't aimed at you!" });
         }
 
         // Fetch Members, so we can use their Display/Nick Names
         const OriginalMember = await buttonInteraction.guild.members.fetch(OriginalUserId)
-        .catch(async err => { return await buttonInteraction.reply({ ephemeral: true, content: LocalizedErrors[buttonInteraction.locale].BUTTON_GENERIC_FAILED }); });
+        .catch(async err => { return await buttonInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Button press." }); });
         const OriginalTargetMember = await buttonInteraction.guild.members.fetch(OriginalTargetId)
-        .catch(async err => { return await buttonInteraction.reply({ ephemeral: true, content: LocalizedErrors[buttonInteraction.locale].BUTTON_GENERIC_FAILED }); });
+        .catch(async err => { return await buttonInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Button press." }); });
 
         // Construct Message
         let displayMessage = ActionStrings['RETURN'][`${ActionName}`];

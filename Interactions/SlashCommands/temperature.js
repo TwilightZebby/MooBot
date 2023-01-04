@@ -1,6 +1,4 @@
 const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction } = require("discord.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 module.exports = {
     // Command's Name
@@ -96,28 +94,28 @@ module.exports = {
             case "c":
                 const CToF = (ValueOption * 9/5) + 32;
                 const CToK = ValueOption + 273.15;
-                if ( CToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${ValueOption}C`) }); }
-                await slashCommand.reply({ ephemeral: true, content: LocalizedStrings[slashCommand.locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${ValueOption}C`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${CToF.toFixed(0)}F`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${CToK.toFixed(0)}K`) });
+                if ( CToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `⚠ ${ValueOption}C is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
+                await slashCommand.reply({ ephemeral: true, content: `${ValueOption}C is about ${CToF}F or ${CToK}K` });
                 break;
 
             // F TO C/K
             case "f":
                 const FToC = (ValueOption - 32) * 5/9;
                 const FToK = (ValueOption - 32) * 5/9 + 273.15;
-                if ( FToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${ValueOption}F`) }); }
-                await slashCommand.reply({ ephemeral: true, content: LocalizedStrings[slashCommand.locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${ValueOption}F`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${FToC.toFixed(0)}C`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${FToK.toFixed(0)}K`) });
+                if ( FToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `⚠ ${ValueOption}F is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
+                await slashCommand.reply({ ephemeral: true, content: `${ValueOption}F is about ${FToC}C or ${FToK}K` });
                 break;
 
             // K TO C/F
             case "k":
                 const KToC = ValueOption - 273.15;
                 const KToF = (ValueOption - 273.15) * 9/5 + 32;
-                if ( ValueOption < 0 ) { return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${ValueOption}K`) }); }
-                await slashCommand.reply({ ephemeral: true, content: LocalizedStrings[slashCommand.locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${ValueOption}K`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${KToC.toFixed(0)}C`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${KToF.toFixed(0)}F`) });
+                if ( ValueOption < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `⚠ ${ValueOption}K is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
+                await slashCommand.reply({ ephemeral: true, content: `${ValueOption}K is about ${KToC}C or ${KToF}F` });
                 break;
 
             default:
-                return await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].SLASH_COMMAND_GENERIC_FAILED });
+                return await slashCommand.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to run this Slash Command." });
         }
 
         return;

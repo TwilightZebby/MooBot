@@ -1,6 +1,5 @@
 const { ButtonInteraction, Collection } = require("discord.js");
 const { Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 
 module.exports = {
     /**
@@ -16,7 +15,7 @@ module.exports = {
         if ( !Button )
         {
             // Couldn't find the file for this Button
-            return await buttonInteraction.reply({ ephemeral: true, content: LocalizedErrors[buttonInteraction.locale].BUTTON_GENERIC_FAILED_RARE });
+            return await buttonInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Button press." });
         }
 
 
@@ -49,30 +48,30 @@ module.exports = {
                     // MINUTES
                     case timeLeft >= 60 && timeLeft < 3600:
                         timeLeft = timeLeft / 60; // For UX
-                        let cooldownMinutesMessage = LocalizedErrors[buttonInteraction.locale].BUTTON_COOLDOWN_MINUTES.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownMinutesMessage = `Please wait ${timeLeft.toFixed(1)} more minutes before using that Button again.`;
                         return await buttonInteraction.reply({ ephemeral: true, content: cooldownMinutesMessage });
 
                     // HOURS
                     case timeLeft >= 3600 && timeLeft < 86400:
                         timeLeft = timeLeft / 3600; // For UX
-                        let cooldownHoursMessage = LocalizedErrors[buttonInteraction.locale].BUTTON_COOLDOWN_HOURS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownHoursMessage = `Please wait ${timeLeft.toFixed(1)} more hours before using that Button again.`;
                         return await buttonInteraction.reply({ ephemeral: true, content: cooldownHoursMessage });
 
                     // DAYS
                     case timeLeft >= 86400 && timeLeft < 2.628e+6:
                         timeLeft = timeLeft / 86400; // For UX
-                        let cooldownDaysMessage = LocalizedErrors[buttonInteraction.locale].BUTTON_COOLDOWN_DAYS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownDaysMessage = `Please wait ${timeLeft.toFixed(1)} more days before using that Button again.`;
                         return await buttonInteraction.reply({ ephemeral: true, content: cooldownDaysMessage });
 
                     // MONTHS
                     case timeLeft >= 2.628e+6:
                         timeLeft = timeLeft / 2.628e+6; // For UX
-                        let cooldownMonthsMessage = LocalizedErrors[buttonInteraction.locale].BUTTON_COOLDOWN_MONTHS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownMonthsMessage = `Please wait ${timeLeft.toFixed(1)} more months before using that Button again.`;
                         return await buttonInteraction.reply({ ephemeral: true, content: cooldownMonthsMessage });
 
                     // SECONDS
                     default:
-                        let cooldownSecondsMessage = LocalizedErrors[buttonInteraction.locale].BUTTON_COOLDOWN_SECONDS.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)}`);
+                        let cooldownSecondsMessage = `Please wait ${timeLeft.toFixed(1)} more seconds before using that Button again.`;
                         return await buttonInteraction.reply({ ephemeral: true, content: cooldownSecondsMessage });
                 }
             }
@@ -93,11 +92,11 @@ module.exports = {
             //console.error(err);
             if ( buttonInteraction.deferred )
             {
-                await buttonInteraction.editReply({ content: LocalizedErrors[buttonInteraction.locale].BUTTON_GENERIC_FAILED });
+                await buttonInteraction.editReply({ content: "Sorry, but there was a problem trying to process that Button press." });
             }
             else
             {
-                await buttonInteraction.reply({ ephemeral: true, content: LocalizedErrors[buttonInteraction.locale].BUTTON_GENERIC_FAILED });
+                await buttonInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Button press." });
             }
         }
 

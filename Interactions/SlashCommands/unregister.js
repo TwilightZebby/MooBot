@@ -1,7 +1,5 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionChoiceData } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, AutocompleteInteraction, ApplicationCommandType, ApplicationCommandOptionType, ApplicationCommandOptionChoiceData } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 const Config = require("../../config.js");
 
 module.exports = {
@@ -29,7 +27,7 @@ module.exports = {
     // Scope of Command's usage
     //     One of the following: DM, GUILD, ALL
     Scope: "GUILD",
-
+    
     // Scope of specific Subcommands Usage
     //     One of the following: DM, GUILD, ALL
     //     IF SUBCOMMAND: name as "subcommandName"
@@ -86,7 +84,7 @@ module.exports = {
         await slashCommand.deferReply({ ephemeral: true });
 
         // Check only Bot Dev can use this
-        if ( slashCommand.user.id !== Config.BotDevID ) { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].SLASH_COMMAND_NO_PERMISSION_DEVELOPER }) }
+        if ( slashCommand.user.id !== Config.BotDevID ) { return await slashCommand.editReply({ content: "Sorry, but that Slash Command can only be used by my developer!" }) }
 
         // Grab Inputs
         const InputCommandId = slashCommand.options.getString("commandid", true);
@@ -97,15 +95,15 @@ module.exports = {
         {
             // Globally unregister
             return await DiscordClient.application.commands.delete(InputCommandId)
-            .then(async () => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].UNREGISTER_COMMAND_SUCCESS_GLOBAL }); })
-            .catch(async (err) => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].UNREGISTER_COMMAND_FAIL_GLOBAL }); });
+            .then(async () => { return await slashCommand.editReply({ content: "Successfully unregistered that App Command." }); })
+            .catch(async (err) => { return await slashCommand.editReply({ content: "Something went wrong while attempting to unregister that App Command." }); });
         }
         else
         {
             // Unregister on a per-Guild basis
             return await DiscordClient.application.commands.delete(InputCommandId, InputScope)
-            .then(async () => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].UNREGISTER_COMMAND_SUCCESS_GUILD.replace("{{GUILD_ID}}", InputScope) }); })
-            .catch(async (err) => { return await slashCommand.editReply({ content: LocalizedStrings[slashCommand.locale].UNREGISTER_COMMAND_FAIL_GUILD.replace("{{GUILD_ID}}", InputScope) }); });
+            .then(async () => { return await slashCommand.editReply({ content: `Successfully unregistered that App Command from the Guild with the ID of ${InputScope}` }); })
+            .catch(async (err) => { return await slashCommand.editReply({ content: `Something went wrong while attempting to unregister that App Command from the Guild with the ID of ${InputScope}` }); });
         }
     },
 
@@ -126,7 +124,7 @@ module.exports = {
                 return await this.autocompleteScope(autocompleteInteraction);
 
             default:
-                return await autocompleteInteraction.respond([{name: LocalizedErrors[autocompleteInteraction.locale].AUTOCOMPLETE_GENERIC_FAILED, value: "ERROR_FAILED" }]);
+                return await autocompleteInteraction.respond([{name: "ERROR: Unable to process, please contact this Bot's developer.", value: "ERROR_FAILED" }]);
         }
     },
 

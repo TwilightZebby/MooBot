@@ -1,7 +1,5 @@
 const { StringSelectMenuInteraction, EmbedBuilder, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 const RoleSelect = new ActionRowBuilder().addComponents([
     new RoleSelectMenuBuilder().setCustomId(`create-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role")
@@ -57,7 +55,13 @@ module.exports = {
                 }
 
                 // Ask for which Role to add
-                await selectInteraction.reply({ ephemeral: true, components: [RoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.` });
+                await selectInteraction.deferUpdate(); // Just so the original is editable later
+                await selectInteraction.followUp({ ephemeral: true, components: [RoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.` });
+
+                // Temp-store interaction so we can return to it
+                let menuData = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+                menuData.interaction = selectInteraction;
+                Collections.RoleMenuCreation.set(selectInteraction.guildId, menuData);
                 break;
 
             // Cancel creation

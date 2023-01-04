@@ -1,7 +1,4 @@
 const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction } = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 
 // REGEXS
 const TemperatureRegex = new RegExp(/(?<amount>-?\d+(?:\.\d*)?)[^\S\n]*(?<degrees>°|deg(?:rees?)?|in)?[^\S\n]*(?<unit>c(?:(?=el[cs]ius\b|entigrades?\b|\b))|f(?:(?=ahrenheit\b|\b))|k(?:(?=elvins?\b|\b)))/gi);
@@ -35,27 +32,27 @@ function convertTemperature(originalTemperature, locale)
         const CToF = ( originalValue * 9/5 ) + 32;
         const CToK = originalValue + 273.15;
         // Check for invalid Temperature
-        if ( CToK < 0 ) { return LocalizedErrors[locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${originalValue}C`); }
+        if ( CToK < 0 ) { return `⚠ ${originalValue}C is a temperature that cannot exist! (It is below Absolute Zero!)`; }
         // Return converted temperatures
-        return LocalizedStrings[locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${originalValue}C`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${CToF.toFixed(0)}F`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${CToK.toFixed(0)}K`);
+        return `${originalValue}C is about ${CToF}F or ${CToK}K`;
     }
     else if ( originalScale === "f" )
     {
         const FToC = ( originalValue - 32 ) * 5/9;
         const FToK = ( originalValue - 32 ) * 5/9 + 273.15;
         // Check for invalid Temperature
-        if ( FToK < 0 ) { return LocalizedErrors[locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${originalValue}F`); }
+        if ( FToK < 0 ) { return `⚠ ${originalValue}F is a temperature that cannot exist! (It is below Absolute Zero!)`; }
         // Return converted temperatures
-        return LocalizedStrings[locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${originalValue}F`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${FToC.toFixed(0)}C`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${FToK.toFixed(0)}K`);
+        return `${originalValue}F is about ${FToC}C or ${FToK}K`;
     }
     else if ( originalScale === "k" )
     {
         const KToC = originalValue - 273.15;
         const KToF = ( originalValue - 273.15 ) * 9/5 + 32;
         // Check for invalid Temperature
-        if ( originalValue < 0 ) { return LocalizedErrors[locale].TEMPERATURE_COMMAND_BELOW_ABSOLUTE_ZERO.replace("{{TEMPERATURE}}", `${originalValue}K`); }
+        if ( originalValue < 0 ) { return `⚠ ${originalValue}K is a temperature that cannot exist! (It is below Absolute Zero!)`; }
         // Return converted temperatures
-        return LocalizedStrings[locale].TEMPERATURE_COMMAND_SINGLE_RESULT.replace("{{ORIGINAL_TEMPERATURE}}", `${originalValue}K`).replace("{{CONVERTED_TEMPERATURE_ONE}}", `${KToC.toFixed(0)}C`).replace("{{CONVERTED_TEMPERATURE_TWO}}", `${KToF.toFixed(0)}F`);
+        return `${originalValue}K is about ${KToC}C or ${KToF}F`;
     }
 }
 
@@ -81,7 +78,7 @@ module.exports = {
 
     // Scope of Command's usage
     //     One of the following: DM, GUILD, ALL
-    Scope: "GUILD",
+    Scope: "ALL",
 
 
 
@@ -113,22 +110,22 @@ module.exports = {
         const SourceMessage = contextCommand.options.getMessage('message');
 
         // Error checks
-        if ( SourceMessage.author.bot || SourceMessage.system || SourceMessage.author.system ) { return await contextCommand.reply({ ephemeral: true, content: LocalizedErrors[contextCommand.locale].TEMPERATURE_CONTEXT_COMMAND_NOT_A_VALID_MESSAGE }); }
-        if ( !SourceMessage.content || SourceMessage.content == '' ) { return await contextCommand.reply({ ephemeral: true, content: LocalizedErrors[contextCommand.locale].TEMPERATURE_CONTEXT_COMMAND_EMPTY_CONTENT }); }
+        if ( SourceMessage.author.bot || SourceMessage.system || SourceMessage.author.system ) { return await contextCommand.reply({ ephemeral: true, content: "Sorry, but this Context Command cannot be used on a System or Bot Message." }); }
+        if ( !SourceMessage.content || SourceMessage.content == '' ) { return await contextCommand.reply({ ephemeral: true, content: "Sorry, but that Message doesn't have any content! (Attachments aren't checked by this Context Command)" }); }
 
 
         // Check there are actually temperatures in the Message
         const MatchedTemperatures = SourceMessage.content.match(TemperatureRegex);
 
         // No Temperatures found
-        if ( !MatchedTemperatures || MatchedTemperatures == null ) { console.log("004"); return await contextCommand.reply({ ephemeral: true, content: LocalizedErrors[contextCommand.locale].TEMPERATURE_CONTEXT_COMMAND_NO_TEMPERATURES_FOUND }); }
+        if ( !MatchedTemperatures || MatchedTemperatures == null ) { console.log("004"); return await contextCommand.reply({ ephemeral: true, content: "Sorry, but I couldn't find any temperatures to convert from that Message." }); }
         // More than 10 results
-        else if ( MatchedTemperatures.length > 10 ) { console.log("005"); return await contextCommand.reply({ ephemeral: true, content: LocalizedErrors[contextCommand.locale].TEMPERATURE_CONTEXT_COMMAND_TOO_MANY_TEMPERATURES }); }
+        else if ( MatchedTemperatures.length > 10 ) { console.log("005"); return await contextCommand.reply({ ephemeral: true, content: "Sorry, but there are too many temperatures found in that Message!\n(I have a maximum limit of 10 temperatures per Message that I can convert)" }); }
         // One single result
         else if ( MatchedTemperatures.length === 1 )
         {
             const ConvertedResult = convertTemperature(MatchedTemperatures.shift(), contextCommand.locale);
-            return await contextCommand.reply({ ephemeral: true, content: `${LocalizedStrings[contextCommand.locale]["TEMPERATURE_COMMAND_CONTEXT_SINGLE_RESULT"].replace("{{SOURCE_MESSAGE_URL}}", SourceMessage.url)}${ConvertedResult}` });
+            return await contextCommand.reply({ ephemeral: true, content: `[Jump to source Message](<${SourceMessage.url}>)\nHere is your converted temperature:\n\n• ${ConvertedResult}` });
         }
         // Between 2 and 10 results (inclusive)
         else
@@ -146,7 +143,7 @@ module.exports = {
             });
 
             // Send Results
-            return await contextCommand.editReply({ content: `${LocalizedStrings[contextCommand.locale]["TEMPERATURE_COMMAND_CONTEXT_MULTIPLE_RESULTS"].replace("{{SOURCE_MESSAGE_URL}}", SourceMessage.url)}${convertedResults.join(`\n`)}` });
+            return await contextCommand.editReply({ content: `[Jump to source Message](<${SourceMessage.url}>)\nHere is your converted temperature:\n\n${convertedResults.join(`\n`)}` });
         }
     }
 }

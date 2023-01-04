@@ -1,6 +1,5 @@
 const { ModalSubmitInteraction, ModalMessageModalSubmitInteraction } = require("discord.js");
 const { Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 
 module.exports = {
     /**
@@ -16,7 +15,7 @@ module.exports = {
         if ( !Modal )
         {
             // Couldn't find the file for this Modal
-            return await modalInteraction.reply({ ephemeral: true, content: LocalizedErrors[modalInteraction.locale].MODAL_GENERIC_FAILED_RARE });
+            return await modalInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Modal submission." });
         }
 
 
@@ -27,11 +26,11 @@ module.exports = {
             //console.error(err);
             if ( modalInteraction.deferred )
             {
-                await modalInteraction.editReply({ content: LocalizedErrors[modalInteraction.locale].MODAL_GENERIC_FAILED });
+                await modalInteraction.editReply({ content: "Sorry, but there was a problem trying to process that Modal submission." });
             }
             else
             {
-                await modalInteraction.reply({ ephemeral: true, content: LocalizedErrors[modalInteraction.locale].MODAL_GENERIC_FAILED });
+                await modalInteraction.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to process that Modal submission." });
             }
         }
 

@@ -1,6 +1,5 @@
 const { PermissionFlagsBits, Message, DMChannel, Collection } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
 const Config = require("../../config.js");
 
 module.exports = {
@@ -26,20 +25,20 @@ module.exports = {
             const [, MatchedPrefix] = message.content.match(PrefixRegex);
             const Arguments = message.content.slice(MatchedPrefix.length).trim().split(/ +/);
             const CommandName = Arguments.shift().toLowerCase();
-            const Command = Collections.TextCommands.get(CommandName) || Collections.TextCommands.find(cmd => cmd.Aliases && cmd.Aliases.includes(CommandName));
+            const Command = Collections.TextCommands.get(CommandName) || Collections.TextCommands.find(cmd => cmd.Alias && cmd.Alias.includes(CommandName));
 
             if ( !Command ) { return null; }
 
             // DM Usage
             if ( Command.Scope === 'DM' && !(message.channel instanceof DMChannel) )
             {
-                return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_DMS_ONLY });
+                return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but that Command can only be used in DMs with me." });
             }
 
             // Guild Usage
             if ( Command.Scope === 'GUILD' && (message.channel instanceof DMChannel) )
             {
-                return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_GUILDS_ONLY });
+                return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but that Command can only be used in Servers, not in DMs with me." });
             }
 
 
@@ -52,7 +51,7 @@ module.exports = {
                         // Bot's Dev
                         if ( message.author.id !== Config.BotDevID )
                         {
-                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_NO_PERMISSION_DEVELOPER });
+                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but that Command can only be used by my developer!" });
                         }
                         break;
 
@@ -60,7 +59,7 @@ module.exports = {
                         // Bot's Dev, and Server Owners
                         if ( message.author.id !== Config.BotDevID && message.author.id !== message.guild.ownerId )
                         {
-                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_NO_PERMISSION_OWNER });
+                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but that Command can only be used by the Owner of this Server!" });
                         }
                         break;
 
@@ -68,7 +67,7 @@ module.exports = {
                         // Bot's Dev, Server Owners, and those with "ADMIN" Permission
                         if ( message.author.id !== Config.BotDevID && message.author.id !== message.guild.ownerId && !message.member.permissions.has(PermissionFlagsBits.Administrator) )
                         {
-                            return await message.reply({ content: CONSTANTS.errorMessages.TEXT_COMMAND_NO_PERMISSION_ADMIN, allowedMentions: { parse: [], repliedUser: false } });
+                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but that Command can only be used by the Owner of this Server, and those with the \"ADMINISTRATOR\" Permission." });
                         }
                         break;
 
@@ -76,7 +75,7 @@ module.exports = {
                         // Bot's Dev, Server Owners, those with "ADMIN" Permission, and Server Moderators
                         if ( message.author.id !== Config.BotDevID && message.author.id !== message.guild.ownerId && !message.member.permissions.has(PermissionFlagsBits.Administrator) && !message.member.permissions.has(PermissionFlagsBits.BanMembers) && !message.member.permissions.has(PermissionFlagsBits.KickMembers) && !message.member.permissions.has(PermissionFlagsBits.ManageChannels) && !message.member.permissions.has(PermissionFlagsBits.ManageGuild) && !message.member.permissions.has(PermissionFlagsBits.ManageMessages) && !message.member.permissions.has(PermissionFlagsBits.ManageRoles) && !message.member.permissions.has(PermissionFlagsBits.ManageThreads) && !message.member.permissions.has(PermissionFlagsBits.ModerateMembers) )
                         {
-                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_NO_PERMISSION_MODERATOR });
+                            return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but that Command can only be used by this Server's Moderators, those with the \"ADMINISTRATOR\" Permission, and this Server's Owner." });
                         }
                         break;
 
@@ -92,20 +91,20 @@ module.exports = {
             // Required Arguments Check
             if ( Command.ArgumentsRequired && ( !Arguments.length || Arguments.length === 0 ) )
             {
-                return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_ARGUMENTS_REQUIRED });
+                return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but this Command requires arguments to be included in its usage.\n" });
             }
 
             // Minimum Arguments Check
             if ( Command.ArgumentsRequired && Arguments.length < Command.MinimumArguments )
             {
-                let minArgErrMsg = LocalizedErrors["en-GB"].TEXT_COMMAND_ARGUMENTS_MINIMUM.replace("{{minimumArguments}}", Command.MinimumArguments).replace("{{givenArguments}}", Arguments.length);
+                let minArgErrMsg = `Sorry, but this Command requires a **minimum** of ${Command.MinimumArguments} arguments, while you only included ${Arguments.length} arguments.`;
                 return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: minArgErrMsg });
             }
 
             // Maximum Arguments Check
             if ( Arguments.length > Command.MaximumArguments )
             {
-                let maxArgErrMsg = LocalizedErrors["en-GB"].TEXT_COMMAND_ARGUMENTS_MAXIMUM.replace("{{maximumArguments}}", Command.MaximumArguments).replace("{{givenArguments}}", Arguments.length);
+                let maxArgErrMsg = `Sorry, but this Command requires a **maximum** of ${Command.MaximumArguments} arguments, while you included ${Arguments.length} arguments.`;
             }
 
 
@@ -138,30 +137,30 @@ module.exports = {
                         // MINUTES
                         case timeLeft >= 60 && timeLeft < 3600:
                             timeLeft = timeLeft / 60; // For UX
-                            let cooldownMinutesMessage = LocalizedErrors["en-GB"].TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more minutes`);
+                            let cooldownMinutesMessage = `Please wait ${timeLeft.toFixed(1)} more minutes before using this Command again.`;
                             return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: cooldownMinutesMessage });
 
                         // HOURS
                         case timeLeft >= 3600 && timeLeft < 86400:
                             timeLeft = timeLeft / 3600; // For UX
-                            let cooldownHoursMessage = LocalizedErrors["en-GB"].TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more hours`);
+                            let cooldownHoursMessage = `Please wait ${timeLeft.toFixed(1)} more hours before using this Command again.`;
                             return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: cooldownHoursMessage });
 
                         // DAYS
                         case timeLeft >= 86400 && timeLeft < 2.628e+6:
                             timeLeft = timeLeft / 86400; // For UX
-                            let cooldownDaysMessage = LocalizedErrors["en-GB"].TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more days`);
+                            let cooldownDaysMessage = `Please wait ${timeLeft.toFixed(1)} more days before using this Command again.`;
                             return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: cooldownDaysMessage });
 
                         // MONTHS
                         case timeLeft >= 2.628e+6:
                             timeLeft = timeLeft / 2.628e+6; // For UX
-                            let cooldownMonthsMessage = LocalizedErrors["en-GB"].TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more months`);
+                            let cooldownMonthsMessage = `Please wait ${timeLeft.toFixed(1)} more months before using this Command again.`;
                             return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: cooldownMonthsMessage });
 
                         // SECONDS
                         default:
-                            let cooldownSecondsMessage = LocalizedErrors["en-GB"].TEXT_COMMAND_COOLDOWN.replace("{{commandCooldown}}", `${timeLeft.toFixed(1)} more seconds`);
+                            let cooldownSecondsMessage = `Please wait ${timeLeft.toFixed(1)} more seconds before using this Command again.`;
                             return await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: cooldownSecondsMessage });
                     }
                 }
@@ -179,7 +178,7 @@ module.exports = {
             catch (err)
             {
                 //console.error(err);
-                await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: LocalizedErrors["en-GB"].TEXT_COMMAND_GENERIC_FAILED });
+                await message.reply({ allowedMentions: { parse: [], repliedUser: false }, content: "Sorry, but there was a problem trying to run this Command." });
             }
 
             return;

@@ -1,7 +1,5 @@
 const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember, ForumChannel } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
-const LocalizedErrors = require("../../JsonFiles/errorMessages.json");
-const LocalizedStrings = require("../../JsonFiles/stringMessages.json");
 const Package = require('../../package.json');
 const fetch = require('node-fetch');
 
@@ -775,7 +773,7 @@ module.exports = {
                 break;
 
             default:
-                await slashCommand.reply({ ephemeral: true, content: LocalizedErrors[slashCommand.locale].SLASH_COMMAND_GENERIC_FAILED });
+                await slashCommand.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to run this Slash Command." });
                 break;
         }
 
@@ -797,7 +795,7 @@ module.exports = {
         const CurrentGuild = await slashCommand.guild.fetch();
 
         // If outage happening, return early
-        if ( !CurrentGuild.available ) { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_SERVER_COMMAND_GUILD_UNAVAILABLE }); }
+        if ( !CurrentGuild.available ) { return await slashCommand.editReply({ content: "Sorry, it seems I'm currently unable to read this Server's information - this could be due to an on-going [Discord outage](https://discordstatus.com).\nIf so, please wait and try again later." }); }
 
         // Check for External Emoji Permission
         const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
@@ -941,7 +939,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
         let fetchedMember;
         const MemberOption = slashCommand.options.getMember("user");
         if ( !MemberOption || MemberOption == null ) { fetchedMember = await slashCommand.guild.members.fetch(slashCommand.user.id); }
-        else { fetchedMember = await slashCommand.guild.members.fetch(MemberOption.id).catch(async err => { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_USER_COMMAND_MEMBER_NOT_PART_OF_GUILD }); }); }
+        else { fetchedMember = await slashCommand.guild.members.fetch(MemberOption.id).catch(async err => { return await slashCommand.editReply({ content: "Sorry, but that User isn't a part of this Server!" }); }); }
 
         // Check for External Emoji Permission
         const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
@@ -1095,7 +1093,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
         /** @type {Invite} */
         let fetchedInvite = null;
         try { fetchedInvite = await DiscordClient.fetchInvite(InputInviteLink); }
-        catch (err) { return await slashCommand.editReply({ content: LocalizedErrors[slashCommand.locale].INFO_INVITE_COMMAND_INVITE_DOES_NOT_EXIST }); }
+        catch (err) { return await slashCommand.editReply({ content: "Sorry, either that isn't a valid Server Invite, or the Invite doesn't exist on Discord!" }); }
 
         // Check for External Emoji Permission
         const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
