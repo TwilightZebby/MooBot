@@ -789,7 +789,7 @@ module.exports = {
     async fetchServerInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
         
         // Fetch Guild
         const CurrentGuild = await slashCommand.guild.fetch();
@@ -932,7 +932,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
     async fetchUserInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
 
         // Fetch Member, be it User of Command or Target from input
         /** @type {GuildMember} */
@@ -1164,7 +1164,7 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
     async fetchBotInfo(slashCommand)
     {
         // Defer
-        await slashCommand.deferReply();
+        await slashCommand.deferReply({ ephemeral: true });
 
         // Create Link Buttons
         const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
