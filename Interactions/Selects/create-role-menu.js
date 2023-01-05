@@ -64,11 +64,13 @@ module.exports = {
                 Collections.RoleMenuCreation.set(selectInteraction.guildId, menuData);
                 break;
 
+
             // Cancel creation
             case "cancel":
                 Collections.RoleMenuCreation.delete(selectInteraction.guildId);
                 await selectInteraction.update({ embeds: [], components: [], content: `Creation of new Role Menu has been cancelled. You may now dismiss or delete this message.` });
                 break;
+                
 
             default:
                 await selectInteraction.reply({ ephemeral: true, content: `An error occurred` });

@@ -1,4 +1,5 @@
 const { RoleSelectMenuInteraction, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
+const { Collections } = require("../../constants");
 
 module.exports = {
     // Select's Name
@@ -22,6 +23,17 @@ module.exports = {
     {
         // Grab Role
         const InputRole = selectInteraction.roles.first();
+
+        // Validate Role hasn't already been added to this menu
+        const RoleDataCache = Collections.RoleMenuCreation.get(modalInteraction.guildId).roles;
+        let isRoleAdded = RoleDataCache.find(roleObj => roleObj.id === InputRole.id);
+        if ( isRoleAdded != undefined )
+        {
+            await selectInteraction.update({ content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.
+
+⚠ <@&${InputRole.id}> has already been added to this Role Menu!` });
+            return;
+        }
 
         // Validate Role is LOWER than Bot's own highest Role
         let botMember = selectInteraction.guild.members.me;
