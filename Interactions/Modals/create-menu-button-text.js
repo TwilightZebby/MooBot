@@ -89,7 +89,8 @@ Next, please use the Select Menu below to pick which [type of Button](https://i.
 
         // Save Buttons & Roles
         menuData.buttons = buttonCache;
-        menuData.roles = roleCache.push(newRoleData);
+        roleCache.push(newRoleData);
+        menuData.roles = roleCache;
 
 
         // Construct Arrays for Buttons to go into the Menu, and add to Embed
@@ -122,7 +123,7 @@ Next, please use the Select Menu below to pick which [type of Button](https://i.
             {
                 // First row, fifth button
                 temp.addComponents(buttonCache[i]);
-                if ( roleEmbedTextFieldOne.length >= 1000 ) { roleEmbedTextFieldOne += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
+                if ( roleEmbedTextFieldOne.length <= 1000 ) { roleEmbedTextFieldOne += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
                 else { roleEmbedTextFieldTwo += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
                 // Free up TEMP ready for second row
                 updatedButtonsArray.push(temp);
@@ -132,7 +133,7 @@ Next, please use the Select Menu below to pick which [type of Button](https://i.
             {
                 // Second row, buttons one through four
                 temp.addComponents(buttonCache[i]);
-                if ( roleEmbedTextFieldOne.length >= 1000 ) { roleEmbedTextFieldOne += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
+                if ( roleEmbedTextFieldOne.length <= 1000 ) { roleEmbedTextFieldOne += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
                 else { roleEmbedTextFieldTwo += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
                 // push early if last Button
                 if ( buttonCache.length - 1 === i ) { updatedButtonsArray.push(temp); }
@@ -141,7 +142,7 @@ Next, please use the Select Menu below to pick which [type of Button](https://i.
             {
                 // Second row, fifth button
                 temp.addComponents(buttonCache[i]);
-                if ( roleEmbedTextFieldOne.length >= 1000 ) { roleEmbedTextFieldOne += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
+                if ( roleEmbedTextFieldOne.length <= 1000 ) { roleEmbedTextFieldOne += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
                 else { roleEmbedTextFieldTwo += `• <@&${roleCache[i].id}> - ${roleCache[i].emoji != null ? roleCache[i].emoji : ""} ${roleCache[i].label != null ? roleCache[i].label : ""}\n`; }
                 updatedButtonsArray.push(temp);
             }
