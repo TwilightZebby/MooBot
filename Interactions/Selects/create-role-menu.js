@@ -1,8 +1,12 @@
-const { StringSelectMenuInteraction, EmbedBuilder, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
+const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
 
-const RoleSelect = new ActionRowBuilder().addComponents([
-    new RoleSelectMenuBuilder().setCustomId(`create-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role")
+const AddRoleSelect = new ActionRowBuilder().addComponents([
+    new RoleSelectMenuBuilder().setCustomId(`create-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to add")
+]);
+
+const RemoveRoleSelect = new ActionRowBuilder().addComponents([
+    new RoleSelectMenuBuilder().setCustomId(`create-menu-remove-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to remove")
 ]);
 
 module.exports = {
@@ -56,12 +60,25 @@ module.exports = {
 
                 // Ask for which Role to add
                 await selectInteraction.deferUpdate(); // Just so the original is editable later
-                await selectInteraction.followUp({ ephemeral: true, components: [RoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.` });
+                await selectInteraction.followUp({ ephemeral: true, components: [AddRoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.` });
 
                 // Temp-store interaction so we can return to it
                 let menuData = Collections.RoleMenuCreation.get(selectInteraction.guildId);
                 menuData.interaction = selectInteraction;
                 Collections.RoleMenuCreation.set(selectInteraction.guildId, menuData);
+                break;
+
+
+            // Remove Role from Menu
+            case "remove-role":
+                // ACK to User to choose which Role to remove from Menu
+                await selectInteraction.deferUpdate(); // So original is editable later
+                await selectInteraction.followUp({ ephemeral: true, components: [RemoveRoleSelect], content: `Please use the Role Select Menu below to pick which Role you want to *remove* from your Role Menu.` });
+
+                // Temp-store interaction so we can return to it
+                let menuDataRemove = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+                menuDataRemove.interaction = selectInteraction;
+                Collections.RoleMenuCreation.set(selectInteraction.guildId, menuDataRemove);
                 break;
 
 

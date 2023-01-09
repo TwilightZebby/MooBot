@@ -131,7 +131,7 @@ module.exports = {
             // ACK to User
             await slashCommand.reply({ ephemeral: true, components: [InitialSelectMenu], embeds: [EmptyMenuEmbed], 
                 content: `__**Self-Assignable Role Menu Creation**__
-Use the Select Menu to configure the Embed and Role Buttons.
+Use the Select Menu to configure the Embed and Role Buttons. Press an existing Role Button to edit its label and/or emoji.
 If including in Buttons, please make sure to have the relevant Emoji IDs ready (such as in a notepad program); as you won't be able to copy from a Discord Message while an Input Form is open.
 Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are supported.
 

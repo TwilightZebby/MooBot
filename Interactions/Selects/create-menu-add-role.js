@@ -25,7 +25,7 @@ module.exports = {
         const InputRole = selectInteraction.roles.first();
 
         // Validate Role hasn't already been added to this menu
-        const RoleDataCache = Collections.RoleMenuCreation.get(modalInteraction.guildId).roles;
+        const RoleDataCache = Collections.RoleMenuCreation.get(selectInteraction.guildId).roles;
         let isRoleAdded = RoleDataCache.find(roleObj => roleObj.id === InputRole.id);
         if ( isRoleAdded != undefined )
         {
