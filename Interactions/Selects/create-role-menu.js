@@ -41,7 +41,7 @@ module.exports = {
                 let embedModal = new ModalBuilder().setCustomId(`create-menu-embed`).setTitle(`Configure Menu Embed`).addComponents([
                     new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`title`).setLabel("Embed Title").setMaxLength(256).setStyle(TextInputStyle.Short).setRequired(true).setValue(!embedData?.data.title ? "" : embedData.data.title) ]),
                     new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`description`).setLabel("Embed Description").setMaxLength(2000).setStyle(TextInputStyle.Paragraph).setRequired(false).setValue(!embedData?.data.description ? "" : embedData.data.description) ]),
-                    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`hex-colour`).setLabel("Embed Colour (In Hex Format)").setMinLength(7).setMaxLength(7).setStyle(TextInputStyle.Short).setRequired(false).setValue(!embedData?.data.color ? "" : `${typeof embedData.data.color === 'number' ? `#${embedData.data.color.toString(16).padStart(6, '0')}` : embedData.data.color}`) ])
+                    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`hex-colour`).setLabel("Embed Colour (In Hex Format)").setMaxLength(7).setPlaceholder("#ab44ff").setStyle(TextInputStyle.Short).setRequired(false).setValue(!embedData?.data.color ? "" : `${typeof embedData.data.color === 'number' ? `#${embedData.data.color.toString(16).padStart(6, '0')}` : embedData.data.color}`) ])
                 ]);
 
                 await selectInteraction.showModal(embedModal);

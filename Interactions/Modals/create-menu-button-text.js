@@ -55,7 +55,7 @@ Next, please use the Select Menu below to pick which [type of Button](https://i.
                 await modalInteraction.update({ content: `**Selected Role: <@&${InputRole.id}>**
 Next, please use the Select Menu below to pick which [type of Button](https://i.imgur.com/NDgzcYa.png) you want to use for this Role.
 
-⚠ Sorry, but there was an error trying to validate your included Emoji. Please try again (after re-selecting the Button Type), ensuring you use either a [Unicode Emoji](<https://emojipedia.org>) or a raw Discord Custom Emoji string (example: \`<:grass_block:601353406577246208>\`)` });
+⚠ Sorry, but there was an error trying to validate your included Emoji. Please try again (after re-selecting the Button Type), ensuring you use either an [Unicode Emoji](<https://emojipedia.org>) or a raw Discord Custom Emoji string (example: \`<:grass_block:601353406577246208>\`)` });
                 return;
             }
         }
