@@ -152,7 +152,12 @@ An auto-updating preview of what your new Self-Assignable Role Menu will look li
         // Menu Configuring
         else if ( SubCommandName === "configure" )
         {
-            //.
+            // ACK to User
+            await slashCommand.reply({ ephemeral: true, content: `This configure subcommand is no longer used for editing Role Menus.
+To edit your Role Menus with this Bot, please use my [Message Context Command](https://i.imgur.com/rJ1Y8we.png) instead!
+
+**Desktop/Web:** Right-click the Message with the Role Menu -> Apps -> Edit Role Menu
+**Mobile:** Long-press (Press-and-hold) the Message with the Role Menu -> Apps -> Edit Role Menu` });
         }
 
         return;
