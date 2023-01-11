@@ -134,24 +134,27 @@ module.exports = {
 
         for ( let i = 0; i <= ButtonDataCache.length - 1; i++ )
         {
+            // So that the Custom IDs of the Buttons can be updated from the "during creation" one to the "assign role" one
+            let tempRoleID = ButtonDataCache[i].data.custom_id.split("_").pop();
+
             if ( i === 0 )
             {
                 // First Button on first row
-                temp = new ActionRowBuilder().addComponents(ButtonDataCache[i]);
+                temp = new ActionRowBuilder().addComponents(ButtonDataCache[i].setCustomId(`role_${tempRoleID}`));
                 // push early if only Button
                 if ( ButtonDataCache.length - 1 === i ) { buttonsArray.push(temp); }
             }
             else if ( i > 0 && i < 4 )
             {
                 // First row, buttons two through four
-                temp.addComponents(ButtonDataCache[i]);
+                temp.addComponents(ButtonDataCache[i].setCustomId(`role_${tempRoleID}`));
                 // push early if last Button
                 if ( ButtonDataCache.length - 1 === i ) { buttonsArray.push(temp); }
             }
             else if ( i === 4 )
             {
                 // First row, fifth button
-                temp.addComponents(ButtonDataCache[i]);
+                temp.addComponents(ButtonDataCache[i].setCustomId(`role_${tempRoleID}`));
                 // Free up TEMP ready for second row
                 buttonsArray.push(temp);
                 temp = new ActionRowBuilder();
@@ -159,14 +162,14 @@ module.exports = {
             else if ( i > 4 && i < 9 )
             {
                 // Second row, buttons one through four
-                temp.addComponents(ButtonDataCache[i]);
+                temp.addComponents(ButtonDataCache[i].setCustomId(`role_${tempRoleID}`));
                 // push early if last Button
                 if ( ButtonDataCache.length - 1 === i ) { buttonsArray.push(temp); }
             }
             else if ( i === 9 )
             {
                 // Second row, fifth button
-                temp.addComponents(ButtonDataCache[i]);
+                temp.addComponents(ButtonDataCache[i].setCustomId(`role_${tempRoleID}`));
                 buttonsArray.push(temp);
             }
             else { break; }
