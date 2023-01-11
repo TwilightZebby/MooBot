@@ -140,7 +140,7 @@ An auto-updating preview of what your new Self-Assignable Role Menu will look li
 
             // Create empty placeholder
             let newDataObject = {
-                type: "",
+                type: "TOGGLE",
                 embed: new EmbedBuilder(),
                 roles: [],
                 buttons: [],

@@ -1,4 +1,5 @@
 const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
+const fs = require("fs");
 const { DiscordClient, Collections } = require("../../constants.js");
 
 const AddRoleSelect = new ActionRowBuilder().addComponents([
@@ -81,6 +82,12 @@ module.exports = {
                 Collections.RoleMenuCreation.set(selectInteraction.guildId, menuDataRemove);
                 break;
 
+            
+            // Save & Display Menu
+            case "save":
+                await this.saveAndDisplay(selectInteraction);
+                break;
+
 
             // Cancel creation
             case "cancel":
@@ -93,6 +100,114 @@ module.exports = {
                 await selectInteraction.reply({ ephemeral: true, content: `An error occurred` });
                 break;
         }
+
+        return;
+    },
+
+
+
+
+
+    /**
+     * Saves & Displays the new Menu for Members to use
+     * @param {StringSelectMenuInteraction} selectInteraction 
+     */
+    async saveAndDisplay(selectInteraction)
+    {
+        // Defer
+        await selectInteraction.deferUpdate();
+
+        // Bring in JSON
+        const RoleMenuJson = require("../../JsonFiles/Hidden/RoleMenus.json");
+
+        // Fetch data
+        const MenuDataCache = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+        const RoleDataCache = MenuDataCache.roles;
+        const EmbedDataCache = MenuDataCache.embed;
+        const ButtonDataCache = MenuDataCache.buttons;
+        const MenuType = MenuDataCache.type;
+
+        // Construct Component Row(s)
+        let temp;
+        /** @type {Array<ActionRowBuilder>} */
+        let buttonsArray = [];
+
+        for ( let i = 0; i <= ButtonDataCache.length - 1; i++ )
+        {
+            if ( i === 0 )
+            {
+                // First Button on first row
+                temp = new ActionRowBuilder().addComponents(ButtonDataCache[i]);
+                // push early if only Button
+                if ( ButtonDataCache.length - 1 === i ) { buttonsArray.push(temp); }
+            }
+            else if ( i > 0 && i < 4 )
+            {
+                // First row, buttons two through four
+                temp.addComponents(ButtonDataCache[i]);
+                // push early if last Button
+                if ( ButtonDataCache.length - 1 === i ) { buttonsArray.push(temp); }
+            }
+            else if ( i === 4 )
+            {
+                // First row, fifth button
+                temp.addComponents(ButtonDataCache[i]);
+                // Free up TEMP ready for second row
+                buttonsArray.push(temp);
+                temp = new ActionRowBuilder();
+            }
+            else if ( i > 4 && i < 9 )
+            {
+                // Second row, buttons one through four
+                temp.addComponents(ButtonDataCache[i]);
+                // push early if last Button
+                if ( ButtonDataCache.length - 1 === i ) { buttonsArray.push(temp); }
+            }
+            else if ( i === 9 )
+            {
+                // Second row, fifth button
+                temp.addComponents(ButtonDataCache[i]);
+                buttonsArray.push(temp);
+            }
+            else { break; }
+        }
+
+
+        // Send Message with Menu
+        await selectInteraction.channel.send({ embeds: [EmbedDataCache], components: buttonsArray, allowedMentions: { parse: [] } })
+        .then(async sentMessage => {
+            // Save to JSON
+            RoleMenuJson[sentMessage.id] = {
+                MESSAGE_ID: sentMessage.id,
+                CHANNEL_ID: sentMessage.channel.id,
+                GUILD_ID: sentMessage.guild.id,
+                MENU_TYPE: MenuType,
+                ROLES: RoleDataCache,
+                EMBED: {
+                    TITLE: EmbedDataCache.data.title,
+                    DESCRIPTION: EmbedDataCache.data.description !== undefined ? EmbedDataCache.data.description : null,
+                    COLOR: EmbedDataCache.data.color !== undefined ? EmbedDataCache.data.color : null
+                }
+            };
+
+            fs.writeFile('./JsonFiles/Hidden/RoleMenus.json', JSON.stringify(RoleMenuJson, null, 4), async (err) => {
+                if ( err )
+                { 
+                    await selectInteraction.followUp({ content: `An error occurred while trying to save your new Role Menu...`, ephemeral: true });
+                    return;
+                }
+            });
+
+
+            // Clean up
+            Collections.RoleMenuCreation.delete(selectInteraction.guildId);
+            await selectInteraction.deleteReply();
+            return;
+        })
+        .catch(err => {
+            //console.error(err);
+            return;
+        });
 
         return;
     }
