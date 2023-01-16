@@ -854,7 +854,7 @@ module.exports = {
 
         // Role Information
         const GuildRoles = await CurrentGuild.roles.fetch();
-        const TotalRoleCount = GuildRoles.size;
+        const TotalRoleCount = GuildRoles.size - 1; // Subtract one because atEveryone doesn't technically count? At least not towards the 250 limit anyways
 
         // Emojis & Sticker Information
         const GuildEmojis = await CurrentGuild.emojis.fetch();
