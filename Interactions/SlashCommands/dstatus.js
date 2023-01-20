@@ -207,7 +207,7 @@ async function unsubscribeFromFeed(slashCommand)
     });
 
     // ACK to User
-    await slashCommand.reply({ ephemeral: true, content: `"Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages."${webhookDeletionErrorMessage != null ? `\n\n${webhookDeletionErrorMessage}` : ""}` });
+    await slashCommand.reply({ ephemeral: true, content: `Successfully unsubscribed from the Discord Outage Feed.\nThis Server will no longer receive notifications from this Bot about Discord's Outages.${webhookDeletionErrorMessage != null ? `\n\n${webhookDeletionErrorMessage}` : ""}` });
     delete FeedWebhook;
     return;
 }
