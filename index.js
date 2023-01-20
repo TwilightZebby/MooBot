@@ -257,6 +257,7 @@ DiscordStatusClient.on("incident_update", async (incident) => {
                     .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
                     .catch(err => {
                         console.error(err);
+                        return;
                     });
                 }
                 else
@@ -265,11 +266,13 @@ DiscordStatusClient.on("incident_update", async (incident) => {
                     .then(sentMessage => { SentMessageCollection.set(webhookItem.id, sentMessage.id); })
                     .catch(err => {
                         console.error(err);
+                        return;
                     });
                 }
             })
             .catch(err => {
                 console.error(err);
+                return;
             });
         });
 
@@ -301,10 +304,12 @@ DiscordStatusClient.on("incident_update", async (incident) => {
                 await webhookItem.editMessage(ExistingOutage.get(webhookItem.id), { allowedMentions: { parse: [] }, embeds: [OutageEmbedUpdate], components: [OutagePageLinkButton] })
                 .catch(err => {
                     console.error(err);
+                    return;
                 });
             })
             .catch(err => {
                 console.error(err);
+                return;
             });
         });
         return;
