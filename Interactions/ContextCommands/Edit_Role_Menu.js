@@ -1,20 +1,15 @@
-const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction, PermissionFlagsBits, EmbedBuilder } = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction, PermissionFlagsBits, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { Collections } = require("../../constants.js");
 
-const CHANNEL_TYPE_TO_STRING = {
-    0: "a Text",
-    1: "a DM",
-    2: "a Voice",
-    3: "a Group DM",
-    4: "a Category",
-    5: "an Announcement",
-    10: "an Announcement Thread",
-    11: "a Public Thread",
-    12: "a Private Thread",
-    13: "a Stage",
-    14: "a Directory",
-    15: "a Forum"
-};
+const MenuSelect = new ActionRowBuilder().addComponents([
+    new StringSelectMenuBuilder().setCustomId(`configure-role-menu`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
+        new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
+        new StringSelectMenuOptionBuilder().setLabel("Add Role").setValue("add-role").setDescription("Add a Role to the Menu").setEmoji(`<:plusGrey:997752068439818280>`),
+        new StringSelectMenuOptionBuilder().setLabel("Remove Role").setValue("remove-role").setDescription("Remove a Role from the Menu").setEmoji(`<:IconDeleteTrashcan:750152850310561853>`),
+        new StringSelectMenuOptionBuilder().setLabel("Save & Update").setValue("save").setDescription("Saves the new Menu, and updates it for Members to use").setEmoji(`<:IconActivity:815246970457161738>`),
+        new StringSelectMenuOptionBuilder().setLabel("Cancel Configuration").setValue("cancel").setDescription("Cancels configuration of this Role Menu").setEmoji(`❌`)
+    ])
+]);
 
 module.exports = {
     // Command's Name
@@ -67,26 +62,28 @@ module.exports = {
      */
     async execute(contextCommand)
     {
+        await contextCommand.deferReply({ ephemeral: true });
+
         // Check Message *is* a Role Menu with this Bot
         const RoleMenuJson = require('../../JsonFiles/Hidden/RoleMenus.json');
         const SourceMessage = contextCommand.options.getMessage('message', true);
         if ( !RoleMenuJson[SourceMessage.id] )
         {
-            await contextCommand.reply({ ephemeral: true, content: `That Message doesn't contain any of my Role Menus!` });
+            await contextCommand.editReply({ ephemeral: true, content: `That Message doesn't contain any of my Role Menus!` });
             return;
         }
 
         // Ensure Bot has MANAGE_ROLES Permission
         if ( !contextCommand.appPermissions.has(PermissionFlagsBits.ManageRoles) )
         {
-            await contextCommand.reply({ ephemeral: true, context: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
+            await contextCommand.editReply({ ephemeral: true, context: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
             return;
         }
 
         // Ensure Bot has READ_MESSAGE_HISTORY Permission to be able to edit the existing Role Menu
         if ( !contextCommand.appPermissions.has(PermissionFlagsBits.ReadMessageHistory) )
         {
-            await contextCommand.reply({ ephemeral: true, content: `Sorry, but I cannot edit an existing Role menu in this Channel without having the \`Read Message History\` Permission!` });
+            await contextCommand.editReply({ ephemeral: true, content: `Sorry, but I cannot edit an existing Role menu in this Channel without having the \`Read Message History\` Permission!` });
             return;
         }
 
@@ -95,12 +92,101 @@ module.exports = {
 
         // Setup for Menu Configuration
         const MenuData = RoleMenuJson[SourceMessage.id];
+        const ConfigEmbed = new EmbedBuilder().setTitle(MenuData["EMBED"]["TITLE"]);
+
+        // Embed
+        if ( MenuData["EMBED"]["DESCRIPTION"] !== null ) { ConfigEmbed.setDescription(MenuData["EMBED"]["DESCRIPTION"]); }
+        if ( MenuData["EMBED"]["COLOR"] !== null ) { ConfigEmbed.setColor(MenuData["EMBED"]["COLOR"]); }
+
+        
+        // Roles & Buttons
+        /** @type {Array<{id: String, style: String, emoji: ?String, label: ?String}>} */
+        const RoleCache = MenuData["ROLES"];
+        /** @type {Array<ButtonBuilder>} */
+        let buttonCache = [];
+        /** @type {Array<ActionRowBuilder>} */
+        let componentsArray = [];
+        let temp;
+        let roleEmbedTextFieldOne = "";
+        let roleEmbedTextFieldTwo = "";
+        let iCounter = 0;
+
+        // Construct the Buttons && add to Embed
+        RoleCache.forEach(role => {
+            // Button stuff first
+            let tempButtonStyle = role.style;
+            let newButton = new ButtonBuilder().setCustomId(`configure-role-edit_${role.id}`)
+            .setStyle(tempButtonStyle === 'blurple' ? ButtonStyle.Primary : tempButtonStyle === 'green' ? ButtonStyle.Success : tempButtonStyle === 'grey' ? ButtonStyle.Secondary : ButtonStyle.Danger);
+
+            if ( role.label != null ) { newButton.setLabel(role.label); }
+            if ( role.emoji != null ) { newButton.setEmoji(role.emoji); }
+
+            buttonCache.push(newButton);
+
+            
+            // Components Array second
+            if ( iCounter === 0 )
+            {
+                // Create first row
+                temp = new ActionRowBuilder().addComponents(newButton);
+                if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
+            }
+            else if ( iCounter > 0 && iCounter < 4 )
+            {
+                // First row still has space
+                temp.addComponents(newButton);
+                if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
+            }
+            else if ( iCounter === 4 )
+            {
+                // Move to second row
+                componentsArray.push(temp);
+                temp = new ActionRowBuilder().addComponents(newButton);
+                if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
+            }
+            else if ( iCounter > 4 )
+            {
+                // Second row has space
+                temp.addComponents(newButton);
+                if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
+            }
+
+
+            // Embed Strings third
+            if ( roleEmbedTextFieldOne.length <= 1000 ) { roleEmbedTextFieldOne += `• <@&${role.id}> - ${role.emoji != null ? role.emoji : ""} ${role.label != null ? role.label : ""}\n`; }
+            else { roleEmbedTextFieldTwo += `• <@&${role.id}> - ${role.emoji != null ? role.emoji : ""} ${role.label != null ? role.label : ""}\n`; }
+
+            iCounter++;
+        });
+
+
+        // Add Select Menu
+        componentsArray.push(MenuSelect);
+
+        // Add strings to Embed
+        ConfigEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldOne });
+        if ( roleEmbedTextFieldTwo.length > 5 ) { ConfigEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldTwo }); }
+
+        // Save to cache
         let newDataObject = {
             type: MenuData["MENU_TYPE"],
-            embed: new EmbedBuilder().setTitle(MenuData["EMBED"]["TITLE"]),
-            roles: MenuData["ROLES"],
-            buttons: [],
+            embed: ConfigEmbed,
+            roles: RoleCache,
+            buttons: buttonCache,
             interaction: null
         };
+        Collections.RoleMenuConfiguration.set(contextCommand.guildId, newDataObject);
+
+        // Ack to User to begin Configuration Process
+        await contextCommand.editReply({ components: componentsArray, embeds: [ConfigEmbed],
+            content: `__**Self-Assignable Role Menu Configuration**__
+Use the Select Menu to configure the Embed and Role Buttons. Press an existing Role Button to edit its label and/or emoji.
+If including in Buttons, please make sure to have the relevant Emoji IDs ready (such as in a notepad program); as you won't be able to copy from a Discord Message while an Input Form is open.
+Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are supported.
+
+An auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.`
+        });
+
+        return;
     }
 }

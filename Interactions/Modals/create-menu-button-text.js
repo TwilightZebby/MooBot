@@ -65,7 +65,7 @@ Next, please use the Select Menu below to pick which [type of Button](https://i.
         let menuData = Collections.RoleMenuCreation.get(modalInteraction.guildId);
         let roleCache = menuData.roles;
         if ( !roleCache ) { roleCache = []; }
-        let newRoleData = { id: RoleID, emoji: null, label: null };
+        let newRoleData = { id: RoleID, style: ButtonType, emoji: null, label: null };
 
         let newRoleButton = new ButtonBuilder().setCustomId(`new-role-edit_${RoleID}`)
         .setStyle(ButtonType === 'blurple' ? ButtonStyle.Primary : ButtonType === 'green' ? ButtonStyle.Success : ButtonType === 'grey' ? ButtonStyle.Secondary : ButtonStyle.Danger);

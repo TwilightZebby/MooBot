@@ -24,9 +24,9 @@ module.exports =
         ButtonCooldowns: new Collection(),
         SelectCooldowns: new Collection(),
 
-        /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, emoji: ?String, label: ?String}>, buttons: Array<ButtonBuilder>, interaction: ?StringSelectMenuInteraction}>} */
+        /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, style: String, emoji: ?String, label: ?String}>, buttons: Array<ButtonBuilder>, interaction: ?StringSelectMenuInteraction}>} */
         RoleMenuCreation: new Collection(),
-        /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, emoji: ?String, label: ?String}>, buttons: Array<ButtonBuilder>, interaction: ?StringSelectMenuInteraction}>} */
+        /** @type {Collection<String, {type: String, embed: EmbedBuilder, roles: Array<{id: String, style: String, emoji: ?String, label: ?String}>, buttons: Array<ButtonBuilder>, interaction: ?StringSelectMenuInteraction}>} */
         RoleMenuConfiguration: new Collection(),
 
         /** Contains Message IDs for each Incident, mapped by Webhook IDs, all mapped by Incident IDs
