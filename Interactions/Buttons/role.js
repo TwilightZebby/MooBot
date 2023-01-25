@@ -40,9 +40,10 @@ module.exports = {
 
 
             // Swappable Role Menu. Members can only have ONE Role at a time per SWAPPABLE Menu. Example use case: Colour Roles.
-            case "SWAP":
+            // This is placeholder for the time being. Swappable Role Menus will come in a future update to this Bot
+            /* case "SWAP":
                 await swapRole(buttonInteraction, RoleID);
-                break;
+                break; */
 
 
             default:
