@@ -6,7 +6,7 @@ const MenuSelect = new ActionRowBuilder().addComponents([
         new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
         new StringSelectMenuOptionBuilder().setLabel("Add Role").setValue("add-role").setDescription("Add a Role to the Menu").setEmoji(`<:plusGrey:997752068439818280>`),
         new StringSelectMenuOptionBuilder().setLabel("Remove Role").setValue("remove-role").setDescription("Remove a Role from the Menu").setEmoji(`<:IconDeleteTrashcan:750152850310561853>`),
-        new StringSelectMenuOptionBuilder().setLabel("Save & Update").setValue("save").setDescription("Saves the new Menu, and updates it for Members to use").setEmoji(`<:IconActivity:815246970457161738>`),
+        new StringSelectMenuOptionBuilder().setLabel("Save & Update").setValue("save").setDescription("Saves the Menu, and updates it for Members to use").setEmoji(`<:IconActivity:815246970457161738>`),
         new StringSelectMenuOptionBuilder().setLabel("Cancel Configuration").setValue("cancel").setDescription("Cancels configuration of this Role Menu").setEmoji(`❌`)
     ])
 ]);
@@ -170,6 +170,7 @@ module.exports = {
         // Save to cache
         let newDataObject = {
             type: MenuData["MENU_TYPE"],
+            originMessageId: SourceMessage.id,
             embed: ConfigEmbed,
             roles: RoleCache,
             buttons: buttonCache,

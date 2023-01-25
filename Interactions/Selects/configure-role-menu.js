@@ -3,20 +3,20 @@ const fs = require("fs");
 const { DiscordClient, Collections } = require("../../constants.js");
 
 const AddRoleSelect = new ActionRowBuilder().addComponents([
-    new RoleSelectMenuBuilder().setCustomId(`create-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to add")
+    new RoleSelectMenuBuilder().setCustomId(`configure-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to add")
 ]);
 
 const RemoveRoleSelect = new ActionRowBuilder().addComponents([
-    new RoleSelectMenuBuilder().setCustomId(`create-menu-remove-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to remove")
+    new RoleSelectMenuBuilder().setCustomId(`configure-menu-remove-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to remove")
 ]);
 
 module.exports = {
     // Select's Name
     //     Used as its custom ID (or at least the start of it)
-    Name: "create-role-menu",
+    Name: "configure-role-menu",
 
     // Select's Description
-    Description: `Handles processing options for creation of Role Menus`,
+    Description: `Handles processing options for configuration of Role Menus`,
 
     // Cooldown, in seconds
     //     Defaults to 3 seconds if missing
@@ -37,9 +37,9 @@ module.exports = {
         {
             // Edit Embed
             case "configure-embed":
-                let embedData = Collections.RoleMenuCreation.get(selectInteraction.guildId)?.embed;
+                let embedData = Collections.RoleMenuConfiguration.get(selectInteraction.guildId)?.embed;
 
-                let embedModal = new ModalBuilder().setCustomId(`create-menu-embed`).setTitle(`Configure Menu Embed`).addComponents([
+                let embedModal = new ModalBuilder().setCustomId(`configure-menu-embed`).setTitle(`Configure Menu Embed`).addComponents([
                     new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`title`).setLabel("Embed Title").setMaxLength(256).setStyle(TextInputStyle.Short).setRequired(true).setValue(!embedData?.data.title ? "" : embedData.data.title) ]),
                     new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`description`).setLabel("Embed Description").setMaxLength(2000).setStyle(TextInputStyle.Paragraph).setRequired(false).setValue(!embedData?.data.description ? "" : embedData.data.description) ]),
                     new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId(`hex-colour`).setLabel("Embed Colour (In Hex Format)").setMaxLength(7).setPlaceholder("#ab44ff").setStyle(TextInputStyle.Short).setRequired(false).setValue(!embedData?.data.color ? "" : `${typeof embedData.data.color === 'number' ? `#${embedData.data.color.toString(16).padStart(6, '0')}` : embedData.data.color}`) ])
@@ -52,7 +52,7 @@ module.exports = {
             // Add new Role to Menu
             case "add-role":
                 // Validate Menu doesn't already have self-imposed max of 10 Buttons
-                let fetchedButtons = Collections.RoleMenuCreation.get(selectInteraction.guildId).roles;
+                let fetchedButtons = Collections.RoleMenuConfiguration.get(selectInteraction.guildId).roles;
                 if ( fetchedButtons?.length === 10 )
                 {
                     await selectInteraction.reply({ ephemeral: true, content: `Sorry, but you cannot add more than 10 (ten) Role Buttons to a single Menu.` });
@@ -61,12 +61,12 @@ module.exports = {
 
                 // Ask for which Role to add
                 await selectInteraction.deferUpdate(); // Just so the original is editable later
-                await selectInteraction.followUp({ ephemeral: true, components: [AddRoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your new Role Menu.` });
+                await selectInteraction.followUp({ ephemeral: true, components: [AddRoleSelect], content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your Role Menu.` });
 
                 // Temp-store interaction so we can return to it
-                let menuData = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+                let menuData = Collections.RoleMenuConfiguration.get(selectInteraction.guildId);
                 menuData.interaction = selectInteraction;
-                Collections.RoleMenuCreation.set(selectInteraction.guildId, menuData);
+                Collections.RoleMenuConfiguration.set(selectInteraction.guildId, menuData);
                 break;
 
 
@@ -77,9 +77,9 @@ module.exports = {
                 await selectInteraction.followUp({ ephemeral: true, components: [RemoveRoleSelect], content: `Please use the Role Select Menu below to pick which Role you want to *remove* from your Role Menu.` });
 
                 // Temp-store interaction so we can return to it
-                let menuDataRemove = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+                let menuDataRemove = Collections.RoleMenuConfiguration.get(selectInteraction.guildId);
                 menuDataRemove.interaction = selectInteraction;
-                Collections.RoleMenuCreation.set(selectInteraction.guildId, menuDataRemove);
+                Collections.RoleMenuConfiguration.set(selectInteraction.guildId, menuDataRemove);
                 break;
 
             
@@ -91,8 +91,8 @@ module.exports = {
 
             // Cancel creation
             case "cancel":
-                Collections.RoleMenuCreation.delete(selectInteraction.guildId);
-                await selectInteraction.update({ embeds: [], components: [], content: `Creation of new Role Menu has been cancelled. You may now dismiss or delete this message.` });
+                Collections.RoleMenuConfiguration.delete(selectInteraction.guildId);
+                await selectInteraction.update({ embeds: [], components: [], content: `Configuration of Role Menu has been cancelled. You may now dismiss or delete this message.` });
                 break;
                 
 
@@ -121,7 +121,7 @@ module.exports = {
         const RoleMenuJson = require("../../JsonFiles/Hidden/RoleMenus.json");
 
         // Fetch data
-        const MenuDataCache = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+        const MenuDataCache = Collections.RoleMenuConfiguration.get(selectInteraction.guildId);
         const RoleDataCache = MenuDataCache.roles;
         const EmbedDataCache = MenuDataCache.embed.setFooter({ text: `Menu Type: ${MenuDataCache.type}` });
         const ButtonDataCache = MenuDataCache.buttons;
@@ -176,40 +176,45 @@ module.exports = {
         }
 
 
-        // Send Message with Menu
-        await selectInteraction.channel.send({ embeds: [EmbedDataCache], components: buttonsArray, allowedMentions: { parse: [] } })
-        .then(async sentMessage => {
-            // Save to JSON
-            RoleMenuJson[sentMessage.id] = {
-                MESSAGE_ID: sentMessage.id,
-                CHANNEL_ID: sentMessage.channel.id,
-                GUILD_ID: sentMessage.guild.id,
-                MENU_TYPE: MenuType,
-                ROLES: RoleDataCache,
-                EMBED: {
-                    TITLE: EmbedDataCache.data.title,
-                    DESCRIPTION: EmbedDataCache.data.description !== undefined ? EmbedDataCache.data.description : null,
-                    COLOR: EmbedDataCache.data.color !== undefined ? EmbedDataCache.data.color : null
-                }
-            };
+        // Update Message with menu on
+        await selectInteraction.channel.messages.fetch(MenuDataCache.originMessageId)
+        .then(async fetchedMessage => {
 
-            fs.writeFile('./JsonFiles/Hidden/RoleMenus.json', JSON.stringify(RoleMenuJson, null, 4), async (err) => {
-                if ( err )
-                { 
-                    await selectInteraction.followUp({ content: `An error occurred while trying to save your new Role Menu...`, ephemeral: true });
-                    return;
-                }
+            await fetchedMessage.edit({ embeds: [EmbedDataCache], components: buttonsArray, allowedMentions: { parse: [] } })
+            .then(async sentMessage => {
+                // Save to JSON
+                RoleMenuJson[sentMessage.id] = {
+                    MESSAGE_ID: sentMessage.id,
+                    CHANNEL_ID: sentMessage.channel.id,
+                    GUILD_ID: sentMessage.guild.id,
+                    MENU_TYPE: MenuType,
+                    ROLES: RoleDataCache,
+                    EMBED: {
+                        TITLE: EmbedDataCache.data.title,
+                        DESCRIPTION: EmbedDataCache.data.description !== undefined ? EmbedDataCache.data.description : null,
+                        COLOR: EmbedDataCache.data.color !== undefined ? EmbedDataCache.data.color : null
+                    }
+                };
+
+                fs.writeFile('./JsonFiles/Hidden/RoleMenus.json', JSON.stringify(RoleMenuJson, null, 4), async (err) => {
+                    if ( err )
+                    { 
+                        await selectInteraction.followUp({ content: `An error occurred while trying to save your updated Role Menu...`, ephemeral: true });
+                        return;
+                    }
+                });
+
+
+                // Clean up
+                Collections.RoleMenuConfiguration.delete(selectInteraction.guildId);
+                await selectInteraction.deleteReply();
+                return;
+            })
+            .catch(err => {
+                //console.error(err);
+                return;
             });
 
-
-            // Clean up
-            Collections.RoleMenuCreation.delete(selectInteraction.guildId);
-            await selectInteraction.deleteReply();
-            return;
-        })
-        .catch(err => {
-            //console.error(err);
-            return;
         });
 
         return;
