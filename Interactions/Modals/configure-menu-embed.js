@@ -1,5 +1,5 @@
 const { ModalMessageModalSubmitInteraction, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { Collections } = require("../../constants.js");
 
 const HexColourRegex = new RegExp(/#[0-9a-fA-F]{6}/);
 

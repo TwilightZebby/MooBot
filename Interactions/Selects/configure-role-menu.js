@@ -1,6 +1,6 @@
 const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
 const fs = require("fs");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { Collections } = require("../../constants.js");
 
 const AddRoleSelect = new ActionRowBuilder().addComponents([
     new RoleSelectMenuBuilder().setCustomId(`configure-menu-add-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to add")

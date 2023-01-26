@@ -1,6 +1,6 @@
 const { ModalMessageModalSubmitInteraction, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
 const EmojiRegex = require("emoji-regex")();
-const { DiscordClient, Collections } = require("../../constants.js");
+const { Collections } = require("../../constants.js");
 
 const DiscordEmojiRegex = new RegExp(/<a?:(?<name>[a-zA-Z0-9\_]+):(?<id>\d{15,21})>/);
 

@@ -1,5 +1,4 @@
 const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ThreadChannel, GuildMember, ThreadMember } = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
 
 module.exports = {
     // Command's Name
