@@ -14,7 +14,7 @@ All of these Slash and Context Commands can be restricted to only be used by spe
 
 Sadly, though, this Settings Page is only viewable on Desktop and Web Browser versions of Discord, not Mobile App versions.
 
-Furthermore, some of these Commands, such as `/lockemoji`, have default Permission requirements set - meaning that they won't be viewable or usable in the Command Pickers unless you have the relevant Permission (or are Server Owner, or have Admin Permission).
+Furthermore, some of these Commands, such as `/lockemoji`, have default Permission requirements set - meaning that they won't be viewable or usable in the Command Pickers unless you have the relevant Permission (or are Server Owner, or have Admin Permission); unless an override has been set on the Command itself by the Server's Admins/Owner.
 
 ### Context Commands & Where to Find Them
 By now, most Users are aware of Slash Commands (`/boop` for example) and how to use them - but not many are aware of Context Commands. Hence, this section here to explain where they are!
