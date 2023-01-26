@@ -196,3 +196,49 @@ Commands for Role Menu Setup/Configuration are as follows:
 
 ### `"Edit Role Menu"` (Message Context Command)
 > *Used to start the configuration process for editing an existing Role Menu made with this Bot.*
+
+<!-- Divider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+---
+
+# Questions
+## Why did you make this Bot?
+> This Bot was born from a mixture of "felt like it" and a want to bring back some of the commands from the Kawaii Bot (that was discontinued when I originally made this Bot, but apparently has made a return in 2022?).
+> The Bot, with its original name of "Actions Bot", was originally first added to Dr1fterX's Server in January 2021. The Bot was later renamed to "MooBot" in March 2022.
+
+## Why was the Bot renamed from "Actions Bot" to "MooBot"?
+> The original name, "Actions Bot", was picked because of the simple nature of the bot - to add action-based Slash Commands.
+> Now that the Bot is being used for more features, which are less action-based (such as Button-Roles or the Temperature Convertor), TwilightZebby thought a name change was in order since "Actions Bot" isn't accurate anymore.
+>
+> "MooBot" became the name picked as a reference to an *old* meme in Dr1fterX's community, in which TwilightZebby was a cow (yes, as in the animal).
+> That meme has long since vanished as per TwilightZebby's request. He humbly requests no one refer to him as a cow anymore because of the expiry of that meme. :)
+
+## Can I add this Bot to my own Server?
+> No, unless I consider you a friend, in which case maybe.
+> 
+> If I do consider you a friend, you are free to ask if you can add MooBot to your Server. I won't be generating permanent public invite links; hence the need to ask first.
