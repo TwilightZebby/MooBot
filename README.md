@@ -137,7 +137,7 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
 -->
 
 ## `/info`
-> **Info**
+> **Note**
 > All information Commands only display information that is already public - that is, publicly accessible via Discord's public Bots & Apps API.
 > 
 > Additionally, all information Commands respond ephemerally - so only the User running the Command can see the Command's response.
