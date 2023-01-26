@@ -128,6 +128,13 @@ module.exports = {
                 return;
             }
 
+            // Ensure there isn't already an active Role Menu Creation happening in that Guild
+            if ( Collections.RoleMenuCreation.has(slashCommand.guildId) )
+            {
+                await slashCommand.reply({ ephemeral: true, content: `Sorry, but there seems to already be an active Role Menu Creation happening on this Server right now; either by yourself or someone else.\nPlease either wait for the User to finish creating their Role Menu, or for the inactive Creation timer to expire (which is about one hour from initial use of Command).` });
+                return;
+            }
+
             // ACK to User
             await slashCommand.reply({ ephemeral: true, components: [InitialSelectMenu], embeds: [EmptyMenuEmbed], 
                 content: `__**Self-Assignable Role Menu Creation**__
@@ -138,13 +145,17 @@ Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are suppo
 An auto-updating preview of what your new Self-Assignable Role Menu will look like is shown below.`
             });
 
+            // Auto-expire cache after one hour
+            let timeoutExpiry = setTimeout(() => { Collections.RoleMenuCreation.delete(slashCommand.guildId); }, 3.6e+6);
+
             // Create empty placeholder
             let newDataObject = {
                 type: "TOGGLE",
                 embed: new EmbedBuilder(),
                 roles: [],
                 buttons: [],
-                interaction: null
+                interaction: null,
+                timeout: timeoutExpiry
             };
 
             Collections.RoleMenuCreation.set(slashCommand.guildId, newDataObject);

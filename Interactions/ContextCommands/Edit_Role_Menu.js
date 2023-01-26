@@ -69,21 +69,28 @@ module.exports = {
         const SourceMessage = contextCommand.options.getMessage('message', true);
         if ( !RoleMenuJson[SourceMessage.id] )
         {
-            await contextCommand.editReply({ ephemeral: true, content: `That Message doesn't contain any of my Role Menus!` });
+            await contextCommand.editReply({ content: `That Message doesn't contain any of my Role Menus!` });
             return;
         }
 
         // Ensure Bot has MANAGE_ROLES Permission
         if ( !contextCommand.appPermissions.has(PermissionFlagsBits.ManageRoles) )
         {
-            await contextCommand.editReply({ ephemeral: true, context: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
+            await contextCommand.editReply({ context: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
             return;
         }
 
         // Ensure Bot has READ_MESSAGE_HISTORY Permission to be able to edit the existing Role Menu
         if ( !contextCommand.appPermissions.has(PermissionFlagsBits.ReadMessageHistory) )
         {
-            await contextCommand.editReply({ ephemeral: true, content: `Sorry, but I cannot edit an existing Role menu in this Channel without having the \`Read Message History\` Permission!` });
+            await contextCommand.editReply({ content: `Sorry, but I cannot edit an existing Role menu in this Channel without having the \`Read Message History\` Permission!` });
+            return;
+        }
+
+        // Ensure there isn't already an active Role Menu Configuration happening in that Guild
+        if ( Collections.RoleMenuConfiguration.has(contextCommand.guildId) )
+        {
+            await contextCommand.editReply({ content: `Sorry, but there seems to already be an active Role Menu Configuration happening on this Server right now; either by yourself or someone else.\nPlease either wait for the User to finish configuring their Role Menu, or for the inactive Configuration timer to expire (which is about one hour from initial use of Command).` });
             return;
         }
 
@@ -167,6 +174,9 @@ module.exports = {
         ConfigEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldOne });
         if ( roleEmbedTextFieldTwo.length > 5 ) { ConfigEmbed.addFields({ name: `\u200B`, value: roleEmbedTextFieldTwo }); }
 
+        // Auto-expire cache after one hour
+        let timeoutExpiry = setTimeout(() => { Collections.RoleMenuConfiguration.delete(contextCommand.guildId); }, 3.6e+6);
+
         // Save to cache
         let newDataObject = {
             type: MenuData["MENU_TYPE"],
@@ -174,7 +184,8 @@ module.exports = {
             embed: ConfigEmbed,
             roles: RoleCache,
             buttons: buttonCache,
-            interaction: null
+            interaction: null,
+            timeout: timeoutExpiry
         };
         Collections.RoleMenuConfiguration.set(contextCommand.guildId, newDataObject);
 

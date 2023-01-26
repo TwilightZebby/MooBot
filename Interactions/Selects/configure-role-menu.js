@@ -89,8 +89,11 @@ module.exports = {
                 break;
 
 
-            // Cancel creation
+            // Cancel configuration
             case "cancel":
+                // Clear Timeout first, just in case
+                let timeoutCache = Collections.RoleMenuConfiguration.get(selectInteraction.guildId).timeout;
+                clearTimeout(timeoutCache);
                 Collections.RoleMenuConfiguration.delete(selectInteraction.guildId);
                 await selectInteraction.update({ embeds: [], components: [], content: `Configuration of Role Menu has been cancelled. You may now dismiss or delete this message.` });
                 break;
@@ -206,6 +209,7 @@ module.exports = {
 
 
                 // Clean up
+                clearTimeout(MenuDataCache.timeout);
                 Collections.RoleMenuConfiguration.delete(selectInteraction.guildId);
                 await selectInteraction.deleteReply();
                 return;
