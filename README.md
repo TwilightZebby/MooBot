@@ -184,9 +184,9 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
 -->
 
 ## Self-assignable Role Menus
-*You can use MooBot to create your own Self-assignable Role Menus for your Server. These will make use of Discord's Bot Buttons feature; which support both text and Emoji labels as well as being in four different colours.*
+You can use MooBot to create your own Self-assignable Role Menus for your Server. These will make use of Discord's Bot Buttons feature; which support both text and Emoji labels as well as being in four different colours.
 
-*Commands for Role Menu Setup/Configuration are as follows:*
+Commands for Role Menu Setup/Configuration are as follows:
 
 ### `/rolemenu create`
 > *Used to start creating a new Role Menu for the Channel this was used in.*
