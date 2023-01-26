@@ -194,5 +194,5 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
 ### `/rolemenu configure`
 > *Use to bring up a guide on how to configure/edit your existing Role Menus made with this Bot.*
 
-### `"Edit Role Menu` (Message Context Command)
+### `"Edit Role Menu"` (Message Context Command)
 > *Used to start the configuration process for editing an existing Role Menu made with this Bot.*
