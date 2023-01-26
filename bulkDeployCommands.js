@@ -11,9 +11,11 @@ const HeadpatCommand = require('./Interactions/SlashCommands/headpat.js');
 const HugCommand = require('./Interactions/SlashCommands/hug.js');
 const InfoCommand = require('./Interactions/SlashCommands/info.js');
 const KissCommand = require('./Interactions/SlashCommands/kiss.js');
-const StartCommand = require('./Interactions/SlashCommands/start.js');
+const LockemojiCommand = require('./Interactions/SlashCommands/lockemoji.js');
+const RolemenuCommand = require('./Interactions/SlashCommands/rolemenu.js');
 const TemperatureCommand = require('./Interactions/SlashCommands/temperature.js');
 const ConvertTemperatureCommand = require('./Interactions/ContextCommands/Convert_Temperature.js');
+const EditRoleMenuCommand = require('./Interactions/ContextCommands/Edit_Role_Menu.js');
 
 // Login Bot
 DiscordClient.login(Config.TOKEN);
@@ -25,9 +27,12 @@ DiscordClient.once('ready', async () => {
         RegisterCommand.registerData(), UnregisterCommand.registerData(), BonkCommand.registerData(),
         BoopCommand.registerData(), DstatusCommand.registerData(), HeadpatCommand.registerData(),
         HugCommand.registerData(), InfoCommand.registerData(), KissCommand.registerData(),
-        StartCommand.registerData(), TemperatureCommand.registerData(), ConvertTemperatureCommand.registerData()
+        TemperatureCommand.registerData(), ConvertTemperatureCommand.registerData(), LockemojiCommand.registerData(),
+        RolemenuCommand.registerData(), EditRoleMenuCommand.registerData()
     ];
-    await DiscordClient.application.commands.set(CommandDataArray);
+
+    await DiscordClient.application.commands.set(CommandDataArray); // Register all commands
+    //await DiscordClient.application.commands.set([]); // Unregister all commands
 
     console.log("Bulk Deployed Commands!");
 });
