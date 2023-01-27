@@ -1,181 +1,56 @@
-↖ *Want to jump to a specific section/question? Use the navigation menu!* (Which doesn't seem to exist on the GitHub Mobile App 😅)
+↖ *Want to jump to a specific heading? Use the navigation menu! (Which doesn't exist on GitHub's Mobile App sadly)*
 
 # MooBot
-A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
+
+A small general-purpose Discord Bot made by TwilightZebby; originally for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
 
 ---
-# Questions
 
-## What kind of features are there?
+# Features
 
-> Originally intended to only add Kawaii-bot style Slash Commands (such as `/bonk`, `/boop`, `/headpat`, etc), this Bot has since expanded into a general-purpose Bot to add other features like a Temperature Converter, Button-Role System, and more.
-> 
-> All of this Bot's features are [listed below](https://github.com/TwilightZebby/MooBot#features-list).
+## Notes
+### Command Permissions
+All of these Slash and Context Commands can be restricted to only be used by specific Users/Roles, in specific Channels, or by everyone everywhere in Server Settings > Integerations.
 
+Sadly, though, this Settings Page is only viewable on Desktop and Web Browser versions of Discord, not Mobile App versions.
 
-## Why did you make this Bot?
+Furthermore, some of these Commands, such as `/lockemoji`, have default Permission requirements set - meaning that they won't be viewable or usable in the Command Pickers unless you have the relevant Permission (or are Server Owner, or have Admin Permission); unless an override has been set on the Command itself by the Server's Admins/Owner.
 
-> This Bot was born out from a mixture of "felt like it" and a want to bring back some of the commands from the long-since discontinued Kawaii Bot.
-> The Bot, with its original name of "Actions Bot", was originally first added to Dr1fterX's Server in January 2021, getting renamed to "MooBot" in March 2022.
+### Context Commands & Where to Find Them
+By now, most Users are aware of Slash Commands (`/boop` for example) and how to use them - but not many are aware of Context Commands. Hence, this section here to explain where they are!
 
+__Message Context Commands__ are Commands used on a specific Message in Chat, and can be found:
+- **Desktop/Web:** Right-click a Message -> Apps
+- **Mobile:** Long-press (press-and-hold) a Message -> Apps
 
-## Why did you rename the Bot?
-
-> The original name, "Actions Bot", was picked because of the simple nature of the bot - to add action-based Slash Commands.
-> Now that the Bot is being used for more features, which are less action-based (such as Button-Roles or the Temperature Convertor), TwilightZebby thought a name change was in order since "Actions Bot" isn't accurate anymore.
-
-### Why did you pick "MooBot" as the new name?
-
-> "MooBot" was picked as a reference to an old meme in Dr1fterX's community in which TwilightZebby was a cow. Yes, as in the animal.
-> 
-> That meme has since long vanished as per TwilightZebby's request, and he would humbly request no one refer to him as a cow anymore. He's a bot now! ;3 
-
-
-## How many Slash Commands are there/will there be?
-
-> ~~For now TwilightZebby is limiting himself to a maximum of 11.~~
-> ~~Even though Discord's API supports up to 100 Guild Slash Commands per Bot per Guild, and another 100 Global Slash Commands per Bot; TwilightZebby is using this lower limit to prevent flooding the Slash Command Interface/GUI :)~~
-> 
-> ~~*(Well actually the true limit is 62.5k commands per scope, should you account for sub-commands and sub-command groups. But the UI still needs improving for this lol)*~~
-
-> While the above used to be true, Discord's Application Commands system has since started to improve greatly. As such, TwilightZebby is slowly allowing more Slash Commands to be added (but would like to keep below 20 total until the Slash Command List is improved to support compacted Sub-Commands).
-
-
-## Can I add this Bot to my own Server?
-
-> ~~**No.**~~
-> 
-> ~~This Bot is only made for use on Dr1fterX's Discord Server. Go search on [top.gg](https://top.gg) or ask on [r/discord_bots](https://www.reddit.com/r/Discord_Bots/) if you want your own Bot like this.~~
->
-> As of April 2022, TwilightZebby is allowing this MooBot to be added to other Servers, with limitations (won't add to your Server if I don't know you personally, and won't make a permanent public invite link for this Bot - you'd have to ask TwilightZebby directly for the Bot's invite).
-
-<!-- Divider
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
----
-# Features list
+__User Context Commands__ are Commands used on a specific User in Servers, and can be found:
+- **Desktop/Web:** Right-click a Username or profile picture either in Chat or Member List -> Apps
+- **Mobile:** Long-press (press-and-hold) a Username or profile picture in Chat or Member List -> Apps
 
 ## Action Slash Commands
-### `/bonk [target] (gif) (reason)`
-*Outputs a message in chat, bonking the specified User, Role, or Everyone.*
+### `/bonk`
+> *Outputs a message in chat, bonking the specified User, Role, or Everyone.*
 
-![Screenshot of the bonk command's response in a Discord Chat](https://i.imgur.com/kMjSwvb.png)
+### `/boop`
+> *Outputs a message in chat, booping the specified User, Role, or Everyone.*
 
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| button   | Boolean      | Should the "Return Action" button be included?          |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
+### `/headpat`
+> *Outputs a message in chat, giving the specified User, Role, or Everyone a headpat.*
 
-### `/boop [target] (gif) (reason)`
-*Outputs a message in chat, booping the specified User, Role, or Everyone.*
+### `/hug`
+> *Outputs a message in chat, giving the specified User, Role, or Everyone a cuddle.*
 
-![Screenshot of the boop command's response in a Discord Chat](https://i.imgur.com/10J8fet.png)
+### `/kiss`
+> *Outputs a message in chat, kissing the specified User, Role, or Everyone.*
 
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| button   | Boolean      | Should the "Return Action" button be included?          |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
+### Other Action Command Features
+- __All__ the Action Commands have an option of including a "Return Action" Button alongside their responses.
+  - This Button allows the Target User (__not__ Role or Everyone) to return the Action within a 2 minute timeframe from when the Command was run.
+  - This Button is only shown if:
+    - The Target is a specific User, __not__ a Role or Everyone;
+    - The User running the Command has __not__ disabled the button using the `button` argument;
+    - __AND__ a GIF has __not__ been requested to be included by the User running the Command using the `gif` argument
 
-### `/headpat [target] (gif) (reason)`
-*Outputs a message in chat, giving the specified User, Role, or Everyone a headpat.*
-
-![Screenshot of the headpat command's response in a Discord Chat](https://i.imgur.com/mfX0n7G.png)
-
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| button   | Boolean      | Should the "Return Action" button be included?          |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
-
-### `/hug [target] (gif) (reason)`
-*Outputs a message in chat, giving the specified User, Role, or Everyone a cuddle.*
-
-![Screenshot of the hug command's response in a Discord Chat](https://i.imgur.com/nBbY0Xl.png)
-
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| button   | Boolean      | Should the "Return Action" button be included?          |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
-
-### `/kiss [target] (gif) (reason)`
-*Outputs a message in chat, kissing the specified User, Role, or Everyone.*
-
-![Screenshot of the kiss command's response in a Discord Chat](https://i.imgur.com/34vxCpR.png)
-
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| button   | Boolean      | Should the "Return Action" button be included?          |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
-
-### `/pummel [target] (reason)`
-*Outputs a message in chat, pummelling the specified User, Role, or Everyone.*
-
-![Screenshot of the pummel command's response in a Discord Chat](https://i.imgur.com/uwssQbz.png)
-
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
-
-### `/slap [target] (gif) (reason)`
-*Outputs a message in chat, slapping the specified User, Role, or Everyone.*
-
-![Screenshot of the slap command's response in a Discord Chat](https://i.imgur.com/9r5z1RG.png)
-
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| button   | Boolean      | Should the "Return Action" button be included?          |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
-
-### `/sleep [target] (gif) (reason)`
-*Outputs a message in chat, telling the specified User, Role, or Everyone to go to sleep already!*
-
-![Screenshot of the sleep command's response in a Discord Chat](https://i.imgur.com/LqiKpH6.png)
-
-| Argument | Type         | Description                                             | Required |
-|----------|--------------|---------------------------------------------------------|----------|
-| target   | @mentionable | The Target User, Role, or Everyone                      | ✔️      |
-| gif      | Boolean      | Should a random GIF be included in the response?        |          |
-| reason   | String       | A custom message to attach to the *end* of the response |          |
-
-### Other Action Command features
-- All the Action Slash Commands, with the exemption of `/sleep` and `/pummel`, include a "Return Action" Button alongside their responses, allowing the specified User (NOT Role or Everyone) Target to be able to return the Action within a short (<2 minute) window.
-    - This Button does not appear if the Target is a Role or everyone, or a GIF is included; this button can be disabled using the `button` option in the Commands
-- All the Action Slash Commands' responses are set to *suppress* all `@mentions`, as a safety measure against accidental or malicious pinging
 <!-- Divider
 
 
@@ -201,23 +76,39 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 
 
 
- -->
+-->
 
-## General Slash Commands
-### `/potato`
-*Starts a game of Hot Potato in the current Text or Thread Channel.*
+## `/temperature`
+> *Converts the given temperature between degrees C, F, and K.*
 
-![Screenshot of the message when the potato command is used to start a Hot Potato game in a Discord Chat](https://i.imgur.com/2gh9agP.png)
+## `"Convert Temperature"` (Message Context Command)
+> *Used to convert up to 10 temperatures in the specified Message between degrees C, F, and K.*
 
-- Once a Hot Potato game starts, a Message will be posted in the Channel stating so, along with who started the game, and who was the first User the Potato is passed to.
-- To pass the Potato, the current "Hot User" (the one currently hold the Potato) will need to press the "Pass Potato" Button that's attached to the origin message.
-- Who the Potato is passed to is picked at random, as long as the User meets the following criteria:
-    - The User is NOT a Bot or System User
-    - IF IN A TEXT CHANNEL: They are one of the Users who have posted at least one of the last 25 messages in chat (and thus, can be assumed active currently)
-    - IF IN A THREAD CHANNEL: They are a Member of the Thread
-- The Hot Potato game lasts a random amount of time, maxing out at 5 minutes
-- Once the game ends (the Potato 'explodes'), the User last holding the Potato is dubbed the 'loser' of the game.
-- Only one Hot Potato game can run at a time per Channel.
+ 
+## `/rule`
+> *Used to fetch and display a specific Rule for the Server this is used in.*
+
+> **Warning**
+> *This Command is, __by default__, not usable in any Server the Bot is added to. If requested to, this Command can be manually setup by the Bot's Developer, TwilightZebby, to be usable in the Server in question.*
+
+
+## `/dstatus`
+### `/dstatus subscribe`
+> *Subscribes the Server this is used in to the Discord Outage Feed.*
+
+### `/dstatus unsubscribe`
+> *Unsubscribes the Server this is used in from the Discord Outage Feed.*
+
+
+## `/lockemoji`
+> *Upload a Custom Emoji to the Server this is used in, while also locking that Emoji behind one of the Server's Roles.*
+
+**NOTES:**
+- Role-locked Custom Emojis can only be used by those in that Server with the Role.
+- Server Owners and those with the Admin Permission do __NOT__ bypass this - they will need the Role in question to be able to use the Emoji in question!
+  - *This is a restriction on Discord's end, there is nothing I can do about that*
+- It is __not__ possible to Role-lock an already uploaded Custom Emoji, nor change which Role an already uploaded Custom Emoji is locked behind.
+
 <!-- Divider
 
 
@@ -243,28 +134,28 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 
 
 
- -->
-### `/rolemenu`
-*Used to either create new, or edit existing, Role Menus*
+-->
 
-![Screenshot of a Role Menu displayed in a Discord Chat after being set up, featuring buttons for toggling the Roles for oneself](https://i.imgur.com/ENfHgGh.png)
+## `/info`
+> **Note**
+> All information Commands only display information that is already public - that is, publicly accessible via Discord's public Bots & Apps API.
+> 
+> Additionally, all information Commands respond ephemerally - so only the User running the Command can see the Command's response.
 
-⚠ *Only usable by those with the `MANAGE_ROLES` Permission*
+### `/info user`
+> *Displays information about a User or Bot.*
+> 
+> *If no User or Bot is specified, this will display information about the User running the Command.*
 
-- During Menu creation or editing, the Bot will make use of Ephemeral Messages so that you can prepare your Menu without worrying about causing unread markers for other Users
-- Additionally, an auto-updating preview of your Menu will be shown during this process, so you can see exactly how it will look without having to publicly display your work-in-progress menu
-- To edit the Embed, add or remove Role Buttons, and to Save & Display/Update the Menu, use the select menu attached to the bottom of the auto-generating preview
-- To edit the Label or Emoji of one your existing Role Buttons, simply press the Button itself on the preview
+### `/info invite`
+> *Displays information about the given Server Invite Link; and __very__ basic information about the Server that Invite Link points to.*
 
-#### `/rolemenu create`
-*Starts the process of creating a new Role Menu*
+### `/info server`
+> *Displays information about the Server this Command was used in.*
 
-#### `/rolemenu configure [message]`
-*Starts the process of editing an existing Role Menu*
+### `/info bot`
+> *Displays information about MooBot itself.*
 
-| Argument | Type          | Description                                                          | Required |
-|----------|---------------|----------------------------------------------------------------------|----------|
-| message  | String        | The ID of the Message containing the existing Menu to be edited      | ✔️      |
 <!-- Divider
 
 
@@ -290,16 +181,22 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 
 
 
- -->
-### `/temperature [value] [scale]`
-*A Slash Command version of the `Convert Temperature` Message Command - converts the given temperature between degrees C, F, and K*
+-->
 
-![Screenshot of the temperature command's response in a Discord Chat](https://i.imgur.com/yliIr9G.png)
+## Self-assignable Role Menus
+You can use MooBot to create your own Self-assignable Role Menus for your Server. These will make use of Discord's Bot Buttons feature; which support both text and Emoji labels as well as being in four different colours.
 
-| Argument | Type          | Description                                                          | Required |
-|----------|---------------|----------------------------------------------------------------------|----------|
-| value    | Integer       | The numerical value of the original temperature to convert           | ✔️      |
-| scale    | String        | The scale the original temperature is using (either C, F, or K)      | ✔️      |
+Commands for Role Menu Setup/Configuration are as follows:
+
+### `/rolemenu create`
+> *Used to start creating a new Role Menu for the Channel this was used in.*
+
+### `/rolemenu configure`
+> *Use to bring up a guide on how to configure/edit your existing Role Menus made with this Bot.*
+
+### `"Edit Role Menu"` (Message Context Command)
+> *Used to start the configuration process for editing an existing Role Menu made with this Bot.*
+
 <!-- Divider
 
 
@@ -325,123 +222,23 @@ A small general-purpose Discord Bot made by TwilightZebby, originally for Dr1fte
 
 
 
- -->
-### `/rule [rule]`
-*Used to fetch and display a specific Server Rule*
-
-⚠ *This Slash Command will only be registered and usable in Dr1fterX's Discord Server. It will **not** appear for other Servers.*
-
-| Argument | Type          | Description                                                                         | Required |
-|----------|---------------|-------------------------------------------------------------------------------------|----------|
-| rule     | String        | The Rule to fetch. Uses Autocomplete to support either Rule number or keywords      | ✔️      |
-<!-- Divider
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
-### `/info`
-*Used to display basic information about either a User, an Invite Link, the current Server, or MooBot itself; depending on the subcommand used*
-
-#### `/info user (user)`
-*Displays basic information about the User of the Slash Command, or a target User (if given)*
-
-![Screenshot of the info user sub command's response in a Discord Chat](https://i.imgur.com/iJpghE0.png)
-
-| Argument | Type          | Description                                | Required |
-|----------|---------------|--------------------------------------------|----------|
-| user     | @user         | The User to display information about      |          |
-
-#### `/info invite [inviteCode]`
-*Displays basic information about the given Invite Link, and its target Server's summary (such as its name, partnered status, etc.)*
-
-![Screenshot of the info invite sub command's response in a Discord Chat](https://i.imgur.com/v7CFU4u.png)
-
-| Argument       | Type          | Description                                    | Required |
-|----------------|---------------|------------------------------------------------|----------|
-| inviteCode     | String        | A valid Invite Code or Vanity Invite Code      | ✔️      |
-
-#### `/info server`
-*Displays basic information about the Server this command was used in. When compared to using `/info invite` on a Invite pointing to the current Server, this Command (`/info server`) provides slightly more information (such as Boost Count, NSFW status, etc)*
-
-![Screenshot of the info server sub command's response in a Discord Chat](https://i.imgur.com/PVlqorn.png)
-
-ℹ Note: Should the `@everyone` Role __not__ have the `Use External Emojis` Permission, then the emojis to denote Channel Types will be replaced with initials, where:
-
-- T = Text Channels
-- N = News/Announcement Channels
-- V = Voice Channels
-- S = Stage Channels
-- C = Categories
-
-This limitation in regards to the `Use External Emojis` Permission is on Discord's side; due to how Slash Command Responses function on Discord (inheriting that permission from the `@everyone` Role), and as such there is nothing TwilightZebby can do other than this workaround. ;-;
-
-#### `/info bot`
-*Displays basic information about MooBot itself*
-
-![Screenshot of the info bot sub command's response in a Discord Chat](https://i.imgur.com/Zngxf0E.png)
-<!-- Divider
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
-
-
-## Context Commands
-*These are commands that appear under the "Apps" sub-menu when right-clicking on either a Message or a User in Chat*
-
-### Message Commands
-#### Convert Temperature
-*If there are any temperatures detected in the Message, they will be converted into the other units of temperature measurements*
-
-- Converts between degrees C, F, and K
-- Supports up to 10 temperatures in a single message
-- Will **not** convert temperatures lower than 0K (Absolute Zero) as those temperatures cannot possibly exist
-- Only supports temperatures in the text-content of the Message, not in images or other forms of media
-
-
-## Text-based Commands
-*These command use the classic prefix based text commands system of old*
-
-⚠ *Currently, all of the text-based commands are developer only, as in, only TwilightZebby can use them. As such, they will not be documentated*
+-->
+
+---
+
+# Questions
+## Why did you make this Bot?
+> This Bot was born from a mixture of "felt like it" and a want to bring back some of the commands from the Kawaii Bot (that was discontinued when I originally made this Bot, but apparently has made a return in 2022?).
+> The Bot, with its original name of "Actions Bot", was originally first added to Dr1fterX's Server in January 2021. The Bot was later renamed to "MooBot" in March 2022.
+
+## Why was the Bot renamed from "Actions Bot" to "MooBot"?
+> The original name, "Actions Bot", was picked because of the simple nature of the bot - to add action-based Slash Commands.
+> Now that the Bot is being used for more features, which are less action-based (such as Button-Roles or the Temperature Convertor), TwilightZebby thought a name change was in order since "Actions Bot" isn't accurate anymore.
+>
+> "MooBot" became the name picked as a reference to an *old* meme in Dr1fterX's community, in which TwilightZebby was a cow (yes, as in the animal).
+> That meme has long since vanished as per TwilightZebby's request. He humbly requests no one refer to him as a cow anymore because of the expiry of that meme. :)
+
+## Can I add this Bot to my own Server?
+> No, unless I consider you a friend, in which case maybe.
+> 
+> If I do consider you a friend, you are free to ask if you can add MooBot to your Server. I won't be generating permanent public invite links; hence the need to ask first.

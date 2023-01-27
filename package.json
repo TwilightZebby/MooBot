@@ -1,17 +1,7 @@
 {
-  "dependencies": {
-    "bufferutil": "^4.0.6",
-    "discord.js": "^13.9.0",
-    "emoji-regex": "^10.0.0",
-    "erlpack": "github:discord/erlpack",
-    "node-fetch": "^2.6.7",
-    "statuspage.js": "^1.0.17",
-    "utf-8-validate": "^5.0.8",
-    "zlib-sync": "^0.1.7"
-  },
   "name": "moobot",
-  "description": "A private Discord bot made by TwilightZebby",
-  "version": "5.15.0",
+  "version": "6.0.0",
+  "description": "A private general purpose Discord Bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,9 +13,26 @@
   "keywords": [
     "discord",
     "discord-bot",
+    "nodejs",
     "discordjs",
-    "nodejs"
+    "node-js",
+    "discord-js",
+    "private"
   ],
   "author": "TwilightZebby",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TwilightZebby/MooBot/issues"
+  },
+  "homepage": "https://github.com/TwilightZebby/MooBot#readme",
+  "dependencies": {
+    "bufferutil": "^4.0.6",
+    "discord.js": "^14.7.1",
+    "emoji-regex": "^10.1.0",
+    "erlpack": "github:discord/erlpack",
+    "node-fetch": "^2.6.7",
+    "statuspage.js": "^1.0.17",
+    "utf-8-validate": "^5.0.9",
+    "zlib-sync": "^0.1.7"
+  }
 }

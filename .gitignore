@@ -2,19 +2,6 @@
 config.js
 /.vscode
 
-/hiddenJsonFiles
+/JsonFiles/Hidden/
 
-/jsonFiles/botMessages.json
-/jsonFiles/customMessages.json
-/jsonFiles/everyoneMessages.json
-/jsonFiles/gifLinks.json
-/jsonFiles/roleMessages.json
-/jsonFiles/selfMessages.json
-/jsonFiles/twilightBotMessages.json
-/jsonFiles/userMessages.json
-/jsonFiles/userReturnMessages.json
-
-/textCommands/shutdown.js
-/textCommands/zeblog.js
-
-/buttons/shutdown.js
+/TextCommands/test.js
