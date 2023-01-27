@@ -18,6 +18,14 @@ As of the current iteration, **The Bot** does not store any Messages, and only l
 
 Should the User want to remove a "Role Menu", all they need to do is use the "Delete Role Menu" Message Context Command on the Message containing the "Role Menu", and remove all data it has regarding that "Role Menu", in addition to removing the Message itself.
 
+**The Bot** also listens to the `GUILD_CREATE` API Event for when it is added to any Discord Servers (named as "Guilds" in the API). This is so the Developer, TwilightZebby, can manually approve or deny Servers from using **The Bot**; due to it being a private-use only Bot (as in, operating on an allowlist on which Servers can use **The Bot**). From that API Event, only the following information is logged to a private Text Channel in TwilightZebby's personal Server:
+
+- Server's Name & Icon (if any)
+- Server Owner's Username, Discrim/Tag, and User ID
+- Approximate number of Members the Server has at the time of **The Bot** joining it
+
+---
+
 The Developer of **The Bot**, TwilightZebby, is contactable for matters regarding **The Bot** via GitHub, preferrably via opening an Issue Ticket or Discussion on **The Bot**'s [GitHub Repo](https://github.com/TwilightZebby/MooBot).
 
 Please also see [Discord's own Privacy Policy](https://discord.com/privacy).
