@@ -1,4 +1,4 @@
-const { RateLimitError, DMChannel, Collection, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Webhook } = require("discord.js");
+const { RateLimitError, DMChannel, Collection, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Webhook, Colors, TextChannel } = require("discord.js");
 const { Statuspage, StatuspageUpdates } = require("statuspage.js");
 const fs = require("fs");
 const { DiscordClient, Collections, DiscordStatusClient } = require("./constants.js");
@@ -209,6 +209,46 @@ DiscordClient.on('interactionCreate', async (interaction) => {
         // Unknown or unhandled new type of Interaction
         return console.log(`****Unrecognised or new unhandled Interaction type triggered:\n${interaction.type}\n${interaction}`);
     }
+});
+
+
+
+
+
+
+
+
+/******************************************************************************* */
+// DISCORD - GUILD CREATE EVENT
+DiscordClient.on('guildCreate', async (guild) => {
+    // Log whenever the Bot is added to a Guild
+    //   This is purely so the Bot's Developer, TwilightZebby, can have an approval system
+    //   and thus, force the Bot to leave Servers TwilightZebby hasn't allowed to add the Bot to
+
+    const GuildOwner = await guild.fetchOwner();
+
+    // Embed
+    const GuildJoinedEmbed = new EmbedBuilder().setColor(Colors.Green)
+    .setTitle(`Joined ${guild.name}`)
+    .setThumbnail(guild.iconURL({ extension: 'png' }))
+    .addFields(
+        { name: `Guild Owner`, value: `**User ID:** ${GuildOwner.id}\n**Tag:** ${GuildOwner.user.tag}\n**Mention:** <@${GuildOwner.id}>` },
+        { name: `Guild Info`, value: `**Approx. Member Count:** ${guild.approximateMemberCount}` }
+    );
+
+    // Buttons
+    const ButtonActionRow = new ActionRowBuilder().addComponents([
+        new ButtonBuilder().setCustomId(`guild-approve_${guild.id}`).setEmoji('✅').setLabel(`Approve`).setStyle(ButtonStyle.Success),
+        new ButtonBuilder().setCustomId(`guild-reject_${guild.id}`).setEmoji('❌').setLabel(`Reject`).setStyle(ButtonStyle.Danger)
+    ]);
+
+    // Send
+    const LoggingGuild = await DiscordClient.guilds.fetch({ guild: Config.ErrorLogGuildID });
+    /** @type {TextChannel} */
+    const LoggingChannel = LoggingGuild.channels.fetch(Config.GuildLogChannelID);
+    await LoggingChannel.send({ allowedMentions: { parse: [] }, embeds: [GuildJoinedEmbed], components: [ButtonActionRow] });
+
+    return;
 });
 
 
