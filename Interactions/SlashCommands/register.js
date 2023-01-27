@@ -171,7 +171,7 @@ module.exports = {
             let filteredContextCommands = ContextCommands.filter(cmd => cmd.Name.toLowerCase().startsWith(lowerCaseInput) || cmd.Name.toLowerCase().includes(lowerCaseInput));
             // Add to results
             filteredSlashCommands.forEach(cmd => filteredResults.push({name: `/${cmd.Name}`, value: `slash_${cmd.Name}`}));
-            filteredContextCommands.forEach(cmd => filteredResults.push({name: `${cmd.Name}`, value: `context_${cmd.Name.toLowerCase()}`}));
+            filteredContextCommands.forEach(cmd => filteredResults.push({name: `${cmd.Name}`, value: `context_${cmd.Name}`}));
         }
 
         // Ensure below 25 option limit

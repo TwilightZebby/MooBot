@@ -16,7 +16,7 @@ As of the current iteration, **The Bot** does not store any Messages, and only l
     - Custom Emojis, if given, to be displayed in the specified Button on a "Role Menu"
 - Strings specified to be displayed as Labels for Buttons, or as Titles/Descriptions on Embeds, for "Role Menus"
 
-Should the User want to remove a "Role Menu", all they need to do is delete the Message containing the "Role Menu". **The Bot** will detect this (by listening to the `MESSAGE_DELETE` API Event) and thus, remove all data it has regarding that "Role Menu".
+Should the User want to remove a "Role Menu", all they need to do is use the "Delete Role Menu" Message Context Command on the Message containing the "Role Menu", and remove all data it has regarding that "Role Menu", in addition to removing the Message itself.
 
 The Developer of **The Bot**, TwilightZebby, is contactable for matters regarding **The Bot** via GitHub, preferrably via opening an Issue Ticket or Discussion on **The Bot**'s [GitHub Repo](https://github.com/TwilightZebby/MooBot).
 

@@ -219,17 +219,6 @@ DiscordClient.on('interactionCreate', async (interaction) => {
 
 
 /******************************************************************************* */
-// DISCORD - MESSAGE DELETE EVENT
-// TODO: Delete Role Menu when it's message is deleted
-
-
-
-
-
-
-
-
-/******************************************************************************* */
 // STATUSPAGE - INCIDENT UPDATE EVENT
 DiscordStatusClient.on("incident_update", async (incident) => {
     // Bring in JSON to update it

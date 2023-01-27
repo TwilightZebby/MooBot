@@ -45,7 +45,8 @@ module.exports = {
     //     IF SUBCOMMAND GROUP: name as "subcommandGroupName_subcommandName"
     SubcommandCooldown: {
         "create": 30,
-        "configure": 15
+        "configure": 15,
+        "delete": 15
     },
 
     // Scope of Command's usage
@@ -58,7 +59,8 @@ module.exports = {
     //     IF SUBCOMMAND GROUP: name as "subcommandGroupName_subcommandName"
     SubcommandScope: {
         "create": "GUILD",
-        "configure": "GUILD"
+        "configure": "GUILD",
+        "delete": "GUILD"
     },
 
 
@@ -87,6 +89,11 @@ module.exports = {
                 type: ApplicationCommandOptionType.Subcommand,
                 name: "configure",
                 description: "Displays instructions on how to edit an existing Role Menu"
+            },
+            {
+                type: ApplicationCommandOptionType.Subcommand,
+                name: "delete",
+                description: "Displays instructions on how to delete an existing Role Menu"
             }
         ];
 
@@ -169,6 +176,15 @@ To edit your Role Menus with this Bot, please use my [Message Context Command](h
 
 **Desktop/Web:** Right-click the Message with the Role Menu -> Apps -> Edit Role Menu
 **Mobile:** Long-press (Press-and-hold) the Message with the Role Menu -> Apps -> Edit Role Menu` });
+        }
+        // Menu Configuring
+        else if ( SubCommandName === "delete" )
+        {
+            // ACK to User
+            await slashCommand.reply({ ephemeral: true, content: `To delete your Role Menus with this Bot, please use my Message Context Command!
+
+**Desktop/Web:** Right-click the Message with the Role Menu -> Apps -> Delete Role Menu
+**Mobile:** Long-press (Press-and-hold) the Message with the Role Menu -> Apps -> Delete Role Menu` });
         }
 
         return;
