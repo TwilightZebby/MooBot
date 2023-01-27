@@ -1,5 +1,5 @@
 # MooBot - Privacy Policy
-Last Updated: 26th January 2023
+Last Updated: 27th January 2023
 
 ---
 
