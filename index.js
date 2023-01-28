@@ -143,6 +143,13 @@ DiscordClient.on('messageCreate', async (message) => {
     if ( textCommandStatus === false )
     {
         // No Command detected
+
+        // Exempt !say from anti-St1gBot spam module
+        if ( message.author.id === Config.Dr1fterXUserID && message.content.toLowerCase().startsWith("!say") )
+        {
+            DiscordClient.st1gBotGrace = true;
+            setTimeout(() => { DiscordClient.st1gBotGrace = false; }, 120000);
+        }
         return;
     }
     else if ( textCommandStatus === null )
