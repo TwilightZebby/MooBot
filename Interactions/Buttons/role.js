@@ -39,15 +39,15 @@ module.exports = {
 
 
             // Swappable Role Menu. Users can only have ONE Role at a time per SWAPPABLE Menu. Example use case: Colour Roles.
-            /* case "SWAP":
+            case "SWAP":
                 await swapRole(buttonInteraction, RoleID);
-                break; */
+                break;
                 
 
             // Single-use Role Menu. Users can only use a SINGLE-USE Menu once, and cannot remove the Role they get nor swap it. Example use case: Team Roles for events.
-            /* case "SINGLE":
+            case "SINGLE":
                 await singleRole(buttonInteraction, RoleID);
-                break; */
+                break;
 
 
             default:
@@ -127,7 +127,101 @@ async function toggleRole(buttonInteraction, RoleID)
  */
 async function swapRole(buttonInteraction, RoleID)
 {
-    //.
+    // Using Forced Fetches to ensure updated Role Caches for the Member
+    const Member = await buttonInteraction.guild.members.fetch({ user: buttonInteraction.user.id, force: true });
+
+    // Grab all the Role IDs on that Menu, to check if the Member already has a Role from this Menu
+    const MenuButtons = buttonInteraction.message.components;
+    let menuRoleIds = [];
+    MenuButtons.forEach(row => {
+        row.components.forEach(button => {
+            menuRoleIds.push(button.customId.split("_").pop());
+        });
+    });
+
+    let memberHasRole = false;
+    let roleAlreadyHave = null;
+    menuRoleIds.forEach(Id => {
+        if ( Member.roles.cache.has(Id) )
+        {
+            memberHasRole = true;
+            roleAlreadyHave = Id;
+            return;
+        }
+    });
+
+
+    // Member does NOT have any Roles from this Menu, so grant the selected Role
+    if ( !memberHasRole )
+    {
+        try
+        {
+            await Member.roles.add(RoleID, `Role Menu in #${buttonInteraction.channel.name}`)
+            .then(async Member => {
+                await buttonInteraction.editReply({ content: `Successfully __granted__ the <@&${RoleID}> Role to you.` });
+                return;
+            });
+        }
+        catch (err)
+        {
+            //console.error(err);
+            await buttonInteraction.editReply({ content: `Sorry, something went wrong while trying to __grant__ the <@&${RoleID}> Role to you...` });
+        }
+    }
+    // Member DOES have a Role from this Menu already
+    else
+    {
+        // If selecting Role Member already has, revoke it
+        if ( Member.roles.cache.has(RoleID) )
+        {
+            try
+            {
+                await Member.roles.remove(RoleID, `Role Menu in #${buttonInteraction.channel.name}`)
+                .then(async Member => {
+                    await buttonInteraction.editReply({ content: `Successfully __revoked__ the <@&${RoleID}> Role from you.` });
+                    return;
+                });
+            }
+            catch (err)
+            {
+                //console.error(err);
+                await buttonInteraction.editReply({ content: `Sorry, something went wrong while trying to __revoke__ the <@&${RoleID}> Role from you...` });
+            }
+        }
+        // Otherwise, swap the two Roles
+        else
+        {
+            try
+            {
+                /* let updatedRoles = Member.roles.cache;
+                updatedRoles.delete(roleAlreadyHave);
+                let fetchedRole = await buttonInteraction.guild.roles.fetch(RoleID);
+                updatedRoles.set(RoleID, fetchedRole);
+
+                await Member.roles.set(updatedRoles, `Role Menu in #${buttonInteraction.channel.name}`)
+                .then(async Member => {
+                    await buttonInteraction.editReply({ content: `Successfully swapped the <@&${roleAlreadyHave}> Role for the <@&${RoleID}> Role for you.` });
+                    return;
+                }); */
+
+                await Member.roles.remove(roleAlreadyHave, `Role Menu in ${buttonInteraction.channel.name} - Swapping Roles (Revoking current Role)`)
+                .then(async TempMember => {
+                    await Member.roles.add(RoleID, `Role Menu in ${buttonInteraction.channel.name} - Swapping Roles (Granting new Role)`)
+                    .then(async TempMemberTheSecond => {
+                        await buttonInteraction.editReply({ content: `Successfully swapped the <@&${roleAlreadyHave}> Role for the <@&${RoleID}> Role for you.` });
+                        return;
+                    });
+                });
+            }
+            catch (err)
+            {
+                //console.error(err);
+                await buttonInteraction.editReply({ content: `Sorry, something went wrong while trying to __swap__ between the <@&${roleAlreadyHave}> and <@&${RoleID}> Roles for you...` });
+            }
+        }
+    }
+
+    return;
 }
 
 
