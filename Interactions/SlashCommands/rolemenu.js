@@ -25,13 +25,6 @@ const InitialSelectMenu = new ActionRowBuilder().addComponents([
     ])
 ]);
 
-/* const InitialSelectMenu = new ActionRowBuilder().addComponents([
-    new StringSelectMenuBuilder().setCustomId(`create-role-menu`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
-        new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
-        new StringSelectMenuOptionBuilder().setLabel("Cancel Creation").setValue("cancel").setDescription("Cancels creation of this Role Menu").setEmoji(`❌`)
-    ])
-]); */
-
 module.exports = {
     // Command's Name
     //     Use full lowercase
