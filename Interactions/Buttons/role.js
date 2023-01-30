@@ -32,16 +32,21 @@ module.exports = {
 
         switch (MenuData["MENU_TYPE"])
         {
-            // Classic Role Menu. Grants Role if doesn't have it, revokes Role if does have it.
+            // Classic Role Menu. Grants Role if User doesn't have it, revokes Role if User does have it.
             case "TOGGLE":
                 await toggleRole(buttonInteraction, RoleID);
                 break;
 
 
-            // Swappable Role Menu. Members can only have ONE Role at a time per SWAPPABLE Menu. Example use case: Colour Roles.
-            // This is placeholder for the time being. Swappable Role Menus will come in a future update to this Bot
+            // Swappable Role Menu. Users can only have ONE Role at a time per SWAPPABLE Menu. Example use case: Colour Roles.
             /* case "SWAP":
                 await swapRole(buttonInteraction, RoleID);
+                break; */
+                
+
+            // Single-use Role Menu. Users can only use a SINGLE-USE Menu once, and cannot remove the Role they get nor swap it. Example use case: Team Roles for events.
+            /* case "SINGLE":
+                await singleRole(buttonInteraction, RoleID);
                 break; */
 
 
@@ -121,6 +126,21 @@ async function toggleRole(buttonInteraction, RoleID)
  * @param {String} RoleID
  */
 async function swapRole(buttonInteraction, RoleID)
+{
+    //.
+}
+
+
+
+
+
+
+/**
+ * Handles Role Button Interactions from SINGLE Menu Types
+ * @param {ButtonInteraction} buttonInteraction 
+ * @param {String} RoleID
+ */
+async function singleRole(buttonInteraction, RoleID)
 {
     //.
 }

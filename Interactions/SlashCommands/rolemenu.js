@@ -20,10 +20,17 @@ const EmptyMenuEmbed = new EmbedBuilder().setDescription(`*Role Menu is currentl
 
 const InitialSelectMenu = new ActionRowBuilder().addComponents([
     new StringSelectMenuBuilder().setCustomId(`create-role-menu`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
-        new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
+        new StringSelectMenuOptionBuilder().setLabel("Set Menu Type").setValue("set-type").setDescription("Change how the Menu will behave once saved").setEmoji(`🔧`),
         new StringSelectMenuOptionBuilder().setLabel("Cancel Creation").setValue("cancel").setDescription("Cancels creation of this Role Menu").setEmoji(`❌`)
     ])
 ]);
+
+/* const InitialSelectMenu = new ActionRowBuilder().addComponents([
+    new StringSelectMenuBuilder().setCustomId(`create-role-menu`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
+        new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
+        new StringSelectMenuOptionBuilder().setLabel("Cancel Creation").setValue("cancel").setDescription("Cancels creation of this Role Menu").setEmoji(`❌`)
+    ])
+]); */
 
 module.exports = {
     // Command's Name
@@ -145,7 +152,7 @@ module.exports = {
             // ACK to User
             await slashCommand.reply({ ephemeral: true, components: [InitialSelectMenu], embeds: [EmptyMenuEmbed], 
                 content: `__**Self-Assignable Role Menu Creation**__
-Use the Select Menu to configure the Embed and Role Buttons. Press an existing Role Button to edit its label and/or emoji.
+Use the Select Menu to configure the Menu's Type, Embed and Role Buttons. Press an existing Role Button to edit its label and/or emoji.
 If including in Buttons, please make sure to have the relevant Emoji IDs ready (such as in a notepad program); as you won't be able to copy from a Discord Message while an Input Form is open.
 Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are supported.
 
@@ -157,7 +164,7 @@ An auto-updating preview of what your new Self-Assignable Role Menu will look li
 
             // Create empty placeholder
             let newDataObject = {
-                type: "TOGGLE",
+                type: "TOGGLE", // The default Menu Type
                 embed: new EmbedBuilder(),
                 roles: [],
                 buttons: [],
