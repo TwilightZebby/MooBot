@@ -193,17 +193,6 @@ async function swapRole(buttonInteraction, RoleID)
         {
             try
             {
-                /* let updatedRoles = Member.roles.cache;
-                updatedRoles.delete(roleAlreadyHave);
-                let fetchedRole = await buttonInteraction.guild.roles.fetch(RoleID);
-                updatedRoles.set(RoleID, fetchedRole);
-
-                await Member.roles.set(updatedRoles, `Role Menu in #${buttonInteraction.channel.name}`)
-                .then(async Member => {
-                    await buttonInteraction.editReply({ content: `Successfully swapped the <@&${roleAlreadyHave}> Role for the <@&${RoleID}> Role for you.` });
-                    return;
-                }); */
-
                 await Member.roles.remove(roleAlreadyHave, `Role Menu in ${buttonInteraction.channel.name} - Swapping Roles (Revoking current Role)`)
                 .then(async TempMember => {
                     await Member.roles.add(RoleID, `Role Menu in ${buttonInteraction.channel.name} - Swapping Roles (Granting new Role)`)
