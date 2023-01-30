@@ -197,6 +197,9 @@ Commands for Role Menu Setup/Configuration are as follows:
 ### `"Edit Role Menu"` (Message Context Command)
 > *Used to start the configuration process for editing an existing Role Menu made with this Bot.*
 
+### `"Delete Role Menu"` (Message Context Command)
+> *Used to delete an existing Role Menu made with this Bot*
+
 <!-- Divider
 
 
