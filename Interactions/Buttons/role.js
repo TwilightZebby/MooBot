@@ -225,5 +225,52 @@ async function swapRole(buttonInteraction, RoleID)
  */
 async function singleRole(buttonInteraction, RoleID)
 {
-    //.
+    // Using Forced Fetches to ensure updated Role Caches for the Member
+    const Member = await buttonInteraction.guild.members.fetch({ user: buttonInteraction.user.id, force: true });
+
+    // Grab all the Role IDs on that Menu, to check if the Member already has a Role from this Menu
+    const MenuButtons = buttonInteraction.message.components;
+    let menuRoleIds = [];
+    MenuButtons.forEach(row => {
+        row.components.forEach(button => {
+            menuRoleIds.push(button.customId.split("_").pop());
+        });
+    });
+
+    let memberHasRole = false;
+    let roleAlreadyHave = null;
+    menuRoleIds.forEach(Id => {
+        if ( Member.roles.cache.has(Id) )
+        {
+            memberHasRole = true;
+            roleAlreadyHave = Id;
+            return;
+        }
+    });
+
+
+    // Member does NOT have any Roles from this Menu, so grant the selected Role
+    if ( !memberHasRole )
+    {
+        try
+        {
+            await Member.roles.add(RoleID, `Role Menu in #${buttonInteraction.channel.name}`)
+            .then(async Member => {
+                await buttonInteraction.editReply({ content: `Successfully __granted__ the <@&${RoleID}> Role to you.` });
+                return;
+            });
+        }
+        catch (err)
+        {
+            //console.error(err);
+            await buttonInteraction.editReply({ content: `Sorry, something went wrong while trying to __grant__ the <@&${RoleID}> Role to you...` });
+        }
+    }
+    // Member DOES have a Role from this Menu already
+    else
+    {
+        // Reject because this is a single-use Menu and Members can't even self-revoke Roles from this type of Menu
+        await buttonInteraction.editReply({ content: `Sorry! You cannot swap or revoke Roles from yourself using Single-use Role Menus.\nThese Single-use Role Menus are designed to only be usable once per User per Menu.\n\n*You already have the <@&${roleAlreadyHave}> Role from this Menu!*` });
+        return;
+    }
 }
