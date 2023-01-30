@@ -64,7 +64,7 @@ module.exports = {
         Collections.RoleMenuCreation.set(modalInteraction.guildId, fetchedData);
 
         // Update Component to "no roles" one, if it was the first Embed edit
-        if ( originalComponents[originalComponents.length - 1].components[originalComponents[originalComponents.length - 1].components.length - 1].options.length === 2 )
+        if ( originalComponents[originalComponents.length - 1].components[originalComponents[originalComponents.length - 1].components.length - 1].options.length === 3 )
         {
             await modalInteraction.update({ embeds: [menuEmbed], components: [MenuSelectNoRoles] });
             return;
