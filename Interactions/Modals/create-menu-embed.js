@@ -5,6 +5,7 @@ const HexColourRegex = new RegExp(/#[0-9a-fA-F]{6}/);
 
 const MenuSelectNoRoles = new ActionRowBuilder().addComponents([
     new StringSelectMenuBuilder().setCustomId(`create-role-menu`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
+        new StringSelectMenuOptionBuilder().setLabel("Set Menu Type").setValue("set-type").setDescription("Change how the Menu will behave once saved").setEmoji(`🔧`),
         new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
         new StringSelectMenuOptionBuilder().setLabel("Add Role").setValue("add-role").setDescription("Add a Role to the Menu").setEmoji(`<:plusGrey:997752068439818280>`),
         new StringSelectMenuOptionBuilder().setLabel("Cancel Creation").setValue("cancel").setDescription("Cancels creation of this Role Menu").setEmoji(`❌`)
@@ -63,7 +64,7 @@ module.exports = {
         Collections.RoleMenuCreation.set(modalInteraction.guildId, fetchedData);
 
         // Update Component to "no roles" one, if it was the first Embed edit
-        if ( originalComponents[originalComponents.length - 1].components[originalComponents[originalComponents.length - 1].components.length - 1].options.length === 2 )
+        if ( originalComponents[originalComponents.length - 1].components[originalComponents[originalComponents.length - 1].components.length - 1].options.length === 3 )
         {
             await modalInteraction.update({ embeds: [menuEmbed], components: [MenuSelectNoRoles] });
             return;

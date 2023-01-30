@@ -2,8 +2,8 @@ const { DiscordClient } = require("./constants.js");
 const Config = require("./config.js");
 
 // Bring in Slash Commands for registering
-const RegisterCommand = require('./Interactions/SlashCommands/register.js');
-const UnregisterCommand = require('./Interactions/SlashCommands/unregister.js');
+//const RegisterCommand = require('./Interactions/SlashCommands/register.js');
+//const UnregisterCommand = require('./Interactions/SlashCommands/unregister.js');
 const BonkCommand = require('./Interactions/SlashCommands/bonk.js');
 const BoopCommand = require('./Interactions/SlashCommands/boop.js');
 const DstatusCommand = require('./Interactions/SlashCommands/dstatus.js');
@@ -16,6 +16,7 @@ const RolemenuCommand = require('./Interactions/SlashCommands/rolemenu.js');
 const TemperatureCommand = require('./Interactions/SlashCommands/temperature.js');
 const ConvertTemperatureCommand = require('./Interactions/ContextCommands/Convert_Temperature.js');
 const EditRoleMenuCommand = require('./Interactions/ContextCommands/Edit_Role_Menu.js');
+const DeleteRoleMenuCommand = require('./Interactions/ContextCommands/Delete_Role_Menu.js');
 
 // Login Bot
 DiscordClient.login(Config.TOKEN);
@@ -23,15 +24,19 @@ DiscordClient.login(Config.TOKEN);
 // Wait for Ready
 DiscordClient.once('ready', async () => {
     // Bulk register Global Commands
-    const CommandDataArray = [
+    /* const CommandDataArray = [
         RegisterCommand.registerData(), UnregisterCommand.registerData(), BonkCommand.registerData(),
         BoopCommand.registerData(), DstatusCommand.registerData(), HeadpatCommand.registerData(),
         HugCommand.registerData(), InfoCommand.registerData(), KissCommand.registerData(),
         TemperatureCommand.registerData(), ConvertTemperatureCommand.registerData(), LockemojiCommand.registerData(),
         RolemenuCommand.registerData(), EditRoleMenuCommand.registerData()
+    ]; */
+
+    const CommandDataArray = [
+        RolemenuCommand.registerData(), EditRoleMenuCommand.registerData(), DeleteRoleMenuCommand.registerData()
     ];
 
-    await DiscordClient.application.commands.set(CommandDataArray); // Register all commands
+    await DiscordClient.application.commands.set(CommandDataArray, "838517664661110795"); // Register all commands
     //await DiscordClient.application.commands.set([]); // Unregister all commands
 
     console.log("Bulk Deployed Commands!");
