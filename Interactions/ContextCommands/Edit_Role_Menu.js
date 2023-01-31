@@ -139,20 +139,20 @@ module.exports = {
                 temp = new ActionRowBuilder().addComponents(newButton);
                 if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
             }
-            else if ( iCounter > 0 && iCounter < 4 )
+            else if ( iCounter > 0 && iCounter < 5 )
             {
                 // First row still has space
                 temp.addComponents(newButton);
                 if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
             }
-            else if ( iCounter === 4 )
+            else if ( iCounter === 5 )
             {
                 // Move to second row
                 componentsArray.push(temp);
                 temp = new ActionRowBuilder().addComponents(newButton);
                 if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
             }
-            else if ( iCounter > 4 )
+            else if ( iCounter > 5 )
             {
                 // Second row has space
                 temp.addComponents(newButton);

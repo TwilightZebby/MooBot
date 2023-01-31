@@ -36,8 +36,8 @@ DiscordClient.once('ready', async () => {
         RolemenuCommand.registerData(), EditRoleMenuCommand.registerData(), DeleteRoleMenuCommand.registerData()
     ];
 
-    await DiscordClient.application.commands.set(CommandDataArray, "838517664661110795"); // Register all commands
-    //await DiscordClient.application.commands.set([]); // Unregister all commands
+    //await DiscordClient.application.commands.set(CommandDataArray, "838517664661110795"); // Register all commands
+    await DiscordClient.application.commands.set([], "838517664661110795"); // Unregister all commands
 
     console.log("Bulk Deployed Commands!");
 });
