@@ -995,7 +995,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
                     roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Role for Integration:** ${Integrations.get(RoleOption.tags.integrationId).name}`;
                 });
             }
-            if ( RoleOption.tags.premiumSubscriberRole != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is Server Subscription Role:** ${RoleOption.tags.premiumSubscriberRole}`; }
+            if ( RoleOption.tags.premiumSubscriberRole != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is Server Booster Role:** ${RoleOption.tags.premiumSubscriberRole}`; }
 
             if ( roleTagString.length > 4 ) { RoleInfoEmbed.addFields({ name: `>> Role Tags`, value: roleTagString }); }
         }
