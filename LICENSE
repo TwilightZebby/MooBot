@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2021 Zebby
+Copyright (c) 2023 TwilightZebby
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8,6 +8,12 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
+All parties (including individuals, companies, organizations and any other groups), without permission from TwilightZebby, are expressly forbidden from using TwilightZebby's properties, code, and other works, as part of a training dataset for artificial intelligence, neural networks, or other generative systems. Additionally, any and all code, and all other products (digitial or physical), created and owned by TwilightZebby, may not be used to configure, test, debug, or augment any artificial intelligence, neural network, or other generative system.
+
+        * This prohibition applies even if the resulting system does not store, refer to or directly call from code, or other works owned by TwilightZebby.
+
+        * In short: You are banned from using anything created by TwilightZebby as part of any AI project.
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
