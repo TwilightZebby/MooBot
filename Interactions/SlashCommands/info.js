@@ -680,11 +680,11 @@ module.exports = {
     SubcommandScope: {
         "server": "GUILD",
         "invite": "ALL",
-        "user": "GUILD",
+        "user": "ALL",
         "bot": "ALL"
     },
 
-
+    // TODO: Add support for use in DMs and GDMs once Discord releases their upcoming update allowing Bots with Application Commands to be usable in GDMs
 
     /**
      * Returns data needed for registering Slash Command onto Discord's API

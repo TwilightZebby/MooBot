@@ -1,4 +1,4 @@
-const { RateLimitError, DMChannel, Collection, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Webhook, Colors, TextChannel } = require("discord.js");
+const { RateLimitError, DMChannel, Collection, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Webhook, Colors, TextChannel, PartialGroupDMChannel } = require("discord.js");
 const { Statuspage, StatuspageUpdates } = require("statuspage.js");
 const fs = require("fs");
 const { DiscordClient, Collections, DiscordStatusClient } = require("./constants.js");
@@ -132,6 +132,7 @@ DiscordClient.on('messageCreate', async (message) => {
 
     // DM Channel Messages
     if ( message.channel instanceof DMChannel ) { return; }
+    if ( message.channel instanceof PartialGroupDMChannel ) { return; }
 
     // Safe-guard against Discord Outages
     if ( !message.guild.available ) { return; }

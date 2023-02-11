@@ -111,7 +111,7 @@ module.exports = {
         // Prevent usage in non-Text Channels
         if ( !(slashCommand.channel instanceof TextChannel) )
         {
-            await slashCommand.reply({ ephemeral: true, content: `Sorry, but this Command can only be used inside of Text Channels. (You used it in ${CHANNEL_TYPE_TO_STRING[slashCommand.channel.type]} Channel)` });
+            await slashCommand.reply({ ephemeral: true, content: `Sorry, but this Command can only be used inside of Server Text Channels. (You used it in ${CHANNEL_TYPE_TO_STRING[slashCommand.channel.type]} Channel)` });
             return;
         }
 

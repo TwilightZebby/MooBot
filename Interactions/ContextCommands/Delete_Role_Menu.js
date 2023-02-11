@@ -52,6 +52,13 @@ module.exports = {
      */
     async execute(contextCommand)
     {
+        // Just in case
+        if ( contextCommand.channel instanceof DMChannel || contextCommand.channel instanceof PartialGroupDMChannel )
+        {
+            await contextCommand.reply({ ephemeral: true, content: `Sorry, but this Context Command can__not__ be used within DMs or Group DMs.` });
+            return;
+        }
+
         await contextCommand.deferReply({ ephemeral: true });
 
         // Check Message *is* a Role Menu with this Bot

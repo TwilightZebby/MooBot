@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, AutocompleteInteraction, ApplicationCommandType, ApplicationCommandOptionType, ApplicationCommandOptionChoiceData, PermissionFlagsBits } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, AutocompleteInteraction, ApplicationCommandType, ApplicationCommandOptionType, ApplicationCommandOptionChoiceData, PermissionFlagsBits, DMChannel, PartialGroupDMChannel } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const Config = require("../../config.js");
 
@@ -80,6 +80,13 @@ module.exports = {
      */
     async execute(slashCommand)
     {
+        // Just in case
+        if ( slashCommand.channel instanceof DMChannel || slashCommand.channel instanceof PartialGroupDMChannel )
+        {
+            await slashCommand.reply({ ephemeral: true, content: `Sorry, but this Slash Command can__not__ be used within DMs or Group DMs.` });
+            return;
+        }
+
         // Defer
         await slashCommand.deferReply({ ephemeral: true });
 
