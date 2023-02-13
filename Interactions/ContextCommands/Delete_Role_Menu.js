@@ -1,5 +1,4 @@
-const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction, PermissionFlagsBits } = require("discord.js");
-const fs = require('fs');
+const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction, PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, DMChannel, PartialGroupDMChannel } = require("discord.js");
 
 module.exports = {
     // Command's Name
@@ -59,35 +58,23 @@ module.exports = {
             return;
         }
 
-        await contextCommand.deferReply({ ephemeral: true });
-
         // Check Message *is* a Role Menu with this Bot
         const RoleMenuJson = require('../../JsonFiles/Hidden/RoleMenus.json');
         const SourceMessage = contextCommand.options.getMessage('message', true);
         if ( !RoleMenuJson[SourceMessage.id] )
         {
-            await contextCommand.editReply({ content: `That Message doesn't contain any of my Role Menus!` });
+            await contextCommand.reply({ ephemeral: true, content: `That Message doesn't contain any of my Role Menus!` });
             return;
         }
 
-        // Attempt deletion
-        await SourceMessage.delete()
-        .then(async deletedMessage => {
-            delete RoleMenuJson[SourceMessage.id];
-            fs.writeFile('./JsonFiles/Hidden/RoleMenus.json', JSON.stringify(RoleMenuJson, null, 4), async err => {
-                if ( err )
-                {
-                    //console.error(err);
-                }
-            });
 
-            await contextCommand.editReply({ content: `Successfully deleted that Role Menu!` });
-        })
-        .catch(async err => {
-            //console.error(err);
-            await contextCommand.editReply({ content: `Sorry, but there was an error trying to delete that Role Menu.` });
-        });
+        // Construct Confirmation Buttons
+        const ConfirmationButtonRow = new ActionRowBuilder().addComponents([
+            new ButtonBuilder().setCustomId(`menu-delete-confirm_${SourceMessage.id}`).setLabel(`Delete`).setStyle(ButtonStyle.Danger),
+            new ButtonBuilder().setCustomId(`menu-delete-cancel`).setLabel(`Cancel`).setStyle(ButtonStyle.Secondary)
+        ]);
 
+        await contextCommand.reply({ ephemeral: true, components: [ConfirmationButtonRow], content: `Are you sure you want to delete this Role Menu?` });
         return;
     }
 }
