@@ -62,6 +62,8 @@ Please note that these will NOT have GIFs attached, custom reason support, nor t
 ### `"Bonk User"`
 > *Outputs a message in chat, bonking the specified User.*
 
+---
+
 <!-- Divider
 
 
@@ -147,6 +149,8 @@ Please note that these will NOT have GIFs attached, custom reason support, nor t
 
 -->
 
+---
+
 ## `/info`
 > **Note**
 > All information Commands only display information that is already public - that is, publicly accessible via Discord's public Bots & Apps API.
@@ -196,6 +200,8 @@ Please note that these will NOT have GIFs attached, custom reason support, nor t
 
 
 -->
+
+---
 
 ## Self-assignable Role Menus
 You can use MooBot to create your own Self-assignable Role Menus for your Server. These will make use of Discord's Bot Buttons feature; which support both text and Emoji labels as well as being in four different colours.
