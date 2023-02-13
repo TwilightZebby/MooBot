@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember, ForumChannel } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember, ForumChannel, Role } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const Package = require('../../package.json');
 const fetch = require('node-fetch');
@@ -680,11 +680,11 @@ module.exports = {
     SubcommandScope: {
         "server": "GUILD",
         "invite": "ALL",
-        "user": "GUILD",
+        "user": "ALL",
         "bot": "ALL"
     },
 
-
+    // TODO: Add support for use in DMs and GDMs once Discord releases their upcoming update allowing Bots with Application Commands to be usable in GDMs
 
     /**
      * Returns data needed for registering Slash Command onto Discord's API
@@ -704,6 +704,19 @@ module.exports = {
                 type: ApplicationCommandOptionType.Subcommand,
                 name: "server",
                 description: "Display information about this Server"
+            },
+            {
+                type: ApplicationCommandOptionType.Subcommand,
+                name: "role",
+                description: "Display information about a Role from this Server",
+                options: [
+                    {
+                        type: ApplicationCommandOptionType.Role,
+                        name: "role",
+                        description: "Role to display information about",
+                        required: true
+                    }
+                ]
             },
             {
                 type: ApplicationCommandOptionType.Subcommand,
@@ -758,6 +771,10 @@ module.exports = {
         {
             case "server":
                 await this.fetchServerInfo(slashCommand);
+                break;
+
+            case "role":
+                await this.fetchRoleInfo(slashCommand);
                 break;
 
             case "user":
@@ -921,6 +938,72 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
 
         if ( ServerInfoActionRow.components.length > 0 ) { return await slashCommand.editReply({ embeds: [ServerInfoEmbed], components: [ServerInfoActionRow] }); }
         else { return await slashCommand.editReply({ embeds: [ServerInfoEmbed] }); }
+    },
+    
+
+
+    /**
+     * Fetches and Displays information about the selected Role
+     * @param {ChatInputCommandInteraction} slashCommand 
+     */
+    async fetchRoleInfo(slashCommand)
+    {
+        // Defer
+        await slashCommand.deferReply({ ephemeral: true });
+
+        // Grab Information
+        /** @type {Role} */
+        const RoleOption = slashCommand.options.getRole("role");
+        //const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
+
+        // If atEveryone is selected, reject!
+        if ( RoleOption.id === slashCommand.guildId )
+        {
+            await slashCommand.editReply({ content: `Sorry, I am not programmed to bring up information about @everyone!`, allowedMentions: { parse: [] } });
+            return;
+        }
+
+        // Embed
+        const RoleInfoEmbed = new EmbedBuilder().setAuthor({ name: RoleOption.name }).setColor(RoleOption.hexColor)
+        .addFields(
+            {
+                name: `>> General`,
+                value: `**Role Created:** <t:${Math.floor(RoleOption.createdAt.getTime() / 1000)}:R>
+**Colour:** ${RoleOption.hexColor}
+**Hoisted:** ${RoleOption.hoist}
+**Managed by Integration:** ${RoleOption.managed}
+**Cached Members with Role:** ${RoleOption.members.size}${RoleOption.unicodeEmoji != null ? `\n**Role's Emoji Icon:** ${RoleOption.unicodeEmoji}` : ""}`
+            }
+        );
+
+        // Check for Role Icon (Custom image version)
+        if ( RoleOption.icon instanceof String )
+        {
+            RoleInfoEmbed.setAuthor({ iconURL: RoleOption.iconURL({ extension: 'png' }), name: RoleOption.name });
+        }
+
+        // Role Tags (if any)
+        if ( RoleOption.tags != null )
+        {
+            let roleTagString = ``;
+            if ( RoleOption.tags.botId != undefined ) { roleTagString += `**Role for Bot:** <@${RoleOption.tags.botId}>`; }
+            if ( RoleOption.tags.integrationId != undefined )
+            {
+                // Fetch Integrations so we can name it since they aren't mentionable
+                await slashCommand.guild.fetchIntegrations()
+                .then(async Integrations => {
+                    roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Role for Integration:** ${Integrations.get(RoleOption.tags.integrationId).name}`;
+                });
+            }
+            if ( RoleOption.tags.premiumSubscriberRole != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is Server Booster Role:** ${RoleOption.tags.premiumSubscriberRole}`; }
+
+            if ( roleTagString.length > 4 ) { RoleInfoEmbed.addFields({ name: `>> Role Tags`, value: roleTagString }); }
+        }
+
+
+        // ACK to User
+        await slashCommand.editReply({ embeds: [RoleInfoEmbed] });
+        return;
     },
 
 

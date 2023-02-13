@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionType } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, PermissionFlagsBits, ApplicationCommandOptionType, DMChannel, PartialGroupDMChannel } = require("discord.js");
 
 module.exports = {
     // Command's Name
@@ -76,6 +76,13 @@ module.exports = {
      */
     async execute(slashCommand)
     {
+        // Just in case
+        if ( slashCommand.channel instanceof DMChannel || slashCommand.channel instanceof PartialGroupDMChannel )
+        {
+            await slashCommand.reply({ ephemeral: true, content: `Sorry, but this Slash Command can__not__ be used within DMs or Group DMs.` });
+            return;
+        }
+
         // Ensure Bot has MANAGE_EMOJI Permission
         if ( !slashCommand.appPermissions.has(PermissionFlagsBits.ManageEmojisAndStickers) )
         {

@@ -51,6 +51,19 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
     - The User running the Command has __not__ disabled the button using the `button` argument;
     - __AND__ a GIF has __not__ been requested to be included by the User running the Command using the `gif` argument
 
+## Action Context Commands
+"Shortcut" versions of the Action Slash Commands - using User Context Commands.
+
+Please note that these will NOT have GIFs attached, custom reason support, nor the Return Action Button.
+
+### `"Headpat User"`
+> *Outputs a message in chat, giving the specified User a headpat.*
+
+### `"Bonk User"`
+> *Outputs a message in chat, bonking the specified User.*
+
+---
+
 <!-- Divider
 
 
@@ -136,6 +149,8 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
 
 -->
 
+---
+
 ## `/info`
 > **Note**
 > All information Commands only display information that is already public - that is, publicly accessible via Discord's public Bots & Apps API.
@@ -152,6 +167,9 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
 
 ### `/info server`
 > *Displays information about the Server this Command was used in.*
+
+### `/info role`
+> *Displays information about the given Role from the Server this Command was used in.*
 
 ### `/info bot`
 > *Displays information about MooBot itself.*
@@ -183,6 +201,8 @@ __User Context Commands__ are Commands used on a specific User in Servers, and c
 
 -->
 
+---
+
 ## Self-assignable Role Menus
 You can use MooBot to create your own Self-assignable Role Menus for your Server. These will make use of Discord's Bot Buttons feature; which support both text and Emoji labels as well as being in four different colours.
 
@@ -196,6 +216,9 @@ Commands for Role Menu Setup/Configuration are as follows:
 
 ### `"Edit Role Menu"` (Message Context Command)
 > *Used to start the configuration process for editing an existing Role Menu made with this Bot.*
+
+### `"Delete Role Menu"` (Message Context Command)
+> *Used to delete an existing Role Menu made with this Bot*
 
 <!-- Divider
 

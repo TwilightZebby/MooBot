@@ -1,8 +1,9 @@
-const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction, PermissionFlagsBits, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandData, ContextMenuCommandInteraction, PermissionFlagsBits, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ButtonBuilder, ButtonStyle, DMChannel, PartialGroupDMChannel } = require("discord.js");
 const { Collections } = require("../../constants.js");
 
 const MenuSelect = new ActionRowBuilder().addComponents([
     new StringSelectMenuBuilder().setCustomId(`configure-role-menu`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
+        new StringSelectMenuOptionBuilder().setLabel("Set Menu Type").setValue("set-type").setDescription("Change how the Menu will behave once saved").setEmoji(`🔧`),
         new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Title, Description, and Colour of the Embed").setEmoji(`<:StatusRichPresence:842328614883295232>`),
         new StringSelectMenuOptionBuilder().setLabel("Add Role").setValue("add-role").setDescription("Add a Role to the Menu").setEmoji(`<:plusGrey:997752068439818280>`),
         new StringSelectMenuOptionBuilder().setLabel("Remove Role").setValue("remove-role").setDescription("Remove a Role from the Menu").setEmoji(`<:IconDeleteTrashcan:750152850310561853>`),
@@ -62,6 +63,13 @@ module.exports = {
      */
     async execute(contextCommand)
     {
+        // Just in case
+        if ( contextCommand.channel instanceof DMChannel || contextCommand.channel instanceof PartialGroupDMChannel )
+        {
+            await contextCommand.reply({ ephemeral: true, content: `Sorry, but this Context Command can__not__ be used within DMs or Group DMs.` });
+            return;
+        }
+
         await contextCommand.deferReply({ ephemeral: true });
 
         // Check Message *is* a Role Menu with this Bot
@@ -138,20 +146,20 @@ module.exports = {
                 temp = new ActionRowBuilder().addComponents(newButton);
                 if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
             }
-            else if ( iCounter > 0 && iCounter < 4 )
+            else if ( iCounter > 0 && iCounter < 5 )
             {
                 // First row still has space
                 temp.addComponents(newButton);
                 if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
             }
-            else if ( iCounter === 4 )
+            else if ( iCounter === 5 )
             {
                 // Move to second row
                 componentsArray.push(temp);
                 temp = new ActionRowBuilder().addComponents(newButton);
                 if ( RoleCache.length - 1 === iCounter ) { componentsArray.push(temp); }
             }
-            else if ( iCounter > 4 )
+            else if ( iCounter > 5 )
             {
                 // Second row has space
                 temp.addComponents(newButton);

@@ -1,4 +1,4 @@
-const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder } = require("discord.js");
+const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, RoleSelectMenuBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
 const fs = require("fs");
 const { Collections } = require("../../constants.js");
 
@@ -8,6 +8,14 @@ const AddRoleSelect = new ActionRowBuilder().addComponents([
 
 const RemoveRoleSelect = new ActionRowBuilder().addComponents([
     new RoleSelectMenuBuilder().setCustomId(`create-menu-remove-role`).setMinValues(1).setMaxValues(1).setPlaceholder("Search for a Role to remove")
+]);
+
+const SetTypeSelect = new ActionRowBuilder().addComponents([
+    new StringSelectMenuBuilder().setCustomId(`create-set-menu-type`).setMinValues(1).setMaxValues(1).setPlaceholder(`Select a Menu Type`).setOptions([
+        new StringSelectMenuOptionBuilder().setValue(`TOGGLE`).setLabel(`Toggle`),
+        new StringSelectMenuOptionBuilder().setValue(`SWAP`).setLabel(`Swappable`),
+        new StringSelectMenuOptionBuilder().setValue(`SINGLE`).setLabel(`Single-use`)
+    ])
 ]);
 
 module.exports = {
@@ -20,7 +28,7 @@ module.exports = {
 
     // Cooldown, in seconds
     //     Defaults to 3 seconds if missing
-    Cooldown: 5,
+    Cooldown: 3,
 
 
 
@@ -35,6 +43,22 @@ module.exports = {
 
         switch (SelectedOption)
         {
+            // Set Menu Type
+            case "set-type":
+                await selectInteraction.deferUpdate();
+                await selectInteraction.followUp({ ephemeral: true, components: [SetTypeSelect], content: `Please use the Select Menu below to pick which type of Role Menu you want.
+
+• **TOGGLE** - Your standard Role Menu Type. Behaves like a classic Reaction Role Menu, but with Buttons instead.
+• **SWAP** - Users can only have 1 Role per SWAP Menu. Attempting to select another Role on the same SWAP Menu would swap the two Roles instead. Useful for Colour Role Menus!
+• **SINGLE-USE** - Users can only use a SINGLE-USE Menu once, and are unable to revoke the selected Role from themselves. Useful for Team Roles in Events.` });
+
+                // Temp-store interaction so we can return to it
+                let tempData = Collections.RoleMenuCreation.get(selectInteraction.guildId);
+                tempData.interaction = selectInteraction;
+                Collections.RoleMenuCreation.set(selectInteraction.guildId, tempData);
+                break;
+
+
             // Edit Embed
             case "configure-embed":
                 let embedData = Collections.RoleMenuCreation.get(selectInteraction.guildId)?.embed;
