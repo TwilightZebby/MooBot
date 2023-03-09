@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember, ForumChannel, Role } = require("discord.js");
+const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, ApplicationCommandOptionType, AutocompleteInteraction, PermissionFlagsBits, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, TextChannel, VoiceChannel, StageChannel, NewsChannel, CategoryChannel, GuildVerificationLevel, GuildExplicitContentFilter, GuildDefaultMessageNotifications, GuildMFALevel, GuildNSFWLevel, GuildPremiumTier, Routes, Invite, ChannelType, InviteTargetType, GuildMember, ForumChannel, Role, DMChannel, PartialGroupDMChannel, ThreadChannel, DirectoryChannel, ThreadAutoArchiveDuration, SortOrderType, ChannelFlags, VideoQualityMode } = require("discord.js");
 const { DiscordClient } = require("../../constants.js");
 const Package = require('../../package.json');
 const fetch = require('node-fetch');
@@ -554,6 +554,10 @@ function readableChannelType(channelType)
         case ChannelType.GuildVoice:
             readableString = "Voice";
             break;
+
+        default:
+            readableString = "Unknown";
+            break;
     }
     return readableString;
 }
@@ -707,19 +711,6 @@ module.exports = {
             },
             {
                 type: ApplicationCommandOptionType.Subcommand,
-                name: "role",
-                description: "Display information about a Role from this Server",
-                options: [
-                    {
-                        type: ApplicationCommandOptionType.Role,
-                        name: "role",
-                        description: "Role to display information about",
-                        required: true
-                    }
-                ]
-            },
-            {
-                type: ApplicationCommandOptionType.Subcommand,
                 name: "user",
                 description: "Display information about either yourself, or another User",
                 options: [
@@ -749,6 +740,32 @@ module.exports = {
                 type: ApplicationCommandOptionType.Subcommand,
                 name: "bot",
                 description: "Display information about this Bot"
+            },
+            {
+                type: ApplicationCommandOptionType.Subcommand,
+                name: "role",
+                description: "Display information about a Role from this Server",
+                options: [
+                    {
+                        type: ApplicationCommandOptionType.Role,
+                        name: "role",
+                        description: "Role to display information about",
+                        required: true
+                    }
+                ]
+            },
+            {
+                type: ApplicationCommandOptionType.Subcommand,
+                name: "channel",
+                description: "Display information about either this Channel, or a specified Channel",
+                options: [
+                    {
+                        type: ApplicationCommandOptionType.Channel,
+                        name: "channel",
+                        description: "Channel to display information about",
+                        required: false
+                    }
+                ]
             }
         ];
 
@@ -773,10 +790,6 @@ module.exports = {
                 await this.fetchServerInfo(slashCommand);
                 break;
 
-            case "role":
-                await this.fetchRoleInfo(slashCommand);
-                break;
-
             case "user":
                 await this.fetchUserInfo(slashCommand);
                 break;
@@ -789,11 +802,210 @@ module.exports = {
                 await this.fetchBotInfo(slashCommand);
                 break;
 
+            case "role":
+                await this.fetchRoleInfo(slashCommand);
+                break;
+
+            case "channel":
+                await this.fetchChannelInfo(slashCommand);
+                break;
+
             default:
                 await slashCommand.reply({ ephemeral: true, content: "Sorry, but there was a problem trying to run this Slash Command." });
                 break;
         }
 
+        return;
+    },
+    
+
+
+    /**
+     * Fetches and Displays the Information about either the current, or specified Channel
+     * @param {ChatInputCommandInteraction} slashCommand 
+     */
+    async fetchChannelInfo(slashCommand)
+    {
+        await slashCommand.deferReply({ ephemeral: true });
+        //const ExternalEmojiPermission = checkEmojiPermission(slashCommand);
+
+        /** @type {TextChannel|CategoryChannel|ForumChannel|NewsChannel|StageChannel|ThreadChannel|VoiceChannel} */
+        let fetchedChannel;
+        const OptionChannel = slashCommand.options.getChannel("channel");
+        try
+        {
+            if ( !OptionChannel || OptionChannel == null ) { fetchedChannel = await slashCommand.channel.fetch(); }
+            else { fetchedChannel = await OptionChannel.fetch(); }
+        }
+        catch (err)
+        {
+            await slashCommand.editReply({ content: `Sorry, there was an error trying to fetch information about that Channel.\nI may not have View Channels Permission to be able to see that specified Channel, __or__ something in my code failed.` });
+            return;
+        }
+
+
+        // Reject DMs and GDMs
+        if ( fetchedChannel instanceof DMChannel || fetchedChannel instanceof PartialGroupDMChannel )
+        {
+            await slashCommand.editReply({ content: `Sorry, but this Command cannot be used to fetch information of Direct Messages (DMs) or Group Direct Messages (GDMs)!` });
+            return;
+        }
+
+        // Reject Directories
+        /* if ( fetchedChannel instanceof DirectoryChannel )
+        {
+            await slashCommand.editReply({ content: `Sorry, but this Command cannot be used to fetch information of Directory Channels!` });
+            return;
+        } */
+
+        // Embed & Basic Info
+        const EmbedChannel = new EmbedBuilder().setTitle(`#${fetchedChannel.name}`)
+        .setFooter({ text: `Created` })
+        .setTimestamp(fetchedChannel.createdAt);
+
+        if ( fetchedChannel.topic != null ) { EmbedChannel.setDescription(fetchedChannel.topic); }
+
+        EmbedChannel.addFields({
+            name: `>> General`,
+            value: `**Channel Type:** ${readableChannelType(fetchedChannel.type)}
+**Channel Mention:** <#${fetchedChannel.id}>
+${fetchedChannel.parentId != null ? `**Parent Channel:** <#${fetchedChannel.parentId}>` : ""}`
+        });
+
+
+        // Channel Type specific information
+        // Category Channel
+        if ( fetchedChannel instanceof CategoryChannel )
+        {
+            EmbedChannel.addFields({
+                name: `>> Category Info`,
+                value: `**Cached Child Channels:** ${fetchedChannel.children.cache.size}`
+            });
+        }
+
+        // Forum Channel
+        if ( fetchedChannel instanceof ForumChannel )
+        {
+            let forumString = `**NSFW:** ${fetchedChannel.nsfw}`;
+
+            forumString += `\n**Has Set Default Reaction:** ${fetchedChannel.defaultReactionEmoji != null ? "true" : "false"}`;
+            if ( fetchedChannel.defaultSortOrder != null ) { forumString += `\n**Default Sort Order:** ${fetchedChannel.defaultSortOrder === SortOrderType.CreationDate ? "Creation Date" : "Latest Activity"}`; }
+            if ( fetchedChannel.defaultAutoArchiveDuration != null ) { forumString += `\n**Default Post Auto-hide Duration:** ${fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.OneHour ? "One Hour" : fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.OneDay ? "One Day" : fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.ThreeDays ? "Three Days" : "One Week"}`; }
+            if ( fetchedChannel.defaultThreadRateLimitPerUser != null ) { forumString += `\n**Default Message Slowmode:** ${fetchedChannel.defaultThreadRateLimitPerUser} seconds`; }
+            if ( fetchedChannel.rateLimitPerUser != null ) { forumString += `\n**Post Creation Slowmode:** ${fetchedChannel.rateLimitPerUser} seconds`; }
+            forumString += `\n**Requires Tags for Posts:** ${fetchedChannel.flags.has(ChannelFlags.RequireTag)}`;
+            forumString += `\n**Number of Tags:** ${fetchedChannel.availableTags.length}`;
+
+            EmbedChannel.addFields({
+                name: `>> Forum Info`,
+                value: forumString
+            });
+
+            if ( fetchedChannel.availableTags.length > 0 )
+            {
+                let tagString = "";
+                fetchedChannel.availableTags.forEach(tag => { tagString += `${tag.name}, `; });
+                EmbedChannel.addFields({ name: `>> Available Tags`, value: tagString });
+            }
+        }
+
+        // Announcement/News Channel
+        if ( fetchedChannel instanceof NewsChannel )
+        {
+            let announcementString = `**NSFW:** ${fetchedChannel.nsfw}`;
+
+            if ( fetchedChannel.defaultAutoArchiveDuration != null ) { announcementString += `\n**Default Thread Auto-hide Duration:** ${fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.OneHour ? "One Hour" : fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.OneDay ? "One Day" : fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.ThreeDays ? "Three Days" : "One Week"}` }
+            if ( fetchedChannel.rateLimitPerUser != null) { announcementString += `\n**Slowmode:** ${fetchedChannel.rateLimitPerUser} seconds`; }
+
+            EmbedChannel.addFields({
+                name: `>> Announcement Info`,
+                value: announcementString
+            });
+        }
+
+        // Stage Channel
+        if ( fetchedChannel instanceof StageChannel )
+        {
+            let stageString = `**Audio Bitrate:** ${Math.floor(fetchedChannel.bitrate / 1000)}kbps`;
+
+            stageString += `\n**Is Stage full:** ${fetchedChannel.full}`;
+            stageString += `\n**Cached Connected Members:** ${fetchedChannel.members.size}`;
+            stageString += `\n**Stage Member Limit:** ${fetchedChannel.userLimit === 0 ? `No Limit` : `${fetchedChannel.userLimit}`}`;
+
+            EmbedChannel.addFields({
+                name: `>> Stage Info`,
+                value: stageString
+            });
+
+            if ( fetchedChannel.stageInstance !== null )
+            {
+                let stageInstanceString = ``;
+
+                stageInstanceString += `\n**Live Stage Started:** <t:${Math.floor(fetchedChannel.stageInstance.createdAt.getTime() / 1000)}:R>`;
+                stageInstanceString += `\n**Connected to Scheduled Event:** ${fetchedChannel.stageInstance.guildScheduledEventId != null ? "true" : "false"}`;
+                if ( fetchedChannel.topic != null ) { stageInstanceString += `\n**Stage Topic:** ${fetchedChannel.topic}`; }
+
+                EmbedChannel.addFields({
+                    name: `>> Live Stage Info`,
+                    value: stageInstanceString
+                });
+            }
+        }
+
+        // Text Channel
+        if ( fetchedChannel instanceof TextChannel )
+        {
+            let textString = `**NSFW:** ${fetchedChannel.nsfw}`;
+
+            if ( fetchedChannel.defaultAutoArchiveDuration != null ) { textString += `\n**Default Thread Auto-hide Duration:** ${fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.OneHour ? "One Hour" : fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.OneDay ? "One Day" : fetchedChannel.defaultAutoArchiveDuration === ThreadAutoArchiveDuration.ThreeDays ? "Three Days" : "One Week"}` }
+            if ( fetchedChannel.rateLimitPerUser != null ) { textString += `\n**Slowmode:** ${fetchedChannel.rateLimitPerUser} seconds`; }
+
+            EmbedChannel.addFields({
+                name: `>> Text Info`,
+                value: textString
+            });
+        }
+
+        // Thread Channel (Any type of Thread)
+        if ( fetchedChannel instanceof ThreadChannel )
+        {
+            let threadString = `**Thread/Post Creator:** <@${fetchedChannel.ownerId}>`;
+            let forumPostString = `**Number of Applied Tags:** ${fetchedChannel.appliedTags.length}`;
+
+            if ( fetchedChannel.archived != null ) { threadString += `\n**Closed:** ${fetchedChannel.archived}`; }
+            if ( fetchedChannel.locked != null ) { threadString += `\n**Locked:** ${fetchedChannel.locked}`; }
+            if ( fetchedChannel.autoArchiveDuration != null ) { threadString += `\n**Auto-hide Duration:** ${fetchedChannel.autoArchiveDuration === ThreadAutoArchiveDuration.OneHour ? "One Hour" : fetchedChannel.autoArchiveDuration === ThreadAutoArchiveDuration.OneDay ? "One Day" : fetchedChannel.autoArchiveDuration === ThreadAutoArchiveDuration.ThreeDays ? "Three Days" : "One Week"}`; }
+            if ( fetchedChannel.invitable != null && fetchedChannel.parent.type !== ChannelType.GuildForum ) { threadString += `\n**Can Anyone Invite to Private Thread:** ${fetchedChannel.invitable}`; }
+            if ( fetchedChannel.rateLimitPerUser != null ) { threadString += `\n**Slowmode:** ${fetchedChannel.rateLimitPerUser} seconds`; }
+
+            forumPostString += `\n**Is Post Pinned:** ${fetchedChannel.flags.has(ChannelFlags.Pinned)}`;
+
+            EmbedChannel.addFields({
+                name: `>> Thread Info`,
+                value: threadString
+            });
+
+            if ( fetchedChannel.parent.type === ChannelType.GuildForum ) { EmbedChannel.addFields({ name: `>> Forum Post Info`, value: forumPostString }); }
+        }
+
+        // Voice Channel
+        if ( fetchedChannel instanceof VoiceChannel )
+        {
+            let voiceString = `**Audio Bitrate:** ${Math.floor(fetchedChannel.bitrate / 1000)}kbps`;
+
+            if ( fetchedChannel.videoQualityMode != null ) { voiceString += `\n**Video Quality Mode:** ${fetchedChannel.videoQualityMode === VideoQualityMode.Auto ? "Automatic" : "720p"}`; }
+            if ( fetchedChannel.rateLimitPerUser != null ) { voiceString += `\n**Slowmode:** ${fetchedChannel.rateLimitPerUser} seconds`; }
+            voiceString += `\n**Is Voice full:** ${fetchedChannel.full}`;
+            voiceString += `\n**Cached Connected Members:** ${fetchedChannel.members.size}`;
+            voiceString += `\n**Voice Member Limit:** ${fetchedChannel.userLimit === 0 ? `No Limit` : `${fetchedChannel.userLimit}`}`;
+
+            EmbedChannel.addFields({
+                name: `>> Voice Info`,
+                value: voiceString
+            });
+        }
+
+        await slashCommand.editReply({ embeds: [EmbedChannel] });
         return;
     },
 
