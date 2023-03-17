@@ -29,7 +29,7 @@ module.exports =
         /** @type {Collection<String, {type: String, originMessageId: String, embed: EmbedBuilder, roles: Array<{id: String, style: String, emoji: ?String, label: ?String}>, buttons: Array<ButtonBuilder>, interaction: ?StringSelectMenuInteraction, timeout: NodeJS.Timeout}>} */
         RoleMenuConfiguration: new Collection(),
 
-        /** @type {Collection<String, {type: String, embed: EmbedBuilder, choices: Array<{label: String, emoji: ?String}>, interaction: ?StringSelectMenuInteraction, timeout: NodeJS.Timeout}>} */
+        /** @type {Collection<String, {type: String, embed: EmbedBuilder, choices: Array<{label: String, emoji: ?String}>, buttons: Array<ButtonBuilder>, interaction: ?StringSelectMenuInteraction, timeout: NodeJS.Timeout}>} */
         PollCreation: new Collection(),
 
         /** Contains Message IDs for each Incident, mapped by Webhook IDs, all mapped by Incident IDs

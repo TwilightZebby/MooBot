@@ -1,6 +1,11 @@
 const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
 
+const AddChoiceModal = new ModalBuilder().setCustomId(`create-poll-add-choice`).setTitle(`Add Choice`).addComponents([
+    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId("label").setLabel("Answer Choice").setMaxLength(80).setStyle(TextInputStyle.Short).setRequired(true) ]),
+    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId("emoji").setLabel("Button Emoji").setMaxLength(200).setPlaceholder("<:grass_block:601353406577246208> or ✨").setStyle(TextInputStyle.Short).setRequired(false) ]),
+]);
+
 module.exports = {
     // Select's Name
     //     Used as its custom ID (or at least the start of it)
@@ -37,6 +42,21 @@ module.exports = {
                 ]);
 
                 await selectInteraction.showModal(embedModal);
+                break;
+
+
+            // Add a new Choice
+            case "add-choice":
+                // Validate Poll doesn't have more than 5 Choices (limit will be increased at a later date)
+                let fetchedChoices = Collections.PollCreation.get(selectInteraction.guildId).choices;
+                if ( fetchedChoices.length === 5 )
+                {
+                    await selectInteraction.reply({ ephemeral: true, content: `Sorry, but you cannot add more than 5 (five) Choices to a single Poll at this time.` });
+                    break;
+                }
+
+                // Ask for Choice Label & Emoji
+                await selectInteraction.showModal(AddChoiceModal);
                 break;
 
 

@@ -111,6 +111,7 @@ An auto-updating preview of what your new Poll will look like is shown below.`
                     type: "SINGLE_CHOICE",
                     embed: new EmbedBuilder(),
                     choices: [],
+                    buttons: [],
                     interaction: null,
                     timeout: timeoutExpiry
                 };
