@@ -1,4 +1,4 @@
-const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
+const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
 const { DiscordClient, Collections } = require("../../constants.js");
 
 const AddChoiceModal = new ModalBuilder().setCustomId(`create-poll-add-choice`).setTitle(`Add Choice`).addComponents([
@@ -57,6 +57,27 @@ module.exports = {
 
                 // Ask for Choice Label & Emoji
                 await selectInteraction.showModal(AddChoiceModal);
+                break;
+
+            
+            // Remove a Choice
+            case "remove-choice":
+                await selectInteraction.deferUpdate(); // So original is editable later
+
+                // Construct String Select to select which Choice to delete
+                let cachedChoices = Collections.PollCreation.get(selectInteraction.guildId).choices;
+                let removeChoiceSelect = new StringSelectMenuBuilder().setCustomId("create-poll-remove-choice").setMinValues(1).setMaxValues(1).setPlaceholder("Pick a Choice to remove");
+                cachedChoices.forEach(choiceObj => {
+                    removeChoiceSelect.addOptions(new StringSelectMenuOptionBuilder().setLabel(choiceObj.label).setValue(choiceObj.label.toLowerCase()));
+                });
+
+                // ACK to User
+                await selectInteraction.followUp({ ephemeral: true, components: [new ActionRowBuilder().addComponents(removeChoiceSelect)], content: `Please use the Select Menu below to choose which Choice you would like to __remove__ from your Poll.` });
+
+                // Temp-store interaction so we can return to it
+                let pollDataRemoveChoice = Collections.PollCreation.get(selectInteraction.guildId);
+                pollDataRemoveChoice.interaction = selectInteraction;
+                Collections.PollCreation.set(selectInteraction.guildId, pollDataRemoveChoice);
                 break;
 
 
