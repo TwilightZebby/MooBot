@@ -1,4 +1,5 @@
 const { StringSelectMenuInteraction, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
+const fs = require('fs');
 const { DiscordClient, Collections } = require("../../constants.js");
 
 const AddChoiceModal = new ModalBuilder().setCustomId(`create-poll-add-choice`).setTitle(`Add Choice`).addComponents([
@@ -81,6 +82,12 @@ module.exports = {
                 break;
 
 
+            // Save & Display
+            case "save":
+                await saveAndDisplay(selectInteraction);
+                break;
+
+
             // Cancel creation
             case "cancel":
                 // Clear Timeout first, just in case
@@ -98,4 +105,94 @@ module.exports = {
 
         return;
     }
+}
+
+
+
+/**
+ * Saves & Displays the new Poll for Members to vote in
+ * @param {StringSelectMenuInteraction} selectInteraction 
+ */
+async function saveAndDisplay(selectInteraction)
+{
+    await selectInteraction.deferUpdate();
+
+    // Bring in JSON & fetch cached data
+    const PollJson = require("../../JsonFiles/Hidden/ActivePolls.json");
+    const PollCache = Collections.PollCreation.get(selectInteraction.guildId);
+    const ButtonCache = PollCache.buttons;
+    const ChoiceCache = PollCache.choices;
+    const EmbedCache = PollCache.embed;
+
+    // Change Buttons' Custom IDs and add to Component Row(s)
+    // Also, construct Choices Object for Votes to be stored in the JSON
+    let temp;
+    /** @type {Array<ActionRowBuilder>} */
+    let buttonsArray = [];
+    let choiceVoteObject = {};
+
+    for ( let i = 0; i <= ButtonCache.length - 1; i++ )
+    {
+        // Grab from old Custom ID
+        let tempCustomID = ButtonCache[i].data.custom_id.split("_").pop();
+
+        if ( i === 0 )
+        {
+            // First Button on first row
+            temp = new ActionRowBuilder().addComponents(ButtonCache[i].setCustomId(`poll_${tempCustomID}`));
+            choiceVoteObject[`${ChoiceCache[i].label.toLowerCase().replace(" ", "_")}`] = 0;
+
+            // push early if only Button
+            if ( ButtonCache.length - 1 === i ) { buttonsArray.push(temp); }
+        }
+        else
+        {
+            // First row, buttons two through four
+            temp.addComponents(ButtonCache[i].setCustomId(`poll_${tempCustomID}`));
+            choiceVoteObject[`${ChoiceCache[i].label.toLowerCase().replace(" ", "_")}`] = 0;
+
+            // push early if last Button
+            if ( ButtonCache.length - 1 === i ) { buttonsArray.push(temp); }
+        }
+    }
+
+
+    // Send Poll
+    await selectInteraction.channel.send({ embeds: [EmbedCache], components: buttonsArray, allowedMentions: { parse: [] } })
+    .then(async sentMessage => {
+        // Save to JSON
+        PollJson[sentMessage.id] = {
+            MESSAGE_ID: sentMessage.id,
+            CHANNEL_ID: sentMessage.channel.id,
+            GUILD_ID: sentMessage.guild.id,
+            POLL_TYPE: "MANUAL",
+            CHOICE_TYPE: "BUTTON",
+            EMBED: {
+                TITLE: EmbedCache.data.title,
+                DESCRIPTION: EmbedCache.data.description !== undefined ? EmbedCache.data.description : null,
+                COLOR: EmbedCache.data.color !== undefined ? EmbedCache.data.color : null
+            },
+            CHOICES: choiceVoteObject,
+            MEMBERS_VOTED: []
+        };
+
+        fs.writeFile('./JsonFiles/Hidden/ActivePolls.json', JSON.stringify(PollJson, null, 4), async (err) => {
+            if ( err )
+            {
+                await selectInteraction.followUp({ ephemeral: true, content: `An error occurred while trying to save your new Poll...` });
+                return;
+            }
+        });
+
+
+        // Clean Up
+        clearTimeout(PollCache.timeout);
+        Collections.PollCreation.delete(selectInteraction.guildId);
+        
+        // ACK with message to also state how to END Polls
+        await selectInteraction.editReply({ components: [], embeds: [], content: `Your new Poll has been created!\nTo end your Poll, simply right-click/long-press on the Message containing the Poll, and use the "End Poll" Command under the "Apps" section.` });
+        return;
+    });
+
+    return;
 }
