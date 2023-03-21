@@ -93,7 +93,7 @@ An auto-updating preview of what your new Poll will look like is shown below.
 
 
         // Add Emoji if exists
-        if ( InputEmoji == "" && InputEmoji == " " && InputEmoji == null && InputEmoji == undefined )
+        if ( InputEmoji != "" && InputEmoji != " " && InputEmoji != null && InputEmoji != undefined )
         {
             newChoiceData.emoji = InputEmoji;
             newChoiceButton.setEmoji(InputEmoji);
