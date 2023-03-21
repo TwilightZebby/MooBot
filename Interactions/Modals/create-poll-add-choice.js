@@ -15,6 +15,17 @@ const MenuSelect = new ActionRowBuilder().addComponents([
     ])
 ]);
 
+
+const MaxChoicesMenuSelect = new ActionRowBuilder().addComponents([
+    new StringSelectMenuBuilder().setCustomId(`create-poll`).setMinValues(1).setMaxValues(1).setPlaceholder("Please select an action").setOptions([
+        //new StringSelectMenuOptionBuilder().setLabel("Set Poll Type").setValue("set-type").setDescription("Change how the Poll will behave once saved").setEmoji(`🔧`),
+        new StringSelectMenuOptionBuilder().setLabel("Configure Embed").setValue("configure-embed").setDescription("Set the Question, Description, and Colour of the Poll").setEmoji(`<:StatusRichPresence:842328614883295232>`),
+        new StringSelectMenuOptionBuilder().setLabel("Remove Choice").setValue("remove-choice").setDescription("Remove a Choice from the Poll").setEmoji(`<:IconDeleteTrashcan:750152850310561853>`),
+        new StringSelectMenuOptionBuilder().setLabel("Save & Display").setValue("save").setDescription("Saves the new Poll, and displays it for Members to use").setEmoji(`<:IconActivity:815246970457161738>`),
+        new StringSelectMenuOptionBuilder().setLabel("Cancel Creation").setValue("cancel").setDescription("Cancels creation of this Poll").setEmoji(`❌`)
+    ])
+]);
+
 module.exports = {
     // Modal's Name
     //     Used as its custom ID (or at least the start of it)
@@ -128,8 +139,9 @@ An auto-updating preview of what your new Poll will look like is shown below.
         }
 
 
-        // Add Select Menu
-        updatedButtonsArray.push(MenuSelect);
+        // Add Select Menu, depending on number of choices
+        if ( choiceCache.length >= 5 ) { updatedButtonsArray.push(MaxChoicesMenuSelect); }
+        else { updatedButtonsArray.push(MenuSelect); }
 
         // Add to Embed
         pollEmbed.addFields({ name: `Poll Choices:`, value: choicesTextFieldOne }, { name: `\u200B`, value: `*Results will be shown once Poll ends*` });
