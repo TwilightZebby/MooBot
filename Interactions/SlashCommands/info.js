@@ -181,106 +181,18 @@ function readableNSFWLevel(nsfwLevel)
     return readableString;
 }
 
-// This stays as a map because it's using the raw values returned from the API
-const festuresString = {
-    "ACTIVITIES_ALPHA": "Activities Alpha", // Unknown
-    "ACTIVITIES_EMPLOYEE": "Activities Employee", // Unknown
-    "ACTIVITIES_INTERNAL_DEV": "Activities Internal Dev", // Unknown
-    "ANIMATED_BANNER": "Animated Banner", // Allows uploading custom animated Server Banner
-    "ANIMATED_ICON": "Animated Icon", // Allows uploading custom animated Server Icon
-    "APPLICATION_COMMAND_PERMISSIONS_V2": "Application Command Permissions v2", // Uses App Cmds Perms v2 system
-    "AUTO_MODERATION": "Auto Moderation", // Allows enabling AutoMod Rules
-    "AUTOMOD_TRIGGER_KEYWORD_FILTER": "AutoMod Keyword Filter", // Unknown
-    "AUTOMOD_TRIGGER_ML_SPAM_FILTER": "AutoMod ML Spam Filter", // Guild in 2022-03_automod_trigger_ml_spam_filter Experiment
-    "AUTOMOD_TRIGGER_SPAM_LINK_FILTER": "AutoMod Spam Link Filter", // Unknown
-    "BANNER": "Banner", // Allows uploading a custom static Server Banner
-    "BFG": "**BFG**", // Unknown, probably means Big Fucking Guild. Looking at you, Midjourney
-    "BOOSTING_TIERS_EXPERIMENT_MEDIUM_GUILD": "Boosting Tiers Experiment Medium Guild", // Unknown
-    "BOOSTING_TIERS_EXPERIMENT_SMALL_GUILD": "Boosting Tiers Experiment Small Guild", // Unknown
-    "BOT_DEVELOPER_EARLY_ACCESS": "Bot Developer Early Access", // Enables early access features for bot & api library developers
-    "BURST_REACTIONS": "Burst Reactions", // Enables Burst Reactions
-    "COMMUNITY_EXP_LARGE_GATED": "Community Exp. Large Gated", // Unknown
-    "COMMUNITY_EXP_LARGE_UNGATED": "Community Exp. Large Ungated", // Unknown
-    "COMMUNITY_EXP_MEDIUM": "Community Exp. Medium", // Unknown
-    "CHANNEL_HIGHLIGHTS": "Channel Highlights", // Unknown
-    "CHANNEL_HIGHLIGHTS_DISABLED": "Channel Highlights Disabled", // Unknown
-    "COMMUNITY": "Community", // Guild is Community-enabled. Grants access to Insights, Announcement/Stage/Forum Channels, and more
-    "CREATOR_MONETIZABLE": "Creator Monetizable", // Unknown
-    "CREATOR_MONETIZABLE_DISABLED": "Creator Monetizable Disabled", // Unknown
-    "CREATOR_MONETIZABLE_PROVISIONAL": "Creator Monetizable Provisional", // Unknown
-    "CREATOR_MONETIZABLE_RESTRICTED": "Creator Monetizable Restricted", // Unknown
-    "CREATOR_MONETIZABLE_WHITEGLOVE": "Creator Monetizable Whiteglove", // Unknown
-    "CREATOR_MONETIZATION_APPLICATION_ALLOWLIST": "Creator Monetization Application Allowlist", // Unknown
-    "CREATOR_STORE_PAGE": "Creator Store Page", // Unknown
-    "DEVELOPER_SUPPORT_SERVER": "Developer Support Server", // For Guilds marked as a Bot's/App's Support Server in App Directory
-    "DISCOVERABLE_DISABLED": "Discoverable Disabled", // Guild removed from Discovery by Discord
-    "DISCOVERABLE": "Discoverable", // Guild is visible in Server Discovery
-    "ENABLED_DISCOVERABLE_BEFORE": "Enabled Discoverable Before", // Guild has been Discovery-enabled at any point
-    "EXPOSED_TO_ACTIVITIES_WTP_EXPERIMENT": "Exposed to Activities WTP Experiment", // Guild in 2021-11_activities_baseline_engagement_bundle Experiment
-    "GUILD_AUTOMOD_DEFAULT_LIST": "Guild AutoMod Default List", // Guild in 2022-03_guild_automod_default_list Experiment
-    "GUILD_COMMUNICATION_DISABLED_GUILDS": "Guild Communication Disabled Guilds", // Guild in 2021-11_guild_communication_disabled_guilds Experiment
-    "GUILD_HOME_OVERRIDE": "Guild Home Override", // Guild in Treatment 2 of 2022-01_home_tab_guild Experiment
-    "GUILD_HOME_TEST": "Guild Home Test", // Guild in Treatment 1 of 2022-01_home_tab_guild Experiment
-    "GUILD_ONBOARDING": "Guild Onboarding", // Guild has access to Community Onboarding feature
-    "GUILD_ONBOARDING_ADMIN_ONLY": "Guild Onboarding Admin Only", // Unknown
-    "GUILD_ONBOARDING_EVER_ENABLED": "Guild Onboarding Ever Enabled", // Unknown
-    "GUILD_MEMBER_VERIFICATION_EXPERIMENT": "Guild Member Verification Experiment", // Guild in 2021-11_member_verification_manual_approval Experiment
-    "GUILD_ROLE_SUBSCRIPTIONS": "Guild Role Subscriptions", // Guild in 2021-06_guild_role_subscriptions Experiment
-    "GUILD_ROLE_SUBSCRIPTION_PURCHASE_FEEDBACK_LOOP": "Guild Role Subscription Purchase Feedback Loop", // Guild in 2022-05_mobile_web_role_subscription_purchase_page Experiment
-    "GUILD_ROLE_SUBSCRIPTION_TRIALS": "Guild Role Subscription Trials", // Guild in 2022-01_guild_role_subscription_trials Experiment
-    "HAD_EARLY_ACTIVITIES_ACCESS": "Had Early Activities Access", // Guild previously had access to Voice Activities, and thus bypasses Boost Tier Requirements for Activities
-    "HAS_DIRECTORY_ENTRY": "Has Directory Entry", // Guild is in a Hub's Directory Channel
-    "HUB": "Hub", // Guild is a Student Hub
-    "INCREASED_THREAD_LIMIT": "Increased Thread Limit", // Allows Guild to have more than 1,000 active Threads (Looking at you, Midjourney)
-    "INTERNAL_EMPLOYEE_ONLY": "**Internal Employee Only**", // Only Discord Employees can join this Guild
-    "INVITES_DISABLED": "**Invites Disabled**", // Prevents new Members from joining this Guild, without deleting active Invites
-    "INVITE_SPLASH": "Invite Splash", // Allows Guild to set a custom Invite Splash to be displayed on Invite Links
-    "MEMBER_PROFILES": "Member Profiles", // Allows Members to customise their Profile (Banner, pfp, bio, etc) for this Guild
-    "MEMBER_VERIFICATION_GATE_ENABLED": "Member Verification Gate Enabled", // Guild has Member Verification Gate enabled
-    "MOBILE_WEB_ROLE_SUBSCRIPTION_PURCHASE_PAGE": "Mobile Web Role Subscription Purchase Page", // Guild in 2022-05_mobile_web_role_subscription_purchase_page Experiment
-    "MONETIZATION_ENABLED": "Monetization Enabled", // Allows setting a Team (via Dev Portal) to receive payouts from Role Subscriptions
-    "MORE_EMOJI": "More Emoji", // Adds 150 extra Emoji slots (to both static and animated emoji categories) - not part of Boosting
-    "MORE_STICKERS": "More Stickers", // Adds 60 total Sticker slots - not part of Boosting
-    "NEWS": "News", // Allows creation and use of Announcement Channels & enables Announcement Channel Insights
-    "NEW_THREAD_PERMISSIONS": "New Thread Permissions", // Guild has the updated Thread Permissions ("Send Messages in Threads")
-    "PARTNERED": "**Partnered**", // Guild is Partnered. Enables Server's Partner Badge in Server Name
-    "PREMIUM_TIER_3_OVERRIDE": "**Premium Tier 3 Override**", // Forces Server to Boost Tier 3. Created by an Employee for their own Server, now used across multiple official Discord Servers.
-    "PREVIEW_ENABLED": "Preview Enabled", // Allows new Members to view Server before/without passing Membership Gating
-    "RAID_ALERTS_ENABLED": "Raid Alerts Enabled", // Unknown
-    "RELAY_ENABLED": "Relay Enabled", // Shards the Guild's connections
-    "RESTRICT_SPAM_RISK_GUILDS": "Restrict Spam Risk Guilds", // Unknown
-    "ROLE_ICONS": "Role Icons", // Allows uploading/setting a custom Role Icon
-    "ROLE_SUBSCRIPTIONS_ENABLED": "Role Subscriptions Enabled", // Enables viewing & managing Role Subscriptions
-    "ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE": "Role Subscriptions Available for Purchase", // Allows Members to purchase Role Subscriptions, if the Guild has any setup
-    "SOUNDBOARD": "Soundboard", // Guild in 2021-12_soundboardl Experiment
-    "TEXT_IN_STAGE_ENABLED": "Text in Stage Enabled", // Enables a Thread-like Text Chat for the Guild's Stage Channels
-    "TEXT_IN_VOICE_ENABLED": "Text in Voice Enabled", // Enables a Thread-like Text Chat for the Guild's Voice Channels
-    "THREADS_ENABLED_TESTING": "Threads Enabled Testing", // Was used to enable Threads (and their premium Thread features) in Guilds with 5 or less Members AND one Bot for Bot Developers to test Thread support
-    "THREADS_ENABLED": "Threads Enabled", // Guild had enabled Threads during its public early access rollout
-    "THREAD_DEFAULT_AUTO_ARCHIVE_DURATION": "Thread Default Auto Archive Duration", // Unknown. Theory: Possibly used for testing changes to Thread's default auto archive duration
-    "THREADS_ONLY_CHANNEL": "Threads Only Channel", // Guild in 2021-07_threads_only_channel Experiment
-    "TICKETED_EVENTS_ENABLED": "Ticketed Events Enabled", // Enables viewing & managing Ticketed Events
-    "VANITY_URL": "Vanity URL", // Enables setting a Vanity Invite Link
-    "VERIFIED": "**Verified**", // Guild is Verified. Enables Verified checkmark in Server name
-    "VOICE_CHANNEL_EFFECTS": "Voice Channel Effects", // Guild in 2022-06_voice_channel_effects Experiment
-    "VOICE_IN_THREADS": "Voice in Threads", // Guild has access to Voice in Threads Experiment
-    "WELCOME_SCREEN_ENABLED": "Welcome Screen Enabled", // Guild has Welcome Screen enabled
-    
-    // From here onwards are deprecated Server Feature Flags
-    "CHANNEL_BANNER": "~~Channel Banner~~", // (Cancelled Experiment) Enabled ability to set a custom image as a Channel's Banner, shown in the Member List
-    "COMMERCE": "~~Commerce~~", // (Removed Feature) Enabled creation & use of Store Channels
-    "EXPOSED_TO_BOOSTING_TIERS_EXPERIMENT": "~~Exposed to Boosting Tiers Experiment~~", // Unknown
-    "FEATURABLE": "~~Featureable~~", // (Unused) Previously used to denote the Guild was displayed in the "Featured" category in Server Discovery
-    "FORCE_RELAY": "~~Force Relay~~", // Same behaviour as RELAY_ENABLED Flag, this one can be assumed removed in favour of RELAY_ENABLED
-    "LURKABLE": "~~Lurkable~~", // Unknown
-    "MEMBER_LIST_DISABLED": "~~Member List Disabled~~", // Disables Member List for the Server, replacing it with "There's nothing to see here" - only used for Fortnite's Server during October 2019's Blackout Event
-    "PRIVATE_THREADS": "~~Private Threads~~", // (Removed from Boosting) Allowed Guild to create Private Threads
-    "PUBLIC": "~~Public~~", // Unknown, deprecated in favor of COMMUNITY Flag
-    "PUBLIC_DISABLED": "~~Public Disabled~~", // Unknown, deprecated in favor of COMMUNITY Flag
-    "SEVEN_DAY_THREAD_ARCHIVE": "~~Seven Day Thread Archive~~", // (Removed from Boosting) Enabled use of 7-day archive duration for Threads. Made free as of 25th April 2022
-    "THREE_DAY_THREAD_ARCHIVE": "~~Three Day Thread Archive~~", // (Removed from Boosting) Enabled use of 3-day archive duration for Threads. Made free as of 25th April 2022
-    "VIP_REGIONS": "~~VIP Regions~~" // Used to mark the Guild as using special Voice regions with better stability. Now replaced with 384kbps max bitrate
-};
+/**
+ * Convert raw Guild Feature Flag into Title Case
+ * @param {String} featureString 
+ */
+function titleCaseGuildFeature(featureString)
+{
+    return featureString.toLowerCase()
+        .replace(/guild/, "server")
+        .split("_")
+        .map(subString => subString.charAt(0).toUpperCase() + subString.slice(1))
+        .join(" ");
+}
 
 /**
  * Readable Boosting Tiers
@@ -1053,9 +965,10 @@ ${fetchedChannel.parentId != null ? `**Parent Channel:** <#${fetchedChannel.pare
 
         // Server Features
         let rawData = await DiscordClient.rest.get(Routes.guild(GuildId));
+        /** @type {Array<String>} */
         const RawFeatures = rawData["features"];
         let guildFeatures = [];
-        RawFeatures.forEach(feature => !festuresString[feature] ? guildFeatures.push(feature) : guildFeatures.push(festuresString[feature]));
+        RawFeatures.forEach(feature => guildFeatures.push(titleCaseGuildFeature(feature)));
 
         // Channel Information
         const GuildChannels = await CurrentGuild.channels.fetch();
@@ -1453,7 +1366,7 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
             let rawData = await DiscordClient.rest.get(Routes.invite(InviteCode));
             const RawFeatures = rawData["guild"]["features"];
             let guildFeatures = [];
-            RawFeatures.forEach(feature => !festuresString[feature] ? guildFeatures.push(feature) : guildFeatures.push(festuresString[feature]));
+            RawFeatures.forEach(feature => guildFeatures.push(titleCaseGuildFeature(feature)));
             if ( guildFeatures.length > 0 ) { InviteInfoEmbed.addFields({ name: `>> Server's Feature Flags`, value: `${guildFeatures.sort().join(', ').slice(0, 1023)}` }); }
         }
 
