@@ -249,6 +249,47 @@ Commands for Role Menu Setup/Configuration are as follows:
 
 ---
 
+## Polls
+MooBot can also be used to create Polls that your Members can vote in!
+At this current moment in time, Polls can only have up to 5 Choices, but this limit will be increased in the future.
+
+Commands for Polls are as follows:
+
+### `/poll create`
+> *Use to begin the setup process for creating a new Poll.*
+
+### `"End Poll"` (Message Context Command)
+> *Use to end an active Poll that was made with this Bot. This will also show the results of the Poll*
+
+<!-- Divider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+---
+
 # Questions
 ## Why did you make this Bot?
 > This Bot was born from a mixture of "felt like it" and a want to bring back some of the commands from the Kawaii Bot (that was discontinued when I originally made this Bot, but apparently has made a return in 2022?).
