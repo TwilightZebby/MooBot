@@ -6,6 +6,11 @@ A small general-purpose Discord Bot made by TwilightZebby; originally for Dr1fte
 
 ---
 
+# THE LICENSE
+The License for this Project, and all of TwilightZebby's Projects, can be [found here](https://github.com/TwilightZebby/license/blob/main/license.md).
+
+---
+
 # Features
 
 ## Notes
@@ -219,6 +224,47 @@ Commands for Role Menu Setup/Configuration are as follows:
 
 ### `"Delete Role Menu"` (Message Context Command)
 > *Used to delete an existing Role Menu made with this Bot*
+
+<!-- Divider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+---
+
+## Polls
+MooBot can also be used to create Polls that your Members can vote in!
+At this current moment in time, Polls can only have up to 5 Choices, but this limit will be increased in the future.
+
+Commands for Polls are as follows:
+
+### `/poll create`
+> *Use to begin the setup process for creating a new Poll.*
+
+### `"End Poll"` (Message Context Command)
+> *Use to end an active Poll that was made with this Bot. This will also show the results of the Poll*
 
 <!-- Divider
 

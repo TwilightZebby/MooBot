@@ -25,7 +25,7 @@ module.exports = {
         {
             if ( message.embeds[0]?.fields )
             {
-                if ( message.embeds[0]?.fields?.name )
+                if ( message.embeds[0]?.fields[0]?.name )
                 {
                     if ( message.embeds?.shift().fields?.shift().name.toLowerCase().includes("birthday") ) { return; }
                 }
