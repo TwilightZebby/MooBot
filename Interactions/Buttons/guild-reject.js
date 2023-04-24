@@ -21,6 +21,14 @@ module.exports = {
      */
     async execute(buttonInteraction)
     {
+        // Ensure only Zebby can use
+        if ( buttonInteraction.user.id !== "156482326887530498" )
+        {
+            await buttonInteraction.reply({ ephemeral: true, content: `Sorry, only my Developer can use this Button!` });
+            return;
+        }
+
+
         await buttonInteraction.deferUpdate();
 
         // Force Bot to leave the Guild

@@ -77,7 +77,7 @@ module.exports = {
             if ( i === 0 )
             {
                 temp = new ActionRowBuilder().addComponents(cachedButtons[i]);
-                choicesTextFieldOne += `${cachedChoices[i].emoji != null ? cachedChoices[i].emoji : `•`} ${cachedChoices[i].label}\n`
+                choicesTextFieldOne += `• ${cachedChoices[i].label}\n`
                 //Push early if last Button
                 if ( cachedButtons.length - 1 === i ) { updatedButtonsArray.push(temp); }
             }
@@ -85,7 +85,7 @@ module.exports = {
             else
             {
                 temp.addComponents(cachedButtons[i]);
-                choicesTextFieldOne += `${cachedChoices[i].emoji != null ? cachedChoices[i].emoji : `•`} ${cachedChoices[i].label}\n`
+                choicesTextFieldOne += `• ${cachedChoices[i].label}\n`
                 //Push early if last Button
                 if ( cachedButtons.length - 1 === i ) { updatedButtonsArray.push(temp); }
             }

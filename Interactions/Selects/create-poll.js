@@ -3,8 +3,7 @@ const fs = require('fs');
 const { DiscordClient, Collections } = require("../../constants.js");
 
 const AddChoiceModal = new ModalBuilder().setCustomId(`create-poll-add-choice`).setTitle(`Add Choice`).addComponents([
-    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId("label").setLabel("Answer Choice").setMaxLength(80).setStyle(TextInputStyle.Short).setRequired(true) ]),
-    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId("emoji").setLabel("Button Emoji").setMaxLength(200).setPlaceholder("<:grass_block:601353406577246208> or ✨").setStyle(TextInputStyle.Short).setRequired(false) ]),
+    new ActionRowBuilder().addComponents([ new TextInputBuilder().setCustomId("label").setLabel("Answer Choice").setMaxLength(80).setStyle(TextInputStyle.Short).setRequired(true) ])
 ]);
 
 module.exports = {

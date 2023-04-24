@@ -45,25 +45,6 @@ module.exports = {
         // Grab inputs
         const ChoiceCustomID = modalInteraction.customId.split("_").pop();
         const InputLabel = modalInteraction.fields.getTextInputValue("label");
-        const InputEmoji = modalInteraction.fields.getTextInputValue("emoji");
-
-
-        // Validate Emoji
-        if ( InputEmoji == "" && InputEmoji == " " && InputEmoji == null && InputEmoji == undefined )
-        {
-            if ( !DiscordEmojiRegex.test(InputEmoji) && !EmojiRegex.test(InputEmoji) )
-            {
-                await modalInteraction.update({ content: `__**Poll Creation**__
-Use the Select Menu to configure the Poll's Embed and Buttons. Press an existing Button to edit its label and/or emoji.
-If including in Buttons, please make sure to have the relevant Emoji IDs ready (such as in a notepad program); as you won't be able to copy from a Discord Message while an Input Form is open.
-Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are supported.
-
-An auto-updating preview of what your new Poll will look like is shown below.
-
-⚠ **Sorry, but there was an error trying to validate your included Emoji. Please try again, ensuring you use either an [Unicode Emoji](<https://emojipedia.org>) or a raw Discord Custom Emoji string (example: \`<:grass_block:601353406577246208>\`)**` });
-                return;
-            }
-        }
 
         
         // Update cache & buttons
@@ -80,18 +61,6 @@ An auto-updating preview of what your new Poll will look like is shown below.
                 choiceCache[i].label = InputLabel;
                 buttonCache[i].setLabel(InputLabel);
                 buttonCache[i].setCustomId(`new-choice-edit_${InputLabel.toLowerCase().replace(" ", "-")}`);
-
-                // Update Emoji
-                if ( InputEmoji != null && InputEmoji != "" )
-                {
-                    choiceCache[i].emoji = InputEmoji;
-                    buttonCache[i].setEmoji(InputEmoji);
-                }
-                else
-                {
-                    choiceCache[i].emoji = null;
-                    buttonCache[i].setEmoji({});
-                }
 
                 break;
             }
@@ -116,7 +85,7 @@ An auto-updating preview of what your new Poll will look like is shown below.
             if ( i === 0 )
             {
                 temp = new ActionRowBuilder().addComponents(buttonCache[i]);
-                choicesTextFieldOne += `${choiceCache[i].emoji != null ? choiceCache[i].emoji : `•`} ${choiceCache[i].label}\n`
+                choicesTextFieldOne += `• ${choiceCache[i].label}\n`
                 //Push early if last Button
                 if ( buttonCache.length - 1 === i ) { updatedButtonsArray.push(temp); }
             }
@@ -124,7 +93,7 @@ An auto-updating preview of what your new Poll will look like is shown below.
             else
             {
                 temp.addComponents(buttonCache[i]);
-                choicesTextFieldOne += `${choiceCache[i].emoji != null ? choiceCache[i].emoji : `•`} ${choiceCache[i].label}\n`
+                choicesTextFieldOne += `• ${choiceCache[i].label}\n`
                 //Push early if last Button
                 if ( buttonCache.length - 1 === i ) { updatedButtonsArray.push(temp); }
             }
@@ -136,15 +105,13 @@ An auto-updating preview of what your new Poll will look like is shown below.
         else { updatedButtonsArray.push(MenuSelect); }
 
         // Add to Embed
-        embedCache.addFields({ name: `Poll Choices:`, value: choicesTextFieldOne }, { name: `\u200B`, value: `*Results will be shown once Poll ends*` });
-        pollCache.embed = embedCache;
+        pollEmbed.addFields({ name: `Poll Choices:`, value: choicesTextFieldOne }, { name: `\u200B`, value: `*Results will be shown once Poll ends*` });
+        pollCache.embed = pollEmbed;
 
 
         // Update Menu
         await modalInteraction.update({ components: updatedButtonsArray, embeds: [embedCache], content: `__**Poll Creation**__
 Use the Select Menu to configure the Poll's Embed and Buttons. Press an existing Button to edit its label and/or emoji.
-If including in Buttons, please make sure to have the relevant Emoji IDs ready (such as in a notepad program); as you won't be able to copy from a Discord Message while an Input Form is open.
-Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are supported.
 
 An auto-updating preview of what your new Poll will look like is shown below.` });
 
