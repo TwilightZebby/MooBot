@@ -68,7 +68,7 @@ module.exports = {
             permissions: [ PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages, PermissionFlagsBits.SendMessagesInThreads, PermissionFlagsBits.EmbedLinks, PermissionFlagsBits.AttachFiles, PermissionFlagsBits.UseExternalEmojis ]
         });
 
-        await slashCommand.reply({ ephemeral: true, content: `Here is the Invite Link to invite **${DiscordClient.user.username}** to your Server: <${MooBotInvite}>\n\nPlease remember that you need either "Manage Server" or "Admin" Permissions in, or be the Owner of, the Server you want to add **${DiscordClient.user.username}** to.\nAdditionally, **${DiscordClient.user.username}'s** Invite Link has the very basic Permissions it needs to function, but some of its features (like Role Menus) will require extra Permissions not included in the Invite Link.` });
+        await slashCommand.reply({ ephemeral: true, content: `Here is the Invite Link to invite **${DiscordClient.user.username}** to your Server:\n<${MooBotInvite}>\n\nPlease remember that you need either "Manage Server" or "Admin" Permissions in, or be the Owner of, the Server you want to add **${DiscordClient.user.username}** to.\nAdditionally, **${DiscordClient.user.username}'s** Invite Link has the very basic Permissions it needs to function, but some of its features (like Role Menus) will require extra Permissions not included in the Invite Link.` });
         return;
     },
 
