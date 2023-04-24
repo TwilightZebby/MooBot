@@ -5,7 +5,10 @@ const { DiscordStatusPageID } = require("./config.js");
 module.exports =
 {
     // Discord Client representing the Bot/App
-    DiscordClient: new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.MessageContent ], partials: [ Partials.Message ] }),
+    DiscordClient: new Client({
+        intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.MessageContent ],
+        partials: [ Partials.Message ]
+    }),
     // StatusPage Client
     DiscordStatusClient: new StatuspageUpdates(DiscordStatusPageID, 10000),
 
