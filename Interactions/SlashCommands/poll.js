@@ -97,8 +97,6 @@ module.exports = {
                 await slashCommand.reply({ ephemeral: true, components: [InitialSelectMenu], embeds: [EmptyPollEmbed],
                     content: `__**Poll Creation**__
 Use the Select Menu to configure the Poll's Embed and Buttons. Press an existing Button to edit its label and/or emoji.
-If including in Buttons, please make sure to have the relevant Emoji IDs ready (such as in a notepad program); as you won't be able to copy from a Discord Message while an Input Form is open.
-Additionally, both Custom Discord Emojis, and standard Unicode Emojis, are supported.
 
 An auto-updating preview of what your new Poll will look like is shown below.`
                 });
