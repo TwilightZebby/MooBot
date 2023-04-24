@@ -1,5 +1,5 @@
 const { ChatInputCommandInteraction, ChatInputApplicationCommandData, ApplicationCommandType, AutocompleteInteraction, OAuth2Scopes, PermissionFlagsBits } = require("discord.js");
-const { DiscordClient, Collections } = require("../../constants.js");
+const { DiscordClient } = require("../../constants.js");
 
 module.exports = {
     // Command's Name
