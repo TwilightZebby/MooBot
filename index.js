@@ -233,6 +233,7 @@ DiscordClient.on('guildCreate', async (guild) => {
     //   This is purely so the Bot's Developer, TwilightZebby, can have an approval system
     //   and thus, force the Bot to leave Servers TwilightZebby hasn't allowed to add the Bot to
 
+    await guild.fetch();
     const GuildOwner = await guild.fetchOwner();
 
     // Embed
@@ -253,7 +254,7 @@ DiscordClient.on('guildCreate', async (guild) => {
     // Send
     const LoggingGuild = await DiscordClient.guilds.fetch({ guild: Config.ErrorLogGuildID });
     /** @type {TextChannel} */
-    const LoggingChannel = LoggingGuild.channels.fetch(Config.GuildLogChannelID);
+    const LoggingChannel = await LoggingGuild.channels.fetch(Config.GuildLogChannelID);
     await LoggingChannel.send({ allowedMentions: { parse: [] }, embeds: [GuildJoinedEmbed], components: [ButtonActionRow] });
 
     return;
