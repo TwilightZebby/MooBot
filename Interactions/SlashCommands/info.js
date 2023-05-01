@@ -596,10 +596,12 @@ module.exports = {
     //     IF SUBCOMMAND: name as "subcommandName"
     //     IF SUBCOMMAND GROUP: name as "subcommandGroupName_subcommandName"
     SubcommandCooldown: {
-        "server": 60,
+        "server": 30,
         "invite": 60,
-        "user": 60,
-        "bot": 10
+        "user": 30,
+        "bot": 10,
+        "role": 20,
+        "channel": 20
     },
 
     // Scope of Command's usage
@@ -614,7 +616,9 @@ module.exports = {
         "server": "GUILD",
         "invite": "ALL",
         "user": "ALL",
-        "bot": "ALL"
+        "bot": "ALL",
+        "role": "GUILD",
+        "channel": "GUILD"
     },
 
     // TODO: Add support for use in DMs and GDMs once Discord releases their upcoming update allowing Bots with Application Commands to be usable in GDMs
@@ -1409,7 +1413,8 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
         // Create Link Buttons
         const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
         const LicenseButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("License").setURL("https://github.com/TwilightZebby/license/blob/main/license.md");
-        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton]);
+        const GitHubButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("GitHub").setURL("https://github.com/TwilightZebby/MooBot");
+        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton, GitHubButton]);
 
         // Fetch App Commands
         const RegisteredGlobalCommands = await DiscordClient.application.commands.fetch();
