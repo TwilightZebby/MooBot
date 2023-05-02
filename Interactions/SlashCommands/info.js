@@ -36,6 +36,7 @@ const EMOJI_STATUS_IDLE = "<:StatusIdle:1009372448979947550>";
 // Badges
 const EMOJI_VERIFIED_BOT = "<:BadgeBotVerified:1026417284799021087>";
 const EMOJI_SUPPORTS_APP_COMMANDS = "<:BadgeBotSupportsAppCommands:1026426199347560468>";
+const EMOJI_USES_AUTOMOD = "<:BadgeBotAutoMod:1101078379681300560>";
 const EMOJI_BUG_HUNTER_TIER_1 = "<:BadgeUserBugHunterTier1:1026417286111838228>";
 const EMOJI_BUG_HUNTER_TIER_2 = "<:BadgeUserBugHunterTier2:1026417287252672562>";
 const EMOJI_CERTIFIED_MOD = "<:BadgeUserCertifiedMod:1026417288406110208>";
@@ -263,6 +264,10 @@ function readableUserFlags(userFlag)
     let readableString = "";
     switch(userFlag)
     {
+        case "ActiveDeveloper":
+            readableString = "Active Developer";
+            break;
+
         case "BotHTTPInteractions":
             readableString = "HTTP Interactions Bot";
             break;
@@ -277,6 +282,10 @@ function readableUserFlags(userFlag)
 
         case "CertifiedModerator":
             readableString = "Moderator Programs Alumni";
+            break;
+
+        case "Collaborator":
+            readableString = "Collaborator";
             break;
 
         case "HypeSquadOnlineHouse1":
@@ -307,6 +316,10 @@ function readableUserFlags(userFlag)
             readableString = "**Quarantined**";
             break;
 
+        case "RestrictedCollaborator":
+            readableString = "Restricted Collaborator";
+            break;
+
         case "Spammer":
             readableString = "**Spammer**";
             break;
@@ -325,10 +338,6 @@ function readableUserFlags(userFlag)
 
         case "VerifiedDeveloper":
             readableString = "Early Verified Bot Developer";
-            break;
-
-        case "ActiveDeveloper":
-            readableString = "Active Developer";
             break;
 
         default:
@@ -485,6 +494,10 @@ function readableApplicationFlags(applicationFlag)
     let readableString = "";
     switch(applicationFlag)
     {
+        case "ApplicationAutoModerationRuleCreateBadge":
+            readableString = "Uses AutoMod API";
+            break;
+
         case "ApplicationCommandBadge":
             readableString = "Supports Application Commands";
             break;
@@ -495,6 +508,10 @@ function readableApplicationFlags(applicationFlag)
 
         case "EmbeddedFirstParty":
             readableString = "Embedded First Party";
+            break;
+
+        case "EmbeddedIAP":
+            readableString = "Embedded IAP";
             break;
 
         case "EmbeddedReleased":
@@ -579,10 +596,12 @@ module.exports = {
     //     IF SUBCOMMAND: name as "subcommandName"
     //     IF SUBCOMMAND GROUP: name as "subcommandGroupName_subcommandName"
     SubcommandCooldown: {
-        "server": 60,
+        "server": 30,
         "invite": 60,
-        "user": 60,
-        "bot": 10
+        "user": 30,
+        "bot": 10,
+        "role": 20,
+        "channel": 20
     },
 
     // Scope of Command's usage
@@ -597,7 +616,9 @@ module.exports = {
         "server": "GUILD",
         "invite": "ALL",
         "user": "ALL",
-        "bot": "ALL"
+        "bot": "ALL",
+        "role": "GUILD",
+        "channel": "GUILD"
     },
 
     // TODO: Add support for use in DMs and GDMs once Discord releases their upcoming update allowing Bots with Application Commands to be usable in GDMs
@@ -1123,6 +1144,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
             if ( RoleOption.tags.premiumSubscriberRole != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is Server Booster Role:** ${RoleOption.tags.premiumSubscriberRole}`; }
             if ( RoleOption.tags.subscriptionListingId != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is a Server Subscription Role:** true`; }
             if ( RoleOption.tags.availableForPurchase != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is Purchasable:** true`; }
+            if ( RoleOption.tags.guildConnections != undefined ) { roleTagString += `${roleTagString.length > 4 ? `\n` : ""}**Is Linked Role:** true`; }
 
             if ( roleTagString.length > 4 ) { RoleInfoEmbed.addFields({ name: `>> Role Tags`, value: roleTagString }); }
         }
@@ -1271,6 +1293,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
 
             // Bot-specific Profile Badges!
             if ( botApplicationFlagStrings.includes("Supports Application Commands") ) { userFlagEmojis.unshift(EMOJI_SUPPORTS_APP_COMMANDS); }
+            if ( botApplicationFlagStrings.includes("Uses AutoMod API") ) { userFlagEmojis.unshift(EMOJI_USES_AUTOMOD); }
 
             // Bot Information
             let botInformationString = "";
@@ -1391,7 +1414,8 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
         // Create Link Buttons
         const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
         const LicenseButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("License").setURL("https://github.com/TwilightZebby/license/blob/main/license.md");
-        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton]);
+        const GitHubButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("GitHub").setURL("https://github.com/TwilightZebby/MooBot");
+        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton, GitHubButton]);
 
         // Fetch App Commands
         const RegisteredGlobalCommands = await DiscordClient.application.commands.fetch();
