@@ -84,9 +84,9 @@ module.exports = {
         }
 
         // Ensure Bot has MANAGE_EMOJI Permission
-        if ( !slashCommand.appPermissions.has(PermissionFlagsBits.ManageEmojisAndStickers) )
+        if ( !slashCommand.appPermissions.has(PermissionFlagsBits.ManageGuildExpressions) )
         {
-            await slashCommand.reply({ ephemeral: true, content: `Sorry, but I cannot upload a Custom Emoji to this Server without having the **Manage Emojis and Stickers** Permission.\nPlease try again, once I have been granted that Permission!` });
+            await slashCommand.reply({ ephemeral: true, content: `Sorry, but I cannot upload a Custom Emoji to this Server without having the **Manage Expressions** Permission.\nPlease try again, once I have been granted that Permission!` });
             return;
         }
 
