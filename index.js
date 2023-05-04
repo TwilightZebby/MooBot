@@ -71,7 +71,7 @@ for ( const File of ModalFiles )
 // DISCORD - READY EVENT
 DiscordClient.once('ready', () => {
     DiscordClient.user.setPresence({ status: 'online' });
-    console.log(`${DiscordClient.user.username}#${DiscordClient.user.discriminator} is online and ready!`);
+    console.log(`${DiscordClient.user.username} is online and ready!`);
 });
 
 
