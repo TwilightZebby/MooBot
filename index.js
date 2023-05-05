@@ -249,7 +249,8 @@ DiscordClient.on('guildCreate', async (guild) => {
     .addFields(
         { name: `Guild Owner`, value: `**User ID:** ${GuildOwner.id}\n**Tag:** ${GuildOwner.user.tag}\n**Mention:** <@${GuildOwner.id}>` },
         { name: `Guild Info`, value: `**Approx. Member Count:** ${guild.approximateMemberCount}` }
-    );
+    )
+    .setFooter({ text: `${guild.id}` });
 
     // Buttons
     const ButtonActionRow = new ActionRowBuilder().addComponents([
