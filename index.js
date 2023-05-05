@@ -236,8 +236,14 @@ DiscordClient.on('guildCreate', async (guild) => {
     await guild.fetch();
     const GuildOwner = await guild.fetchOwner();
 
+    // If Guild is in Blocklist, force removal of Bot
+    let moobotBlocklist = require('./JsonFiles/Hidden/ServerBlocklist.json');
+    let isBlocked = false;
+    if ( moobotBlocklist["blocklist"].includes(guild.id) ) { isBlocked = true; }
+
+
     // Embed
-    const GuildJoinedEmbed = new EmbedBuilder().setColor(Colors.Green)
+    const GuildJoinedEmbed = new EmbedBuilder().setColor(isBlocked ? Colors.Red : Colors.Green)
     .setTitle(`Joined ${guild.name}`)
     .setThumbnail(guild.iconURL({ extension: 'png' }))
     .addFields(
@@ -248,14 +254,25 @@ DiscordClient.on('guildCreate', async (guild) => {
     // Buttons
     const ButtonActionRow = new ActionRowBuilder().addComponents([
         new ButtonBuilder().setCustomId(`guild-approve_${guild.id}`).setEmoji('✅').setLabel(`Approve`).setStyle(ButtonStyle.Success),
-        new ButtonBuilder().setCustomId(`guild-reject_${guild.id}`).setEmoji('❌').setLabel(`Reject`).setStyle(ButtonStyle.Danger)
+        new ButtonBuilder().setCustomId(`guild-reject_${guild.id}`).setEmoji('❌').setLabel(`Reject`).setStyle(ButtonStyle.Danger),
+        new ButtonBuilder().setCustomId(`guild-block_${guild.id}`).setEmoji('❌').setLabel(`Block`).setStyle(ButtonStyle.Danger)
     ]);
 
     // Send
     const LoggingGuild = await DiscordClient.guilds.fetch({ guild: Config.ErrorLogGuildID });
     /** @type {TextChannel} */
     const LoggingChannel = await LoggingGuild.channels.fetch(Config.GuildLogChannelID);
-    await LoggingChannel.send({ allowedMentions: { parse: [] }, embeds: [GuildJoinedEmbed], components: [ButtonActionRow] });
+
+    // Only include buttons if NOT blocked
+    if ( !isBlocked ) { await LoggingChannel.send({ allowedMentions: { parse: [] }, embeds: [GuildJoinedEmbed], components: [ButtonActionRow] }); }
+    else
+    {
+        GuildJoinedEmbed.setDescription(`:warning: **Server is blocked from using this Bot**`);
+        await LoggingChannel.send({ allowedMentions: { parse: [] }, embeds: [GuildJoinedEmbed] });
+        // Force leave blocked Guild
+        await guild.leave();
+    }
+
 
     return;
 });
