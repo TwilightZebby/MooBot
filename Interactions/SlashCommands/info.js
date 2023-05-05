@@ -1042,7 +1042,7 @@ ${fetchedChannel.parentId != null ? `**Parent Channel:** <#${fetchedChannel.pare
         .addFields(
             {
                 name: `>> General`,
-                value: `${ExternalEmojiPermission ? `${EMOJI_OWNER_CROWN} ` : ""}**Owner:** ${GuildOwner.user.discriminator == "0" ? `@${GuildOwner.user.username}` : `${GuildOwner.user.username}#${GuildOwner.user.discriminator}`}
+                value: `${ExternalEmojiPermission ? `${EMOJI_OWNER_CROWN} ` : ""}**Owner:** ${GuildOwner.user.tag}
 ${ExternalEmojiPermission ? `${readableGuildPremiumTierEmoji(GuildBoostTier)} ` : ""}**Boost Level:** ${readableGuildPremiumTier(GuildBoostTier)}
 ${ExternalEmojiPermission ? `${EMOJI_BOOST} ` : ""}**Boost Count:** ${GuildBoostCount}
 ${ExternalEmojiPermission ? `${EMOJI_EMOJI} ` : ""}**Emojis:** ${TotalEmojiCount}
@@ -1213,7 +1213,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
         if ( fetchedMember.flags.has(GuildMemberFlags.StartedOnboarding) ) { MemberFlagStrings.push(`Started Onboarding`); }
         if ( fetchedMember.flags.has(GuildMemberFlags.CompletedOnboarding) ) { MemberFlagStrings.push(`Completed Onboarding`); }
 
-        const UserInfoEmbed = new EmbedBuilder().setAuthor({ iconURL: fetchedMember.displayAvatarURL({ extension: 'png' }), name: `${fetchedMember.user.discriminator == "0" ? `@${fetchedMember.user.username}` : `${fetchedMember.user.username}#${fetchedMember.user.discriminator}`}` })
+        const UserInfoEmbed = new EmbedBuilder().setAuthor({ iconURL: fetchedMember.displayAvatarURL({ extension: 'png' }), name: `${fetchedMember.user.tag}` })
         .setColor(MemberDisplayColorHex);
 
         
@@ -1361,7 +1361,7 @@ ${ExternalEmojiPermission ? `${EMOJI_CHANNEL_FORUM} ` : ""}**Forum:** ${forumCha
         
         // General Invite Info
         let generalInviteInfo = "";
-        if ( InviteCreatorUser != null ) { generalInviteInfo += `**Inviter:** ${InviteCreatorUser.discriminator == "0" ? `@${InviteCreatorUser.username}` : `${InviteCreatorUser.username}#${InviteCreatorUser.discriminator}`}\n**Bot User:** ${InviteCreatorUser.bot}`; }
+        if ( InviteCreatorUser != null ) { generalInviteInfo += `**Inviter:** ${InviteCreatorUser.tag}\n**Bot User:** ${InviteCreatorUser.bot}`; }
         if ( InviteCreatedTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Created:** <t:${Math.floor(InviteCreatedTime / 1000)}:R>`; }
         if ( InviteExpireTime != null ) { generalInviteInfo += `${generalInviteInfo.length > 1 ? `\n` : ""}**Expires:** <t:${Math.floor(InviteExpireTime / 1000)}:R>`; }
         if ( generalInviteInfo.length > 1 ) { InviteInfoEmbed.addFields({ name: `>> General Info`, value: generalInviteInfo }); }
