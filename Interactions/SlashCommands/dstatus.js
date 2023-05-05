@@ -156,11 +156,10 @@ async function subscribeToFeed(slashCommand)
         // Subscribe Server to Feed, by creating a Webhook in that Channel
         let feedWebhook;
         let threadId = null;
-        let displayUsername = slashCommand.user.discriminator == "0" ? `@${slashCommand.user.username}` : `${slashCommand.user.username}#${slashCommand.user.discriminator}`;
-        if ( InputChannel instanceof TextChannel ) { feedWebhook = await InputChannel.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${displayUsername} subscribed to the Discord Outage Feed` }); }
+        if ( InputChannel instanceof TextChannel ) { feedWebhook = await InputChannel.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.tag} subscribed to the Discord Outage Feed` }); }
         else 
         { 
-            feedWebhook = await InputChannel.parent.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${displayUsername} subscribed to the Discord Outage Feed` });
+            feedWebhook = await InputChannel.parent.createWebhook({ name: "Dis-Outage Feed", avatar: "https://i.imgur.com/gXWXIpr.png", reason: `${slashCommand.user.tag} subscribed to the Discord Outage Feed` });
             threadId = InputChannel.id;
         }
 
@@ -200,9 +199,8 @@ async function unsubscribeFromFeed(slashCommand)
     // First, remove Webhook, if possible
     const FeedWebhook = await DiscordClient.fetchWebhook(DiscordOutageFeedJson[`${slashCommand.guildId}`]["DISCORD_FEED_WEBHOOK_ID"]);
     let webhookDeletionErrorMessage = null;
-    let displayUsername = slashCommand.user.discriminator == "0" ? `@${slashCommand.user.username}` : `${slashCommand.user.username}#${slashCommand.user.discriminator}`;
     try {
-        await FeedWebhook.delete(`${displayUsername} unsubscribed from the Discord Outage Feed`);
+        await FeedWebhook.delete(`${slashCommand.user.tag} unsubscribed from the Discord Outage Feed`);
     } 
     catch (err) {
         //console.error(err);
