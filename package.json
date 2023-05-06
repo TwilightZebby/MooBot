@@ -27,7 +27,7 @@
   "homepage": "https://github.com/TwilightZebby/MooBot#readme",
   "dependencies": {
     "bufferutil": "^4.0.6",
-    "discord.js": "^14.10.2",
+    "discord.js": "^14.11.0",
     "emoji-regex": "^10.1.0",
     "erlpack": "github:discord/erlpack",
     "node-fetch": "^2.6.7",
