@@ -61,7 +61,7 @@ Use the Select Menu to configure the Poll's Embed and Buttons. Press an existing
 
 An auto-updating preview of what your new Poll will look like is shown below.
 
-⚠ **Sorry, but your new Choice was detected to be a duplicate of an existing Choice already on your Poll!**` });
+:warning: **Sorry, but your new Choice was detected to be a duplicate of an existing Choice already on your Poll!**` });
                 return;
         }
 

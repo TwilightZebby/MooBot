@@ -84,7 +84,7 @@ module.exports = {
         // Ensure Bot has MANAGE_ROLES Permission
         if ( !contextCommand.appPermissions.has(PermissionFlagsBits.ManageRoles) )
         {
-            await contextCommand.editReply({ context: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
+            await contextCommand.editReply({ context: `:warning: I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
             return;
         }
 

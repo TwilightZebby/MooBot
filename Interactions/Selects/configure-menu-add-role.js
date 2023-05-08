@@ -31,7 +31,7 @@ module.exports = {
         {
             await selectInteraction.update({ content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your Role Menu.
 
-⚠ <@&${InputRole.id}> has already been added to this Role Menu!` });
+:warning: <@&${InputRole.id}> has already been added to this Role Menu!` });
             return;
         }
 
@@ -42,7 +42,7 @@ module.exports = {
         {
             await selectInteraction.update({ content: `Please use the Role Select Menu below to pick which Role from this Server you would like to add to your Role Menu.
 
-⚠ <@&${InputRole.id}> is higher than this Bot's own highest Role (<@&${botMember.roles.highest.id}>) - as such, this Bot won't be able to grant/revoke it for other Members.` });
+:warning: <@&${InputRole.id}> is higher than this Bot's own highest Role (<@&${botMember.roles.highest.id}>) - as such, this Bot won't be able to grant/revoke it for other Members.` });
             return;
         }
 

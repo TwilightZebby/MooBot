@@ -65,7 +65,7 @@ module.exports = {
         {
             await selectInteraction.update({ content: `Please use the Role Select Menu below to pick which Role you want to *remove* from your Role Menu.
 
-⚠ <@&${InputRole.id}> is __not__ on this Menu!` });
+:warning: <@&${InputRole.id}> is __not__ on this Menu!` });
             return;
         }
 

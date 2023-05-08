@@ -118,7 +118,7 @@ module.exports = {
         // Ensure Bot has MANAGE_ROLES Permission
         if ( !slashCommand.appPermissions.has(PermissionFlagsBits.ManageRoles) )
         {
-            await slashCommand.reply({ ephemeral: true, content: `⚠ I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
+            await slashCommand.reply({ ephemeral: true, content: `:warning: I do not seem to have the \`MANAGE_ROLES\` Permission! Please ensure I have been granted it in order for my Self-Assignable Role Module to work.` });
             return;
         }
 

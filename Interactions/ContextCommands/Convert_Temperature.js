@@ -32,7 +32,7 @@ function convertTemperature(originalTemperature, locale)
         const CToF = ( originalValue * 9/5 ) + 32;
         const CToK = originalValue + 273.15;
         // Check for invalid Temperature
-        if ( CToK < 0 ) { return `⚠ ${originalValue}C is a temperature that cannot exist! (It is below Absolute Zero!)`; }
+        if ( CToK < 0 ) { return `:warning: ${originalValue}C is a temperature that cannot exist! (It is below Absolute Zero!)`; }
         // Return converted temperatures
         return `${originalValue}C is about ${CToF}F or ${CToK}K`;
     }
@@ -41,7 +41,7 @@ function convertTemperature(originalTemperature, locale)
         const FToC = ( originalValue - 32 ) * 5/9;
         const FToK = ( originalValue - 32 ) * 5/9 + 273.15;
         // Check for invalid Temperature
-        if ( FToK < 0 ) { return `⚠ ${originalValue}F is a temperature that cannot exist! (It is below Absolute Zero!)`; }
+        if ( FToK < 0 ) { return `:warning: ${originalValue}F is a temperature that cannot exist! (It is below Absolute Zero!)`; }
         // Return converted temperatures
         return `${originalValue}F is about ${FToC}C or ${FToK}K`;
     }
@@ -50,7 +50,7 @@ function convertTemperature(originalTemperature, locale)
         const KToC = originalValue - 273.15;
         const KToF = ( originalValue - 273.15 ) * 9/5 + 32;
         // Check for invalid Temperature
-        if ( originalValue < 0 ) { return `⚠ ${originalValue}K is a temperature that cannot exist! (It is below Absolute Zero!)`; }
+        if ( originalValue < 0 ) { return `:warning: ${originalValue}K is a temperature that cannot exist! (It is below Absolute Zero!)`; }
         // Return converted temperatures
         return `${originalValue}K is about ${KToC}C or ${KToF}F`;
     }
