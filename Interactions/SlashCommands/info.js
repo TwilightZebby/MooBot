@@ -574,7 +574,9 @@ const BotIntentFlags = [ "GatewayPresence", "GatewayPresenceLimited", "GatewayMe
  */
 function checkEmojiPermission(slashCommand)
 {
-    return slashCommand.appPermissions.has(PermissionFlagsBits.UseExternalEmojis);
+    //return slashCommand.appPermissions.has(PermissionFlagsBits.UseExternalEmojis);
+    // TEMP - Use atEveryone Permissions since Discord broke External Emoji checks for deferred Interaction responses :c
+    return slashCommand.guild.roles.everyone.permissionsIn(slashCommand.channelId).has(PermissionFlagsBits.UseExternalEmojis);
 }
 
 module.exports = {
