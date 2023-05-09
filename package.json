@@ -1,6 +1,6 @@
 {
   "name": "moobot",
-  "version": "6.3.1",
+  "version": "6.3.2",
   "description": "A private general purpose Discord Bot",
   "main": "index.js",
   "scripts": {
