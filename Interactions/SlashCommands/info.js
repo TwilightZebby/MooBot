@@ -1417,7 +1417,8 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
         const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
         const LicenseButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("License").setURL("https://github.com/TwilightZebby/license/blob/main/license.md");
         const GitHubButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("GitHub").setURL("https://github.com/TwilightZebby/MooBot");
-        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton, GitHubButton]);
+        const ChangelogButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Changelog").setURL("https://github.com/TwilightZebby/MooBot/releases");
+        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton, GitHubButton, ChangelogButton]);
 
         // Fetch App Commands
         const RegisteredGlobalCommands = await DiscordClient.application.commands.fetch();
