@@ -574,7 +574,9 @@ const BotIntentFlags = [ "GatewayPresence", "GatewayPresenceLimited", "GatewayMe
  */
 function checkEmojiPermission(slashCommand)
 {
-    return slashCommand.appPermissions.has(PermissionFlagsBits.UseExternalEmojis);
+    //return slashCommand.appPermissions.has(PermissionFlagsBits.UseExternalEmojis);
+    // TEMP - Use atEveryone Permissions since Discord broke External Emoji checks for deferred Interaction responses :c
+    return slashCommand.guild.roles.everyone.permissionsIn(slashCommand.channelId).has(PermissionFlagsBits.UseExternalEmojis);
 }
 
 module.exports = {
@@ -1415,7 +1417,8 @@ ${ExternalEmojiPermission && InviteGuild.verified ? `${EMOJI_VERIFIED} ` : ""}**
         const PrivacyButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Privacy Policy").setURL("https://github.com/TwilightZebby/MooBot/blob/main/PRIVACY_POLICY.md");
         const LicenseButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("License").setURL("https://github.com/TwilightZebby/license/blob/main/license.md");
         const GitHubButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("GitHub").setURL("https://github.com/TwilightZebby/MooBot");
-        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton, GitHubButton]);
+        const ChangelogButton = new ButtonBuilder().setStyle(ButtonStyle.Link).setLabel("Changelog").setURL("https://github.com/TwilightZebby/MooBot/releases");
+        const BotInfoActionRow = new ActionRowBuilder().addComponents([PrivacyButton, LicenseButton, GitHubButton, ChangelogButton]);
 
         // Fetch App Commands
         const RegisteredGlobalCommands = await DiscordClient.application.commands.fetch();

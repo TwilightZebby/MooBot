@@ -94,7 +94,7 @@ module.exports = {
             case "c":
                 const CToF = (ValueOption * 9/5) + 32;
                 const CToK = ValueOption + 273.15;
-                if ( CToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `⚠ ${ValueOption}C is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
+                if ( CToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `:warning: ${ValueOption}C is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
                 await slashCommand.reply({ ephemeral: true, content: `${ValueOption}C is about ${CToF}F or ${CToK}K` });
                 break;
 
@@ -102,7 +102,7 @@ module.exports = {
             case "f":
                 const FToC = (ValueOption - 32) * 5/9;
                 const FToK = (ValueOption - 32) * 5/9 + 273.15;
-                if ( FToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `⚠ ${ValueOption}F is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
+                if ( FToK < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `:warning: ${ValueOption}F is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
                 await slashCommand.reply({ ephemeral: true, content: `${ValueOption}F is about ${FToC}C or ${FToK}K` });
                 break;
 
@@ -110,7 +110,7 @@ module.exports = {
             case "k":
                 const KToC = ValueOption - 273.15;
                 const KToF = (ValueOption - 273.15) * 9/5 + 32;
-                if ( ValueOption < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `⚠ ${ValueOption}K is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
+                if ( ValueOption < 0 ) { return await slashCommand.reply({ ephemeral: true, content: `:warning: ${ValueOption}K is a temperature that cannot exist! (It is below Absolute Zero!)` }); }
                 await slashCommand.reply({ ephemeral: true, content: `${ValueOption}K is about ${KToC}C or ${KToF}F` });
                 break;
 

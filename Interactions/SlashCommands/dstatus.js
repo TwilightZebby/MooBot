@@ -204,7 +204,7 @@ async function unsubscribeFromFeed(slashCommand)
     } 
     catch (err) {
         //console.error(err);
-        webhookDeletionErrorMessage = "⚠ An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!";
+        webhookDeletionErrorMessage = ":warning: An error occurred while I was trying to delete the Webhook for this Feed. You will have to delete the Webhook manually in Server Settings > Integrations!";
     }    
 
     delete DiscordOutageFeedJson[`${slashCommand.guildId}`];
