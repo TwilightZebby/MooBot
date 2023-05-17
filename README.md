@@ -1,5 +1,10 @@
 ↖ *Want to jump to a specific heading? Use the navigation menu! (Which doesn't exist on GitHub's Mobile App sadly)*
 
+# NOTICE
+**This Bot has been renamed, and as such moved to a new Repo. You can now find this Bot [as "HeccBot"](https://github.com/TwilightZebby/HeccBot).**
+
+---
+
 # MooBot
 
 A small general-purpose Discord Bot made by TwilightZebby; originally for Dr1fterX's [Discord Server](https://discord.gg/URH5E34FZf), but can be used in other Servers on a case-by-case basis.
